@@ -111,7 +111,7 @@ EH.MANUAL = {
       "etapa": "primera semana",
       "queHacer": "Entra a la web del organismo electoral de tu país (Registraduría, INE, Tribunal Supremo Electoral, Junta Electoral o el que corresponda) o llama a su oficina de tu departamento o provincia. Pregunta cuatro cosas para el concejo o ayuntamiento de TU municipio: cuántas firmas necesita un grupo significativo de ciudadanos para inscribir lista, en qué fechas se abre y se cierra ese trámite, cuál es el tope legal de gastos de campaña, y qué requisitos personales debe cumplir un candidato. Sube la captura, el PDF o el nombre y fecha de quien te atendió.",
       "porQueImporta": "Es el dato que decide todo. Si en tu municipio hacen falta 2.000 firmas y solo somos 30, sabemos que este año trabajamos para el siguiente. Nadie del movimiento te va a dar esa cifra desde otro país: cambia con cada censo, con cada reforma y con cada calendario electoral, y equivocarse cuesta una candidatura entera.",
-      "comoSeComprueba": "VERIFICADO por revisión humana del documento que subas. La plataforma NO valida por su cuenta la cifra: la marca como \"aportada por el miembro\" con su fuente y su fecha, y la coordinación la contrasta antes de darla por buena para planificar.",
+      "comoSeComprueba": "VERIFICADO por revisión humana del documento que subas. La plataforma NO válida por su cuenta la cifra: la marca como \"aportada por el miembro\" con su fuente y su fecha, y la coordinación la contrasta antes de darla por buena para planificar.",
       "minutos": 45
     },
     {
@@ -265,7 +265,7 @@ EH.MANUAL = {
         "Sin faltas de veracidad registradas"
       ],
       "queDesbloquea": "Uso de la marca y los materiales gráficos en tus redes, publicación en el muro de célula, y tu propio panel de contadores separados (envíos autodeclarados frente a inscripciones verificadas).",
-      "responsabilidad": "De la veracidad de lo que publicas con la marca puesta. Cualquier cifra que difundas es tuya: si la inventas, respondes tú y se te retira el nivel.",
+      "responsabilidad": "De la veracidad de lo que públicas con la marca puesta. Cualquier cifra que difundas es tuya: si la inventas, respondes tú y se te retira el nivel.",
       "nombreOriginal": "Militante"
     },
     {
