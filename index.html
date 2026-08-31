@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Los Estados Hispanos · Lo que nos une ya existe</title>
+<meta name="description" content="Movimiento panhispánico de 24 naciones. 500 millones de hablantes y una de las mayores economías del planeta, actuando por fin como una sola.">
+<meta name="theme-color" content="#12080a">
+
+<!-- Tarjeta para WhatsApp, X y Facebook. Falta la imagen: se genera en el
+     taller de carteles (../index.html), se guarda como activos/img/tarjeta.jpg
+     y se descomenta la línea de og:image. Sin imagen, el enlace se comparte
+     igual pero sin miniatura. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Los Estados Hispanos">
+<meta property="og:title" content="Los Estados Hispanos">
+<meta property="og:description" content="No somos pocos: estamos separados. 24 naciones, 500 millones de hablantes, una sola voz.">
+<!-- <meta property="og:image" content="activos/img/tarjeta.jpg"> -->
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="activos/css/hispano.css">
+</head>
+
+<body data-pagina="inicio" data-base="">
+<main id="ehPrincipal">
+
+  <!-- ================================================================
+       FRONTIS
+       ================================================================ -->
+  <section class="eh-frontis">
+    <div class="eh-limite eh-frontis__caja">
+      <div id="ehSello"></div>
+      <p class="eh-rotulo eh-rotulo--centro" style="margin-top:1.4rem">Movimiento panhispánico · fundado en 2026</p>
+      <h1>Los Estados <em>Hispanos</em></h1>
+      <p class="eh-plomo" style="margin-inline:auto;max-width:52ch">
+        Veinticuatro naciones. Quinientos millones de personas que se entienden sin
+        traductor. Una de las mayores economías del planeta, repartida en veinte mesas
+        distintas donde cada uno negocia solo.
+      </p>
+      <p class="eh-consigna" style="margin-inline:auto;max-width:26ch;border-left:0;border-top:1px solid var(--oro3);padding:1rem 0 0;text-align:center">
+        No somos pocos: estamos separados.
+      </p>
+      <div class="eh-fila eh-fila--centro" style="margin-top:1.8rem">
+        <a class="eh-boton eh-boton--oro eh-boton--g" href="inscripcion.html">Inscribirme en el movimiento</a>
+        <a class="eh-boton eh-boton--fantasma eh-boton--g" href="manifiesto.html">Leer el Manifiesto</a>
+      </div>
+      <div id="ehAvisoModo" style="max-width:56ch;margin:2rem auto 0;text-align:left"></div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       LAS CIFRAS
+       ================================================================ -->
+  <section class="eh-seccion eh-seccion--apretada eh-seccion--franja">
+    <div class="eh-limite">
+      <div class="eh-rejilla eh-rejilla--4" id="ehCifras"></div>
+      <details style="margin-top:1.5rem">
+        <summary style="cursor:pointer;color:var(--oro2);font-size:.85rem;font-weight:600">
+          De dónde sale cada cifra
+        </summary>
+        <p class="eh-tenue" style="margin-top:.8rem;line-height:1.7" id="ehMetodo"></p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       EL MAPA
+       ================================================================ -->
+  <section class="eh-seccion">
+    <div class="eh-limite">
+      <p class="eh-rotulo">El mundo hispano</p>
+      <h2>Esto es lo que somos, dibujado</h2>
+      <p class="eh-plomo" style="margin-bottom:1.8rem">
+        Cada punto es una nación y su tamaño es su población. Toca cualquiera para
+        conocerla. Las líneas son las rutas por las que viajó la lengua: de Sevilla a
+        Veracruz, de Acapulco a Manila.
+      </p>
+      <div class="eh-mapa" id="ehMapa"></div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       LA PRESIDENCIA INTERINA
+       ================================================================ -->
+  <section class="eh-seccion eh-seccion--franja" id="presidencia">
+    <div class="eh-limite">
+      <div class="eh-rejilla eh-rejilla--2" style="gap:2.5rem;align-items:center">
+        <div>
+          <p class="eh-rotulo">Quién lo dirige</p>
+          <h2 id="ehFundadorNombre">Joan Ruiz</h2>
+          <p class="eh-tenue" style="margin-top:-.4rem;letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;font-weight:700;color:var(--oro)">
+            Presidente del movimiento Los Estados Hispanos
+          </p>
+          <div class="eh-prosa" style="margin-top:1.2rem" id="ehSemblanza"></div>
+
+          <!-- Esta caja no es una advertencia legal escondida: es el encuadre
+               del cargo, y va arriba y a la vista. Un movimiento que explica
+               con precisión qué es su presidencia se blinda mejor que uno que
+               deja la ambigüedad trabajar a su favor. -->
+          <div class="eh-aviso eh-aviso--info">
+            <span class="eh-aviso__icono">◆</span>
+            <div>
+              <strong>Qué es esta presidencia.</strong> Es un cargo estatutario de una
+              asociación privada, como el de cualquier fundación o federación. Dirige el
+              movimiento que <em>propone</em> la unión hispana, y toda su fuerza viene de
+              quienes se adhieren voluntariamente. <b>No</b> ejerce función pública alguna,
+              <b>no</b> sustituye a ningún gobierno, <b>no</b> expide ni expedirá papeles
+              que sirvan ante ninguna autoridad, y <b>no</b> cobra impuestos ni tasas.
+              Es provisional hasta el Primer Congreso del movimiento, que elegirá su
+              dirección.
+            </div>
+          </div>
+        </div>
+
+        <div class="eh-tarjeta eh-tarjeta--oro eh-centro">
+          <p class="eh-rotulo eh-rotulo--centro">Adhesiones</p>
+          <span class="eh-cifra__n" id="ehReconocimientos">0</span>
+          <span class="eh-cifra__u">hispanos se han adherido al movimiento</span>
+          <div class="eh-barra" style="margin-top:1.2rem"><i id="ehBarraRec" style="width:0%"></i></div>
+          <p class="eh-tenue" id="ehMetaRec" style="margin:.4rem 0 1.2rem"></p>
+          <div id="ehBotonRec"></div>
+          <p class="eh-tenue" style="margin-top:1rem;font-size:.76rem">
+            Adherirse no cuesta nada y no obliga a nada. Tu nombre figura mientras tú
+            quieras: el día que pidas borrarlo, se borra de verdad y sin preguntas.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       CINTA DE LEMAS
+       ================================================================ -->
+  <div class="eh-cinta" aria-hidden="true"><div class="eh-cinta__pista" id="ehCinta"></div></div>
+
+  <!-- ================================================================
+       LAS PUERTAS
+       ================================================================ -->
+  <section class="eh-seccion">
+    <div class="eh-limite">
+      <p class="eh-rotulo">Por dónde entrar</p>
+      <h2>Cuatro puertas a lo mismo</h2>
+      <div class="eh-rejilla eh-rejilla--2" style="margin-top:1.6rem">
+
+        <a class="eh-tarjeta eh-tarjeta--enlace" href="manifiesto.html">
+          <span class="eh-numeral">I</span>
+          <h3 class="eh-tarjeta__titulo">El Manifiesto Hispano</h3>
+          <p class="eh-tarjeta__cuerpo">
+            Ocho secciones sobre por qué esto no es nostalgia sino aritmética. El
+            documento fundacional: si solo vas a leer una cosa, lee esta.
+          </p>
+        </a>
+
+        <a class="eh-tarjeta eh-tarjeta--enlace" href="plan.html">
+          <span class="eh-numeral">II</span>
+          <h3 class="eh-tarjeta__titulo">El Gran Plan</h3>
+          <p class="eh-tarjeta__cuerpo">
+            Seis fases con fechas y con metas que se pueden medir. Y las causas
+            históricas: Puerto Rico, el Esequibo, las Malvinas, el sector antártico,
+            el Sáhara. Cada una con su vía jurídica real y su plazo honesto.
+          </p>
+        </a>
+
+        <a class="eh-tarjeta eh-tarjeta--enlace" href="partidos.html">
+          <span class="eh-numeral">III</span>
+          <h3 class="eh-tarjeta__titulo">Partidos hermanos</h3>
+          <p class="eh-tarjeta__cuerpo">
+            Cuántos apoyos faltan para inscribir un partido en cada país, qué exige
+            cada ley electoral y cómo se apoyan entre sí sin cruzar ninguna línea.
+            El contador va bajando.
+          </p>
+        </a>
+
+        <a class="eh-tarjeta eh-tarjeta--enlace" href="circulo.html">
+          <span class="eh-numeral">IV</span>
+          <h3 class="eh-tarjeta__titulo">Círculo de Emprendedores</h3>
+          <p class="eh-tarjeta__cuerpo">
+            Enriquecer al hispano es fortalecer a la Hispanidad. Rutas reales para
+            construir patrimonio desde un país hispano, con sus trampas dichas.
+            Sin gurús y sin señales de inversión.
+          </p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       EL ARGUMENTO
+       ================================================================ -->
+  <section class="eh-seccion eh-seccion--franja">
+    <div class="eh-limite">
+      <p class="eh-rotulo">Por qué ahora</p>
+      <h2 style="max-width:20ch">El argumento no es sentimental. Es de aduana.</h2>
+      <div class="eh-rejilla eh-rejilla--3" style="margin-top:1.8rem">
+
+        <div class="eh-tarjeta">
+          <h3 class="eh-tarjeta__titulo">El bolsillo</h3>
+          <p class="eh-tarjeta__cuerpo">
+            La Unión Europea comercia consigo misma cerca del 60&nbsp;% de su comercio
+            total. América Latina apenas ronda el 15&nbsp;%. No es un problema cultural:
+            son aduanas, transporte y normas incompatibles. Cada punto que suba ese
+            porcentaje son fábricas aquí, no allá.
+          </p>
+        </div>
+
+        <div class="eh-tarjeta">
+          <h3 class="eh-tarjeta__titulo">El pasaporte</h3>
+          <p class="eh-tarjeta__cuerpo">
+            Un europeo se muda de Lisboa a Berlín en un fin de semana. Un joven
+            colombiano con familia, lengua y título compatibles con México o España
+            pierde dos años en trámites. La pregunta no es por qué integrarnos: es por
+            qué seguimos aceptando ser extranjeros entre hermanos.
+          </p>
+        </div>
+
+        <div class="eh-tarjeta">
+          <h3 class="eh-tarjeta__titulo">El tamaño</h3>
+          <p class="eh-tarjeta__cuerpo">
+            Ningún país hispano entra solo en la mesa donde se deciden las reglas de la
+            inteligencia artificial, los minerales críticos o la deuda. Separados somos
+            veinte tomadores de precio que se hacen competencia entre sí bajando
+            salarios.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FRENTE DIGITAL
+       ================================================================ -->
+  <section class="eh-seccion eh-seccion--apretada">
+    <div class="eh-limite eh-centro">
+      <p class="eh-rotulo eh-rotulo--centro">Frente digital</p>
+      <h2>Donde se libra de verdad</h2>
+      <p class="eh-plomo" style="margin:0 auto 1.6rem">
+        La integración cultural ya ocurrió: la juventud hispana consume la misma música
+        y los mismos creadores en el mismo idioma. Lo único que falta es que las
+        instituciones se pongan al día con lo que la gente ya hace.
+      </p>
+      <div id="ehRedes" style="justify-content:center"></div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       CIERRE
+       ================================================================ -->
+  <section class="eh-seccion">
+    <div class="eh-limite eh-centro">
+      <h2 style="max-width:18ch;margin-inline:auto">Quien lee esto ya es parte</h2>
+      <p class="eh-plomo" style="margin:0 auto 1.8rem;max-width:48ch">
+        Inscribirse toma dos minutos, es gratis y se puede deshacer cuando quieras.
+        Lo que no se puede es seguir esperando a que alguien más lo haga.
+      </p>
+      <a class="eh-boton eh-boton--oro eh-boton--g" href="inscripcion.html">Inscribirme ahora</a>
+    </div>
+  </section>
+
+</main>
+
+<script src="activos/js/config.js"></script>
+<script src="activos/js/sello.js"></script>
+<script src="activos/js/naciones.js"></script>
+<script src="activos/js/contenido.js"></script>
+<script src="activos/js/reputacion.js"></script>
+<script src="activos/js/datos.js"></script>
+<script src="activos/js/redes.js"></script>
+<script src="activos/js/mapa.js"></script>
+<script src="activos/js/cascaron.js"></script>
+<script src="activos/js/p-inicio.js"></script>
+</body>
+</html>

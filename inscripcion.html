@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Inscribirme · Los Estados Hispanos</title>
+<meta name="description" content="Inscríbete en Los Estados Hispanos. Es gratis, toma dos minutos y se puede deshacer cuando quieras.">
+<meta name="theme-color" content="#12080a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Inscríbete en Los Estados Hispanos">
+<meta property="og:description" content="No somos pocos: estamos separados. 24 naciones, 500 millones de hablantes, una sola voz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="activos/css/hispano.css">
+</head>
+
+<body data-pagina="inscripcion" data-base="">
+<main id="ehPrincipal">
+
+  <section class="eh-seccion">
+    <div class="eh-limite" style="max-width:720px">
+
+      <div id="ehQuienInvita"></div>
+
+      <p class="eh-rotulo">Inscripción</p>
+      <h1 style="font-size:clamp(1.9rem,5vw,3rem)">Entrar al movimiento</h1>
+      <p class="eh-plomo">
+        Es gratis y siempre lo será. Toma dos minutos. Puedes retirarte y borrar
+        todos tus datos cuando quieras, con un botón, sin escribir a nadie.
+      </p>
+
+      <div id="ehAvisoModo"></div>
+
+      <!-- =========================================================
+           EL FORMULARIO
+           ========================================================= -->
+      <form id="ehForma" style="margin-top:2rem" novalidate>
+
+        <div class="eh-campo">
+          <label for="fNombre">Nombre y apellido</label>
+          <input class="eh-entrada" id="fNombre" name="nombre" type="text"
+                 autocomplete="name" maxlength="80" required>
+          <p class="eh-campo__pista">Puedes usar un seudónimo si militar tiene un costo donde vives.</p>
+          <p class="eh-error" id="eNombre">Hace falta un nombre.</p>
+        </div>
+
+        <div class="eh-campo">
+          <label for="fCorreo">Correo electrónico</label>
+          <input class="eh-entrada" id="fCorreo" name="correo" type="email"
+                 autocomplete="email" maxlength="120" required>
+          <p class="eh-campo__pista">Es tu llave para entrar. No se muestra a nadie más.</p>
+          <p class="eh-error" id="eCorreo">Ese correo no parece válido.</p>
+        </div>
+
+        <div id="ehCampoClave" class="eh-oculto">
+          <div class="eh-campo">
+            <label for="fClave">Contraseña</label>
+            <input class="eh-entrada" id="fClave" name="clave" type="password"
+                   autocomplete="new-password" minlength="8" maxlength="72">
+            <p class="eh-campo__pista">Mínimo ocho caracteres.</p>
+            <p class="eh-error" id="eClave">La contraseña debe tener al menos ocho caracteres.</p>
+          </div>
+        </div>
+
+        <div class="eh-rejilla eh-rejilla--2" style="gap:0 1rem">
+          <div class="eh-campo">
+            <label for="fNacion">Tu nación</label>
+            <select class="eh-entrada" id="fNacion" name="nacion" required></select>
+            <p class="eh-error" id="eNacion">Elige una nación.</p>
+          </div>
+          <div class="eh-campo">
+            <label for="fCiudad">Ciudad</label>
+            <input class="eh-entrada" id="fCiudad" name="ciudad" type="text" maxlength="60">
+            <p class="eh-campo__pista">Solo la ciudad. Nunca pedimos tu dirección.</p>
+          </div>
+        </div>
+
+        <div class="eh-campo">
+          <label for="fOficio">A qué te dedicas</label>
+          <input class="eh-entrada" id="fOficio" name="oficio" type="text" maxlength="80"
+                 placeholder="Abogada, mecánico, estudiante, comerciante…">
+          <p class="eh-campo__pista">
+            Un movimiento sirve de algo cuando sabe qué sabe hacer su gente.
+          </p>
+        </div>
+
+        <div class="eh-campo">
+          <label>En qué puedes ayudar</label>
+          <div class="eh-rejilla eh-rejilla--3" style="gap:.5rem" id="ehAporta"></div>
+        </div>
+
+        <div class="eh-campo">
+          <label for="fBio">Por qué entras <span class="eh-tenue">(opcional)</span></label>
+          <textarea class="eh-entrada" id="fBio" name="biografia" maxlength="400"
+                    placeholder="Dos líneas. Se muestran en tu ficha si eliges ser público."></textarea>
+        </div>
+
+        <!-- =========================================================
+             AUTORIZACIONES
+             Cuatro casillas separadas y ninguna premarcada. Agruparlas en
+             una sola invalidaría la autorización del dato sensible.
+             ========================================================= -->
+        <h2 style="font-size:1.25rem;margin:2.4rem 0 .4rem">Tus datos</h2>
+        <p class="eh-tenue" style="margin-bottom:1rem" id="ehResponsable"></p>
+
+        <label class="eh-casilla eh-casilla--clave" for="cPolitico">
+          <input type="checkbox" id="cPolitico" required>
+          <span>
+            <b>Autorizo el tratamiento de mi afiliación política.</b>
+            La ley colombiana (art. 5 de la Ley 1581 de 2012) clasifica la afiliación a un
+            movimiento político como <b>dato sensible</b>. Autorizo de manera previa, expresa
+            e informada su tratamiento con la única finalidad de acreditarme como miembro,
+            comunicarme convocatorias y llevar el registro interno del movimiento.
+            <b>No estoy obligado a dar esta autorización</b> y puedo negarme sin que se me
+            niegue el acceso al sitio ni a sus contenidos: solo el estatus de miembro depende
+            de ella, porque ese dato <em>es</em> la membresía. Puedo revocarla y pedir la
+            supresión de mis datos en cualquier momento.
+          </span>
+        </label>
+
+        <label class="eh-casilla" for="cTransferencia">
+          <input type="checkbox" id="cTransferencia" required>
+          <span>
+            <b>Autorizo que mis datos se guarden fuera de mi país.</b>
+            Los servidores del movimiento están alojados en el extranjero y los datos se
+            comparten únicamente con los proveedores tecnológicos listados en la política
+            de tratamiento, bajo las mismas obligaciones de seguridad (art. 26 de la Ley 1581).
+          </span>
+        </label>
+
+        <label class="eh-casilla" for="cEdad">
+          <input type="checkbox" id="cEdad" required>
+          <span>
+            <b>Declaro que soy mayor de 18 años.</b>
+            No hay forma segura de afiliar políticamente a un menor de edad, así que no lo
+            hacemos (art. 7 de la Ley 1581).
+          </span>
+        </label>
+
+        <label class="eh-casilla" for="cComunicaciones">
+          <input type="checkbox" id="cComunicaciones">
+          <span>
+            Quiero recibir convocatorias y noticias del movimiento por correo o WhatsApp.
+            <b class="eh-tenue">Opcional.</b> Puedo darme de baja con un clic en cualquier envío.
+          </span>
+        </label>
+
+        <label class="eh-casilla" for="cPublico">
+          <input type="checkbox" id="cPublico" checked>
+          <span>
+            Que mi ficha aparezca en la comunidad, con mi nombre, nación y oficio.
+            Si lo desmarcas, entras igual, pero nadie te ve.
+          </span>
+        </label>
+
+        <p class="eh-error" id="eConsent" style="margin:.4rem 0 1rem">
+          Las tres primeras autorizaciones son necesarias para poder inscribirte.
+        </p>
+
+        <button class="eh-boton eh-boton--oro eh-boton--g eh-boton--bloque" type="submit" id="ehEnviar">
+          Crear mi cuenta
+        </button>
+
+        <p class="eh-tenue" style="margin-top:1rem;text-align:center">
+          Al inscribirte aceptas los <a href="legal/terminos-y-condiciones.html">términos de uso</a>.
+          Lee el <a href="legal/aviso-de-privacidad.html">aviso de privacidad</a> y la
+          <a href="legal/politica-de-tratamiento-de-datos.html">política de tratamiento</a>.
+        </p>
+      </form>
+
+      <hr style="border:0;border-top:1px solid var(--linea);margin:2.5rem 0">
+
+      <div class="eh-centro">
+        <h3 style="font-size:1.05rem">¿Ya estás inscrito?</h3>
+        <form id="ehFormaEntrar" class="eh-fila eh-fila--centro" style="margin-top:.8rem" novalidate>
+          <input class="eh-entrada" id="fEntrarCorreo" type="email" placeholder="Tu correo"
+                 style="max-width:260px" autocomplete="email">
+          <input class="eh-entrada eh-oculto" id="fEntrarClave" type="password"
+                 placeholder="Contraseña" style="max-width:200px" autocomplete="current-password">
+          <button class="eh-boton" type="submit">Entrar</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<script src="activos/js/config.js"></script>
+<script src="activos/js/sello.js"></script>
+<script src="activos/js/naciones.js"></script>
+<script src="activos/js/contenido.js"></script>
+<script src="activos/js/reputacion.js"></script>
+<script src="activos/js/datos.js"></script>
+<script src="activos/js/redes.js"></script>
+<script src="activos/js/cascaron.js"></script>
+<script src="activos/js/p-inscripcion.js"></script>
+</body>
+</html>

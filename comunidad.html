@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Comunidad · Los Estados Hispanos</title>
+<meta name="description" content="El muro del movimiento, el escalafón y los miembros de las 24 naciones.">
+<meta name="theme-color" content="#12080a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="La comunidad de Los Estados Hispanos">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="activos/css/hispano.css">
+</head>
+
+<body data-pagina="comunidad" data-base="">
+<main id="ehPrincipal">
+
+  <section class="eh-seccion eh-seccion--apretada">
+    <div class="eh-limite">
+
+      <div id="ehAvisoModo"></div>
+
+      <!-- ============ MI FICHA ============ -->
+      <div id="yo" style="scroll-margin-top:80px"></div>
+
+      <!-- ============ PESTAÑAS ============ -->
+      <div class="eh-pestanas" id="ehPestanas" style="margin-top:2rem">
+        <button type="button" data-h="muro" class="on">El muro</button>
+        <button type="button" data-h="escalafon">Los que más aportan</button>
+        <button type="button" data-h="miembros">Miembros</button>
+        <button type="button" data-h="grados">Cómo se sube</button>
+      </div>
+
+      <div class="eh-hoja on" data-hoja="muro">
+        <div id="ehPublicar"></div>
+        <div id="ehMuro" class="eh-cargando">Cargando el muro…</div>
+      </div>
+
+      <div class="eh-hoja" data-hoja="escalafon">
+        <p class="eh-plomo" style="margin-bottom:1.2rem">
+          El honor mide aporte, no antigüedad ni dinero. No se compra, no se vende y no se
+          transfiere.
+        </p>
+        <div id="ehRanking"></div>
+      </div>
+
+      <div class="eh-hoja" data-hoja="miembros">
+        <div class="eh-fila" style="margin-bottom:1.2rem">
+          <input class="eh-entrada" id="ehBuscar" type="search" placeholder="Buscar por nombre, ciudad u oficio" style="max-width:320px">
+          <select class="eh-entrada" id="ehFiltroNacion" style="max-width:240px"></select>
+        </div>
+        <div class="eh-rejilla eh-rejilla--3" id="ehMiembros"></div>
+      </div>
+
+      <div class="eh-hoja" data-hoja="grados">
+        <p class="eh-plomo" style="margin-bottom:1.4rem">
+          Siete niveles de participación. Los tres primeros se ganan solos y nadie los puede
+          frenar. Los niveles cuatro y cinco también se ganan con honor, pero alguien del
+          equipo tiene que verificar el núcleo o el acto. Los dos últimos los nombra la
+          dirección: cumplir los requisitos no asciende, y lo decimos aquí en vez de dejar
+          que alguien llegue arriba y se lleve la sorpresa.
+        </p>
+        <div id="ehGrados"></div>
+        <div id="ehReglasHonor" style="margin-top:2rem"></div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<script src="activos/js/config.js"></script>
+<script src="activos/js/sello.js"></script>
+<script src="activos/js/naciones.js"></script>
+<script src="activos/js/contenido.js"></script>
+<script src="activos/js/reputacion.js"></script>
+<script src="activos/js/datos.js"></script>
+<script src="activos/js/redes.js"></script>
+<script src="activos/js/cascaron.js"></script>
+<script src="activos/js/p-comunidad.js"></script>
+</body>
+</html>

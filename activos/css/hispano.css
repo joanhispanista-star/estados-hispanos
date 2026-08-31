@@ -1,0 +1,613 @@
+/* =========================================================================
+   LOS ESTADOS HISPANOS — sistema de diseño de la plataforma pública
+   =========================================================================
+
+   POR QUÉ ESTE ARCHIVO EXISTE
+   El taller privado (../../index.html) es un archivo único con su CSS dentro.
+   La plataforma son ~12 páginas: si cada una trae su propio CSS, en la tercera
+   ya hay tres botones distintos. Todo lo compartido vive aquí y solo aquí.
+
+   POR QUÉ HEREDA LOS COLORES DEL TALLER
+   Los tokens --bg, --oro, --rojo son literalmente los del taller de Joan. No se
+   reinventaron: si el fundador diseña un cartel en el taller y lo publica en la
+   plataforma, tienen que verse del mismo movimiento. La continuidad de marca
+   vale más que un color más bonito.
+
+   POR QUÉ SOLO HAY TEMA OSCURO
+   Decisión deliberada, no pereza. El encargo es "poder y fortuna": el oro sobre
+   negro es el único par que lee como riqueza en pantalla. Un tema claro con oro
+   se ve amarillo mostaza. Si algún día hace falta, se añade — pero no gratis.
+   ========================================================================= */
+
+:root{
+  /* --- superficies: del más profundo al más elevado --- */
+  --bg:#12080a;          /* fondo de la página */
+  --bg2:#1b0f12;         /* franjas alternas */
+  --panel:#201316;       /* tarjetas */
+  --panel2:#2a1a1e;      /* tarjeta elevada / hover */
+  --panel3:#341f24;      /* campos de formulario */
+  --linea:#3d2429;       /* borde estándar */
+  --linea2:#523036;      /* borde acentuado */
+
+  /* --- tinta --- */
+  --texto:#f5ece2;       /* texto principal */
+  --suave:#c3ab9c;       /* secundario */
+  --tenue:#8d7568;       /* terciario, metadatos */
+
+  /* --- oro: la señal de riqueza. Se usa POCO. --- */
+  --oro:#d9a441;
+  --oro2:#f0c46b;
+  --oro3:#8a6520;        /* oro apagado, para bordes y sombras */
+  --oro-vidrio:rgba(217,164,65,.10);
+
+  /* --- rojo: la sangre y la bandera --- */
+  --rojo:#a3122a;
+  --rojo2:#d1213c;
+  --rojo3:#5e0a18;
+
+  /* --- acentos funcionales --- */
+  --verde:#3f8f5e;       /* confirmado, activo, verificado */
+  --azul:#3a6ea5;        /* información, enlaces externos */
+  --ambar:#c98a1e;       /* advertencia honesta */
+
+  /* --- geometría --- */
+  --radio:14px;
+  --radio-s:9px;
+  --radio-g:22px;
+  --ancho:1180px;        /* ancho máximo del contenido */
+  --ancho-texto:68ch;    /* ancho de lectura: la prosa nunca pasa de aquí */
+
+  /* --- tipografía ---
+     Se cargan de Google Fonts pero TODAS tienen respaldo del sistema, porque
+     el LÉEME promete que esto funciona sin internet. Sin respaldo, la portada
+     del movimiento se ve con Times New Roman el día que se caiga la red. */
+  --display:"Playfair Display",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --serif:Georgia,"Times New Roman",serif;
+
+  /* --- sombras --- */
+  --sombra:0 2px 8px rgba(0,0,0,.4);
+  --sombra-g:0 18px 50px rgba(0,0,0,.55);
+  --brillo-oro:0 0 0 1px var(--oro3), 0 8px 30px rgba(217,164,65,.13);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth }
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--texto);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* El grano. Una capa de ruido casi invisible sobre todo el fondo: es lo que
+   separa un negro de pantalla barato de un negro impreso. Va en ::before del
+   body para no meter un <div> decorativo en cada página. */
+body::before{
+  content:"";
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  opacity:.035;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='r'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23r)'/></svg>");
+}
+body > *{position:relative; z-index:1}
+
+img{max-width:100%;height:auto;display:block}
+a{color:var(--oro2);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--oro2);outline-offset:3px;border-radius:4px}
+
+/* =========================================================================
+   TIPOGRAFÍA
+   ========================================================================= */
+h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.12;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(2.1rem,6vw,4.1rem)}
+h2{font-size:clamp(1.6rem,3.6vw,2.5rem)}
+h3{font-size:clamp(1.15rem,2.1vw,1.45rem)}
+h4{font-size:1.02rem;font-family:var(--sans);font-weight:700;letter-spacing:.01em}
+p{margin:0 0 1.05em}
+p:last-child{margin-bottom:0}
+
+/* Rótulo pequeño en versalitas con mucho espaciado. Es el gesto que hace que
+   una sección parezca institucional en vez de un blog. */
+.eh-rotulo{
+  font-family:var(--sans);font-size:.7rem;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--oro);
+  display:flex;align-items:center;gap:.7rem;margin:0 0 1rem;
+}
+.eh-rotulo::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--oro3),transparent)}
+.eh-rotulo--centro{justify-content:center}
+.eh-rotulo--centro::after,.eh-rotulo--centro::before{content:"";flex:0 0 60px;height:1px;background:var(--oro3)}
+
+.eh-plomo{font-size:clamp(1.02rem,1.7vw,1.22rem);color:var(--suave);max-width:var(--ancho-texto)}
+.eh-prosa{max-width:var(--ancho-texto)}
+.eh-prosa p{font-size:1.06rem}
+.eh-oro{color:var(--oro2)}
+.eh-tenue{color:var(--tenue);font-size:.85rem}
+.eh-centro{text-align:center}
+.eh-centro .eh-plomo{margin-left:auto;margin-right:auto}
+
+/* Cita solemne, para el manifiesto y las consignas. */
+.eh-consigna{
+  font-family:var(--display);font-style:italic;
+  font-size:clamp(1.25rem,2.6vw,1.8rem);line-height:1.3;
+  color:var(--oro2);border-left:2px solid var(--oro3);
+  padding:.2em 0 .2em 1.1em;margin:1.6em 0;max-width:34ch;
+}
+
+/* =========================================================================
+   ESQUELETO
+   ========================================================================= */
+.eh-limite{width:100%;max-width:var(--ancho);margin-inline:auto;padding-inline:clamp(1rem,4vw,2rem)}
+.eh-seccion{padding-block:clamp(3rem,8vw,6rem)}
+.eh-seccion--franja{background:var(--bg2);border-block:1px solid var(--linea)}
+.eh-seccion--apretada{padding-block:clamp(2rem,5vw,3.5rem)}
+
+.eh-rejilla{display:grid;gap:1.1rem}
+.eh-rejilla--2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.eh-rejilla--3{grid-template-columns:repeat(auto-fit,minmax(255px,1fr))}
+.eh-rejilla--4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+
+.eh-fila{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center}
+.eh-fila--fin{justify-content:flex-end}
+.eh-fila--entre{justify-content:space-between}
+.eh-fila--centro{justify-content:center}
+
+/* =========================================================================
+   NAVEGACIÓN
+   El header lo inyecta cascaron.js en todas las páginas: si se escribe a
+   mano en doce archivos, al añadir una sección se olvida en cuatro.
+   ========================================================================= */
+.eh-nav{
+  position:sticky;top:0;z-index:60;
+  background:rgba(18,8,10,.90);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--linea);
+}
+.eh-nav__caja{display:flex;align-items:center;gap:1rem;height:64px}
+.eh-nav__marca{display:flex;align-items:center;gap:.6rem;flex-shrink:0;color:var(--texto)}
+.eh-nav__marca:hover{text-decoration:none}
+.eh-nav__marca svg{width:30px;height:30px;flex-shrink:0}
+.eh-nav__nombre{font-family:var(--display);font-weight:700;font-size:1.02rem;line-height:1.05;letter-spacing:-.01em}
+.eh-nav__nombre small{display:block;font-family:var(--sans);font-size:.55rem;letter-spacing:.2em;color:var(--oro);font-weight:600}
+
+.eh-nav__enlaces{display:flex;gap:.15rem;margin-left:auto;align-items:center}
+.eh-nav__enlaces a{
+  color:var(--suave);font-size:.83rem;font-weight:500;
+  padding:.5rem .68rem;border-radius:var(--radio-s);
+  white-space:nowrap;transition:color .15s,background .15s;
+}
+.eh-nav__enlaces a:hover{color:var(--texto);background:var(--panel);text-decoration:none}
+.eh-nav__enlaces a.on{color:var(--oro2);background:var(--oro-vidrio)}
+
+.eh-nav__hamburguesa{
+  display:none;margin-left:auto;background:var(--panel);border:1px solid var(--linea);
+  color:var(--texto);width:42px;height:38px;border-radius:var(--radio-s);
+  cursor:pointer;font-size:1.15rem;line-height:1;
+}
+@media (max-width:1000px){
+  .eh-nav__enlaces{
+    display:none;position:absolute;top:64px;left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:var(--bg2);border-bottom:1px solid var(--linea);
+    padding:.5rem;max-height:70vh;overflow-y:auto;
+  }
+  .eh-nav__enlaces.abierto{display:flex}
+  .eh-nav__enlaces a{padding:.8rem 1rem;font-size:.95rem}
+  .eh-nav__hamburguesa{display:block}
+}
+
+/* =========================================================================
+   EL SELLO
+   Dos columnas y la divisa PLVS VLTRA, que significa "más allá". Viene de la
+   heráldica hispánica clásica y es el origen del signo del dólar; NO es
+   iconografía franquista. Se descartó a propósito cualquier eco falangista:
+   además de repugnante, haría inservible el movimiento en veinte países.
+   ========================================================================= */
+.eh-sello{display:block;margin-inline:auto;filter:drop-shadow(0 6px 22px rgba(217,164,65,.28))}
+.eh-sello--g{width:clamp(96px,15vw,150px);height:auto}
+
+/* =========================================================================
+   BOTONES
+   ========================================================================= */
+.eh-boton{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  font-family:var(--sans);font-size:.92rem;font-weight:600;
+  padding:.78rem 1.35rem;border-radius:var(--radio-s);
+  border:1px solid var(--linea2);background:var(--panel2);color:var(--texto);
+  cursor:pointer;text-decoration:none;transition:transform .12s,background .15s,border-color .15s;
+  line-height:1.2;
+}
+.eh-boton:hover{background:var(--panel3);border-color:var(--oro3);text-decoration:none;transform:translateY(-1px)}
+.eh-boton:active{transform:translateY(0)}
+.eh-boton[disabled],.eh-boton[aria-disabled="true"]{opacity:.45;cursor:not-allowed;transform:none}
+
+.eh-boton--oro{
+  background:linear-gradient(160deg,var(--oro2),var(--oro) 55%,#b8862c);
+  color:#1a0f06;border-color:var(--oro2);font-weight:700;
+  box-shadow:0 6px 22px rgba(217,164,65,.22);
+}
+.eh-boton--oro:hover{background:linear-gradient(160deg,#f8d98c,var(--oro2) 55%,var(--oro));color:#1a0f06}
+
+.eh-boton--rojo{background:var(--rojo);border-color:var(--rojo2);color:#fff}
+.eh-boton--rojo:hover{background:var(--rojo2)}
+
+.eh-boton--fantasma{background:transparent;border-color:var(--linea2);color:var(--suave)}
+.eh-boton--fantasma:hover{color:var(--texto);background:var(--panel)}
+
+.eh-boton--g{padding:1rem 1.9rem;font-size:1.02rem}
+.eh-boton--p{padding:.45rem .8rem;font-size:.78rem}
+.eh-boton--bloque{width:100%}
+
+/* =========================================================================
+   TARJETAS
+   ========================================================================= */
+.eh-tarjeta{
+  background:var(--panel);border:1px solid var(--linea);
+  border-radius:var(--radio);padding:1.35rem;
+  transition:border-color .18s,transform .18s,background .18s;
+}
+.eh-tarjeta--enlace:hover{border-color:var(--oro3);transform:translateY(-3px);background:var(--panel2);text-decoration:none}
+.eh-tarjeta--oro{border-color:var(--oro3);box-shadow:var(--brillo-oro)}
+.eh-tarjeta__titulo{font-family:var(--display);font-size:1.2rem;font-weight:700;margin:0 0 .45rem;color:var(--texto)}
+.eh-tarjeta__cuerpo{color:var(--suave);font-size:.93rem;margin:0}
+.eh-tarjeta__pie{margin-top:1rem;padding-top:.85rem;border-top:1px solid var(--linea);font-size:.8rem;color:var(--tenue)}
+
+/* Número romano al margen, para el manifiesto y el plan. */
+.eh-numeral{
+  font-family:var(--display);font-size:2.4rem;font-weight:700;
+  color:var(--oro3);line-height:1;opacity:.85;
+}
+
+/* =========================================================================
+   CIFRAS
+   El activo retórico del movimiento. Cada cifra OBLIGA a llevar su nota de
+   procedencia: una cifra vieja en cámara te desarma, y el LÉEME del taller
+   ya lo advierte con todas las letras.
+   ========================================================================= */
+.eh-cifra{text-align:center;padding:1.1rem .6rem}
+.eh-cifra__n{
+  font-family:var(--display);font-weight:700;line-height:1;
+  font-size:clamp(1.9rem,4.6vw,3.1rem);
+  background:linear-gradient(170deg,var(--oro2),var(--oro) 60%,#a97c26);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  display:block;
+}
+.eh-cifra__u{display:block;font-size:.76rem;letter-spacing:.13em;text-transform:uppercase;color:var(--suave);margin-top:.5rem;font-weight:600}
+.eh-cifra__x{display:block;font-size:.78rem;color:var(--tenue);margin-top:.45rem;line-height:1.45}
+
+/* =========================================================================
+   LA CINTA DE LEMAS
+   Marquesina con los lemas del taller. Se detiene al pasar el ratón y se
+   congela con prefers-reduced-motion, declarado arriba.
+   ========================================================================= */
+.eh-cinta{
+  overflow:hidden;border-block:1px solid var(--linea);
+  background:linear-gradient(90deg,var(--rojo3),var(--bg2) 35%,var(--bg2) 65%,var(--rojo3));
+  padding-block:.75rem;
+}
+.eh-cinta__pista{display:flex;gap:2.6rem;width:max-content;animation:eh-desfile 46s linear infinite}
+.eh-cinta:hover .eh-cinta__pista{animation-play-state:paused}
+.eh-cinta__pieza{
+  font-family:var(--display);font-size:.94rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--oro);white-space:nowrap;opacity:.82;
+}
+.eh-cinta__pieza::after{content:"\25C6";margin-left:2.6rem;color:var(--rojo2);opacity:.7}
+@keyframes eh-desfile{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* =========================================================================
+   AVISOS HONESTOS
+   Regla dura del proyecto: la interfaz no promete lo que el código no cumple.
+   Cuando algo está en demostración o sin conectar se dice AQUÍ, con este
+   estilo, y no se disimula.
+   ========================================================================= */
+.eh-aviso{
+  display:flex;gap:.8rem;align-items:flex-start;
+  background:rgba(201,138,30,.09);border:1px solid rgba(201,138,30,.38);
+  border-radius:var(--radio-s);padding:.85rem 1rem;
+  font-size:.87rem;color:var(--suave);line-height:1.55;margin-block:1rem;
+}
+.eh-aviso__icono{flex-shrink:0;font-size:1rem;line-height:1.4}
+.eh-aviso strong{color:var(--ambar)}
+.eh-aviso--info{background:rgba(58,110,165,.10);border-color:rgba(58,110,165,.40)}
+.eh-aviso--info strong{color:#7fb0e0}
+.eh-aviso--bien{background:rgba(63,143,94,.10);border-color:rgba(63,143,94,.42)}
+.eh-aviso--bien strong{color:#6ec38d}
+.eh-aviso--mal{background:rgba(209,33,60,.10);border-color:rgba(209,33,60,.42)}
+.eh-aviso--mal strong{color:#f07a8e}
+
+/* =========================================================================
+   PORTADA: EL FRONTIS
+   ========================================================================= */
+.eh-frontis{
+  position:relative;overflow:hidden;
+  padding-block:clamp(3rem,9vw,7rem);
+  border-bottom:1px solid var(--linea);
+}
+/* El resplandor dorado detrás del sello. Es lo que separa "página oscura" de
+   "página cara": una sola fuente de luz cálida, no diez degradados. */
+.eh-frontis::before{
+  content:"";position:absolute;left:50%;top:-28%;
+  width:min(1100px,150%);aspect-ratio:1;transform:translateX(-50%);
+  background:radial-gradient(circle,rgba(217,164,65,.17) 0%,rgba(163,18,42,.10) 38%,transparent 68%);
+  pointer-events:none;
+}
+.eh-frontis__caja{position:relative;text-align:center;max-width:900px;margin-inline:auto}
+.eh-frontis h1{margin-block:1.1rem .8rem}
+.eh-frontis h1 em{font-style:normal;display:block;color:var(--oro2)}
+
+/* =========================================================================
+   EL MAPAMUNDI
+   Proyección equirectangular dibujada en SVG por mapa.js. No se usa una
+   librería de mapas porque el LÉEME promete que esto abre sin internet y sin
+   instalar nada: una dependencia de CDN rompería esa promesa el primer día.
+   ========================================================================= */
+.eh-mapa{
+  position:relative;background:
+    radial-gradient(ellipse at 50% 45%,rgba(58,110,165,.10),transparent 62%),
+    var(--bg2);
+  border:1px solid var(--linea);border-radius:var(--radio);
+  overflow:hidden;
+}
+.eh-mapa svg{display:block;width:100%;height:auto;touch-action:pan-y}
+/* La tierra tiene que separarse del océano sin robarle protagonismo a los
+   nodos. Con el relleno original (#241519) el continente desaparecía sobre el
+   fondo y el mapa parecía una constelación flotando en el vacío. */
+.eh-mapa__tierra{fill:#332026;stroke:#553640;stroke-width:.7;stroke-linejoin:round}
+.eh-mapa__rejilla{stroke:rgba(217,164,65,.055);stroke-width:.5;fill:none}
+.eh-mapa__lazo{stroke:rgba(217,164,65,.20);stroke-width:.7;fill:none}
+.eh-mapa__nodo{cursor:pointer;transition:opacity .15s}
+.eh-mapa__nodo circle.punto{fill:var(--oro);stroke:#12080a;stroke-width:1;transition:fill .15s,r .15s}
+.eh-mapa__nodo circle.halo{fill:rgba(217,164,65,.16);transition:fill .18s,r .18s}
+.eh-mapa__nodo:hover circle.punto,.eh-mapa__nodo.on circle.punto{fill:var(--oro2)}
+.eh-mapa__nodo:hover circle.halo,.eh-mapa__nodo.on circle.halo{fill:rgba(240,196,107,.30)}
+.eh-mapa__nodo.disputado circle.punto{fill:var(--rojo2)}
+.eh-mapa__nodo.disputado circle.halo{fill:rgba(209,33,60,.18)}
+/* Puerto Rico no puede salir del mismo color que un Estado soberano: el mapa
+   estaría afirmando algo que la ficha niega dos líneas más abajo. */
+.eh-mapa__nodo.territorio circle.punto{fill:var(--ambar)}
+.eh-mapa__nodo.territorio circle.halo{fill:rgba(201,138,30,.20)}
+.eh-mapa__nodo.herencia circle.punto,.eh-mapa__nodo.diaspora circle.punto{fill:var(--azul)}
+.eh-mapa__nodo.herencia circle.halo,.eh-mapa__nodo.diaspora circle.halo{fill:rgba(58,110,165,.20)}
+.eh-mapa__etiqueta{
+  font-family:var(--sans);font-size:5.4px;font-weight:600;
+  fill:var(--suave);pointer-events:none;paint-order:stroke;
+  stroke:#12080a;stroke-width:1.6px;stroke-linejoin:round;
+}
+.eh-mapa__leyenda{display:flex;gap:1.1rem;flex-wrap:wrap;justify-content:center;padding:.85rem;border-top:1px solid var(--linea);font-size:.76rem;color:var(--tenue)}
+.eh-mapa__leyenda span{display:inline-flex;align-items:center;gap:.4rem}
+.eh-mapa__punto{width:9px;height:9px;border-radius:50%;display:inline-block}
+
+/* La ficha que sale al tocar un nodo. En móvil sube desde abajo. */
+.eh-mapa__ficha{
+  position:absolute;z-index:5;width:min(300px,84vw);
+  background:var(--panel2);border:1px solid var(--oro3);
+  border-radius:var(--radio);padding:1rem;box-shadow:var(--sombra-g);
+  pointer-events:auto;
+}
+.eh-mapa__ficha h4{margin:0 0 .2rem;font-family:var(--display);font-size:1.12rem}
+.eh-mapa__ficha .met{display:flex;gap:.9rem;flex-wrap:wrap;font-size:.76rem;color:var(--tenue);margin-bottom:.55rem}
+.eh-mapa__ficha p{font-size:.84rem;color:var(--suave);margin:0 0 .7rem}
+.eh-mapa__cerrar{position:absolute;top:.4rem;right:.5rem;background:none;border:0;color:var(--tenue);font-size:1.2rem;cursor:pointer;line-height:1;padding:.2rem}
+@media (max-width:700px){
+  .eh-mapa__ficha{position:fixed;left:50%;bottom:1rem;top:auto!important;transform:translateX(-50%);width:min(400px,92vw)}
+}
+
+/* =========================================================================
+   FICHAS DE NACIÓN
+   ========================================================================= */
+.eh-nacion{background:var(--panel);border:1px solid var(--linea);border-radius:var(--radio);overflow:hidden;display:flex;flex-direction:column}
+.eh-nacion__cabeza{display:flex;gap:.85rem;align-items:center;padding:1.1rem 1.2rem;border-bottom:1px solid var(--linea);background:var(--panel2)}
+.eh-nacion__bandera{font-size:2.1rem;line-height:1;filter:drop-shadow(0 2px 5px rgba(0,0,0,.5))}
+.eh-nacion__nombre{font-family:var(--display);font-size:1.22rem;font-weight:700;margin:0;line-height:1.15}
+.eh-nacion__oficial{font-size:.73rem;color:var(--tenue);margin:.15rem 0 0}
+.eh-nacion__cuerpo{padding:1.1rem 1.2rem;flex:1}
+.eh-nacion__datos{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:.7rem;margin-bottom:1rem}
+.eh-nacion__dato{background:var(--bg2);border:1px solid var(--linea);border-radius:var(--radio-s);padding:.55rem .6rem}
+.eh-nacion__dato b{display:block;font-family:var(--display);font-size:1.02rem;color:var(--oro2);line-height:1.2}
+.eh-nacion__dato span{display:block;font-size:.63rem;letter-spacing:.09em;text-transform:uppercase;color:var(--tenue);margin-top:.15rem}
+.eh-nacion__orgullo{list-style:none;padding:0;margin:0 0 1rem}
+.eh-nacion__orgullo li{position:relative;padding-left:1.25rem;margin-bottom:.55rem;font-size:.88rem;color:var(--suave);line-height:1.5}
+.eh-nacion__orgullo li::before{content:"\2726";position:absolute;left:0;top:.05em;color:var(--oro);font-size:.8rem}
+
+.eh-etiqueta{
+  display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;padding:.24rem .55rem;border-radius:99px;
+  border:1px solid var(--linea2);color:var(--tenue);background:var(--bg2);white-space:nowrap;
+}
+.eh-etiqueta--soberano{color:var(--oro2);border-color:var(--oro3)}
+.eh-etiqueta--disputado{color:#f07a8e;border-color:rgba(209,33,60,.5)}
+.eh-etiqueta--territorio{color:#e8b45a;border-color:rgba(201,138,30,.5)}
+.eh-etiqueta--herencia,.eh-etiqueta--diaspora{color:#7fb0e0;border-color:rgba(58,110,165,.5)}
+.eh-etiqueta--verde{color:#6ec38d;border-color:rgba(63,143,94,.5)}
+
+/* =========================================================================
+   FORMULARIOS
+   ========================================================================= */
+.eh-campo{margin-bottom:1.05rem}
+.eh-campo > label{display:block;font-size:.79rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--suave);margin-bottom:.4rem}
+.eh-campo__pista{font-size:.78rem;color:var(--tenue);margin-top:.35rem;line-height:1.45}
+.eh-entrada,textarea.eh-entrada,select.eh-entrada{
+  width:100%;background:var(--panel3);border:1px solid var(--linea2);
+  color:var(--texto);font-family:var(--sans);font-size:.95rem;
+  padding:.72rem .85rem;border-radius:var(--radio-s);
+  transition:border-color .15s,background .15s;
+}
+.eh-entrada:focus{border-color:var(--oro);background:var(--panel2);outline:none}
+.eh-entrada::placeholder{color:var(--tenue)}
+textarea.eh-entrada{min-height:110px;resize:vertical;line-height:1.55}
+select.eh-entrada{appearance:none;-webkit-appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path d='M1 1l5 5 5-5' stroke='%23c3ab9c' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat:no-repeat;background-position:right .85rem center;padding-right:2.2rem}
+.eh-entrada.malo{border-color:var(--rojo2)}
+.eh-error{color:#f07a8e;font-size:.8rem;margin-top:.35rem;display:none}
+.eh-error.on{display:block}
+
+/* La casilla de consentimiento. Deliberadamente grande y con mucho aire: es
+   la prueba legal del tratamiento de datos, no un adorno del formulario. */
+.eh-casilla{
+  display:flex;gap:.75rem;align-items:flex-start;
+  background:var(--bg2);border:1px solid var(--linea);
+  border-radius:var(--radio-s);padding:.9rem 1rem;margin-bottom:.85rem;
+  cursor:pointer;transition:border-color .15s;
+}
+.eh-casilla:hover{border-color:var(--linea2)}
+.eh-casilla input{margin:.22rem 0 0;width:18px;height:18px;flex-shrink:0;accent-color:var(--oro)}
+.eh-casilla span{font-size:.86rem;color:var(--suave);line-height:1.55}
+.eh-casilla b{color:var(--texto)}
+.eh-casilla--clave{border-color:var(--oro3);background:var(--oro-vidrio)}
+
+/* =========================================================================
+   RANGOS Y HONOR
+   ========================================================================= */
+.eh-rango{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:.28rem .62rem;border-radius:99px;
+  border:1px solid var(--oro3);color:var(--oro2);background:var(--oro-vidrio);white-space:nowrap;
+}
+.eh-rango--1{color:var(--suave);border-color:var(--linea2);background:var(--panel2)}
+.eh-rango--2{color:#8fb8d8;border-color:rgba(58,110,165,.5);background:rgba(58,110,165,.10)}
+.eh-rango--3{color:#6ec38d;border-color:rgba(63,143,94,.5);background:rgba(63,143,94,.10)}
+.eh-rango--4{color:var(--oro2);border-color:var(--oro3);background:var(--oro-vidrio)}
+.eh-rango--5{color:#f0c46b;border-color:var(--oro);background:rgba(217,164,65,.16);box-shadow:0 0 12px rgba(217,164,65,.2)}
+.eh-rango--6{color:#fff;border-color:var(--rojo2);background:linear-gradient(140deg,var(--rojo),var(--rojo3));box-shadow:0 0 14px rgba(209,33,60,.3)}
+
+.eh-barra{height:6px;background:var(--panel3);border-radius:99px;overflow:hidden;margin:.5rem 0}
+.eh-barra i{display:block;height:100%;background:linear-gradient(90deg,var(--oro3),var(--oro2));border-radius:99px;transition:width .5s}
+
+.eh-avatar{
+  width:44px;height:44px;border-radius:50%;flex-shrink:0;
+  display:grid;place-items:center;
+  font-family:var(--display);font-weight:700;font-size:1.05rem;color:#1a0f06;
+  background:linear-gradient(150deg,var(--oro2),var(--oro3));
+  border:1px solid var(--oro3);
+}
+.eh-avatar--g{width:88px;height:88px;font-size:2rem}
+.eh-avatar--p{width:32px;height:32px;font-size:.8rem}
+
+/* =========================================================================
+   MURO Y CHAT
+   ========================================================================= */
+.eh-mensaje{display:flex;gap:.75rem;padding:.85rem 0;border-bottom:1px solid var(--linea)}
+.eh-mensaje:last-child{border-bottom:0}
+.eh-mensaje__cuerpo{flex:1;min-width:0}
+.eh-mensaje__cabeza{display:flex;gap:.5rem;align-items:baseline;flex-wrap:wrap;margin-bottom:.2rem}
+.eh-mensaje__quien{font-weight:700;font-size:.9rem;color:var(--texto)}
+.eh-mensaje__meta{font-size:.72rem;color:var(--tenue)}
+.eh-mensaje__texto{font-size:.93rem;color:var(--suave);line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
+
+.eh-chat{display:grid;grid-template-columns:230px 1fr;gap:1rem;min-height:min(66vh,620px)}
+@media (max-width:820px){.eh-chat{grid-template-columns:1fr}}
+.eh-chat__salas{background:var(--panel);border:1px solid var(--linea);border-radius:var(--radio);padding:.6rem;overflow-y:auto;max-height:min(66vh,620px)}
+.eh-chat__sala{
+  display:flex;align-items:center;gap:.55rem;width:100%;text-align:left;
+  background:none;border:0;color:var(--suave);font-family:var(--sans);font-size:.87rem;
+  padding:.6rem .7rem;border-radius:var(--radio-s);cursor:pointer;
+}
+.eh-chat__sala:hover{background:var(--panel2);color:var(--texto)}
+.eh-chat__sala.on{background:var(--oro-vidrio);color:var(--oro2);font-weight:600}
+.eh-chat__panel{background:var(--panel);border:1px solid var(--linea);border-radius:var(--radio);display:flex;flex-direction:column;overflow:hidden}
+.eh-chat__cabeza{padding:.85rem 1.1rem;border-bottom:1px solid var(--linea);background:var(--panel2)}
+.eh-chat__flujo{flex:1;overflow-y:auto;padding:.6rem 1.1rem;min-height:220px;max-height:min(50vh,440px)}
+.eh-chat__pie{padding:.8rem 1.1rem;border-top:1px solid var(--linea);display:flex;gap:.6rem;align-items:flex-end}
+.eh-chat__pie textarea{flex:1;min-height:44px;max-height:130px}
+
+/* =========================================================================
+   TABLA DEL CRM
+   ========================================================================= */
+.eh-tabla-caja{overflow-x:auto;border:1px solid var(--linea);border-radius:var(--radio);background:var(--panel)}
+.eh-tabla{width:100%;border-collapse:collapse;font-size:.86rem;min-width:820px}
+.eh-tabla th{
+  text-align:left;padding:.7rem .85rem;background:var(--panel2);
+  font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;color:var(--oro);
+  border-bottom:1px solid var(--linea);white-space:nowrap;position:sticky;top:0;z-index:2;
+}
+.eh-tabla td{padding:.65rem .85rem;border-bottom:1px solid var(--linea);color:var(--suave);vertical-align:middle}
+.eh-tabla tbody tr:hover td{background:var(--panel2)}
+.eh-tabla tbody tr:last-child td{border-bottom:0}
+.eh-tabla__vacio{text-align:center;padding:2.5rem 1rem;color:var(--tenue)}
+
+/* =========================================================================
+   PESTAÑAS
+   ========================================================================= */
+.eh-pestanas{display:flex;gap:.25rem;border-bottom:1px solid var(--linea);margin-bottom:1.4rem;overflow-x:auto;padding-bottom:1px}
+.eh-pestanas button{
+  background:none;border:0;border-bottom:2px solid transparent;
+  color:var(--tenue);font-family:var(--sans);font-size:.87rem;font-weight:600;
+  padding:.65rem .95rem;cursor:pointer;white-space:nowrap;transition:color .15s,border-color .15s;
+}
+.eh-pestanas button:hover{color:var(--texto)}
+.eh-pestanas button.on{color:var(--oro2);border-bottom-color:var(--oro)}
+.eh-hoja{display:none}
+.eh-hoja.on{display:block}
+
+/* =========================================================================
+   REDES SOCIALES
+   ========================================================================= */
+.eh-redes{display:flex;gap:.55rem;flex-wrap:wrap}
+.eh-red{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--panel2);border:1px solid var(--linea2);
+  border-radius:var(--radio-s);padding:.55rem .85rem;
+  color:var(--suave);font-size:.83rem;font-weight:600;transition:all .15s;
+}
+.eh-red:hover{color:var(--texto);border-color:var(--oro3);background:var(--panel3);text-decoration:none;transform:translateY(-2px)}
+.eh-red svg{width:17px;height:17px;flex-shrink:0;fill:currentColor}
+.eh-red--sin{opacity:.5;cursor:default}
+.eh-red--sin:hover{transform:none;border-color:var(--linea2);background:var(--panel2)}
+
+/* =========================================================================
+   PIE
+   ========================================================================= */
+.eh-pie{border-top:1px solid var(--linea);background:var(--bg2);padding-block:2.6rem 1.6rem;margin-top:3rem}
+.eh-pie__rejilla{display:grid;gap:1.8rem;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin-bottom:2rem}
+.eh-pie h5{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);margin:0 0 .8rem;font-weight:700;font-family:var(--sans)}
+.eh-pie ul{list-style:none;padding:0;margin:0}
+.eh-pie li{margin-bottom:.45rem}
+.eh-pie li a{color:var(--suave);font-size:.86rem}
+.eh-pie li a:hover{color:var(--oro2)}
+.eh-pie__legal{border-top:1px solid var(--linea);padding-top:1.2rem;font-size:.78rem;color:var(--tenue);display:flex;gap:1rem;flex-wrap:wrap;justify-content:space-between;align-items:center}
+
+/* =========================================================================
+   MODAL Y AVISO FLOTANTE
+   ========================================================================= */
+.eh-modal{position:fixed;inset:0;z-index:100;display:none;place-items:center;padding:1rem;background:rgba(8,4,5,.82);backdrop-filter:blur(5px)}
+.eh-modal.on{display:grid}
+.eh-modal__caja{background:var(--panel);border:1px solid var(--oro3);border-radius:var(--radio-g);padding:1.7rem;width:min(560px,100%);max-height:88vh;overflow-y:auto;box-shadow:var(--sombra-g)}
+
+.eh-toast{
+  position:fixed;left:50%;bottom:1.5rem;transform:translate(-50%,150%);
+  background:var(--panel2);border:1px solid var(--oro3);color:var(--texto);
+  padding:.8rem 1.3rem;border-radius:99px;font-size:.88rem;font-weight:600;
+  box-shadow:var(--sombra-g);z-index:200;transition:transform .3s cubic-bezier(.2,.8,.2,1);
+  max-width:90vw;text-align:center;
+}
+.eh-toast.on{transform:translate(-50%,0)}
+
+/* Estados de carga y error. Mismo patrón que el resto de proyectos del
+   fundador: cargando | ok | error, siempre los tres, nunca dos. */
+.eh-cargando{text-align:center;padding:2.5rem 1rem;color:var(--tenue);font-size:.9rem}
+.eh-cargando::before{
+  content:"";display:block;width:26px;height:26px;margin:0 auto .8rem;
+  border:2px solid var(--linea2);border-top-color:var(--oro);border-radius:50%;
+  animation:eh-gira .8s linear infinite;
+}
+@keyframes eh-gira{to{transform:rotate(360deg)}}
+
+.eh-oculto{display:none!important}
+.eh-solo-lectores{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+@media print{
+  .eh-nav,.eh-pie,.eh-cinta,.eh-toast{display:none}
+  body{background:#fff;color:#000}
+}

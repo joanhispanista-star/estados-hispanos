@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sala de Honor y Gloria · Los Estados Hispanos</title>
+<meta name="description" content="De Blas de Lezo a los creadores de hoy. Quienes han servido a la Hispanidad, con su obra, su historia y también lo incómodo.">
+<meta name="theme-color" content="#12080a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="La Sala de Honor y Gloria">
+<meta property="og:description" content="Blas de Lezo, Juan Latino, Isabel Barreto, Túpac Amaru II. Y los que sostienen la lengua hoy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="activos/css/hispano.css">
+</head>
+
+<body data-pagina="sala" data-base="">
+<main id="ehPrincipal">
+
+  <section class="eh-frontis" style="padding-block:clamp(2.5rem,7vw,5rem)">
+    <div class="eh-limite eh-frontis__caja">
+      <p class="eh-rotulo eh-rotulo--centro">Sala de Honor y Gloria</p>
+      <h1>Los que sostuvieron <em>la casa</em></h1>
+      <div class="eh-prosa" id="ehIntro" style="margin-inline:auto;text-align:left"></div>
+    </div>
+  </section>
+
+  <section class="eh-seccion eh-seccion--apretada eh-seccion--franja">
+    <div class="eh-limite">
+      <p class="eh-rotulo">Las distinciones</p>
+      <h2>Ocho medallas</h2>
+      <p class="eh-plomo" style="margin-bottom:1.6rem">
+        Las concede este movimiento y solo este movimiento. No son premios oficiales de
+        ningún Estado ni de ninguna academia, y no se mezclan con los que sí lo son.
+      </p>
+      <div class="eh-rejilla eh-rejilla--4" id="ehMedallas"></div>
+    </div>
+  </section>
+
+  <section class="eh-seccion">
+    <div class="eh-limite">
+      <div class="eh-pestanas" id="ehPestanas">
+        <button type="button" data-h="historicos" class="on">Los que ya no están</button>
+        <button type="button" data-h="vivos">Los que están</button>
+        <button type="button" data-h="reglas">Las reglas de la sala</button>
+      </div>
+
+      <div class="eh-hoja on" data-hoja="historicos">
+        <p class="eh-plomo" style="margin-bottom:1.4rem">
+          Dieciocho vidas. De un almirante tuerto, manco y cojo que humilló a la mayor flota
+          de invasión vista en América, a una esclava africana que llegó a catedrática en
+          Granada. Cada ficha cuenta también lo incómodo: una galería que solo enseña la
+          mitad buena no es honor, es propaganda, y se cae en el primer debate.
+        </p>
+        <div class="eh-fila" id="ehFiltrosH" style="margin-bottom:1.2rem"></div>
+        <div class="eh-rejilla eh-rejilla--3" id="ehHistoricos"></div>
+      </div>
+
+      <div class="eh-hoja" data-hoja="vivos">
+        <div class="eh-aviso eh-aviso--info" style="max-width:76ch">
+          <span class="eh-aviso__icono">◆</span>
+          <div id="ehDescargo"></div>
+        </div>
+        <div class="eh-rejilla eh-rejilla--3" id="ehVivos" style="margin-top:1.4rem"></div>
+        <div id="ehRevision" style="margin-top:2rem"></div>
+      </div>
+
+      <div class="eh-hoja" data-hoja="reglas">
+        <div id="ehReglas"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="eh-modal" id="ehModal">
+    <div class="eh-modal__caja" id="ehModalCaja" role="dialog" aria-modal="true"></div>
+  </div>
+
+</main>
+
+<script src="activos/js/config.js"></script>
+<script src="activos/js/sello.js"></script>
+<script src="activos/js/naciones.js"></script>
+<script src="activos/js/contenido.js"></script>
+<script src="activos/js/sala.js"></script>
+<script src="activos/js/reputacion.js"></script>
+<script src="activos/js/datos.js"></script>
+<script src="activos/js/redes.js"></script>
+<script src="activos/js/medallas.js"></script>
+<script src="activos/js/cascaron.js"></script>
+<script src="activos/js/p-sala.js"></script>
+</body>
+</html>
