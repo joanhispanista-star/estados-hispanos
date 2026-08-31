@@ -85,8 +85,11 @@ EH.sello = {
       '<text x="60" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" ' +
         'font-weight="700" letter-spacing="2.4" fill="#f0c46b">HISPANOS</text>' +
 
-      '<text x="60" y="122" text-anchor="middle" font-family="Georgia,serif" font-size="6.6" ' +
-        'letter-spacing="1.5" fill="#8d7568">LO QUE NOS UNE YA EXISTE</text>' +
+      // El lema tiene 23 caracteres y el lienzo mide 120 de ancho. Con cuerpo
+      // 6,6 y espaciado 1,5 se salía por los dos lados y se leía "O QUE NOS
+      // UNE YA EXIST". Con estos valores mide unos 84 y respira.
+      '<text x="60" y="122" text-anchor="middle" font-family="Georgia,serif" font-size="5.2" ' +
+        'letter-spacing="0.7" fill="#8d7568">LO QUE NOS UNE YA EXISTE</text>' +
       '</svg>';
   }
 };
