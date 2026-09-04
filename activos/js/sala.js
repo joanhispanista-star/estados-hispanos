@@ -24,6 +24,15 @@
    Atribuirle a alguien vivo una frase que no dijo es difamacion, y ademas
    hunde la credibilidad del movimiento entero con una sola busqueda.
 
+   POR ESO EH.VIVOS VA VACIO EN EL SITIO PUBLICADO
+   Las catorce fichas existen y estan escritas, pero viven en
+   borradores/sala-personas-vivas-en-revision.json, fuera de la carpeta
+   que se publica. No se pintaban en ninguna parte, pero viajaban dentro
+   de este archivo, que cualquiera puede descargar, y contenian juicios
+   editoriales sobre personas reales. Un periodista que encuentre las
+   notas internas de un movimiento politico sobre catorce artistas vivos
+   tiene el titular hecho.
+
    LOS VIDEOS NO SE INCRUSTAN SOLOS
    Un iframe de YouTube que carga al abrir la pagina le cuenta a Google quien
    visita un sitio de afiliacion politica. Aqui el video se carga solo cuando
@@ -53,21 +62,7 @@ EH.SALA = {
     "Y la regla que las sostiene a todas: estar aquí no hace a nadie de este movimiento, ni nos hace a nosotros dueños de su nombre. Honramos obra ajena, en préstamo y con permiso de devolverlo."
   ],
   "textoDescargo": "Sobre lo que esta sala significa, y sobre lo que no significa.\n\nLas personas que figuran en la Sala de Honor y Gloria no pertenecen a Los Estados Hispanos, no lo representan y no lo respaldan. Muchas vivieron siglos antes de que este movimiento existiera. Otras están vivas, trabajando hoy, y no nos deben nada: ni una palabra, ni una firma, ni una foto. Su presencia aquí no expresa su opinión sobre nosotros, y nadie debe leerla así.\n\nLo que se honra aquí es la obra pública: lo que estas personas escribieron, construyeron, enseñaron, cantaron, defendieron o descubrieron a la vista de todos, con fuentes que cualquiera puede comprobar y que publicamos al lado de cada ficha. No inventamos citas. No ponemos en boca de nadie palabras que no dijo. Cuando no podemos verificar una frase, contamos la obra y callamos la frase. Ninguna ficha se usa en publicidad, en campañas políticas o para recaudar dinero, y ninguna insinúa que la persona honrada comparta nuestras ideas.\n\nSi usted figura en esta sala y prefiere no figurar, o si es familiar de alguien que figura, basta con decírnoslo por la dirección de contacto que aparece al pie de esta sala. No le pediremos motivos, no discutiremos su decisión y no la comentaremos en público: retiraremos la ficha en un plazo máximo de siete días y no volveremos a publicarla. Y si hemos cometido un error de dato, de fecha o de atribución, corríjanoslo: publicaremos la corrección firmada y fechada, en el mismo lugar donde estuvo el error.\n\nHonrar a alguien sin pedirle permiso solo es honroso si puede deshacerse al primer aviso. Esa es la condición con la que existe esta sala.",
-  "advertenciasInternas": [
-    "Solo una de las catorce fichas lleva cita (Carlos Vives) y ni siquiera esa está cerrada: el texto está tomado de su ficha de Wikipedia, que a su vez lo toma de la prensa colombiana. Antes de publicarla hay que encontrar el medio, la fecha y el titular originales y citar ese medio. Las otras trece llevan los campos de cita vacíos a propósito. No los rellene nadie «para que quede mejor»: una sola cita inventada hunde la credibilidad de toda la sala, y una búsqueda de treinta segundos la descubre.",
-    "No hay ni un identificador de vídeo de YouTube en toda la entrega, por diseño. Cada ficha lleva una frase de búsqueda. Quien monte la página tiene que buscar el vídeo, verlo entero, comprobar que el canal es legítimo y solo entonces pegar el id. Un reproductor roto o un vídeo que no es lo que promete, en la página de honor del movimiento, es peor que no tener vídeo.",
-    "Ninguna de estas catorce personas ha dado su consentimiento y, salvo quizá Marcelo Gullo, ninguna sabe que este movimiento existe. La sala necesita un texto fijo, visible en cada ficha y no escondido en un pie de página, que diga literalmente algo como: «Los Estados Hispanos honra la obra pública de esta persona. Esta distinción no implica vínculo, pertenencia ni respaldo por su parte, y se ha concedido sin su participación». Sin esa frase, la galería afirma con la maquetación lo que no dice con palabras.",
-    "Las medallas son un invento del movimiento y hay que decirlo así. En cada ficha deben ir marcadas como «distinción otorgada por Los Estados Hispanos», nunca mezcladas con los premios reales (Grammy, Cervantes, Premio Nacional). Si un lector confunde la Medalla del Idioma con un galardón que Bad Bunny recibió, el movimiento acaba de fabricar un premio falso.",
-    "Hace falta un procedimiento de retirada escrito y publicado: una dirección de contacto y el compromiso de bajar cualquier ficha en 48 horas, sin discutir y sin pedir explicaciones, si la persona o su representante lo pide. Es barato, es lo decente y es lo único que evita que una queja se convierta en un burofax de un despacho de abogados.",
-    "Riesgo político concreto, ordenado de mayor a menor: Marcelo Gullo (lea su campo matiz completo antes de decidir; hay un episodio con la justicia peruana y el régimen de Fujimori que un periodista encontraría en diez minutos y que convertiría la sala entera en la noticia). Después: Sergio Ramírez y Jorge Ramos, ambos en conflicto abierto con gobiernos vivos; Rubén Blades y Susana Baca, con cargos públicos en su biografía.",
-    "[Advertencia reescrita: la original nombraba la orientación sexual de personas vivas, que es dato de categoría especial (art. 9 RGPD) y no puede estar en un archivo público. El fondo del aviso se mantiene: antes de honrar a alguien vivo hay que saber si su perfil público encaja con el movimiento, y no retirarle la medalla después.]",
-    "Al menos cinco de estas catorce personas rechazarían de forma explícita el marco de «madre patria»: Chihuailaf, Obono, Baca, Bad Bunny y García Montero. Si la sala pone en la misma pared, con la misma tipografía y la misma medalla, a Blas de Lezo y a un poeta mapuche, la lectura pública será apropiación. Recomendación de diseño: separar en dos secciones con reglas distintas y decirlo en voz alta —a los muertos se les juzga y se les interpreta; a los vivos solo se les cita y se les enlaza—.",
-    "Huecos de esta lista, para que nadie crea que está completa. No hay cine, ni empresa, ni deporte: busqué y no encontré casos vivos cuya relación con la unión hispana aguantase la regla de «hecho verificable» sin forzarla, y prefiero un hueco a un relleno. Faltan Cuba, Venezuela, Bolivia, Ecuador, Paraguay, Uruguay y Costa Rica. La ausencia más llamativa para un movimiento panhispánico es Filipinas: si va a haber una segunda tanda, ahí es donde hay que buscar primero, junto con el Sáhara y la comunidad sefardí.",
-    "Cuatro de los catorce son de España (Buika, Muñoz Machado, García Montero, Herraiz) y hay una española nacionalizada mexicana (Company). Diez de catorce son de América o de África. Cinco son mujeres; tres son afrodescendientes; uno es indígena. Si en la maquetación final los cuatro españoles quedan arriba y los demás abajo, la lista deja de ser mestiza aunque los nombres lo sean.",
-    "Cargos y fechas caducan. Muñoz Machado dirige la RAE hasta finales de 2027, García Montero sigue en el Cervantes en agosto de 2026, Jorge Ramos ya no está en Univision desde diciembre de 2024, Rubén Blades anunció que 2027 es su último año de giras, y el Grammy al Álbum del Año de Bad Bunny en 2026 conviene contrastarlo con la web de la Academia antes de imprimirlo. Poner en cada ficha una línea visible de «datos verificados el 30 de agosto de 2026» y revisarlas cada seis meses.",
-    "Fotografías: casi todas las imágenes de prensa de estas personas tienen derechos y no son de uso libre. Publicar el retrato de una persona viva sin licencia, dentro de una página que además le atribuye una medalla, junta dos problemas legales en un solo elemento. Ilustración propia, imagen con licencia comprobada o solo tipografía.",
-    "Vocabulario prohibido en toda la sala: «miembro», «embajador», «patrono», «apoya», «se suma», «forma parte». Verbos permitidos: «honramos», «reconocemos», «su obra dice». Es una regla de una línea que ahorra el noventa por ciento de los problemas de esta galería."
-  ]
+  "notaVivos": "Las fichas de personas vivas no viajan en este archivo. Están escritas, pero se guardan aparte porque contienen valoraciones sobre personas que no han consentido aparecer, y este archivo lo descarga cualquiera. Se publicarán una a una, cuando cada persona lo autorice por escrito."
 };
 
 EH.MEDALLAS = [
@@ -487,275 +482,7 @@ EH.HISTORICOS = [
   }
 ];
 
-EH.VIVOS = [
-  {
-    "id": "vives-carlos",
-    "nombre": "Carlos Vives",
-    "nacion": "Colombia",
-    "oficio": "Cantante y compositor",
-    "categoria": "musica",
-    "obra": "Clásicos de la Provincia (1993) y La tierra del olvido (1995), los discos que sacaron el vallenato del Caribe colombiano al mundo; Corazón profundo (2013). Dos Grammy y dieciocho Latin Grammy; Persona del Año de la Academia Latina de la Grabación en 2024. En julio de 2025 publicó «500», tributo a los cinco siglos de la fundación de su ciudad natal, Santa Marta, grabado con artistas locales (Lalo Ebratt, Bomba Estéreo, Laura Maré, Olga Lucía Vives y otros).",
-    "porQueEstaAqui": "En 2025 publicó «500», sobre los cinco siglos de Santa Marta, y defendió públicamente su enfoque del mestizaje, reivindicando a la vez el español y las lenguas indígenas de la Sierra Nevada. Reconocemos esa obra. Carlos Vives no se ha pronunciado nunca sobre este movimiento y no forma parte de él.",
-    "citaVerificable": "",
-    "dondeLoDijo": "",
-    "canal": "Carlos Vives",
-    "plataforma": "YouTube",
-    "busquedaSugerida": "Carlos Vives 500 Santa Marta polémica declaraciones",
-    "medalla": "Medalla del Mestizaje",
-    "matiz": "No sabe que este movimiento existe. Su discurso es caribeño y colombiano antes que panhispánico, y en la misma declaración reivindica las lenguas indígenas junto al español: usarlo como bandera de un hispanismo peninsular sería traicionar justo lo que dijo. Además la polémica de «500» es una pelea política viva en Colombia; recuperarla lo mete otra vez en un conflicto que él ya tuvo, sin pedirle permiso.",
-    "confianza": "alta",
-    "publicable": false,
-    "citaPendienteDeVerificar": false,
-    "porQueNoSePublica": "Ninguna ficha de persona viva se publica hasta tener: consentimiento por escrito de la persona o su representante, cada hecho contrastado en fuente primaria (no en una enciclopedia), la URL completa de su canal con su identificador, y cero fotografías. Es la condición que puso la revisión legal y no se salta."
-  },
-  {
-    "id": "blades-ruben",
-    "nombre": "Rubén Blades",
-    "nacion": "Panamá",
-    "oficio": "Cantante, compositor, actor y abogado",
-    "categoria": "musica",
-    "obra": "Siembra (1978), grabado con Willie Colón, con «Pedro Navaja» y «Plástico»; Buscando América (1984). Catorce premios Grammy. Miembro del Salón de la Fama de la Música Latina (2001) y del Latin Grammy Hall of Fame (2007). Estudió Derecho en la Universidad de Panamá y se graduó en la Facultad de Derecho de Harvard en 1985. Fue candidato a la presidencia de Panamá en 1994 (tercer lugar, en torno al 20 %) y ministro de Turismo entre 2004 y 2009.",
-    "porQueEstaAqui": "Metió la conciencia latinoamericana dentro de la música bailable, que era donde nadie la esperaba. El final de «Plástico» es una llamada nominal a los pueblos de América respondiendo «¡presente!», y Buscando América es un disco entero sobre una identidad común que va de México al Cono Sur. Pocas personas vivas han hecho tanto por la idea de que somos un solo pueblo repartido en veinte países.",
-    "citaVerificable": "",
-    "dondeLoDijo": "",
-    "canal": "",
-    "plataforma": "YouTube (material en canales de sellos, festivales y medios; no verifiqué un canal personal oficial)",
-    "busquedaSugerida": "Rubén Blades Plástico en vivo final países presente",
-    "medalla": "Medalla de los Pueblos Hermanos",
-    "matiz": "Su panlatinoamericanismo es antiimperialista y de raíz anticolonial: no es hispanismo y no mira a España como madre patria. Fue ministro y candidato presidencial en Panamá, así que cualquier uso de su nombre se lee en clave política dentro de su país. En febrero de 2026 anunció que 2027 será su último año de giras, dato que envejece rápido cualquier texto. No sabe que este movimiento existe.",
-    "confianza": "alta",
-    "publicable": false,
-    "porQueNoSePublica": "Ninguna ficha de persona viva se publica hasta tener: consentimiento por escrito de la persona o su representante, cada hecho contrastado en fuente primaria (no en una enciclopedia), la URL completa de su canal con su identificador, y cero fotografías. Es la condición que puso la revisión legal y no se salta."
-  },
-  {
-    "id": "baca-susana",
-    "nombre": "Susana Baca",
-    "nacion": "Perú",
-    "oficio": "Cantante, investigadora musical y exministra de Cultura",
-    "categoria": "musica",
-    "obra": "Nacida en 1944. Tres Latin Grammy: Lamento negro (2002), «Latinoamérica» junto a Calle 13 (2011) y A capella (2020); Latin Grammy a la Excelencia Musical en 2025. Con su marido Ricardo Pereira publicó Del fuego y del agua (1992), investigación de campo sobre la presencia afrodescendiente en la costa peruana. Fue ministra de Cultura del Perú en 2011 y presidió la Comisión Interamericana de Cultura de la OEA entre 2011 y 2013.",
-    "porQueEstaAqui": "Rescató del olvido el repertorio afroperuano —canciones que se estaban perdiendo en pueblos de la costa— y lo puso a circular en español por todo el continente. Su Grammy por «Latinoamérica» es, literalmente, un premio a una canción sobre la identidad común de estos pueblos. La Hispanidad negra existe, tiene repertorio propio y ella es su voz más reconocida.",
-    "citaVerificable": "",
-    "dondeLoDijo": "",
-    "canal": "",
-    "plataforma": "YouTube (material en canales de festivales, medios y sellos)",
-    "busquedaSugerida": "Susana Baca música afroperuana entrevista identidad",
-    "medalla": "Medalla de la Hispanidad Negra",
-    "matiz": "Fue ministra de un gobierno de izquierda (Ollanta Humala) y presidió un organismo de la OEA: es una figura con biografía política. Su obra reivindica la herencia africana frente al olvido criollo, no la herencia española; presentarla como defensora de «lo hispano» sin ese contexto la tergiversa. No tiene ninguna relación con este movimiento.",
-    "confianza": "alta",
-    "publicable": false,
-    "porQueNoSePublica": "Ninguna ficha de persona viva se publica hasta tener: consentimiento por escrito de la persona o su representante, cada hecho contrastado en fuente primaria (no en una enciclopedia), la URL completa de su canal con su identificador, y cero fotografías. Es la condición que puso la revisión legal y no se salta."
-  },
-  {
-    "id": "buika-concha",
-    "nombre": "Concha Buika",
-    "nacion": "España (familia de Guinea Ecuatorial)",
-    "oficio": "Cantante",
-    "categoria": "musica",
-    "obra": "María Concepción Balboa Buika, nacida en Palma de Mallorca en 1972, hija de exiliados políticos ecuatoguineanos; su padre, Juan Balboa Boneke, fue escritor y político guineano. Grammy Latino al Mejor Álbum Tropical Tradicional por El último trago (2009). Ha cantado copla, flamenco, jazz y música africana y ha grabado con Nelly Furtado, Carlos Santana, Mariza y Chick Corea. Medalla de Oro al Mérito en las Bellas Artes en 2022.",
-    "porQueEstaAqui": "Es el puente entre las tres orillas del español: África hispana, España y América. Que una hija de guineanos, criada entre gitanos en un barrio de Mallorca, grabe un disco de canciones mexicanas de Chavela Vargas no es una metáfora de la Hispanidad mestiza: es la Hispanidad mestiza, funcionando.",
-    "citaVerificable": "",
-    "dondeLoDijo": "",
-    "canal": "",
-    "plataforma": "YouTube (material en canales de sellos, festivales y medios)",
-    "busquedaSugerida": "Buika El último trago entrevista raíces Guinea Ecuatorial",
-    "medalla": "Medalla de las Tres Orillas",
-    "matiz": "Habla de su identidad en términos propios y ha rechazado repetidamente que la encasillen por su color o por su origen; una ficha que la use como «ejemplo de diversidad» le sonaría mal. Nunca se ha pronunciado sobre hispanismo político. Y su familia salió de Guinea Ecuatorial huyendo: la herencia colonial es para ella un asunto personal y doloroso, no un motivo de celebración.",
-    "confianza": "alta",
-    "publicable": false,
-    "porQueNoSePublica": "Ninguna ficha de persona viva se publica hasta tener: consentimiento por escrito de la persona o su representante, cada hecho contrastado en fuente primaria (no en una enciclopedia), la URL completa de su canal con su identificador, y cero fotografías. Es la condición que puso la revisión legal y no se salta."
-  },
-  {
-    "id": "badbunny",
-    "nombre": "Bad Bunny (Benito Antonio Martínez Ocasio)",
-    "nacion": "Puerto Rico",
-    "oficio": "Cantante y compositor",
-    "categoria": "musica",
-    "obra": "Nacido en 1994. Debí tirar más fotos (2025), disco sobre la identidad puertorriqueña, con el mayor debut de la historia de Spotify (unos 235 millones de reproducciones en su primera semana). Residencia de treinta conciertos, «No me quiero ir de aquí», en el Coliseo de Puerto Rico en 2025, agotada en cuatro horas. Cabeza de cartel del descanso de la Super Bowl LX en 2026, con Ricky Martin y Lady Gaga como invitados. Grammy al Álbum del Año en 2026 por Debí tirar más fotos.",
-    "porQueEstaAqui": "Es el artista que demostró que no hace falta pasarse al inglés para ser número uno del mundo. Ha construido una carrera global entera cantando en español, sin traducirse y sin pedir permiso, y ha convertido esa decisión en una posición pública sostenida durante años. Para el orgullo del idioma no hay hoy ningún caso más grande ni más medible.",
-    "citaVerificable": "",
-    "dondeLoDijo": "",
-    "canal": "Bad Bunny",
-    "plataforma": "YouTube",
-    "busquedaSugerida": "Bad Bunny cantar en español Super Bowl discurso",
-    "medalla": "Medalla del Idioma",
-    "matiz": "Su método consiste en desmontar mitos, incluidos los mitos patrióticos sobre el español: no defiende que sea una lengua superior ni bendice relatos nacionales, y ha corregido en público varios que circulan en el ambiente hispanista. Su perfil público puede no encajar con parte de la base del movimiento, y conviene saberlo antes y no después. No tiene ninguna relación con este movimiento.",
-    "confianza": "media",
-    "publicable": false,
-    "porQueNoSePublica": "Su propio matiz lo dice: es independentista boricua, su orgullo es boricua y latino, y nada indica que se reconozca en la palabra «hispanidad». Honrarlo aquí sería, con razón, un secuestro de su nombre. Se deja fuera por respeto, no por censura."
-  },
-  {
-    "id": "munoz-machado-santiago",
-    "nombre": "Santiago Muñoz Machado",
-    "nacion": "España",
-    "oficio": "Jurista; director de la Real Academia Española y presidente de la ASALE",
-    "categoria": "academia",
-    "obra": "Director de la RAE y presidente de la Asociación de Academias de la Lengua Española desde el 10 de enero de 2019; reelegido el 1 de diciembre de 2022 para otro mandato de cinco años y en el cargo en agosto de 2026. Dirigió el Diccionario panhispánico del español jurídico, hecho con más de cuatrocientos juristas de los países hispanohablantes. Autor de Hablamos la misma lengua, Premio Nacional de Historia de España.",
-    "porQueEstaAqui": "Preside la única institución del mundo donde las veintitrés academias del español deciden juntas, en pie de igualdad, cómo se escribe la lengua común. Esa política panhispánica —ninguna academia manda sobre las otras— es el hecho institucional más parecido a una unión hispana real que existe hoy, y él lo dirige. Su diccionario jurídico hizo lo mismo con el lenguaje del derecho, que es donde una lengua compartida se vuelve utilidad práctica.",
-    "citaVerificable": "",
-    "dondeLoDijo": "",
-    "canal": "",
-    "plataforma": "YouTube (actos y conferencias en el canal institucional de la RAE y en medios)",
-    "busquedaSugerida": "Santiago Muñoz Machado RAE política panhispánica congreso de la lengua",
-    "medalla": "Medalla de la Lengua Común",
-    "matiz": "Dirige una institución del Estado español y no puede prestar su nombre a movimientos políticos: usarlo como aval lo compromete en su cargo. Además la doctrina que defiende es panhispánica precisamente porque niega la primacía de España sobre las academias americanas, y eso choca con cualquier lectura madrepatriota. Su mandato vence a finales de 2027: comprobar el cargo antes de cada publicación.",
-    "confianza": "alta",
-    "publicable": false,
-    "porQueNoSePublica": "Ninguna ficha de persona viva se publica hasta tener: consentimiento por escrito de la persona o su representante, cada hecho contrastado en fuente primaria (no en una enciclopedia), la URL completa de su canal con su identificador, y cero fotografías. Es la condición que puso la revisión legal y no se salta."
-  },
-  {
-    "id": "company-concepcion",
-    "nombre": "Concepción Company Company",
-    "nacion": "México (nacida en España)",
-    "oficio": "Filóloga y lingüista histórica",
-    "categoria": "academia",
-    "obra": "Nacida en Madrid en 1954 y mexicana por nacionalización. Miembro de la Academia Mexicana de la Lengua desde 2004 y presidenta de su Comisión de Lexicografía; investigadora emérita de la UNAM. Dirigió la Sintaxis histórica de la lengua española (2006-2014), en tres partes, sobre la frase verbal, la frase nominal y las frases adverbiales y preposicionales. Premio Nacional de Ciencias y Artes de México en Lingüística (2019) y Premio Internacional Menéndez Pelayo (2021).",
-    "porQueEstaAqui": "Su trabajo demuestra con datos, no con retórica, que el español de América no es una desviación del de España sino una rama con historia propia y la misma dignidad. Es la científica que le quitó al español americano el complejo de inferioridad. Y su propia biografía —madrileña que se hizo mexicana y estudia cómo cambió la lengua al cruzar el mar— es la de la lengua misma.",
-    "citaVerificable": "",
-    "dondeLoDijo": "",
-    "canal": "",
-    "plataforma": "YouTube (conferencias en canales de la UNAM, El Colegio de México y la Academia Mexicana de la Lengua)",
-    "busquedaSugerida": "Concepción Company Company conferencia español de América historia de la lengua",
-    "medalla": "Medalla del Español de América",
-    "matiz": "Su autoridad viene de la evidencia y ha combatido el purismo y la idea de que exista un español mejor que otro; una sala que insinúe superioridad del castellano peninsular la contradice. No se ha pronunciado sobre movimientos hispanistas y colgarla en una galería con carga política le resta a ella y no le suma al movimiento.",
-    "confianza": "alta",
-    "publicable": false,
-    "porQueNoSePublica": "Ninguna ficha de persona viva se publica hasta tener: consentimiento por escrito de la persona o su representante, cada hecho contrastado en fuente primaria (no en una enciclopedia), la URL completa de su canal con su identificador, y cero fotografías. Es la condición que puso la revisión legal y no se salta."
-  },
-  {
-    "id": "garcia-montero-luis",
-    "nombre": "Luis García Montero",
-    "nacion": "España",
-    "oficio": "Poeta, catedrático y director del Instituto Cervantes",
-    "categoria": "academia",
-    "obra": "Catedrático de Literatura Española y uno de los poetas españoles más leídos de su generación. Director del Instituto Cervantes desde agosto de 2018 y en el cargo en 2026. El Instituto enseña y certifica el español en decenas de países y es la mayor red pública de difusión del idioma que existe.",
-    "porQueEstaAqui": "Dirige la casa que enseña español fuera del mundo hispano y ha empujado la idea de la lengua como patrimonio compartido y no como propiedad de España, incluida la cooperación con instituciones y universidades americanas. Si el idioma es el hilo de la unión hispana, él administra el telar: cada aula de Cervantes en Tokio, Dakar o Nueva York suma un hispanohablante más.",
-    "citaVerificable": "",
-    "dondeLoDijo": "",
-    "canal": "",
-    "plataforma": "YouTube (actos en el canal institucional del Instituto Cervantes y en medios)",
-    "busquedaSugerida": "Luis García Montero Instituto Cervantes lengua compartida español en el mundo",
-    "medalla": "Medalla de la Casa del Idioma",
-    "matiz": "Militó en el PCE y en Izquierda Unida y fue candidato de IU a la Comunidad de Madrid en 2015: su nombre llega con una etiqueta política española muy marcada, y media España lo leerá así. Es alto cargo del Estado español y no puede avalar movimientos. Su discurso sobre el idioma es además deliberadamente antinacionalista: habla de lengua compartida, no de madre patria.",
-    "confianza": "alta",
-    "publicable": false,
-    "porQueNoSePublica": "Ninguna ficha de persona viva se publica hasta tener: consentimiento por escrito de la persona o su representante, cada hecho contrastado en fuente primaria (no en una enciclopedia), la URL completa de su canal con su identificador, y cero fotografías. Es la condición que puso la revisión legal y no se salta."
-  },
-  {
-    "id": "herraiz-linguriosa",
-    "nombre": "Elena Herraiz («Linguriosa»)",
-    "nacion": "España",
-    "oficio": "Divulgadora de lingüística",
-    "categoria": "divulgacion",
-    "obra": "Nacida en Guadalajara en 1992. Traducción e Interpretación por la Universidad de Valladolid y máster en enseñanza de español por la Universidad de Alcalá; enseñó español en Berlín durante cinco años. Creó el canal Linguriosa en 2019, dedicado a la historia, la etimología y la gramática del español, hoy uno de los mayores canales de divulgación lingüística en nuestra lengua. Premio a la Divulgación de los Premios Archiletras. Desde 2024 colabora como experta en letras en el concurso de televisión Cifras y letras.",
-    "porQueEstaAqui": "Es probablemente la persona que más hispanohablantes ha hecho interesarse por su propio idioma. Explica de dónde vienen las palabras, cómo el latín se volvió castellano y por qué el español de las dos orillas es el mismo, con público masivo en España y en América a la vez. Divulgación de la lengua común, gratis, para cualquiera con un teléfono.",
-    "citaVerificable": "",
-    "dondeLoDijo": "",
-    "canal": "Linguriosa",
-    "plataforma": "YouTube",
-    "busquedaSugerida": "Linguriosa historia del español latín castellano",
-    "medalla": "Medalla de la Palabra Explicada",
-    "matiz": "Su método consiste en desmontar mitos, incluidos los mitos patrióticos sobre el español: no defiende que sea una lengua superior ni bendice relatos nacionales, y ha corregido en público varios que circulan en el ambiente hispanista. Su perfil público puede no encajar con parte de la base del movimiento, y conviene saberlo antes y no después. No tiene ninguna relación con este movimiento.",
-    "confianza": "alta",
-    "publicable": false,
-    "porQueNoSePublica": "Ninguna ficha de persona viva se publica hasta tener: consentimiento por escrito de la persona o su representante, cada hecho contrastado en fuente primaria (no en una enciclopedia), la URL completa de su canal con su identificador, y cero fotografías. Es la condición que puso la revisión legal y no se salta."
-  },
-  {
-    "id": "gullo-marcelo",
-    "nombre": "Marcelo Gullo Omodeo",
-    "nacion": "Argentina",
-    "oficio": "Politólogo y ensayista",
-    "categoria": "divulgacion",
-    "obra": "Doctor en Ciencia Política y máster en Relaciones Internacionales por la Universidad de Ginebra. Autor de Madre Patria (2021), Nada por lo que pedir perdón (2022) y Lo que América le debe a España (2023), tres ensayos contra la leyenda negra con mucha venta y enorme circulación en la esfera hispanista de YouTube y de la prensa de opinión.",
-    "porQueEstaAqui": "Es el autor vivo que defiende de forma más explícita la tesis panhispanista: que América y España forman una sola comunidad histórica y que el relato de la conquista como puro crimen es una construcción interesada. Ningún otro nombre de esta lista está tan cerca del ideario del movimiento, y es el único que probablemente aceptaría la medalla.",
-    "citaVerificable": "",
-    "dondeLoDijo": "",
-    "canal": "",
-    "plataforma": "YouTube (entrevistas y conferencias en canales de medios y think tanks)",
-    "busquedaSugerida": "Marcelo Gullo Madre Patria leyenda negra conferencia",
-    "medalla": "Medalla de la Leyenda Desmontada",
-    "matiz": "[Texto retirado del archivo por la revisión legal: imputación de delito no verificada. Si esta valoración tiene que existir, vive en un documento de la asesoría jurídica, no en un archivo que se descarga al navegador de cualquier visitante.]",
-    "confianza": "media",
-    "publicable": false,
-    "porQueNoSePublica": "Su campo de matiz es una nota interna expresamente marcada como no publicable: describe una acusación judicial en Perú. Publicar el honor sin el matiz alinea al movimiento con una figura discutida; publicar el matiz sería difamatorio. La decisión de incluirlo o no es tuya y necesita verificación en fuente primaria."
-  },
-  {
-    "id": "chihuailaf-elicura",
-    "nombre": "Elicura Chihuailaf",
-    "nacion": "Chile (pueblo mapuche)",
-    "oficio": "Poeta y «oralitor»",
-    "categoria": "letras",
-    "obra": "Nacido en 1952. Premio Nacional de Literatura de Chile 2020, el primer poeta mapuche que lo recibe. Escribe en mapudungun y en español, las dos versiones en el mismo libro: De sueños azules y contrasueños (1995), Recado confidencial a los chilenos (1999), La vida es una nube azul (2016). Fue secretario general de Escritores en Lenguas Indígenas de América entre 1997 y 2000.",
-    "porQueEstaAqui": "Publica cada libro en las dos lenguas, una junto a la otra en la misma página. Eso —y no la sustitución de una por la otra— es lo que de verdad significa que la Hispanidad sea mestiza: el castellano conviviendo con las lenguas de América, escritas por la misma mano. Su Premio Nacional de 2020 es el reconocimiento de un Estado hispanohablante a una literatura que también es suya.",
-    "citaVerificable": "",
-    "dondeLoDijo": "",
-    "canal": "",
-    "plataforma": "YouTube (lecturas y entrevistas en canales de universidades, ferias del libro y medios chilenos)",
-    "busquedaSugerida": "Elicura Chihuailaf poesía mapudungun Premio Nacional de Literatura 2020",
-    "medalla": "Medalla de las Dos Lenguas",
-    "matiz": "Es poeta mapuche y su obra nace de un pueblo conquistado; Recado confidencial a los chilenos es una interpelación directa al Estado chileno por lo que se le hizo a su gente. Escribir en español no es en él adhesión a España, es la decisión de ser leído. Presentarlo como emblema de la Hispanidad sin decir esto sería ofensivo, y además falso. Es el nombre que más cuidado exige en la redacción de la ficha.",
-    "confianza": "alta",
-    "publicable": false,
-    "porQueNoSePublica": "Ninguna ficha de persona viva se publica hasta tener: consentimiento por escrito de la persona o su representante, cada hecho contrastado en fuente primaria (no en una enciclopedia), la URL completa de su canal con su identificador, y cero fotografías. Es la condición que puso la revisión legal y no se salta."
-  },
-  {
-    "id": "obono-melibea",
-    "nombre": "Trifonia Melibea Obono",
-    "nacion": "Guinea Ecuatorial",
-    "oficio": "Novelista, politóloga y profesora universitaria",
-    "categoria": "letras",
-    "obra": "Nacida en Afaetom (Evinayong) en 1982. Profesora en la Facultad de Letras y Ciencias Sociales de la Universidad Nacional de Guinea Ecuatorial, en Malabo, y doctora por la Universidad de Salamanca. Autora de las novelas La bastarda y Herencia de bindendee (2016) y de ensayo y relato. Premio Internacional de Literaturas Africanas «Justo Bolekia Boleká» 2018 y GLLI Prize 2019 por La bastarda.",
-    "porQueEstaAqui": "Escribe literatura en español desde el único país de África donde el español es lengua oficial, y la enseña en su universidad. Recordar que la Hispanidad tiene una orilla africana no es un adorno de catálogo: es reconocer que la literatura ecuatoguineana existe, publica, gana premios internacionales y se traduce, y que casi nadie en América la lee.",
-    "citaVerificable": "",
-    "dondeLoDijo": "",
-    "canal": "",
-    "plataforma": "YouTube (entrevistas y mesas redondas en canales de universidades, editoriales y medios)",
-    "busquedaSugerida": "Trifonia Melibea Obono literatura Guinea Ecuatorial español entrevista",
-    "medalla": "Medalla de la Orilla Africana",
-    "matiz": "[Texto retirado del archivo por la revisión legal: dato de orientación sexual (art. 9 RGPD). Si esta valoración tiene que existir, vive en un documento de la asesoría jurídica, no en un archivo que se descarga al navegador de cualquier visitante.]",
-    "confianza": "alta",
-    "publicable": false,
-    "porQueNoSePublica": "Ninguna ficha de persona viva se publica hasta tener: consentimiento por escrito de la persona o su representante, cada hecho contrastado en fuente primaria (no en una enciclopedia), la URL completa de su canal con su identificador, y cero fotografías. Es la condición que puso la revisión legal y no se salta."
-  },
-  {
-    "id": "ramirez-sergio",
-    "nombre": "Sergio Ramírez",
-    "nacion": "Nicaragua (nacionalizado español)",
-    "oficio": "Escritor",
-    "categoria": "letras",
-    "obra": "Nacido en 1942. Premio Cervantes 2017, el primer centroamericano que lo recibe; Premio Alfaguara 1998 por Margarita, está linda la mar; Castigo divino (1988), La fugitiva (2011), El caballo dorado (2024). Fue miembro de la Junta de Gobierno de Nicaragua (1979-1985) y vicepresidente con Daniel Ortega (1985-1990). Exiliado en Madrid desde septiembre de 2021; obtuvo la nacionalidad española en diciembre de 2018 y en febrero de 2023 un tribunal nicaragüense le retiró la nicaragüense junto a otras noventa y tres personas.",
-    "porQueEstaAqui": "Su caso es la prueba viva de que la comunidad hispanohablante funciona como patria de repuesto: a un escritor le quitan la nacionalidad y sigue escribiendo, publicando y siendo leído en la misma lengua desde la otra orilla. Cuando el pasaporte se pierde, la lengua queda. No hay argumento más concreto a favor de que lo hispano es una casa común y no una idea decorativa.",
-    "citaVerificable": "",
-    "dondeLoDijo": "",
-    "canal": "",
-    "plataforma": "YouTube (discursos, entrevistas y actos en canales de medios, ferias y fundaciones)",
-    "busquedaSugerida": "Sergio Ramírez discurso Premio Cervantes 2017 lengua española",
-    "medalla": "Medalla de la Patria del Idioma",
-    "matiz": "Su figura es un asunto político abierto: fue vicepresidente sandinista y hoy es uno de los disidentes más visibles del régimen de Ortega. Honrarlo es tomar partido en Nicaragua, con lo bueno y lo malo que eso trae. Nunca ha hablado de este movimiento, y su idea de lo hispano es literaria y liberal, no imperial ni nostálgica.",
-    "confianza": "alta",
-    "publicable": false,
-    "porQueNoSePublica": "Ninguna ficha de persona viva se publica hasta tener: consentimiento por escrito de la persona o su representante, cada hecho contrastado en fuente primaria (no en una enciclopedia), la URL completa de su canal con su identificador, y cero fotografías. Es la condición que puso la revisión legal y no se salta."
-  },
-  {
-    "id": "ramos-jorge",
-    "nombre": "Jorge Ramos",
-    "nacion": "México / Estados Unidos",
-    "oficio": "Periodista",
-    "categoria": "periodismo",
-    "obra": "Nacido en Ciudad de México en 1958, con doble nacionalidad mexicana y estadounidense. Presentador del Noticiero Univision desde noviembre de 1986 hasta diciembre de 2024: su último noticiero fue el 13 de diciembre de 2024 y el último programa «Al punto», el 15. Casi cuarenta años informando en español a la mayor audiencia hispanohablante de Estados Unidos. Varios premios Emmy y el Premio Maria Moors Cabot. En 2015 fue expulsado de una rueda de prensa de Donald Trump por preguntar sobre inmigración; en 2019 fue retenido en Venezuela tras entrevistar a Nicolás Maduro.",
-    "porQueEstaAqui": "Sostuvo durante cuatro décadas que en Estados Unidos se puede vivir, informarse y ejercer de ciudadano en español, y lo demostró con audiencia. Su trabajo convirtió el español en lengua pública dentro del país más poderoso del mundo, que es la forma más concreta de orgullo del idioma que puede haber en la diáspora.",
-    "citaVerificable": "",
-    "dondeLoDijo": "",
-    "canal": "",
-    "plataforma": "YouTube (archivo de Univision y entrevistas en medios)",
-    "busquedaSugerida": "Jorge Ramos español Estados Unidos idioma entrevista",
-    "medalla": "Medalla del Español en el Norte",
-    "matiz": "Salió de Univision en diciembre de 2024: cualquier texto que lo presente como su presentador está desactualizado y se nota. Es una figura de confrontación abierta con Donald Trump y con el chavismo, así que su nombre arrastra política estadounidense y venezolana. Su idea de lo hispano es la del latino de Estados Unidos —migrante, mestizo, peleando por sus derechos—, no la de una comunidad con centro en Madrid. Es agnóstico declarado, por si la sala se piensa con tono católico.",
-    "confianza": "alta",
-    "publicable": false,
-    "porQueNoSePublica": "Ninguna ficha de persona viva se publica hasta tener: consentimiento por escrito de la persona o su representante, cada hecho contrastado en fuente primaria (no en una enciclopedia), la URL completa de su canal con su identificador, y cero fotografías. Es la condición que puso la revisión legal y no se salta."
-  }
-];
+EH.VIVOS = [];
 
 EH.medalla = function (id) {
   return EH.MEDALLAS.filter(function (x) { return x.id === id; })[0] || null;

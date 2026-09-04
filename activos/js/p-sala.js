@@ -311,20 +311,26 @@
        Las fichas apartadas no se borran: la decisión de publicarlas o no es
        política y es del fundador, no del programador. Pero tampoco se
        publican calladamente. */
-    if (EH.datos.esFundador() && EH.SALA_EN_REVISION.length) {
+    if (EH.datos.esFundador()) {
       document.getElementById('ehRevision').innerHTML =
         '<div class="eh-tarjeta" style="border-color:var(--ambar)">' +
-        '<h3 class="eh-tarjeta__titulo" style="color:var(--ambar)">Apartadas de la galería pública ' +
+        '<h3 class="eh-tarjeta__titulo" style="color:var(--ambar)">Las catorce fichas ' +
           '<span class="eh-etiqueta">solo lo ves tú</span></h3>' +
-        '<p class="eh-tarjeta__cuerpo">Estas fichas están escritas pero no se publican. La ' +
-        'decisión de incluirlas es tuya. Para publicarlas, cambia <code>publicable</code> a ' +
-        '<code>true</code> en <code>activos/js/sala.js</code>.</p>' +
-        EH.SALA_EN_REVISION.map(function (f) {
-          return '<div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--linea)">' +
-            '<b>' + EH.escapar(f.nombre) + '</b>' +
-            '<p class="eh-tarjeta__cuerpo" style="margin-top:.4rem">' +
-              EH.escapar(f.porQueNoSePublica) + '</p></div>';
-        }).join('') + '</div>';
+        '<p class="eh-tarjeta__cuerpo">' +
+          'Están escritas y no se han perdido. Pero <b>no viajan en el sitio publicado</b>: ' +
+          'viven en <code>borradores/sala-personas-vivas-en-revision.json</code>, fuera de la ' +
+          'carpeta que se publica.' +
+        '</p>' +
+        '<p class="eh-tarjeta__cuerpo" style="margin-top:.7rem">' +
+          'No se pintaban en ninguna parte, pero viajaban dentro de <code>sala.js</code>, que ' +
+          'cualquiera puede descargar, y contienen valoraciones sobre personas reales que no han ' +
+          'consentido aparecer. Un periodista que encuentre las notas internas de un movimiento ' +
+          'político sobre catorce artistas vivos tiene el titular hecho.' +
+        '</p>' +
+        '<p class="eh-tarjeta__pie">' +
+          'Para publicar a alguien hacen falta las cuatro condiciones de arriba, y reescribir su ' +
+          'campo <code>matiz</code>: varios repiten o insinúan cosas que no pueden salir de ahí.' +
+        '</p></div>';
     }
 
     /* --- reglas de la sala --- */
