@@ -64,6 +64,20 @@ EH.CONFIG = {
     kick      : ''
   },
 
+  /* --- publicaciones destacadas del movimiento -------------------------
+     Lo que se enseña en el muro del Frente Digital. Cada entrada:
+       { red: 'tiktok', url: 'URL DE INCRUSTAR, no la del navegador',
+         titulo: 'de qué va, en una línea' }
+
+     OJO con la url: tiene que ser la de incrustar, que cada red publica en
+     su botón «insertar» y NO es la que sale en la barra del navegador.
+
+     Y una cosa que no es un detalle: estas publicaciones se cargan SOLO
+     cuando alguien pulsa. Un reproductor que arranca al abrir la página le
+     cuenta a esa empresa quién visita un sitio de afiliación política,
+     aunque el visitante no pulse nada ni tenga cuenta. */
+  publicaciones : [],
+
   /* --- aportes económicos ----------------------------------------------
      REGLA INNEGOCIABLE: la plataforma no custodia dinero de nadie, jamás.
      Aquí solo va el enlace a una pasarela licenciada (Bold, Wompi, Mercado

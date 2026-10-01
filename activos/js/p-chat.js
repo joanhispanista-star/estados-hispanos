@@ -42,7 +42,8 @@
     EH.NACIONES_ORDENADAS.forEach(function (n) {
       lista.push({
         k: 'nacion:' + n.id,
-        n: n.bandera + ' ' + n.nombre,
+        n: n.nombre,
+        id: n.id,
         d: n.id === yo.nacion ? 'Tu nación' : '',
         propia: n.id === yo.nacion
       });
@@ -62,7 +63,7 @@
     if (k === 'global') return 'Plaza Mayor';
     if (k === 'circulo') return 'Círculo de Emprendedores';
     var n = EH.nacion(String(k).replace('nacion:', ''));
-    return n ? n.bandera + ' ' + n.nombre : k;
+    return n ? n.nombre : k;
   }
 
   function pintarMensajes(lista, anadir) {
@@ -150,6 +151,9 @@
         '<div class="eh-chat__salas">' + lista.map(function (s) {
           return '<button class="eh-chat__sala" type="button" data-k="' + EH.escapar(s.k) + '"' +
             (s.cerrada ? ' disabled style="opacity:.45;cursor:not-allowed"' : '') + '>' +
+            // La bandera dibujada, no el emoji: en Windows el emoji sale como
+            // las dos letras del país y la lista de salas parece un error.
+            (s.id ? EH.banderas.svg(s.id, 18) : '') +
             '<span style="flex:1;min-width:0">' + EH.escapar(s.n) +
             (s.d ? '<br><span class="eh-tenue" style="font-size:.72rem">' + EH.escapar(s.d) + '</span>' : '') +
             '</span></button>';

@@ -35,9 +35,8 @@
     return 0;
   }
 
-  function banderaDe(nacionId) {
-    var n = EH.nacion(nacionId);
-    return n ? n.bandera : '';
+  function banderaDe(nacionId, ancho) {
+    return EH.banderas.svg(nacionId, ancho || 16);
   }
 
   /* ------------------------------------------------------------------
@@ -52,7 +51,8 @@
         EH.escapar(f.nombre) + '</h3>' +
       '<p class="eh-tenue" style="margin:0">' + EH.escapar(f.anios) + '</p>' +
       '<div class="eh-fila eh-fila--centro" style="gap:.35rem;margin:.7rem 0">' +
-        '<span class="eh-etiqueta">' + EH.escapar(banderaDe(f.nacion) + ' ' + (EH.nombreNacion(f.nacion) || '')) + '</span>' +
+        '<span class="eh-etiqueta eh-fila" style="gap:.35rem;flex-wrap:nowrap">' +
+          banderaDe(f.nacion) + EH.escapar(EH.nombreNacion(f.nacion) || '') + '</span>' +
         '<span class="eh-etiqueta eh-etiqueta--soberano">' +
           EH.escapar(CATEGORIAS[f.categoria] || f.categoria) + '</span>' +
       '</div>' +
@@ -72,7 +72,8 @@
       '<h3 class="eh-tarjeta__titulo" style="margin-top:.6rem;font-size:1.05rem">' +
         EH.escapar(f.nombre) + '</h3>' +
       '<div class="eh-fila eh-fila--centro" style="gap:.35rem;margin:.6rem 0">' +
-        '<span class="eh-etiqueta">' + EH.escapar(banderaDe(f.nacion) + ' ' + (EH.nombreNacion(f.nacion) || '')) + '</span>' +
+        '<span class="eh-etiqueta eh-fila" style="gap:.35rem;flex-wrap:nowrap">' +
+          banderaDe(f.nacion) + EH.escapar(EH.nombreNacion(f.nacion) || '') + '</span>' +
         '<span class="eh-etiqueta eh-etiqueta--soberano">' +
           EH.escapar(CATEGORIAS[f.categoria] || f.categoria) + '</span>' +
       '</div>' +
@@ -94,7 +95,8 @@
           '<p class="eh-tenue" style="margin:0">' +
             EH.escapar(vivo ? f.oficio : (f.nombreCompleto + ' · ' + f.anios)) + '</p>' +
           '<div class="eh-fila" style="gap:.35rem;margin-top:.6rem">' +
-            '<span class="eh-etiqueta">' + EH.escapar(banderaDe(f.nacion) + ' ' + (EH.nombreNacion(f.nacion) || '')) + '</span>' +
+            '<span class="eh-etiqueta eh-fila" style="gap:.35rem;flex-wrap:nowrap">' +
+          banderaDe(f.nacion) + EH.escapar(EH.nombreNacion(f.nacion) || '') + '</span>' +
             '<span class="eh-etiqueta eh-etiqueta--soberano">' +
               EH.escapar(CATEGORIAS[f.categoria] || f.categoria) + '</span>' +
           '</div>' +

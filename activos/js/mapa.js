@@ -236,7 +236,9 @@ EH.mapa = (function () {
       caja.className = 'eh-mapa__ficha';
       caja.innerHTML =
         '<button class="eh-mapa__cerrar" type="button" aria-label="Cerrar">×</button>' +
-        '<h4>' + EH.escapar(nacion.bandera || '') + ' ' + EH.escapar(nacion.nombre) + '</h4>' +
+        '<h4 class="eh-fila" style="gap:.5rem;flex-wrap:nowrap">' +
+          EH.banderas.svg(nacion.id, 26) +
+          '<span>' + EH.escapar(nacion.nombre) + '</span></h4>' +
         '<div class="met">' +
           '<span>' + EH.poblacion(nacion.poblacion) + ' habitantes</span>' +
           '<span>' + EH.escapar(nacion.capital) + '</span>' +

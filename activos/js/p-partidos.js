@@ -20,9 +20,10 @@
 
   var modal, caja;
 
-  function bandera(id) {
-    var n = EH.nacion(id);
-    return n ? n.bandera : '◆';
+  /* Devuelve la bandera dibujada, no el emoji: en Windows el emoji se ve
+     como las dos letras del pais y la tarjeta parece rota. */
+  function bandera(id, ancho) {
+    return EH.banderas.svg(id, ancho || 26);
   }
 
   /* ------------------------------------------------------------------
@@ -39,7 +40,7 @@
       var pc = Math.min(100, (hechas / p.requisitoCantidad) * 100);
       return '<article class="eh-tarjeta eh-tarjeta--oro">' +
         '<div class="eh-fila" style="gap:.6rem">' +
-          '<span style="font-size:1.8rem;line-height:1">' + EH.escapar(bandera(p.id)) + '</span>' +
+          bandera(p.id, 34) +
           '<h3 class="eh-tarjeta__titulo" style="margin:0">' + EH.escapar(p.pais) + '</h3>' +
         '</div>' +
         '<div style="margin-top:1rem">' +
@@ -73,7 +74,7 @@
     return '<article class="eh-tarjeta eh-tarjeta--enlace" data-pais="' + EH.escapar(p.id) + '" ' +
       'tabindex="0" role="button" style="cursor:pointer;border-left:3px solid ' + t.c + '">' +
       '<div class="eh-fila" style="gap:.6rem;margin-bottom:.6rem">' +
-        '<span style="font-size:1.6rem;line-height:1">' + EH.escapar(bandera(p.id)) + '</span>' +
+        bandera(p.id, 30) +
         '<h3 class="eh-tarjeta__titulo" style="margin:0;flex:1;min-width:0">' + EH.escapar(p.pais) + '</h3>' +
       '</div>' +
       '<div class="eh-fila" style="gap:.4rem;margin-bottom:.8rem">' +
@@ -114,7 +115,7 @@
 
     return '<button class="eh-mapa__cerrar" type="button" id="ehCerrar" aria-label="Cerrar">×</button>' +
       '<div class="eh-fila" style="gap:.8rem;margin-bottom:.4rem">' +
-        '<span style="font-size:2.4rem;line-height:1">' + EH.escapar(bandera(p.id)) + '</span>' +
+        bandera(p.id, 46) +
         '<h2 style="margin:0;font-size:1.6rem">' + EH.escapar(p.pais) + '</h2>' +
       '</div>' +
 

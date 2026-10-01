@@ -194,7 +194,10 @@ p:last-child{margin-bottom:0}
   color:var(--texto);width:42px;height:38px;border-radius:var(--radio-s);
   cursor:pointer;font-size:1.15rem;line-height:1;
 }
-@media (max-width:1000px){
+/* El menú se pliega a 1120 px, no a 1000. Medido en el navegador: con nueve
+   secciones la fila de enlaces pide unos 760 px y la marca otros 230, así que
+   por debajo de 1120 no caben y se salían por el lado derecho. */
+@media (max-width:1120px){
   .eh-nav__enlaces{
     display:none;position:absolute;top:64px;left:0;right:0;
     flex-direction:column;align-items:stretch;gap:0;
@@ -611,3 +614,19 @@ select.eh-entrada{appearance:none;-webkit-appearance:none;cursor:pointer;
   .eh-nav,.eh-pie,.eh-cinta,.eh-toast{display:none}
   body{background:#fff;color:#000}
 }
+
+/* =========================================================================
+   BANDERAS
+   Dibujadas en SVG por activos/js/banderas.js, no emoji: Windows no trae los
+   emoji de bandera y 🇺🇸 se ve allí como las letras «US». En un sitio que es
+   un mapa de veinticuatro naciones, eso no es un detalle.
+   ========================================================================= */
+.eh-bandera{
+  display:inline-block;vertical-align:middle;flex-shrink:0;
+  border-radius:2px;
+  box-shadow:0 1px 3px rgba(0,0,0,.45);
+}
+.eh-bandera--g{border-radius:3px;box-shadow:0 3px 10px rgba(0,0,0,.5)}
+
+/* En la ficha de nación la bandera manda: ocupa el sitio del emoji grande. */
+.eh-nacion__bandera{display:flex;align-items:center}

@@ -32,7 +32,7 @@
     return '<article class="eh-nacion" data-id="' + EH.escapar(n.id) + '" tabindex="0" role="button" ' +
       'aria-label="Ver la ficha de ' + EH.escapar(n.nombre) + '" style="cursor:pointer">' +
       '<div class="eh-nacion__cabeza">' +
-        '<span class="eh-nacion__bandera">' + EH.escapar(n.bandera || '◆') + '</span>' +
+        '<span class="eh-nacion__bandera">' + EH.banderas.svg(n.id, 44) + '</span>' +
         '<div style="min-width:0">' +
           '<h3 class="eh-nacion__nombre">' + EH.escapar(n.nombre) + '</h3>' +
           '<p class="eh-nacion__oficial">' + EH.escapar(n.capital) + '</p>' +
@@ -80,7 +80,7 @@
 
     return '<button class="eh-mapa__cerrar" type="button" id="ehCerrar" aria-label="Cerrar">×</button>' +
       '<div class="eh-fila" style="gap:.9rem;margin-bottom:.3rem">' +
-        '<span style="font-size:2.6rem;line-height:1">' + EH.escapar(n.bandera || '◆') + '</span>' +
+        EH.banderas.svg(n.id, 62, 'eh-bandera--g') +
         '<div style="min-width:0">' +
           '<h2 id="ehModalTitulo" style="margin:0;font-size:1.7rem">' + EH.escapar(n.nombre) + '</h2>' +
           '<p class="eh-tenue" style="margin:0">' + EH.escapar(n.nombreOficial) + '</p>' +

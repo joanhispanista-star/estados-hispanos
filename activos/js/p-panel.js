@@ -80,7 +80,8 @@
       '<div class="eh-tabla-caja"><table class="eh-tabla" style="min-width:0">' +
       '<thead><tr><th>Nación</th><th>Miembros</th><th>Estado</th></tr></thead><tbody>' +
       filas.map(function (f) {
-        return '<tr><td>' + EH.escapar(f.n.bandera + ' ' + f.n.nombre) + '</td>' +
+        return '<tr><td><span class="eh-fila" style="gap:.4rem;flex-wrap:nowrap">' +
+          EH.banderas.svg(f.n.id, 18) + EH.escapar(f.n.nombre) + '</span></td>' +
           '<td class="eh-oro"><b>' + f.c + '</b></td>' +
           '<td>' + (f.c === 0
             ? '<span class="eh-etiqueta">Sin presencia</span>'
@@ -124,7 +125,9 @@
               EH.escapar(quien) + '</span>' : '') + '</td>' +
           '<td style="font-size:.78rem">' + EH.escapar(m.correo || '—') +
             (m.telefono ? '<br>' + EH.escapar(m.telefono) : '') + '</td>' +
-          '<td>' + EH.escapar(n ? n.bandera + ' ' + n.nombre : m.nacion || '—') +
+          '<td>' + (n ? '<span class="eh-fila" style="gap:.4rem;flex-wrap:nowrap">' +
+            EH.banderas.svg(n.id, 18) + EH.escapar(n.nombre) + '</span>'
+            : EH.escapar(m.nacion || '—')) +
             (m.ciudad ? '<br><span class="eh-tenue" style="font-size:.72rem">' +
               EH.escapar(m.ciudad) + '</span>' : '') + '</td>' +
           '<td style="font-size:.8rem">' + EH.escapar(m.oficio || '—') + '</td>' +

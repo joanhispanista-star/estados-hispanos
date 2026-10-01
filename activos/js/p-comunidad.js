@@ -56,7 +56,9 @@
             '<h2 style="margin:0 0 .3rem;font-size:1.5rem">' + EH.escapar(yo.nombre) + '</h2>' +
             '<div class="eh-fila" style="gap:.5rem">' +
               EH.reputacion.insignia(yo.honor) +
-              '<span class="eh-etiqueta">' + EH.escapar((nacion ? nacion.bandera + ' ' : '') + EH.nombreNacion(yo.nacion)) + '</span>' +
+              '<span class="eh-etiqueta eh-fila" style="gap:.35rem;flex-wrap:nowrap">' +
+                (nacion ? EH.banderas.svg(yo.nacion, 16) : '') +
+                EH.escapar(EH.nombreNacion(yo.nacion)) + '</span>' +
               (yo.ciudad ? '<span class="eh-etiqueta">' + EH.escapar(yo.ciudad) + '</span>' : '') +
             '</div>' +
             '<p class="eh-tenue" style="margin:.7rem 0 0">' + EH.escapar(g.que) + '</p>' +
@@ -179,7 +181,8 @@
           '<div class="eh-mensaje__cuerpo">' +
             '<div class="eh-mensaje__cabeza">' +
               '<span class="eh-mensaje__quien">' + EH.escapar(p.autor) + '</span>' +
-              (n ? '<span class="eh-mensaje__meta">' + EH.escapar(n.bandera + ' ' + n.nombre) + '</span>' : '') +
+              (n ? '<span class="eh-mensaje__meta eh-fila" style="gap:.3rem;flex-wrap:nowrap">' +
+                EH.banderas.svg(n.id, 14) + EH.escapar(n.nombre) + '</span>' : '') +
               '<span class="eh-mensaje__meta">' + EH.escapar(EH.fecha(p.creado_en)) + '</span>' +
             '</div>' +
             '<p class="eh-mensaje__texto">' + EH.escapar(p.texto) + '</p>' +
@@ -211,7 +214,9 @@
           '<td><div class="eh-fila" style="gap:.5rem;flex-wrap:nowrap">' +
             '<span class="eh-avatar eh-avatar--p">' + EH.escapar(EH.iniciales(m.nombre)) + '</span>' +
             '<b>' + EH.escapar(m.nombre) + '</b></div></td>' +
-          '<td>' + EH.escapar(n ? n.bandera + ' ' + n.nombre : m.nacion || '—') + '</td>' +
+          '<td>' + (n ? '<span class="eh-fila" style="gap:.4rem;flex-wrap:nowrap">' +
+            EH.banderas.svg(n.id, 18) + EH.escapar(n.nombre) + '</span>'
+            : EH.escapar(m.nacion || '—')) + '</td>' +
           '<td>' + EH.reputacion.insignia(m.honor) + '</td>' +
           '<td class="eh-oro"><b>' + EH.numero(m.honor) + '</b></td></tr>';
       }).join('') + '</tbody></table></div>';

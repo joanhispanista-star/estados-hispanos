@@ -120,14 +120,19 @@ window.EH = window.EH || {};
   /* ---------------------------------------------------------------------
      BARRA DE NAVEGACIÓN
      --------------------------------------------------------------------- */
+  /* Las etiquetas son cortas a propósito. Con «El Gran Plan» y «Sala de
+     Honor» enteros, la fila de enlaces pedía 799 px y solo había 780: la
+     barra se desbordaba en cualquier portátil de 1024 px antes incluso de
+     añadir Redes. Los títulos largos viven dentro de cada página. */
   var SECCIONES = [
     { k: 'naciones',   t: 'Naciones',    h: 'naciones.html' },
     { k: 'manifiesto', t: 'Manifiesto',  h: 'manifiesto.html' },
-    { k: 'plan',       t: 'El Gran Plan', h: 'plan.html' },
-    { k: 'sala',       t: 'Sala de Honor', h: 'sala.html' },
+    { k: 'plan',       t: 'El Plan',     h: 'plan.html' },
+    { k: 'sala',       t: 'Sala',        h: 'sala.html' },
     { k: 'partidos',   t: 'Partidos',    h: 'partidos.html' },
     { k: 'circulo',    t: 'Círculo',     h: 'circulo.html' },
     { k: 'comunidad',  t: 'Comunidad',   h: 'comunidad.html' },
+    { k: 'redes',      t: 'Redes',       h: 'redes.html' },
     { k: 'aportar',    t: 'Aportar',     h: 'aportar.html' }
   ];
 
