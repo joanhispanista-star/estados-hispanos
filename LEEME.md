@@ -1,7 +1,22 @@
 # La plataforma pública de Los Estados Hispanos
 
-**Cómo se abre:** doble clic en `plataforma/index.html`. Funciona sin internet
-y sin instalar nada, igual que tu taller.
+## 🌎 En vivo
+
+**https://joanhispanista-star.github.io/estados-hispanos/**
+
+Publicada el 4 de septiembre de 2026. Ese enlace se puede compartir con
+cualquiera: funciona en el teléfono, no pide instalar nada y va por HTTPS.
+
+**Para publicar cambios:** doble clic en `Publicar los cambios.cmd`, un nivel
+más arriba. Tarda uno o dos minutos en verse.
+
+> ⚠️ **El repositorio público contiene SOLO esta carpeta.** Tu taller privado
+> (`index.html` de la raíz), `El_libro_hispano.docx`, la captura y los
+> borradores se quedan en tu computador. El remoto se llama `publico` y no
+> `origin` justo para que nadie suba por descuido la rama que lleva todo eso.
+
+**Cómo se abre sin internet:** doble clic en `plataforma/index.html`. Funciona
+igual que tu taller.
 
 > Tu taller de propaganda sigue donde estaba, intacto: `../index.html`.
 > No se ha tocado ni una línea. Son dos cosas distintas y conviven:
