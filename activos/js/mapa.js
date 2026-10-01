@@ -1,6 +1,15 @@
 /* =========================================================================
-   EL MAPAMUNDI HISPANO
+   EL MAPAMUNDI HISPANO, PLANO
    =========================================================================
+   DÓNDE SE USA HOY
+   Solo en el panel (el CRM). La portada y la página de naciones pasaron al
+   globo de verdad (globo.js) el 1 de octubre de 2026. Este archivo NO es
+   código muerto y no se borra: el mapa del panel pinta únicamente las naciones
+   donde ya hay alguien inscrito, y para leer de un vistazo «dónde existe el
+   movimiento y dónde es una intención» un plano es mejor que una esfera, donde
+   media lista queda siempre detrás. Además la ficha flotante que usa el globo
+   es la de aquí: una sola copia de ese cuadro.
+
    POR QUÉ NO SE USA UNA LIBRERÍA DE MAPAS
    Leaflet, Mapbox o D3 traerían el mapa hecho, pero hay que bajarlos de un
    CDN y esta plataforma promete abrir con doble clic y sin internet. Además,

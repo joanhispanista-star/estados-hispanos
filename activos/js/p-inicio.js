@@ -36,9 +36,8 @@
 
     /* --- mapa --- */
     var caja = document.getElementById('ehMapa');
-    EH.mapa.pintar(caja, EH.NACIONES, {
-      arcos: true,
-      alPulsar: function (n, nodo) { EH.mapa.ficha(caja, n, nodo); }
+    EH.globo.pintar(caja, EH.NACIONES, {
+      alPulsar: function (n, punto) { EH.globo.ficha(caja, n, punto); }
     });
 
     /* --- cinta --- */

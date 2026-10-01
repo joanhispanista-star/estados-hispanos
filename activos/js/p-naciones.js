@@ -173,8 +173,7 @@
     caja = document.getElementById('ehModalCaja');
 
     var mapa = document.getElementById('ehMapa');
-    EH.mapa.pintar(mapa, EH.NACIONES, {
-      arcos: false,
+    EH.globo.pintar(mapa, EH.NACIONES, {
       alPulsar: function (n) { abrir(n.id); }
     });
 
