@@ -89,12 +89,22 @@
       '<span class="eh-etiqueta eh-etiqueta--' + EH.escapar(n.estatus) + '">' +
         EH.escapar(ETIQUETAS[n.estatus] || n.estatus) + '</span>' +
 
+      /* La capital solo entra en la rejilla si es un nombre corto. En la ficha
+         de la diáspora estadounidense, «capital» es una frase entera sobre sus
+         núcleos, y metida en una casilla de cifra desbordaba y se leía fatal.
+         Cuando es larga, baja a una línea propia debajo. */
       '<div class="eh-nacion__datos" style="margin:1.2rem 0">' +
         '<div class="eh-nacion__dato"><b>' + EH.poblacion(n.poblacion) + '</b><span>habitantes</span></div>' +
         '<div class="eh-nacion__dato"><b>' + EH.poblacion(n.hispanohablantes) + '</b><span>hablan español</span></div>' +
         '<div class="eh-nacion__dato"><b>' + EH.magnitud(n.pibNominalMillonesUsd) + '</b><span>PIB en USD</span></div>' +
-        '<div class="eh-nacion__dato"><b>' + EH.escapar(n.capital) + '</b><span>capital</span></div>' +
+        (String(n.capital).length <= 24
+          ? '<div class="eh-nacion__dato"><b>' + EH.escapar(n.capital) + '</b><span>capital</span></div>'
+          : '') +
       '</div>' +
+      (String(n.capital).length > 24
+        ? '<p class="eh-tenue" style="margin:-.6rem 0 1rem"><b style="color:var(--oro2)">Capital:</b> ' +
+          EH.escapar(n.capital) + '</p>'
+        : '') +
 
       '<p style="color:var(--suave)">' + EH.escapar(n.resumen) + '</p>' +
 
