@@ -200,6 +200,8 @@ window.EH = window.EH || {};
               '<li><a href="' + BASE + 'manifiesto.html">Manifiesto Hispano</a></li>' +
               '<li><a href="' + BASE + 'plan.html">El Gran Plan</a></li>' +
               '<li><a href="' + BASE + 'naciones.html">Las naciones</a></li>' +
+              '<li><a href="' + BASE + 'eeuu.html">La Hispanidad de Estados Unidos</a></li>' +
+              '<li><a href="' + BASE + 'sala.html">Sala de Honor</a></li>' +
               '<li><a href="' + BASE + 'partidos.html">Partidos hermanos</a></li>' +
             '</ul>' +
           '</div>' +
@@ -207,8 +209,10 @@ window.EH = window.EH || {};
             '<h5>Participar</h5>' +
             '<ul>' +
               '<li><a href="' + BASE + 'inscripcion.html">Inscribirme</a></li>' +
+              '<li><a href="' + BASE + 'escuela.html">La Escuela</a></li>' +
               '<li><a href="' + BASE + 'comunidad.html">Comunidad</a></li>' +
               '<li><a href="' + BASE + 'circulo.html">Círculo de Emprendedores</a></li>' +
+              '<li><a href="' + BASE + 'redes.html">Frente Digital</a></li>' +
               '<li><a href="' + BASE + 'aportar.html">Aportar a la causa</a></li>' +
             '</ul>' +
           '</div>' +

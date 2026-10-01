@@ -279,7 +279,23 @@
         '</div>';
     }
 
-    document.getElementById('ehContenido').innerHTML = suPais +
+    /* La Escuela va antes que las misiones para quien acaba de entrar. Las
+       misiones son trabajo; la Escuela es lo que hace que ese trabajo tenga
+       sentido, y es lo que retiene a quien todavía no está convencido. */
+    var escuela =
+      '<a class="eh-tarjeta eh-tarjeta--enlace eh-tarjeta--oro" href="escuela.html" ' +
+        'style="display:block;margin-bottom:1.5rem">' +
+        '<p class="eh-rotulo">La Escuela</p>' +
+        '<h3 class="eh-tarjeta__titulo">Antes de salir a convencer, hay que saber</h3>' +
+        '<p class="eh-tarjeta__cuerpo">' +
+          'Diez lecciones de tres minutos, cuarenta y cinco preguntas y seis retos. Por qué ' +
+          'Cartagena decide que hoy hablemos español, de dónde salen veinte repúblicas, y qué ' +
+          'contestar cuando alguien diga que esto es nostalgia imperial.' +
+        '</p>' +
+        '<p class="eh-tarjeta__pie eh-oro">Empezar por la primera lección →</p>' +
+      '</a>';
+
+    document.getElementById('ehContenido').innerHTML = suPais + escuela +
       '<div class="eh-pestanas" id="ehPestanas">' +
         '<button type="button" data-h="misiones" class="on">Misiones</button>' +
         '<button type="button" data-h="guiones">Guiones para redes</button>' +

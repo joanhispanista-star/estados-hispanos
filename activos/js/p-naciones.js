@@ -121,6 +121,14 @@
 
       honesta + confianza +
 
+      /* La diáspora estadounidense tiene página propia: es la única ficha que
+         no cabe en una tarjeta, y es la que el movimiento más necesita que se
+         lea entera. */
+      (n.id === 'estados-unidos-hispano'
+        ? '<a class="eh-boton eh-boton--oro eh-boton--bloque" href="eeuu.html" style="margin-top:1rem">' +
+          'Ver la página completa de la Hispanidad estadounidense</a>'
+        : '') +
+
       '<div class="eh-tarjeta__pie">' +
         '<div style="display:grid;gap:.35rem;font-size:.8rem">' +
           '<span><b>Gentilicio:</b> ' + EH.escapar(n.gentilicio) + '</span>' +
