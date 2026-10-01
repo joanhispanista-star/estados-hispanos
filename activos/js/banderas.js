@@ -65,12 +65,111 @@ EH.banderas = (function () {
       '<rect y="' + (a + altoMedio) + '" width="' + W + '" height="' + a + '" fill="' + abajo + '"/>';
   }
 
-  /* La marca que sustituye a un escudo heráldico. Sobria y en su sitio: no
-     intenta parecer el escudo, solo ocupa su lugar sin mentir. */
+  /* ---------------------------------------------------------------------
+     EMBLEMAS
+     ---------------------------------------------------------------------
+     La primera versión ponía un círculo con un punto dentro en todas las
+     banderas con escudo. Visto en fila y sobre fondo claro, no parecía un
+     escudo: parecía una diana, y las nueve banderas que lo llevaban parecían
+     sin terminar.
+
+     Ahora cada una lleva el elemento que de verdad la distingue, dibujado con
+     la geometría que sí se puede sostener: la estrella en corona de Paraguay,
+     el triángulo con arcoíris de El Salvador y Nicaragua, el árbol con seis
+     estrellas de Guinea Ecuatorial, el escudo con la cruz de la República
+     Dominicana, el escudo entre columnas de España, el águila de México, el
+     cóndor de Ecuador y la corona de laurel de Bolivia y Guatemala.
+
+     Lo que sigue sin dibujarse es el detalle heráldico fino, y no por pereza:
+     a los tamaños en que esto se usa —de 14 a 62 píxeles— un escudo
+     cuartelado con sus castillos y leones es una mancha. Lo que se busca es
+     que a 30 píxeles cada bandera se reconozca de un vistazo, que es lo que
+     hace un atlas.
+     --------------------------------------------------------------------- */
+
+  /* Corona de laurel: dos ramas curvas que se abren hacia arriba. */
+  function corona(cx, cy, r, color) {
+    var g = '';
+    [-1, 1].forEach(function (lado) {
+      g += '<path d="M' + (cx + lado * r * 0.1).toFixed(2) + ' ' + (cy + r * 0.85).toFixed(2) +
+        'Q' + (cx + lado * r).toFixed(2) + ' ' + (cy + r * 0.55).toFixed(2) +
+        ' ' + (cx + lado * r * 0.72).toFixed(2) + ' ' + (cy - r * 0.75).toFixed(2) +
+        '" fill="none" stroke="' + color + '" stroke-width="' + (r * 0.2).toFixed(2) +
+        '" stroke-linecap="round"/>';
+    });
+    return g;
+  }
+
+  /* Escudo: la silueta clásica, plana arriba y en punta abajo. */
+  function escudo(cx, cy, w, h, relleno, borde) {
+    var x = cx - w / 2, y = cy - h / 2;
+    return '<path d="M' + x + ' ' + y + 'h' + w + 'v' + (h * 0.55) +
+      'q0 ' + (h * 0.45) + ' ' + (-w / 2) + ' ' + (h * 0.45) +
+      'q' + (-w / 2) + ' 0 ' + (-w / 2) + ' ' + (-h * 0.45) + 'Z" fill="' + relleno +
+      '" stroke="' + (borde || 'none') + '" stroke-width="' + (w * 0.08).toFixed(2) + '"/>';
+  }
+
+  /* Un ave de alas abiertas. Sirve para el águila mexicana y para el cóndor
+     ecuatoriano: a este tamaño lo que se reconoce es la silueta, no la especie.
+
+     El primer intento era un solo path con ocho curvas encadenadas y salía
+     una polilla: las puntas de las alas caían y el cuerpo desaparecía. Esta
+     versión compone tres piezas separadas —dos alas y un cuerpo— porque así
+     se puede controlar cada una, y las alas suben en vez de caer, que es lo
+     que distingue a un ave heráldica de un insecto. */
+  function ave(cx, cy, env, color) {
+    /* Tercera versión. La primera era un path de ocho curvas y salía una
+       polilla. La segunda usaba curvas de Bézier por ala y se cerraban en
+       cuenco: parecía un bigote. Esta usa POLÍGONOS: las alas son cuñas que
+       apuntan arriba y afuera, y el cuerpo es una pieza aparte. Las rectas no
+       se deforman al rellenarse, que es lo que estropeaba a las otras dos. */
+    var a = env / 2, g = '';
+    [-1, 1].forEach(function (s) {
+      g += '<path d="M' + (cx + s * a * 0.1) + ' ' + (cy - env * 0.04) +
+        'L' + (cx + s * a * 0.62) + ' ' + (cy - env * 0.34) +
+        'L' + (cx + s * a) + ' ' + (cy - env * 0.22) +
+        'L' + (cx + s * a * 0.78) + ' ' + (cy + env * 0.04) +
+        'L' + (cx + s * a * 0.3) + ' ' + (cy + env * 0.14) +
+        'Z" fill="' + color + '"/>';
+    });
+    // Cuerpo y cola.
+    g += '<path d="M' + (cx - env * 0.1) + ' ' + (cy - env * 0.1) +
+      'L' + (cx + env * 0.1) + ' ' + (cy - env * 0.1) +
+      'L' + (cx + env * 0.06) + ' ' + (cy + env * 0.32) +
+      'L' + (cx - env * 0.06) + ' ' + (cy + env * 0.32) + 'Z" fill="' + color + '"/>';
+    // Cabeza de perfil, mirando a su derecha, con el pico.
+    g += '<circle cx="' + (cx + env * 0.04) + '" cy="' + (cy - env * 0.18) +
+      '" r="' + (env * 0.1).toFixed(2) + '" fill="' + color + '"/>';
+    g += '<path d="M' + (cx + env * 0.12) + ' ' + (cy - env * 0.21) +
+      'L' + (cx + env * 0.26) + ' ' + (cy - env * 0.16) +
+      'L' + (cx + env * 0.12) + ' ' + (cy - env * 0.11) + 'Z" fill="' + color + '"/>';
+    return g;
+  }
+
+  /* Triángulo con arcoíris: el corazón de los escudos centroamericanos. */
+  function trianguloCentroamericano(cx, cy, r, azul, oro) {
+    var s = '<path d="M' + cx + ' ' + (cy - r) + 'L' + (cx + r * 0.92) + ' ' + (cy + r * 0.62) +
+      'L' + (cx - r * 0.92) + ' ' + (cy + r * 0.62) + 'Z" fill="none" stroke="' + azul +
+      '" stroke-width="' + (r * 0.17).toFixed(2) + '" stroke-linejoin="round"/>';
+    // El arcoíris sobre los volcanes.
+    s += '<path d="M' + (cx - r * 0.52) + ' ' + (cy + r * 0.1) +
+      'q' + (r * 0.52) + ' ' + (-r * 0.62) + ' ' + (r * 1.04) + ' 0" fill="none" stroke="' + oro +
+      '" stroke-width="' + (r * 0.16).toFixed(2) + '" stroke-linecap="round"/>';
+    // Los tres volcanes, apenas insinuados.
+    s += '<path d="M' + (cx - r * 0.42) + ' ' + (cy + r * 0.44) + 'l' + (r * 0.2) + ' ' + (-r * 0.26) +
+      'l' + (r * 0.2) + ' ' + (r * 0.26) + 'M' + (cx - r * 0.04) + ' ' + (cy + r * 0.44) +
+      'l' + (r * 0.22) + ' ' + (-r * 0.32) + 'l' + (r * 0.22) + ' ' + (r * 0.32) +
+      '" fill="none" stroke="' + azul + '" stroke-width="' + (r * 0.13).toFixed(2) +
+      '" stroke-linejoin="round"/>';
+    return s;
+  }
+
+  /* Último recurso, por si mañana se añade una nación con escudo y nadie le
+     dibuja el suyo: un escudito neutro, que al menos parece un escudo. */
   function marca(cx, cy, r, color) {
-    return '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="none" stroke="' +
-      color + '" stroke-width="' + (r * 0.26).toFixed(2) + '" opacity=".82"/>' +
-      '<circle cx="' + cx + '" cy="' + cy + '" r="' + (r * 0.34).toFixed(2) + '" fill="' + color + '" opacity=".82"/>';
+    return escudo(cx, cy, r * 1.5, r * 1.9, 'none', color) +
+      '<circle cx="' + cx + '" cy="' + (cy - r * 0.12) + '" r="' + (r * 0.3).toFixed(2) +
+      '" fill="' + color + '" opacity=".85"/>';
   }
 
   function sol(cx, cy, r, color, rayos) {
@@ -128,13 +227,39 @@ EH.banderas = (function () {
     'estados-unidos-hispano': estadosUnidos,
 
     espana: function () {
+      /* El escudo va a un tercio del asta, no centrado, como en la real.
+         Lleva corona arriba y las dos columnas de Hércules a los lados: a este
+         tamaño el cuartelado con castillos y leones es una mancha, pero la
+         silueta corona-escudo-columnas sí se reconoce. */
+      var cx = W * 0.36, cy = H / 2 + 0.4;
       return tresBandas('#AA151B', '#F1BF00', '#AA151B', H / 2) +
-        marca(W * 0.36, H / 2, 4.6, '#8A6B1F');
+        // Las columnas de Hércules, con su basa y su capitel.
+        '<g fill="#9B1B2E">' +
+          '<rect x="' + (cx - 6.4) + '" y="' + (cy - 4.2) + '" width="1.5" height="8.4"/>' +
+          '<rect x="' + (cx - 7) + '" y="' + (cy - 4.8) + '" width="2.7" height="1"/>' +
+          '<rect x="' + (cx - 7) + '" y="' + (cy + 3.8) + '" width="2.7" height="1"/>' +
+          '<rect x="' + (cx + 4.9) + '" y="' + (cy - 4.2) + '" width="1.5" height="8.4"/>' +
+          '<rect x="' + (cx + 4.3) + '" y="' + (cy - 4.8) + '" width="2.7" height="1"/>' +
+          '<rect x="' + (cx + 4.3) + '" y="' + (cy + 3.8) + '" width="2.7" height="1"/>' +
+        '</g>' +
+        // La corona.
+        '<path d="M' + (cx - 3) + ' ' + (cy - 5.2) + 'l.9 -2l1.2 1.3l.9 -1.9l.9 1.9l1.2 -1.3l.9 2Z" ' +
+          'fill="#D4A32C" stroke="#8A6B1F" stroke-width="0.3"/>' +
+        // El escudo, cuartelado en dos tonos: no es heráldica exacta, pero
+        // deja de ser un bloque rojo plano.
+        escudo(cx, cy, 7.4, 9, '#F2E6C8', '#8A6B1F') +
+        '<path d="M' + (cx - 3.7) + ' ' + (cy - 4.5) + 'h3.7v4.3h-3.7Z" fill="#C8102E" opacity=".9"/>' +
+        '<path d="M' + cx + ' ' + (cy - 0.2) + 'h3.7v2.1q0 2.1 -1.85 2.1Z" fill="#C8102E" opacity=".9"/>' +
+        '<rect x="' + (cx - 1) + '" y="' + (cy - 0.6) + '" width="2" height="4.6" fill="#1F6B3B" opacity=".55"/>';
     },
 
     mexico: function () {
+      // El águila sobre el nopal: a este tamaño lo que se reconoce es la
+      // silueta oscura en mitad de la franja blanca, y eso sí se puede dibujar.
       return franjas(['#006847', '#FFFFFF', '#CE1126'], true) +
-        marca(W / 2, H / 2, 5, '#7B5A28');
+        ave(W / 2, H / 2 - 1.4, 11, '#5C4423') +
+        '<path d="M' + (W / 2 - 4) + ' ' + (H / 2 + 4.6) + 'q4 2.6 8 0" fill="none" ' +
+        'stroke="#2E6B3E" stroke-width="1.5" stroke-linecap="round"/>';
     },
 
     colombia: function () {
@@ -147,15 +272,22 @@ EH.banderas = (function () {
       return '<rect width="' + W + '" height="' + (H / 2) + '" fill="#FFDD00"/>' +
         '<rect y="' + (H / 2) + '" width="' + W + '" height="' + (H / 4) + '" fill="#0072CE"/>' +
         '<rect y="' + (H * 0.75) + '" width="' + W + '" height="' + (H / 4) + '" fill="#EF3340"/>' +
-        marca(W / 2, H / 2, 5, '#6B5A1E');
+        // El cóndor con las alas abiertas sobre el escudo.
+        ave(W / 2, H / 2 - 1, 12, '#6B5A1E') +
+        escudo(W / 2, H / 2 + 3.4, 5.4, 5.4, '#F2E6C8', '#6B5A1E');
     },
 
     venezuela: function () {
       var s = franjas(['#FFCC00', '#00247D', '#CF142B']);
-      // Las ocho estrellas van en arco sobre la franja azul.
+      /* Las ocho estrellas forman un arco en sonrisa DENTRO de la franja
+         azul. La versión anterior las calculaba sobre un círculo de radio 15
+         centrado fuera de sitio y el arco salía disparado hasta el amarillo:
+         se veía una curva blanca cruzando media bandera. El centro está
+         ahora por encima de las estrellas, que es lo que hace la sonrisa. */
+      var cx = W / 2, cy = H / 2 - 6.5, r = 10;
       for (var i = 0; i < 8; i++) {
-        var a = Math.PI * (0.64 + (i / 7) * 0.72);
-        s += estrella(W / 2 + Math.cos(a) * 15, H / 2 - Math.sin(a) * 15 + 7.5, 1.9, '#FFFFFF');
+        var a = (30 + (i / 7) * 120) * Math.PI / 180;
+        s += estrella(cx + Math.cos(a) * r, cy + Math.sin(a) * r, 1.7, '#FFFFFF');
       }
       return s;
     },
@@ -163,7 +295,9 @@ EH.banderas = (function () {
     peru: function () { return franjas(['#D91023', '#FFFFFF', '#D91023'], true); },
 
     bolivia: function () {
-      return franjas(['#D52B1E', '#F9E300', '#007A33']) + marca(W / 2, H / 2, 4.6, '#6B5A1E');
+      return franjas(['#D52B1E', '#F9E300', '#007A33']) +
+        corona(W / 2, H / 2, 5.2, '#2E6B3E') +
+        escudo(W / 2, H / 2 - 0.4, 5, 5.4, '#F2E6C8', '#6B5A1E');
     },
 
     chile: function () {
@@ -174,24 +308,35 @@ EH.banderas = (function () {
     },
 
     argentina: function () {
-      return franjas(['#74ACDF', '#FFFFFF', '#74ACDF']) + sol(W / 2, H / 2, 5.2, '#F6B40E');
+      // El Sol de Mayo ocupa casi toda la franja blanca en la bandera real.
+      // A 5,2 de radio quedaba un puntito invisible por debajo de 22 px.
+      return franjas(['#74ACDF', '#FFFFFF', '#74ACDF']) + sol(W / 2, H / 2, 6.4, '#F6B40E');
     },
 
     uruguay: function () {
+      /* Nueve franjas y un cantón blanco. La versión anterior intentaba
+         recortar las franjas a mano según el índice y salían cuatro barras
+         gruesas mal alineadas. Ahora se pintan las nueve enteras y encima se
+         pone el cantón: es como se construye de verdad y no hay que acertar
+         ningún recorte. */
       var s = '<rect width="' + W + '" height="' + H + '" fill="#FFFFFF"/>';
-      // Nueve franjas: las cuatro azules son las pares, y solo a la derecha
-      // del cantón en las cuatro primeras.
       for (var i = 1; i < 9; i += 2) {
-        var y = H / 9 * i, alto = H / 9;
-        var x = (i < 5) ? W * 0.4 : 0, ancho = (i < 5) ? W * 0.6 : W;
-        s += '<rect x="' + x + '" y="' + y.toFixed(2) + '" width="' + ancho + '" height="' + alto.toFixed(2) + '" fill="#0038A8"/>';
+        s += '<rect y="' + (H / 9 * i).toFixed(2) + '" width="' + W +
+          '" height="' + (H / 9).toFixed(2) + '" fill="#0038A8"/>';
       }
-      s += sol(W * 0.2, H * 0.22, 5, '#FCD116');
+      var lado = H / 9 * 4;           // el cantón cubre cuatro franjas
+      s += '<rect width="' + lado.toFixed(2) + '" height="' + lado.toFixed(2) + '" fill="#FFFFFF"/>';
+      s += sol(lado / 2, lado / 2, lado * 0.33, '#F6B40E');
       return s;
     },
 
     paraguay: function () {
-      return franjas(['#D52B1E', '#FFFFFF', '#0038A8']) + marca(W / 2, H / 2, 4.2, '#1F6B3B');
+      // La estrella dentro de la corona: es literalmente el anverso de su
+      // escudo, y resulta ser de los pocos que sí cabe dibujar entero.
+      return franjas(['#D52B1E', '#FFFFFF', '#0038A8']) +
+        '<circle cx="' + (W / 2) + '" cy="' + (H / 2) + '" r="5.2" fill="#FFFFFF" stroke="#1F6B3B" stroke-width="0.7"/>' +
+        corona(W / 2, H / 2, 4.3, '#1F6B3B') +
+        estrella(W / 2, H / 2, 2.4, '#F6B40E');
     },
 
     cuba: function () {
@@ -223,11 +368,29 @@ EH.banderas = (function () {
         '<rect x="' + (W / 2) + '" y="' + (H / 2) + '" width="' + (W / 2) + '" height="' + (H / 2) + '" fill="#002D62"/>' +
         '<rect x="' + (W / 2 - 2.4) + '" width="4.8" height="' + H + '" fill="#FFFFFF"/>' +
         '<rect y="' + (H / 2 - 2.4) + '" width="' + W + '" height="4.8" fill="#FFFFFF"/>' +
-        marca(W / 2, H / 2, 3.4, '#1F6B3B');
+        // El escudo con la cruz: la única bandera del mundo con una Biblia.
+        escudo(W / 2, H / 2, 6, 6.6, '#FFFFFF', '#1F6B3B') +
+        '<path d="M' + (W / 2) + ' ' + (H / 2 - 2) + 'v4M' + (W / 2 - 2) + ' ' + (H / 2) +
+        'h4" stroke="#002D62" stroke-width="0.9" stroke-linecap="round"/>';
     },
 
     guatemala: function () {
-      return franjas(['#4997D0', '#FFFFFF', '#4997D0'], true) + marca(W / 2, H / 2, 4.6, '#2E6B3E');
+      /* Los fusiles cruzados sobre el pergamino salían como un nudo
+         hexagonal ilegible. Se quedan la corona y el pergamino, que es lo que
+         de verdad se distingue, y encima el quetzal: el ave es lo que nadie
+         confunde con otro escudo centroamericano. */
+      var cx = W / 2, cy = H / 2;
+      return franjas(['#4997D0', '#FFFFFF', '#4997D0'], true) +
+        corona(cx, cy + 1, 5.4, '#2E6B3E') +
+        '<path d="M' + (cx - 3.4) + ' ' + (cy + 1.8) + 'h6.8" stroke="#E8DCC0" ' +
+        'stroke-width="2.1" stroke-linecap="round"/>' +
+        '<path d="M' + (cx - 3.4) + ' ' + (cy + 1.8) + 'h6.8" stroke="#8A7A4E" ' +
+        'stroke-width="0.4" stroke-linecap="round" opacity=".6"/>' +
+        // El quetzal, de perfil y con la cola larga, que es su rasgo.
+        '<circle cx="' + (cx + 0.4) + '" cy="' + (cy - 2.6) + '" r="1.5" fill="#2E6B3E"/>' +
+        '<path d="M' + (cx + 1.7) + ' ' + (cy - 3) + 'l1.3 .5l-1.3 .6Z" fill="#C8A020"/>' +
+        '<path d="M' + (cx - 0.4) + ' ' + (cy - 1.6) + 'q-2.4 1.4 -3.6 3.2" fill="none" ' +
+        'stroke="#2E6B3E" stroke-width="1.1" stroke-linecap="round"/>';
     },
 
     honduras: function () {
@@ -240,12 +403,17 @@ EH.banderas = (function () {
       return s;
     },
 
+    /* El Salvador y Nicaragua comparten el triángulo con los volcanes y el
+       arcoíris: no es un descuido del dibujo, es que sus escudos vienen los
+       dos del de la República Federal de Centroamérica. */
     'el-salvador': function () {
-      return franjas(['#0F47AF', '#FFFFFF', '#0F47AF']) + marca(W / 2, H / 2, 4.2, '#8A6B1F');
+      return franjas(['#0F47AF', '#FFFFFF', '#0F47AF']) +
+        trianguloCentroamericano(W / 2, H / 2, 5.4, '#0F47AF', '#F6B40E');
     },
 
     nicaragua: function () {
-      return franjas(['#0067C6', '#FFFFFF', '#0067C6']) + marca(W / 2, H / 2, 4.2, '#2E6B8E');
+      return franjas(['#0067C6', '#FFFFFF', '#0067C6']) +
+        trianguloCentroamericano(W / 2, H / 2, 5.4, '#0067C6', '#F6B40E');
     },
 
     'costa-rica': function () {
@@ -268,9 +436,16 @@ EH.banderas = (function () {
     },
 
     'guinea-ecuatorial': function () {
-      return franjas(['#3E9A00', '#FFFFFF', '#E32118']) +
-        '<path d="M0 0L' + (H * 0.5).toFixed(2) + ' ' + (H / 2) + 'L0 ' + H + 'Z" fill="#0073CE"/>' +
-        marca(W * 0.62, H / 2, 4, '#5A6B2E');
+      var cx = W * 0.62, cy = H / 2;
+      var s = franjas(['#3E9A00', '#FFFFFF', '#E32118']) +
+        '<path d="M0 0L' + (H * 0.5).toFixed(2) + ' ' + (H / 2) + 'L0 ' + H + 'Z" fill="#0073CE"/>';
+      // El árbol de la ceiba, y encima sus seis estrellas.
+      s += '<path d="M' + cx + ' ' + (cy + 4) + 'v-3.2" stroke="#5A4423" stroke-width="1.1" stroke-linecap="round"/>';
+      s += '<path d="M' + (cx - 3.4) + ' ' + (cy + 0.8) + 'q3.4 -4.4 6.8 0Z" fill="#2E6B3E"/>';
+      for (var i = 0; i < 6; i++) {
+        s += estrella(cx - 4.4 + i * 1.76, cy - 3.6, 0.95, '#0073CE');
+      }
+      return s;
     },
 
     filipinas: function () {
