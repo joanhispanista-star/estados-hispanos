@@ -33,9 +33,12 @@ igual que tu taller.
 | `manifiesto.html` | El Manifiesto Hispano en 8 secciones. Cada una con su enlace propio y su botón de compartir. Descargable en texto. |
 | `plan.html` | Seis fases con fechas y metas medibles. Y las 8 causas territoriales, cada una con el argumento de la otra parte. |
 | `sala.html` | Sala de Honor y Gloria: 18 figuras históricas, 8 medallas propias. |
+| `eeuu.html` | **La Hispanidad de Estados Unidos.** Estados Unidos no es el enemigo: 68 millones de hispanos son parte de esta casa. Ocho hechos de que lo hispano llegó antes que lo anglosajón, diez cifras con su fuente, los estados con nombre español y ocho figuras. |
+| `escuela.html` | **La Escuela.** 10 lecciones de tres minutos, 45 preguntas y 6 retos, todos apoyados en datos que ya pasaron verificación. La explicación sale siempre, aciertes o falles. |
 | `partidos.html` | Qué exige la ley de cada país para fundar un partido, los cargos locales, el Pacto de la Hispanidad y los límites del apoyo entre naciones. |
 | `circulo.html` | Círculo de Emprendedores: 5 rutas, 8 lecciones, 6 empresas que lo lograron. |
 | `comunidad.html` | Muro, ranking, directorio de miembros y los niveles de participación. |
+| `redes.html` | **Frente Digital.** Los diez canales con su estado real, los ocho guiones por red y munición verificada para compartir. Los feeds se cargan a un clic, nunca solos. |
 | `chat.html` | Salas: Plaza Mayor, una por nación y la del Círculo. |
 | `misiones.html` | El manual del recluta: 14 misiones, 8 guiones para redes y cómo invitar. |
 | `inscripcion.html` | El formulario de alta, con las cuatro autorizaciones separadas. |

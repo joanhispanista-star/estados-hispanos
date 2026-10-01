@@ -13,13 +13,18 @@ Un sitio de 21 pantallas, sin dependencias, sin compilación y sin servidor
 obligatorio: se abre con doble clic en `index.html`.
 
 - **Mapamundi** de las 24 entidades de la Hispanidad, incluidas Guinea
-  Ecuatorial, el Sáhara Occidental y Filipinas.
+  Ecuatorial, el Sáhara Occidental y Filipinas, con las 24 banderas dibujadas
+  en SVG.
 - **Manifiesto** en ocho secciones y **Gran Plan** con seis fases y ocho causas
   históricas, cada una con el argumento de la otra parte.
 - **Sala de Honor** con dieciocho figuras, de Blas de Lezo a Juan Latino.
+- **La Hispanidad de Estados Unidos**: 68 millones de hispanos, y por qué este
+  movimiento no es antiestadounidense.
+- **La Escuela**: diez lecciones, cuarenta y cinco preguntas y seis retos.
 - **Ruta electoral** de veinte países: qué exige de verdad cada ley para fundar
   un partido y por qué cargo se empieza.
-- **Círculo de Emprendedores**, comunidad, chat, misiones y CRM.
+- **Círculo de Emprendedores**, **Frente Digital**, comunidad, chat, misiones
+  y CRM.
 
 ## Cómo se abre
 
