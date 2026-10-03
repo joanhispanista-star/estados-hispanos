@@ -690,7 +690,14 @@ EH.globo = (function () {
 
     var visiblesCiudad = [], sobreEstado = null;
 
-    function clave(cd) { return cd.nombre.toLowerCase().replace(/[^a-záéíóúñü]+/g, '-'); }
+    /* La llave con la que una ciudad busca su ficha: su propia coordenada.
+       NO el nombre. Hay dos Granadas en el mapa (la de España y la de
+       Nicaragua), dos Santiagos de peso (Chile y Cuba) y varias Córdobas y
+       Méridas: con el nombre por llave, la ficha de una se abriría sobre la
+       otra, y el error sería invisible hasta que alguien lo leyera.
+       La coordenada es única por construcción, y el archivo de contenido
+       guarda la llave calculada EXACTAMENTE igual, desde el mismo dato. */
+    function clave(cd) { return cd.lon.toFixed(2) + ',' + cd.lat.toFixed(2); }
 
     function repintar() {
       if (pendiente) return;

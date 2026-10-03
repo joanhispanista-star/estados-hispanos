@@ -128,12 +128,46 @@ Lo hice así por tres razones concretas, y las tres se pueden discutir:
 **Si decides lo contrario, es un cambio de un archivo**: la lista `SEFARDI` de
 `activos/js/globo.js` y su ficha en `contenido-mapa.js`.
 
-### Lo que falta en el globo
+### Las fichas de ciudad
 
-Las **fichas de ciudad**. Hay 1.855 ciudades en el mapa y, por ahora, una sola
-con historia: Cartagena de Indias, con el retrato dibujado de Blas de Lezo. Las
-demás salen con punto gris y el globo lo dice —«todavía no hay ficha de esta
+**Cincuenta y cuatro ciudades tienen historia**, al menos una por cada uno de
+los veinte países, más Manila, Cebú, Malabo, El Aaiún, San Agustín, Santa Fe,
+San Antonio y Los Ángeles. Salen con **punto dorado**; las otras mil ochocientas
+salen con punto gris y el globo lo dice —«todavía no hay ficha de esta
 ciudad»— en vez de rellenarlas con un párrafo genérico.
+
+Cartagena de Indias lleva además el retrato dibujado de Blas de Lezo.
+
+**Ninguna ficha publica una cifra de población, y es a propósito.** De los
+quince errores críticos que el revisor encontró en este apartado, **catorce eran
+censos**: dos cifras directamente falsas (Puebla y Caracas) y ocho censos
+superados por otros ya publicados —Bolivia 2024, Chile 2024, Uruguay 2023,
+Ecuador 2022, el padrón español de 2025, Marruecos 2024—. Su dictamen fue
+bloquear la publicación hasta que cada cifra llevara organismo, publicación, año
+de referencia y fecha de consulta. Así que se publica la historia, que es el
+encargo, y la población que enseña la ficha sale de **una sola fuente para las
+1.861 ciudades** (Natural Earth) y va rotulada como área urbana.
+
+Por la misma razón, **tampoco se publican los campos de cifras sueltas** de las
+épocas, las causas, el mar ni las fichas sefardíes: ahí vivía la mayoría de los
+41 errores críticos (números de decreto cambiados, capturas de pesca con un 45 %
+de error, ediciones de la UNESCO mal numeradas). El relato va corregido; los
+números sueltos esperan.
+
+### El Sáhara se quedaba con una aldea
+
+Natural Earth archiva **El Aaiún, Dajla, Esmara, Daora, Lemsid y Bir Enzarán
+bajo Marruecos**, aunque las seis están dentro del territorio que ese mismo
+archivo dibuja como Sáhara Occidental. Resultado: el Sáhara, que es una de las
+veinticuatro entidades de esta plataforma, aparecía en el mapa con **una sola
+población: Bir Lehlu, de quinientos habitantes**.
+
+Se reasignan por el límite norte del territorio, el paralelo 27° 40′ N, que es
+una línea recta documentada desde 1912. No dice nada sobre quién tiene la
+soberanía —eso lo explica la ficha de la nación—, y evita la alternativa, que
+era borrar del mapa las ciudades de un territorio por cómo las etiqueta la
+fuente. Ninguna ciudad marroquí de verdad entra: Tan-Tan está a 28,4° y Guelmim
+a 29,0°.
 
 ### Sobre el retrato de Blas de Lezo
 
