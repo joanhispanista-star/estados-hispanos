@@ -695,7 +695,56 @@ select.eh-entrada{appearance:none;-webkit-appearance:none;cursor:pointer;
 .eh-globo__bandera:hover span{color:var(--suave)}
 .eh-globo__bandera:focus-visible{outline:2px solid var(--oro);outline-offset:1px}
 
+.eh-globo__mandos button:disabled{opacity:.3;cursor:default}
+
+/* El aumento actual. Sin este numero, al ampliar mucho uno se pierde y no
+   sabe si esta en x3 o en x20; el boton de volver a la vista general deja de
+   parecer necesario y la gente abandona el mapa desorientada. */
+.eh-globo__aumento{
+  position:absolute;left:.6rem;top:.6rem;
+  padding:.2rem .5rem;border-radius:6px;
+  background:rgba(18,8,10,.72);border:1px solid var(--linea2);
+  color:var(--oro);font-size:.72rem;font-variant-numeric:tabular-nums;
+  opacity:0;transition:opacity .2s;pointer-events:none;
+}
+.eh-globo__aumento.on{opacity:1}
+
+/* Interruptores de capa */
+.eh-globo__capas{
+  display:flex;gap:.2rem .95rem;flex-wrap:wrap;
+  padding:.6rem .7rem;border-top:1px solid var(--linea);
+  font-size:.74rem;color:var(--suave);
+}
+.eh-globo__capas label{display:inline-flex;align-items:center;gap:.35rem;cursor:pointer}
+.eh-globo__capas input{accent-color:var(--oro);cursor:pointer}
+
+/* La linea del tiempo */
+.eh-globo__tiempo{padding:.7rem .8rem;border-top:1px solid var(--linea)}
+.eh-globo__tiempo-fila{display:flex;align-items:center;gap:.7rem}
+.eh-globo__tiempo-fila input[type=range]{flex:1;accent-color:var(--oro);cursor:pointer;min-width:0}
+.eh-globo__tiempo-fila button{
+  flex:0 0 auto;padding:.28rem .7rem;border-radius:999px;
+  background:none;border:1px solid var(--linea2);color:var(--tenue);
+  font-size:.74rem;cursor:pointer;
+}
+.eh-globo__tiempo-fila button.on{border-color:var(--oro3);color:var(--oro);background:var(--oro-vidrio)}
+.eh-globo__tiempo-ano{
+  flex:0 0 auto;min-width:3.6rem;text-align:right;
+  font-family:var(--display);font-size:1.05rem;color:var(--oro2);
+  font-variant-numeric:tabular-nums;
+}
+.eh-globo__tiempo-texto{font-size:.82rem;color:var(--suave)}
+.eh-globo__tiempo-texto:not(:empty){margin-top:.55rem}
+.eh-globo__tiempo-texto p{margin:.3rem 0 0}
+
+/* El retrato dibujado dentro de una ficha de ciudad */
+.eh-globo__retrato{margin:.5rem 0;display:flex;justify-content:center}
+.eh-globo__retrato svg{width:100%;max-width:190px;height:auto;border-radius:6px}
+
 @media (max-width:560px){
   .eh-globo__mandos button{width:30px;height:30px}
   .eh-globo__bandera{width:54px}
+  .eh-globo__capas{gap:.15rem .7rem;font-size:.7rem}
+  .eh-globo__tiempo-fila{flex-wrap:wrap}
+  .eh-globo__tiempo-fila input[type=range]{order:3;flex-basis:100%}
 }

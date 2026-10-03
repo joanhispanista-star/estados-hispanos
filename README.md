@@ -12,9 +12,12 @@ Veinticuatro naciones, quinientos millones de hablantes, una sola voz.
 Un sitio de 21 pantallas, sin dependencias, sin compilación y sin servidor
 obligatorio: se abre con doble clic en `index.html`.
 
-- **Mapamundi** de las 24 entidades de la Hispanidad, incluidas Guinea
-  Ecuatorial, el Sáhara Occidental y Filipinas, con las 24 banderas dibujadas
-  en SVG.
+- **Un globo terráqueo** que se arrastra y se amplía hasta ver los pueblos.
+  Las 24 entidades de la Hispanidad —incluidas Guinea Ecuatorial, el Sáhara
+  Occidental y Filipinas— con sus banderas dibujadas en SVG, el mar de 200
+  millas, las ocho causas territoriales, los estados de Estados Unidos
+  coloreados por su población hispana, 1.855 ciudades y una línea del tiempo
+  de 1492 a hoy.
 - **Manifiesto** en ocho secciones y **Gran Plan** con seis fases y ocho causas
   históricas, cada una con el argumento de la otra parte.
 - **Sala de Honor** con dieciocho figuras, de Blas de Lezo a Juan Latino.
@@ -53,6 +56,10 @@ No son declaraciones: están implementadas, y cada archivo explica por qué.
 6. El botón de borrar **borra de verdad**, sin escribirle a nadie.
 7. **Cero fotografías de personas vivas** en la Sala de Honor.
 8. **Sin cookies, sin analítica de terceros y sin píxeles de redes.**
+9. **El mapa dice lo que no sabe.** La línea del tiempo no dibuja fronteras
+   históricas y lo advierte; la franja azul del mar son derechos económicos, no
+   soberanía, y lo dice; el rojo de una causa marca una disputa, no una
+   propiedad, y el Gran Plan publica también el argumento de la otra parte.
 
 ## Sobre las cifras
 

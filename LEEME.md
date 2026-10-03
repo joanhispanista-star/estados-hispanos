@@ -28,7 +28,7 @@ igual que tu taller.
 
 | Pantalla | Qué hace |
 |---|---|
-| `index.html` | Portada: mapamundi con las 24 naciones, las cifras, la presidencia y el contador de adhesiones. |
+| `index.html` | Portada: **el globo terráqueo** con las 24 naciones, el mar, las causas, los estados de EE. UU., las ciudades y la línea del tiempo. Más las cifras, la presidencia y el contador de adhesiones. |
 | `naciones.html` | Las 24 entidades de la Hispanidad, una por una, con lo que enorgullece y lo que incomoda. |
 | `manifiesto.html` | El Manifiesto Hispano en 8 secciones. Cada una con su enlace propio y su botón de compartir. Descargable en texto. |
 | `plan.html` | Seis fases con fechas y metas medibles. Y las 8 causas territoriales, cada una con el argumento de la otra parte. |
@@ -45,6 +45,120 @@ igual que tu taller.
 | `aportar.html` | Los aportes. Hoy dice la verdad: todavía no se recibe ninguno. |
 | `panel.html` | Tu CRM: padrón, mapa de presencia, aportes, autorizaciones y copia de seguridad. |
 | `legal/` | Ocho documentos, incluido el que deja al miembro ver, exportar y borrar sus datos de verdad. |
+
+---
+
+## 1-bis. El globo
+
+La portada y `naciones.html` ya no llevan el mapa plano dibujado a mano: llevan
+**la Tierra**, que se arrastra con el dedo o el ratón, se amplía hasta 24 veces
+y enseña seis capas que se encienden y apagan.
+
+| Capa | Qué pinta |
+|---|---|
+| **Los veinticuatro** | Cada nación con el color de su estatus, el mismo código que ya usaba la leyenda. |
+| **Mar de 200 millas** | Una franja azul pegada a la costa de cada nación hispana. |
+| **Causas territoriales** | Las ocho que ya declara el Gran Plan: Malvinas, Georgias, Esequibo, Gibraltar, Belice, el Sáhara, Puerto Rico y el litoral que Bolivia perdió en 1879. Más los sectores antárticos. |
+| **EE. UU. por estados** | Los 50 estados y el Distrito de Columbia, cada uno con un tono según su población hispana. |
+| **Ciudades** | 1.855 ciudades que van apareciendo al acercarse, con su nombre. |
+| **Huella sefardí** | Los países donde se habló el judeoespañol cinco siglos. |
+
+Y una **línea del tiempo** de doce épocas, de 1492 a hoy: al moverla, el mapa
+cambia y enseña qué territorios estaban bajo gobierno hispano en cada una.
+
+### Tres cosas que el globo NO hace, y lo dice en pantalla
+
+Esto no es modestia: es lo que impide que un adversario desmonte el mapa entero
+con una sola frase.
+
+1. **La línea del tiempo no dibuja fronteras históricas.** Pinta países de HOY
+   que en cada época estaban bajo gobierno hispano. La frontera exacta de 1680
+   habría que inventarla, y el panel de cada época lo advierte.
+2. **La banda azul no es la zona económica exclusiva real.** Es una franja
+   aproximada de 200 millas náuticas desde la costa; las zonas reales se
+   recortan donde dos países se solapan. Y son **derechos económicos, no
+   soberanía**: confundir las dos cosas invalidaría el mapa entero.
+3. **El rojo de una causa no dice «esto es nuestro».** Dice «esto está en
+   disputa», y el Gran Plan publica también el argumento de la otra parte.
+
+### De dónde salen los datos
+
+- **Fronteras, estados y ciudades:** Natural Earth (escalas 1:50 y 1:10).
+  Dominio público. Se cita porque es de justicia, no porque obligue.
+- **Áreas en disputa:** Natural Earth, capa de *disputed areas*. Que la propia
+  fuente cartográfica marque como disputados el Esequibo, Gibraltar y el sur de
+  Belice —sin que lo haya marcado nadie de este movimiento— es el argumento.
+- **Población hispana por estado:** U. S. Census Bureau, *American Community
+  Survey* 2024, tabla B03003. Una sola fuente y un solo año para los 52, o las
+  cifras no se podrían comparar entre sí.
+- **Sectores antárticos:** los grados que ya figuran en `EH.PLAN.notaAntartida`,
+  que pasó verificación: Chile 53°-90° O, Argentina 25°-74° O, Reino Unido
+  20°-80° O. El solapamiento chileno-argentino se pinta aparte **porque es el
+  argumento**: 21 grados reclamados dos veces.
+
+### El dato que corrige un eslogan
+
+**Texas no es «mitad hispano»: es el 40,3 %.** Ningún estado llega al 50 %; el
+mayor es Nuevo México, con 49,1 %. Y el estado con más hispanos en número
+absoluto no es ese: es California, con 16 millones.
+
+Lo que sí se puede decir, y es más fuerte, es que **los hispanos ya son el grupo
+más numeroso de Texas**, por delante de los blancos no hispanos (37,8 %).
+
+### Israel: por qué está en el mapa como huella sefardí y no como aliado
+
+Pediste poner a Israel como aliado del movimiento por el ladino. El ladino es
+real, es una lengua hispánica y da para mucho. Lo que está construido es la
+**diáspora sefardí**: Turquía, Grecia, Bulgaria, Macedonia del Norte, Bosnia,
+Serbia, Marruecos e Israel, con su ficha sobre el judeoespañol y sobre la ley
+española de 2015 que dio la nacionalidad a los sefardíes.
+
+Lo hice así por tres razones concretas, y las tres se pueden discutir:
+
+1. **Un mapa obliga a dibujar fronteras.** Declarar aliado a un Estado implica
+   decidir qué se pinta en Cisjordania, Gaza, el Golán y Jerusalén. El
+   movimiento no tiene doctrina sobre eso, y el mapa la crearía por su cuenta.
+2. **El coste en América Latina y en España es alto**, y no por el ladino, sino
+   por el conflicto. Una alianza declarada define al movimiento ante un público
+   que todavía no lo conoce.
+3. **El ladino no es de Israel: es de los sefardíes**, que están además en
+   Turquía, Grecia, Marruecos, Francia, Argentina y México. La capa de diáspora
+   los incluye a todos, Israel entre ellos, y cuenta una historia más grande.
+
+**Si decides lo contrario, es un cambio de un archivo**: la lista `SEFARDI` de
+`activos/js/globo.js` y su ficha en `contenido-mapa.js`.
+
+### Lo que falta en el globo
+
+Las **fichas de ciudad**. Hay 1.855 ciudades en el mapa y, por ahora, una sola
+con historia: Cartagena de Indias, con el retrato dibujado de Blas de Lezo. Las
+demás salen con punto gris y el globo lo dice —«todavía no hay ficha de esta
+ciudad»— en vez de rellenarlas con un párrafo genérico.
+
+### Sobre el retrato de Blas de Lezo
+
+Está **dibujado en SVG**, no generado con IA ni copiado de ningún cuadro, y por
+una razón que vale para todo el sitio: **no existe ningún retrato de Lezo
+pintado del natural.** El que todo el mundo usa es del Museo Naval de Madrid
+(inventario MNM-431), una copia de 1853 de un original del XVIII, ciento doce
+años posterior a su muerte. Un grabado admite a la vista que es una
+interpretación; una imagen que pareciera una fotografía de época la escondería.
+
+Si quieres poner una imagen generada con IA, el hueco está listo: se guarda en
+`activos/img/blas-de-lezo.jpg` y se añade `imagen` a su ficha. Pero debe ir
+rotulada como ilustración.
+
+Y tres cosas que la verificación tumbó, y que conviene que sepas antes de
+repetirlas en público:
+
+- **«Mediohombre» no es un apodo de época.** No hay prueba de que se le llamara
+  así en vida: aparece en un manual escolar colombiano de 1920 y en una novela
+  de 1989.
+- **«Todo buen español debe mear mirando a Inglaterra» es apócrifa.** Lo dice su
+  propio biógrafo académico: no consta en ningún documento.
+- **Lezo no mandaba la defensa de Cartagena.** El mando era del virrey Sebastián
+  de Eslava; Lezo era su segundo. Y la ciudad la defendieron también milicias
+  criollas, negros libres y unos 600 arqueros indígenas.
 
 ---
 
