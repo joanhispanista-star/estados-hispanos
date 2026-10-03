@@ -397,6 +397,10 @@ p:last-child{margin-bottom:0}
   border-radius:var(--radio);padding:1rem;box-shadow:var(--sombra-g);
   pointer-events:auto;
 }
+/* Con el retrato dentro, la ficha de Cartagena se salia del mapa y el dibujo
+   quedaba cortado por abajo: el contenedor recorta lo que sobra. Se le pone
+   techo y se desplaza por dentro. */
+.eh-mapa__ficha{max-height:min(74%,440px);overflow-y:auto;overscroll-behavior:contain}
 .eh-mapa__ficha h4{margin:0 0 .2rem;font-family:var(--display);font-size:1.12rem}
 .eh-mapa__ficha .met{display:flex;gap:.9rem;flex-wrap:wrap;font-size:.76rem;color:var(--tenue);margin-bottom:.55rem}
 .eh-mapa__ficha p{font-size:.84rem;color:var(--suave);margin:0 0 .7rem}
@@ -739,7 +743,7 @@ select.eh-entrada{appearance:none;-webkit-appearance:none;cursor:pointer;
 
 /* El retrato dibujado dentro de una ficha de ciudad */
 .eh-globo__retrato{margin:.5rem 0;display:flex;justify-content:center}
-.eh-globo__retrato svg{width:100%;max-width:190px;height:auto;border-radius:6px}
+.eh-globo__retrato svg{width:100%;max-width:150px;height:auto;border-radius:6px}
 
 @media (max-width:560px){
   .eh-globo__mandos button{width:30px;height:30px}

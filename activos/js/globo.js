@@ -198,6 +198,24 @@ EH.globo = (function () {
     var porId = {};
     naciones.forEach(function (n) { porId[n.id] = n; });
 
+    /* Las ciudades con ficha van PRIMERO en la lista de dibujo, y aparecen
+       antes al ampliar. Sin esto, Cartagena de Indias —la ciudad que mas
+       historia tiene en este mapa— no salia: Barranquilla esta a noventa
+       kilometros, es mas grande, y le ganaba el sitio a la etiqueta. La ciudad
+       por la que existe media Sala de Honor desaparecia por un codazo.
+       El rango efectivo de una ciudad con ficha se topa en 3, asi que sale
+       desde un aumento medio aunque sea un pueblo. */
+    var ciudadesOrden = ciudades.slice();
+    ciudadesOrden.forEach(function (c) {
+      c._ficha = !!(CONT.ciudades || {})[clave(c)];
+      c._rango = c._ficha ? Math.min(c.rango, 3) : c.rango;
+    });
+    ciudadesOrden.sort(function (a, b) {
+      if (a._ficha !== b._ficha) return a._ficha ? -1 : 1;
+      if (a._rango !== b._rango) return a._rango - b._rango;
+      return b.pob - a.pob;
+    });
+
     /* Mirando al Atlántico hispano: España arriba a la derecha y América a la
        izquierda. Es el único encuadre donde se ven las dos orillas a la vez,
        que es de lo que habla el movimiento. */
@@ -593,16 +611,16 @@ EH.globo = (function () {
         if (umbral >= 0) {
           ctx.font = '500 11px ui-sans-serif,system-ui,sans-serif';
           ctx.textBaseline = 'middle';
-          for (i = 0; i < ciudades.length; i++) {
-            var cd = ciudades[i];
-            if (cd.rango > umbral) continue;
+          for (i = 0; i < ciudadesOrden.length; i++) {
+            var cd = ciudadesOrden[i];
+            if (cd._rango > umbral) continue;
             var p = mat[0] * cd.x + mat[1] * cd.y + mat[2] * cd.z;
             if (p <= 0.02) continue;             /* de espaldas o pegada al canto */
             var sx = cx + r * (mat[3] * cd.x + mat[4] * cd.y);
             var sy = cy - r * (mat[6] * cd.x + mat[7] * cd.y + mat[8] * cd.z);
             if (sx < -60 || sx > An + 60 || sy < -20 || sy > Al + 20) continue;
 
-            var tieneFicha = !!FICHAS_CIUDAD[clave(cd)];
+            var tieneFicha = cd._ficha;
             var anchoT = ctx.measureText(cd.nombre).width;
             var caja = [sx + 5, sy - 7, sx + 11 + anchoT, sy + 7];
 
@@ -1060,8 +1078,15 @@ EH.globo = (function () {
       c.innerHTML = '<button class="eh-mapa__cerrar" type="button" aria-label="Cerrar">×</button>' + html;
       var cc = contenedor.getBoundingClientRect(), lc = lienzo.getBoundingClientRect();
       c.style.left = Math.min(Math.max(lc.left - cc.left + punto.x + 14, 8), Math.max(8, cc.width - 320)) + 'px';
-      c.style.top = Math.max(lc.top - cc.top + punto.y - 10, 8) + 'px';
+      c.style.top = '8px';
       contenedor.appendChild(c);
+      /* Se mide DESPUES de meterla en la pagina y se sube si no cabe: hasta que
+         no esta puesta no se sabe lo que mide, y una ficha con retrato mide el
+         doble que una sin el. Antes se colocaba a ciegas junto al punto y el
+         dibujo salia cortado por el borde de abajo. */
+      var alto = c.getBoundingClientRect().height;
+      var arriba = lc.top - cc.top + punto.y - 10;
+      c.style.top = Math.max(Math.min(arriba, cc.height - alto - 8), 8) + 'px';
       c.querySelector('.eh-mapa__cerrar').addEventListener('click', function () { c.remove(); });
       return c;
     }
@@ -1079,10 +1104,13 @@ EH.globo = (function () {
           (f && f.fundacion ? '<span>' + EH.escapar(f.fundacion) + '</span>' : '') +
         '</div>';
       if (f) {
-        html += '<p>' + EH.escapar(f.texto) + '</p>';
+        /* El retrato va ANTES del texto. Puesto despues, con la ficha acotada
+           en altura quedaba debajo del desplazamiento: habia que saber que
+           estaba ahi para verlo, y es justo lo que la ficha tiene que ensenar. */
         if (f.retrato && EH.retratos && EH.retratos[f.retrato]) {
           html += '<div class="eh-globo__retrato">' + EH.retratos[f.retrato]() + '</div>';
         }
+        html += '<p>' + EH.escapar(f.texto) + '</p>';
         if (f.fuente) html += '<p class="eh-tenue" style="font-size:.7rem">' + EH.escapar(f.fuente) + '</p>';
       } else {
         /* No se rellena con un párrafo genérico. Decir que todavía no hay
