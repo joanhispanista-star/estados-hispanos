@@ -741,6 +741,31 @@ select.eh-entrada{appearance:none;-webkit-appearance:none;cursor:pointer;
 .eh-globo__tiempo-texto:not(:empty){margin-top:.55rem}
 .eh-globo__tiempo-texto p{margin:.3rem 0 0}
 
+/* La tira de ciudades con historia. Es lo que hace que las fichas se
+   encuentren: antes habia que ampliar el globo tres veces y media para toparse
+   con la primera, y quien abria la portada no se enteraba de que existian. */
+.eh-globo__ciudades{padding:.6rem .7rem;border-top:1px solid var(--linea)}
+.eh-globo__ciudades-tit{margin:0 0 .45rem;font-size:.78rem;color:var(--suave)}
+.eh-globo__ciudades-lista{
+  display:flex;flex-wrap:wrap;gap:.3rem;
+  /* Envuelve en vez de desplazarse: son nombres de ancho muy desigual y, en
+     una fila unica, "Santiago de Compostela" obligaria a casillas del doble de
+     ancho por un solo nombre. Con techo de altura y desplazamiento propio para
+     que cincuenta y cuatro no empujen el resto de la pagina fuera. */
+  max-height:7.6rem;overflow-y:auto;overscroll-behavior:contain;
+}
+.eh-globo__ciudades-lista button{
+  flex:0 0 auto;display:inline-flex;align-items:baseline;gap:.35rem;
+  padding:.24rem .55rem;border-radius:999px;
+  background:var(--panel2);border:1px solid var(--linea2);
+  color:var(--texto);font-size:.74rem;cursor:pointer;
+  transition:border-color .15s,color .15s;
+}
+.eh-globo__ciudades-lista button span{font-size:.64rem;color:var(--tenue)}
+.eh-globo__ciudades-lista button:hover{border-color:var(--oro3);color:var(--oro2)}
+.eh-globo__ciudades-lista button:hover span{color:var(--suave)}
+.eh-globo__ciudades-lista button:focus-visible{outline:2px solid var(--oro);outline-offset:1px}
+
 /* El retrato dibujado dentro de una ficha de ciudad */
 .eh-globo__retrato{margin:.5rem 0;display:flex;justify-content:center}
 .eh-globo__retrato svg{width:100%;max-width:150px;height:auto;border-radius:6px}
@@ -749,6 +774,11 @@ select.eh-entrada{appearance:none;-webkit-appearance:none;cursor:pointer;
   .eh-globo__mandos button{width:30px;height:30px}
   .eh-globo__bandera{width:54px}
   .eh-globo__capas{gap:.15rem .7rem;font-size:.7rem}
+  /* En un telefono la tira de ciudades se comia doscientos pixeles de alto y
+     empujaba el globo fuera de la pantalla. Se queda en la mitad y se
+     desplaza por dentro. */
+  .eh-globo__ciudades-lista{max-height:5rem}
+  .eh-globo__ciudades-lista button{font-size:.7rem;padding:.2rem .45rem}
   .eh-globo__tiempo-fila{flex-wrap:wrap}
   .eh-globo__tiempo-fila input[type=range]{order:3;flex-basis:100%}
 }

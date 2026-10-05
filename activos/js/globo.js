@@ -608,12 +608,18 @@ EH.globo = (function () {
       var visibles = [];
       if (capas.ciudades) {
         var umbral = umbralCiudades();
-        if (umbral >= 0) {
+        /* LAS CIUDADES CON FICHA SE VEN DESDE EL PRIMER MOMENTO, con su punto
+           dorado, aunque todavia no quepa el nombre. Antes habia que ampliar
+           tres veces y media para que apareciera la primera, asi que quien
+           abria la portada no llegaba a enterarse de que cincuenta y cuatro
+           ciudades tenian historia detras. Una funcion que hay que buscar es
+           una funcion que no existe. */
+        if (umbral >= 0 || capas.ciudades) {
           ctx.font = '500 11px ui-sans-serif,system-ui,sans-serif';
           ctx.textBaseline = 'middle';
           for (i = 0; i < ciudadesOrden.length; i++) {
             var cd = ciudadesOrden[i];
-            if (cd._rango > umbral) continue;
+            if (!cd._ficha && (umbral < 0 || cd._rango > umbral)) continue;
             var p = mat[0] * cd.x + mat[1] * cd.y + mat[2] * cd.z;
             if (p <= 0.02) continue;             /* de espaldas o pegada al canto */
             var sx = cx + r * (mat[3] * cd.x + mat[4] * cd.y);
@@ -621,8 +627,13 @@ EH.globo = (function () {
             if (sx < -60 || sx > An + 60 || sy < -20 || sy > Al + 20) continue;
 
             var tieneFicha = cd._ficha;
-            var anchoT = ctx.measureText(cd.nombre).width;
-            var caja = [sx + 5, sy - 7, sx + 11 + anchoT, sy + 7];
+            /* El nombre tarda un poco mas en salir que el punto: a la escala
+               del mundo entero, cincuenta y cuatro rotulos se pisan unos a
+               otros y no se lee ninguno. El punto solo, en cambio, cabe. */
+            var conNombre = !tieneFicha || escala >= 1.9;
+            var anchoT = conNombre ? ctx.measureText(cd.nombre).width : 0;
+            var caja = conNombre ? [sx + 5, sy - 7, sx + 11 + anchoT, sy + 7]
+                                 : [sx - 5, sy - 5, sx + 5, sy + 5];
 
             /* Reparto por codazos: la primera que llega se queda el sitio.
                Como la lista va ordenada por rango, las que ganan son siempre
@@ -647,14 +658,16 @@ EH.globo = (function () {
               ctx.lineWidth = 1;
               ctx.stroke();
             }
-            ctx.fillStyle = destacada ? '#fff6e6' : (tieneFicha ? '#f6d79a' : 'rgba(245,236,226,.78)');
-            ctx.strokeStyle = 'rgba(7,13,21,.85)';
-            ctx.lineWidth = 2.6;
-            ctx.lineJoin = 'round';
-            ctx.strokeText(cd.nombre, sx + 6, sy);   /* borde oscuro: si no, un
-                                                        nombre sobre tierra clara
-                                                        no se lee */
-            ctx.fillText(cd.nombre, sx + 6, sy);
+            if (conNombre) {
+              ctx.fillStyle = destacada ? '#fff6e6' : (tieneFicha ? '#f6d79a' : 'rgba(245,236,226,.78)');
+              ctx.strokeStyle = 'rgba(7,13,21,.85)';
+              ctx.lineWidth = 2.6;
+              ctx.lineJoin = 'round';
+              ctx.strokeText(cd.nombre, sx + 6, sy);   /* borde oscuro: si no, un
+                                                          nombre sobre tierra clara
+                                                          no se lee */
+              ctx.fillText(cd.nombre, sx + 6, sy);
+            }
           }
         }
       }
@@ -770,7 +783,7 @@ EH.globo = (function () {
         if (c._sx === undefined) continue;
         /* La etiqueta también vale como blanco: apuntar a un punto de tres
            píxeles con el dedo es imposible. */
-        if (px >= c._sx && px <= c._sx + c._ancho + 8 && Math.abs(py - c._sy) < 9) return c;
+        if (px >= c._sx - 7 && px <= c._sx + (c._ancho || 0) + 8 && Math.abs(py - c._sy) < 9) return c;
         var d = (c._sx - px) * (c._sx - px) + (c._sy - py) * (c._sy - py);
         if (d < mejorD) { mejorD = d; mejor = c; }
       }
@@ -1057,6 +1070,24 @@ EH.globo = (function () {
       };
     }
 
+    /* Volar a una ciudad y abrirle la ficha. La ficha se abre DESPUES del
+       vuelo porque antes el punto todavia esta en otro sitio de la pantalla y
+       la tarjeta saldria colocada donde la ciudad ya no esta. */
+    function irACiudad(cd) {
+      if (!cd) return;
+      sobreCiudad = cd;
+      volar(cd.lon, cd.lat, Math.max(escala, 7));
+      window.setTimeout(function () {
+        /* La ficha se abre SIEMPRE, aunque la ciudad no haya quedado de cara.
+           Con un "if (q.visible)" delante, cualquier vuelo que no terminara
+           —la pestana en segundo plano congela los fotogramas, por ejemplo—
+           dejaba el clic sin respuesta y sin explicacion. Si no esta visible,
+           la tarjeta sale en el centro, que es donde va a aterrizar. */
+        var q = puntoEn(cd.lon, cd.lat);
+        abrirCiudad(cd, q.visible ? q : { x: An / 2, y: Al / 2 });
+      }, 950);
+    }
+
     function irA(id, abrirFicha) {
       var n = porId[id];
       if (!n) return;
@@ -1284,6 +1315,31 @@ EH.globo = (function () {
       contenedor.appendChild(tira);
     }
 
+    /* LA TIRA DE CIUDADES CON HISTORIA.
+       Es la respuesta al problema de encontrarlas: aqui estan todas, con su
+       nombre y su pais, y al pulsar una el globo vuela y abre su ficha. Hace
+       ademas de camino con teclado, que un lienzo no tiene. */
+    var conFicha = ciudadesOrden.filter(function (c) { return c._ficha; })
+      .sort(function (a, b) { return a.nombre.localeCompare(b.nombre, 'es'); });
+    if (opciones.ciudadesTira !== false && conFicha.length) {
+      var tc = document.createElement('div');
+      tc.className = 'eh-globo__ciudades';
+      tc.innerHTML =
+        '<p class="eh-globo__ciudades-tit">' + conFicha.length +
+        ' ciudades cuentan su historia <span class="eh-tenue">· pulsa una y el globo va</span></p>' +
+        '<div class="eh-globo__ciudades-lista" role="group" aria-label="Ciudades con historia">' +
+        conFicha.map(function (c, i) {
+          var nac = porId[c.pais];
+          return '<button type="button" data-i="' + i + '">' + EH.escapar(c.nombre) +
+            (nac ? '<span>' + EH.escapar(nac.nombre) + '</span>' : '') + '</button>';
+        }).join('') + '</div>';
+      tc.addEventListener('click', function (ev) {
+        var b = ev.target.closest('button[data-i]');
+        if (b) irACiudad(conFicha[parseInt(b.getAttribute('data-i'), 10)]);
+      });
+      contenedor.appendChild(tc);
+    }
+
     if (opciones.leyenda !== false) {
       var ley = document.createElement('div');
       ley.className = 'eh-mapa__leyenda';
@@ -1294,6 +1350,7 @@ EH.globo = (function () {
         '<span><i class="eh-mapa__punto" style="background:#3a6ea5"></i> Herencia y diáspora</span>' +
         '<span><i class="eh-mapa__punto" style="background:#4a3a52"></i> Huella sefardí</span>' +
         '<span><i class="eh-mapa__punto" style="background:rgba(93,168,214,.5)"></i> Mar de 200 millas</span>' +
+        '<span><i class="eh-mapa__punto" style="background:#f0c46b;box-shadow:0 0 0 1px #12080a"></i> Ciudad con historia</span>' +
         '<span>Arrastra para girar · rueda o pellizco para acercar · doble clic para ir</span>';
       contenedor.appendChild(ley);
     }

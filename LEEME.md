@@ -136,6 +136,13 @@ San Antonio y Los Ángeles. Salen con **punto dorado**; las otras mil ochocienta
 salen con punto gris y el globo lo dice —«todavía no hay ficha de esta
 ciudad»— en vez de rellenarlas con un párrafo genérico.
 
+**Y se encuentran sin buscarlas.** Debajo del globo hay una tira que las lista
+todas: pulsas una y el globo vuela hasta ella y abre su ficha. Los puntos
+dorados, además, se ven desde la vista del mundo entero, antes de ampliar nada.
+Esto no es un adorno: antes había que ampliar el globo tres veces y media para
+toparse con la primera, así que quien abría la portada no llegaba a enterarse de
+que existían. Una función que hay que buscar es una función que no existe.
+
 Cartagena de Indias lleva además el retrato dibujado de Blas de Lezo.
 
 **Ninguna ficha publica una cifra de población, y es a propósito.** De los
