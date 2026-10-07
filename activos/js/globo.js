@@ -106,7 +106,7 @@ EH.globo = (function () {
       v[i * 3 + 1] = cl * Math.sin(lon);
       v[i * 3 + 2] = Math.sin(lat);
     }
-    return { v: v, n: n, s: new Float32Array(n * 2), x0: 0, x1: 0, y0: 0, y1: 0 };
+    return { v: v, n: n, s: new Float32Array(n * 2), ll: plano, x0: 0, x1: 0, y0: 0, y1: 0 };
   }
 
   function anillo(lon0, lon1, lat, paso) {
@@ -161,6 +161,8 @@ EH.globo = (function () {
       };
     });
 
+    marcarCostas();
+
     var lineas = [], lon, lat, p;
     for (lon = -180; lon < 180; lon += 30) {
       p = [];
@@ -169,6 +171,82 @@ EH.globo = (function () {
     }
     for (lat = -60; lat <= 60; lat += 30) lineas.push(aPieza(anillo(-180, 180, lat, 3)));
     RETICULA = lineas;
+  }
+
+  /* ---------------------------------------------------------------------
+     QUE TROZO DEL CONTORNO ES COSTA
+     ---------------------------------------------------------------------
+     POR QUE HACE FALTA
+     La banda azul del mar se dibuja como un trazo muy grueso sobre el
+     contorno del pais. Trazando el contorno ENTERO, la banda aparecia tambien
+     alrededor de las fronteras de TIERRA, y eso producia dos disparates que se
+     veian a simple vista: el mar de Uruguay y el de Argentina se metian
+     doscientas millas dentro de Brasil, y BOLIVIA Y PARAGUAY, que no tienen
+     mar, salian rodeados de oceano.
+
+     COMO SE DISTINGUE
+     Un vertice es frontera de tierra si OTRO pais tiene un vertice casi en el
+     mismo sitio. Natural Earth deriva las fronteras de una topologia comun, asi
+     que dos paises vecinos comparten practicamente los mismos puntos a lo largo
+     de su linde; en mar abierto no hay nadie al lado. Lo que no case con nadie,
+     es costa.
+
+     POR QUE SE CALCULA AQUI Y NO VIENE EN UN ARCHIVO
+     Porque tiene que salir EXACTAMENTE de la misma geometria que se dibuja. Si
+     las costas vinieran de otro archivo, cualquier cambio de simplificacion
+     dejaria la banda desplazada de la orilla. Con una rejilla de busqueda son
+     unas decenas de milisegundos una sola vez.
+
+     LO QUE SIGUE SIN SER EXACTO, Y EL ROTULO LO DICE
+     Donde una costa termina en una frontera, la banda se corta en seco (de ahi
+     el remate cuadrado, no redondo). La frontera maritima real entre dos
+     vecinos no es perpendicular a la orilla, asi que ahi sigue siendo una
+     aproximacion. Pero se acaba a la altura del limite, que es lo que antes no
+     pasaba. */
+  var EPS_BORDE = 0.14;          /* grados; ~15 km */
+  var CELDA = 0.5;
+
+  function marcarCostas() {
+    var rejilla = {}, i, j, k, c, pieza, ll, n;
+
+    function meter(lon, lat, pais) {
+      var g = Math.floor(lon / CELDA) + ',' + Math.floor(lat / CELDA);
+      (rejilla[g] || (rejilla[g] = [])).push(lon, lat, pais);
+    }
+
+    for (i = 0; i < paises.length; i++) {
+      for (j = 0; j < paises[i].piezas.length; j++) {
+        ll = paises[i].piezas[j].ll;
+        for (k = 0; k < ll.length; k += 2) meter(ll[k], ll[k + 1], i);
+      }
+    }
+
+    for (i = 0; i < paises.length; i++) {
+      if (!paises[i].hispano) continue;       /* solo se dibuja la banda de los nuestros */
+      for (j = 0; j < paises[i].piezas.length; j++) {
+        pieza = paises[i].piezas[j];
+        ll = pieza.ll; n = pieza.n;
+        var costa = new Uint8Array(n);
+        for (k = 0; k < n; k++) {
+          var lon = ll[k * 2], lat = ll[k * 2 + 1], vecino = false;
+          var gx = Math.floor(lon / CELDA), gy = Math.floor(lat / CELDA);
+          for (var dx = -1; dx <= 1 && !vecino; dx++) {
+            for (var dy = -1; dy <= 1 && !vecino; dy++) {
+              c = rejilla[(gx + dx) + ',' + (gy + dy)];
+              if (!c) continue;
+              for (var q = 0; q < c.length; q += 3) {
+                if (c[q + 2] === i) continue;        /* el pais no es vecino de si mismo */
+                if (Math.abs(c[q] - lon) < EPS_BORDE && Math.abs(c[q + 1] - lat) < EPS_BORDE) {
+                  vecino = true; break;
+                }
+              }
+            }
+          }
+          costa[k] = vecino ? 0 : 1;
+        }
+        pieza.costa = costa;
+      }
+    }
   }
 
   function mezclar(a, b, t) {
@@ -228,6 +306,18 @@ EH.globo = (function () {
     var sobre = null, sobreCiudad = null, elegido = opciones.destacar || null;
     var animando = null, pendiente = false;
     var epoca = null;                      /* null = hoy */
+
+    /* QUE MIDE EL COLOR DE LOS ESTADOS DE EE.UU.
+       'poblacion' = el porcentaje de poblacion hispana segun el censo.
+       'huella'    = cuanta historia espanola tiene el estado.
+       Hacen falta las DOS porque no son lo mismo, y confundirlas lleva a
+       discusiones falsas. Florida es el septimo estado por poblacion hispana
+       —28,7%, un dato del censo que no se puede cambiar— y de los primeros por
+       historia: la bautizo Ponce de Leon en 1513 y San Agustin, de 1565, es la
+       ciudad de fundacion europea mas antigua habitada sin interrupcion del
+       pais continental. Con una sola medida, el mapa parecia estar diciendo que
+       Florida es poco hispana, y no es eso lo que decia: decia otra cosa. */
+    var medidaEEUU = 'poblacion';
 
     var capas = {
       mar: opciones.mar !== false,
@@ -431,13 +521,41 @@ EH.globo = (function () {
       if (capas.mar && hoy) {
         ctx.save();
         ctx.lineJoin = 'round';
-        ctx.lineCap = 'round';
+        /* Remate CUADRADO, no redondo: donde la costa acaba en una frontera, un
+           remate redondo abria un abanico de doscientas millas dentro del
+           vecino. Con el cuadrado la banda se corta a la altura del limite. */
+        ctx.lineCap = 'butt';
         ctx.lineWidth = Math.max(2, r * MILLAS200 * 2);
         ctx.strokeStyle = 'rgba(93,168,214,.20)';
         ctx.beginPath();
         for (i = 0; i < paises.length; i++) {
-          if (!paises[i].hispano || !porId[paises[i].id] || !vivaEn(paises[i].id)) continue;
-          trazarSi(paises[i].piezas);
+          var pm = paises[i];
+          if (!pm.hispano || !porId[pm.id] || !vivaEn(pm.id)) continue;
+          /* La diaspora no lleva banda: Estados Unidos esta en este mapa por
+             sus sesenta y ocho millones de hispanos, no como Estado hispano, y
+             pintarle doscientas millas de "mar hispano" alrededor seria una
+             reclamacion que nadie ha hecho y un titular regalado al contrario.
+             La zona economica exclusiva es un derecho del Estado ribereño, y el
+             Estado ribereno ahi es Estados Unidos. */
+          if (porId[pm.id].estatus === 'diaspora') continue;
+          for (j = 0; j < pm.piezas.length; j++) {
+            var pz = pm.piezas[j];
+            if (proyectar(pz) !== 2 || !pz.costa) continue;
+            /* Tramos seguidos de costa. El anillo esta cerrado, asi que se
+               recorre dando una vuelta entera y se corta donde empieza la
+               tierra. */
+            var s = pz.s, nn = pz.n, abierto = false, c0;
+            for (var u = 0; u <= nn; u++) {
+              var idx = u % nn;
+              if (pz.costa[idx]) {
+                c0 = idx * 2;
+                if (!abierto) { ctx.moveTo(s[c0], s[c0 + 1]); abierto = true; }
+                else ctx.lineTo(s[c0], s[c0 + 1]);
+              } else {
+                abierto = false;
+              }
+            }
+          }
         }
         ctx.stroke();
         ctx.restore();
@@ -537,8 +655,13 @@ EH.globo = (function () {
           var dat = DATOS_ESTADO[(es.s || '').toLowerCase()];
           ctx.beginPath();
           if (!trazarSi(es.piezas)) continue;
-          if (dat && typeof dat.pct === 'number') {
-            ctx.fillStyle = mezclar(RAMPA_A, RAMPA_B, dat.pct / 50);
+          var val = null, tope = 50;
+          if (dat) {
+            if (medidaEEUU === 'huella' && typeof dat.huella === 'number') { val = dat.huella; tope = 100; }
+            else if (medidaEEUU === 'poblacion' && typeof dat.pct === 'number') { val = dat.pct; }
+          }
+          if (val !== null) {
+            ctx.fillStyle = mezclar(RAMPA_A, RAMPA_B, val / tope);
           } else {
             /* Sin dato no se inventa un tono: se deja gris y la leyenda lo
                explica. Un degradado bonito con un número inventado debajo es
@@ -697,11 +820,13 @@ EH.globo = (function () {
         var de = DATOS_ESTADO[(sobreEstado.s || '').toLowerCase()];
         var pe = puntoEn(sobreEstado.lon, sobreEstado.lat);
         if (pe.visible) {
-          rot = {
-            t: (de && de.nombre ? de.nombre : sobreEstado.nombre) +
-               (de && typeof de.pct === 'number' ? '  ·  ' + de.pct.toFixed(1).replace('.', ',') + ' % hispano' : ''),
-            x: pe.x, y: pe.y
-          };
+          var cola = '';
+          if (de && medidaEEUU === 'huella' && typeof de.huella === 'number') {
+            cola = '  ·  huella española ' + de.huella.toFixed(0) + '/100';
+          } else if (de && typeof de.pct === 'number') {
+            cola = '  ·  ' + de.pct.toFixed(1).replace('.', ',') + ' % hispano';
+          }
+          rot = { t: (de && de.nombre ? de.nombre : sobreEstado.nombre) + cola, x: pe.x, y: pe.y };
         }
       }
       if (rot) {
@@ -1162,10 +1287,17 @@ EH.globo = (function () {
       var d = DATOS_ESTADO[(es.s || '').toLowerCase()];
       var html = '<h4>' + EH.escapar((d && d.nombre) || es.nombre) + '</h4>';
       if (d && typeof d.pct === 'number') {
+        /* Las DOS medidas, siempre, aunque el mapa este pintando una sola: es
+           justo la comparacion lo que ensena algo. */
         html += '<div class="met"><span><strong style="color:var(--oro2)">' +
-          EH.escapar(d.pct.toFixed(1).replace('.', ',')) + ' %</strong> de población hispana</span>' +
-          (d.hispanos ? '<span>' + EH.escapar(EH.poblacion(d.hispanos)) + ' personas</span>' : '') + '</div>';
+          EH.escapar(d.pct.toFixed(1).replace('.', ',')) + ' %</strong> de población hispana hoy</span>' +
+          (d.hispanos ? '<span>' + EH.escapar(EH.poblacion(d.hispanos)) + ' personas</span>' : '') +
+          (typeof d.huella === 'number'
+            ? '<span><strong style="color:var(--oro2)">' + EH.escapar(d.huella.toFixed(0)) +
+              '/100</strong> de huella española</span>' : '') +
+          '</div>';
         if (d.texto) html += '<p>' + EH.escapar(d.texto) + '</p>';
+        if (d.historia) html += '<p>' + EH.escapar(d.historia) + '</p>';
         if (d.fuente) html += '<p class="eh-tenue" style="font-size:.7rem">' + EH.escapar(d.fuente) + '</p>';
       } else {
         html += '<p class="eh-tenue">Sin dato de población hispana para este estado.</p>';
@@ -1235,6 +1367,24 @@ EH.globo = (function () {
         return '<label title="' + EH.escapar(e.d) + '"><input type="checkbox" data-c="' + e.k + '"' +
           (capas[e.k] ? ' checked' : '') + '> ' + EH.escapar(e.t) + '</label>';
       }).join('');
+      /* El selector de medida solo aparece si hay datos de huella: sin ellos
+         ofreceria una vista vacia, que es peor que no ofrecerla. */
+      var hayHuella = Object.keys(DATOS_ESTADO).some(function (k) {
+        return typeof DATOS_ESTADO[k].huella === 'number';
+      });
+      if (hayHuella) {
+        var sel = document.createElement('label');
+        sel.className = 'eh-globo__medida';
+        sel.innerHTML = 'Estados de EE.UU. <select aria-label="Qué mide el color de los estados">' +
+          '<option value="poblacion">por población hispana hoy</option>' +
+          '<option value="huella">por huella histórica española</option></select>';
+        sel.querySelector('select').addEventListener('change', function (ev) {
+          medidaEEUU = ev.target.value;
+          repintar();
+        });
+        panel.appendChild(sel);
+      }
+
       panel.addEventListener('change', function (ev) {
         var k = ev.target.getAttribute('data-c');
         if (!k) return;

@@ -721,6 +721,15 @@ select.eh-entrada{appearance:none;-webkit-appearance:none;cursor:pointer;
 }
 .eh-globo__capas label{display:inline-flex;align-items:center;gap:.35rem;cursor:pointer}
 .eh-globo__capas input{accent-color:var(--oro);cursor:pointer}
+/* El selector de que mide el color de los estados de EE.UU. Va en la misma
+   fila que las casillas porque es lo mismo: decide que se ve. */
+.eh-globo__medida{display:inline-flex;align-items:center;gap:.35rem;color:var(--tenue)}
+.eh-globo__medida select{
+  background:var(--panel3);color:var(--texto);
+  border:1px solid var(--linea2);border-radius:6px;
+  padding:.12rem .3rem;font:inherit;font-size:.74rem;cursor:pointer;
+}
+.eh-globo__medida select:focus-visible{outline:2px solid var(--oro);outline-offset:1px}
 
 /* La linea del tiempo */
 .eh-globo__tiempo{padding:.7rem .8rem;border-top:1px solid var(--linea)}
