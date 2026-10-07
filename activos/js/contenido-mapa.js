@@ -60,354 +60,458 @@ EH.MAPA_CONTENIDO = {
    "pct": 98.9,
    "texto": "Isla bajo soberanía española desde 1493; Juan Ponce de León fundó el primer asentamiento en 1508 y San Juan en 1521, la ciudad de fundación europea más antigua bajo bandera estadounidense. España la cedió a Estados Unidos en el Tratado de París de 1898. Hoy es territorio no incorporado: sus habitantes son ciudadanos estadounidenses desde la ley Jones de 1917, pero no votan por el presidente ni tienen representación con voto en el Congreso. El español y el inglés son cooficiales desde la Ley de Idiomas Oficiales de 1902; en 1991 una ley dejó el español como único idioma oficial y en 1993 otra restauró la cooficialidad, que es la situación vigente.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003 «Hispanic or Latino Origin» (archivo acsdt1y2024-b03003.dat del Summary File). https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 3167325
+   "hispanos": 3167325,
+   "huella": 90.0,
+   "historia": "Trescientos noventa años de soberanía española, de 1508 a 1898. San Juan, trasladada desde Caparra en 1521, es la ciudad de fundación europea más antigua bajo bandera estadounidense. No es un estado: en el globo debe ir rotulada como territorio."
   },
   "nm": {
    "nombre": "Nuevo México",
    "pct": 49.1,
    "texto": "El territorio más hispano de los cincuenta estados, y aun así no llega a la mitad: 49,1%. Juan de Oñate inició la colonización en 1598 y Santa Fe se fundó en 1610, la capital estatal más antigua del país. Fue español hasta 1821 y mexicano hasta 1848, cuando el Tratado de Guadalupe Hidalgo lo pasó a Estados Unidos. La constitución estatal de 1911 ordenó publicar las leyes en español e inglés. Los hispanos son el grupo más numeroso: 49,1% frente a 35,1% de blancos no hispanos.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003; comparación con blancos no hispanos, tabla B03002 «Hispanic or Latino Origin by Race» de la misma encuesta. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 1046253
+   "hispanos": 1046253,
+   "huella": 87.6,
+   "historia": "San Gabriel (1598) y Santa Fe (1610), capital continua desde entonces, se asentaron en un territorio ya poblado por los pueblos. La revuelta de 1680 expulsó a España doce años y esos doce años no se cuentan como soberanía efectiva."
   },
   "ca": {
    "nombre": "California",
    "pct": 40.8,
    "texto": "Primer estado por número absoluto de hispanos: 16,07 millones de personas. El nombre viene de una novela española de caballerías impresa hacia 1510. Fue español desde 1769, con la cadena de misiones, y mexicano de 1821 a 1848. Los Ángeles se fundó en 1781 como El Pueblo de Nuestra Señora la Reina de los Ángeles. Los hispanos son hoy el grupo más numeroso del estado: 40,8% frente a 32,6% de blancos no hispanos.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003; comparación con blancos no hispanos, tabla B03002 de la misma encuesta. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 16069214
+   "hispanos": 16069214,
+   "huella": 66.4,
+   "historia": "Veintiuna misiones, cuatro presidios y tres pueblos entre 1769 y 1823, casi todos sobre rancherías indígenas ya existentes. Solo 52 años de soberanía española: los menos de los cuatro grandes del suroeste."
   },
   "tx": {
    "nombre": "Texas",
    "pct": 40.3,
    "texto": "El dato que corrige el eslogan: Texas es 40,3% hispano, no la mitad. Pero sí es el grupo más numeroso del estado, por delante de los blancos no hispanos, que son el 37,8%. San Antonio de Béxar se fundó en 1718; el territorio fue español, luego mexicano hasta 1836 y se incorporó a Estados Unidos en 1845. El nombre viene del español «tejas», tomado de una voz caddo que significa amigos. Segundo estado por número absoluto: 12,6 millones de hispanos.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003; comparación con blancos no hispanos, tabla B03002 de la misma encuesta. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 12602305
+   "hispanos": 12602305,
+   "huella": 60.9,
+   "historia": "La ocupación estable empezó en 1716, tras el fracaso de la misión de 1690. Ysleta del Sur (1682) la fundaron tiguas huidos de Nuevo México junto a frailes españoles, no colonos llegados a tierra vacía."
   },
   "az": {
    "nombre": "Arizona",
    "pct": 32.1,
    "texto": "Arizona entró en Estados Unidos en dos tiempos: el norte en 1848 y la franja sur en 1854 con la Venta de La Mesilla. Tucsón nació como presidio español en 1775 y la misión de San Xavier del Bac la inició el jesuita Eusebio Francisco Kino a finales del siglo XVII. Hoy el estado es 32,1% hispano, pero los blancos no hispanos siguen siendo mayoría absoluta con 51,2%.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003; comparación con blancos no hispanos, tabla B03002 de la misma encuesta. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 2435661
+   "hispanos": 2435661,
+   "huella": 52.5,
+   "historia": "La Pimeria Alta de Kino: Guevavi y San Xavier del Bac desde la decada de 1690, presidio de Tubac en 1752 y traslado a Tucson en 1775, sobre el poblado o'odham de S-cuk Son."
   },
   "nv": {
    "nombre": "Nevada",
    "pct": 30.6,
    "texto": "El nombre es español: «nevada», por la sierra. A Las Vegas la bautizó así la expedición de Antonio Armijo de 1829-1830, que buscaba agua en el camino entre Santa Fe y California. El territorio fue mexicano hasta 1848. Hoy casi uno de cada tres residentes es hispano, 30,6%, sobre todo mexicanos y salvadoreños ligados a la hostelería y la construcción del área de Las Vegas.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 999427
+   "hispanos": 999427,
+   "huella": 20.1,
+   "historia": "Ningún asentamiento español ni mexicano permanente: solo el Camino Español entre Santa Fe y Los Ángeles, abierto en 1829. Su puntaje sale casi entero del nombre y de los 27 años de soberanía mexicana."
   },
   "fl": {
    "nombre": "Florida",
    "pct": 28.7,
    "texto": "La bautizó Juan Ponce de León en 1513 por la Pascua Florida. San Agustín, fundada en 1565 por Pedro Menéndez de Avilés, es la ciudad de fundación europea habitada de forma continua más antigua de la parte continental del país. Fue española hasta 1763 y otra vez entre 1783 y 1821. El exilio cubano desde 1959 y las migraciones posteriores de Puerto Rico, Venezuela y Colombia la hicieron el tercer estado por número de hispanos: 6,7 millones, el 28,7%.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003; comparación con blancos no hispanos, tabla B03002 de la misma encuesta. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 6706088
+   "hispanos": 6706088,
+   "huella": 78.0,
+   "historia": "San Agustín (1565) se levantó junto a la aldea timucua de Seloy. Es la de fundación europea habitada sin interrupción más antigua del país continental, no de todo EE.UU.: San Juan de Puerto Rico es de 1521."
   },
   "nj": {
    "nombre": "Nueva Jersey",
    "pct": 23.5,
    "texto": "Sin pasado colonial español: lo hispano aquí es del siglo XX. Union City y West New York concentraron el exilio cubano desde los años sesenta; después llegaron dominicanos, puertorriqueños, colombianos, peruanos y ecuatorianos al corredor de Newark, Paterson y Elizabeth. Con 23,5% y 2,23 millones de personas es el estado más hispano del noreste por proporción, por delante de Nueva York y Connecticut.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 2229464
+   "hispanos": 2229464,
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "co": {
    "nombre": "Colorado",
    "pct": 23.2,
    "texto": "El nombre es español, por el río Colorado. El sur del estado perteneció a México hasta 1848 y lo poblaron familias hispanas venidas de Nuevo México: San Luis, fundada en 1851 en el valle de San Luis, es la población más antigua de Colorado. Pueblo, Durango, Alamosa, Trinidad y La Junta siguen en el mapa. Hoy el 23,2% de la población es hispana, 1,38 millones de personas.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 1382948
+   "hispanos": 1382948,
+   "huella": 14.4,
+   "historia": "España no fundó poblado permanente. Las mercedes de Conejos y Sangre de Cristo son de época mexicana, pero San Luis, el pueblo más antiguo del estado, se levantó en 1851, ya bajo bandera estadounidense."
   },
   "ny": {
    "nombre": "Nueva York",
    "pct": 20.2,
    "texto": "Cuarto estado por número absoluto: 4,02 millones de hispanos. La ley Jones de 1917 dio la ciudadanía estadounidense a los puertorriqueños, y la gran migración posterior a 1945 formó El Barrio, en el este de Harlem. Washington Heights es el núcleo dominicano más conocido del país. Mexicanos, ecuatorianos y colombianos completan un conjunto que hoy es el 20,2% del estado, justo en la media nacional.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 4019288
+   "hispanos": 4019288,
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "il": {
    "nombre": "Illinois",
    "pct": 19.4,
    "texto": "Chicago atrajo trabajadores mexicanos desde los años diez del siglo XX para los ferrocarriles y la siderurgia; de ahí salieron los barrios de Pilsen y La Villita. Los puertorriqueños se asentaron alrededor de Humboldt Park. Con 2,46 millones de hispanos, el 19,4%, Illinois es el quinto estado por número absoluto y el más hispano del Medio Oeste por proporción.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 2462768
+   "hispanos": 2462768,
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "ct": {
    "nombre": "Connecticut",
    "pct": 19.2,
    "texto": "La migración puertorriqueña de mediados del siglo XX a las fábricas y al cultivo de tabaco del valle del río Connecticut dejó comunidades grandes en Hartford, Bridgeport, New Britain y Waterbury. Después llegaron dominicanos, mexicanos y ecuatorianos. Hoy el 19,2% de los residentes es hispano: 706.806 personas sobre 3,67 millones de habitantes.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 706806
+   "hispanos": 706806,
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "ri": {
    "nombre": "Rhode Island",
    "pct": 18.8,
    "texto": "El estado de menor superficie del país tiene una de las proporciones hispanas más altas del noreste: 18,8%. Providence, Central Falls y Pawtucket concentran comunidades dominicana, guatemalteca, colombiana y puertorriqueña llegadas a partir de los años setenta. En cifras absolutas son 208.976 personas: proporción alta sobre una población pequeña, 1,11 millones de habitantes.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 208976
+   "hispanos": 208976,
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "ut": {
    "nombre": "Utah",
    "pct": 16.9,
    "texto": "La expedición de los franciscanos Francisco Atanasio Domínguez y Silvestre Vélez de Escalante atravesó y cartografió Utah en 1776 buscando ruta a California; más tarde el Camino Viejo Español cruzó el estado. La población hispana actual, 16,9% y 592.412 personas, viene sobre todo de la migración mexicana del siglo XX a la minería, la agricultura y la construcción del área de Salt Lake City.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 592412
+   "hispanos": 592412,
+   "huella": 15.0,
+   "historia": "La expedición de Domínguez y Escalante cruzó el territorio en 1776 sin dejar poblado. España nunca se asentó y el nombre viene de los yutas, llegado al inglés a través del español."
   },
   "or": {
    "nombre": "Oregón",
    "pct": 15.5,
    "texto": "Las expediciones españolas de Bruno de Heceta y Juan Francisco de la Bodega y Quadra recorrieron esta costa en 1775 y dejaron topónimos como Heceta Head. Lo hispano de hoy, sin embargo, viene del trabajo agrícola del siglo XX en el valle de Willamette y del programa bracero iniciado en 1942. El 15,5% de la población es hispana: 662.740 personas.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 662740
+   "hispanos": 662740,
+   "huella": 0.0,
+   "historia": "Bruno de Heceta tomó posesión de la costa en 1775 y avistó la desembocadura del Columbia, pero sin asentamiento ni soberanía efectiva la fórmula le da cero: mide poblamiento y soberanía, no exploración."
   },
   "wa": {
    "nombre": "Washington",
    "pct": 15.0,
    "texto": "La huella española está en la carta marina: las islas San Juan, Fidalgo, Guemes, López y Camano, y los estrechos de Rosario y Haro, los nombraron las expediciones de Quimper, Eliza y Narváez entre 1790 y 1792. En 1792 España levantó en la actual Neah Bay el puesto de Núñez Gaona, el único asentamiento español en este estado, abandonado ese mismo año. Hoy el 15,0% de la población es hispana: 1,19 millones de personas.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 1194522
+   "hispanos": 1194522,
+   "huella": 3.1,
+   "historia": "Núñez Gaona, en la actual Neah Bay, fue el único asentamiento español del noroeste: se instaló en mayo de 1792 y se levantó ese mismo otoño. Queda la toponimia marítima: Fidalgo, Rosario, López."
   },
   "id": {
    "nombre": "Idaho",
    "pct": 14.3,
    "texto": "La población hispana de Idaho creció con el trabajo agrícola del siglo XX —remolacha, patata y ganado— y con el programa bracero a partir de 1942; el sur del estado, en el valle del río Snake, concentra la mayoría. Hoy son 286.185 personas, el 14,3% del estado. No hubo asentamiento colonial español en este territorio.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 286185
+   "hispanos": 286185,
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "ks": {
    "nombre": "Kansas",
    "pct": 14.2,
    "texto": "La expedición de Francisco Vázquez de Coronado llegó en 1541 a Quivira, en el centro de lo que hoy es Kansas, buscando ciudades de oro que no existían: reclamación cartográfica sin ningún control efectivo. La población hispana actual nació de los ferrocarriles y los frigoríficos de Garden City, Dodge City y Liberal. Hoy es el 14,2% del estado: 422.762 personas.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 422762
+   "hispanos": 422762,
+   "huella": 2.0,
+   "historia": "Territorio de la Luisiana española sin un solo poblado español. Coronado llegó a Quivira en 1541 y el padre Juan de Padilla murió allí, pero la exploración no es uno de los cinco factores."
   },
   "ma": {
    "nombre": "Massachusetts",
    "pct": 14.0,
    "texto": "Sin pasado colonial español. Lo hispano llegó con la migración puertorriqueña de posguerra a las ciudades industriales —Holyoke, Springfield y Lawrence— y después con dominicanos, guatemaltecos y salvadoreños en el área de Boston. Hoy son 998.795 personas, el 14,0% del estado: a punto de pasar del millón.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 998795
+   "hispanos": 998795,
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "ne": {
    "nombre": "Nebraska",
    "pct": 13.5,
    "texto": "La expedición de Pedro de Villasur fue destruida en 1720 en las llanuras de lo que hoy es Nebraska, y con ella el intento español de frenar la influencia francesa en esta zona: nunca hubo asentamiento. La comunidad hispana actual nació de los ferrocarriles y los frigoríficos del sur de Omaha a comienzos del siglo XX, y de la migración centroamericana a Lexington y Grand Island. Hoy, 13,5% y 271.524 personas.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 271524
+   "hispanos": 271524,
+   "huella": 0.0,
+   "historia": "De derecho fue Luisiana española de 1762 a 1800, pero España nunca se asentó: la expedición de Villasur fue aniquilada en 1720 cerca del actual río Loup. La fórmula le da cero y así se publica."
   },
   "ok": {
    "nombre": "Oklahoma",
    "pct": 13.5,
    "texto": "Este territorio formó parte de la Luisiana española entre 1762 y 1800, pero sin asentamiento ni control real: reclamación en el mapa, no gobierno sobre el terreno. La población hispana actual, 551.226 personas y 13,5% del estado, procede de la migración mexicana del siglo XX a la agricultura, la construcción y los servicios de Oklahoma City y Tulsa.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 551226
+   "hispanos": 551226,
+   "huella": 2.0,
+   "historia": "Luisiana española y, en la franja del mango, territorio mexicano hasta 1848. No hubo misión ni presidio: solo rutas de comercio que salían de Nuevo México hacia las praderas."
   },
   "md": {
    "nombre": "Maryland",
    "pct": 13.3,
    "texto": "El área metropolitana de Washington reúne desde los años ochenta una de las mayores concentraciones de salvadoreños del país, junto a hondureños, guatemaltecos y mexicanos; los condados de Montgomery y Prince George's son el centro. Hoy el 13,3% de la población de Maryland es hispana: 830.948 personas sobre 6,26 millones de habitantes.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 830948
+   "hispanos": 830948,
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "dc": {
    "nombre": "Distrito de Columbia",
    "pct": 12.6,
    "texto": "La capital federal no es un estado: no tiene senadores y su delegado en la Cámara de Representantes no vota. La guerra civil salvadoreña de los años ochenta llevó a Mount Pleasant y Columbia Heights una comunidad que marcó esos barrios y sigue siendo el núcleo hispano de la ciudad. Hoy el 12,6% de sus 702.250 residentes es hispano: 88.430 personas.",
-   "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003"
+   "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "nc": {
    "nombre": "Carolina del Norte",
    "pct": 12.0,
    "texto": "Uno de los crecimientos hispanos más rápidos del país: hoy es el 12,0% del estado, 1,32 millones de personas, sobre todo mexicanos y centroamericanos llegados a la construcción, la avicultura y el tabaco desde los años noventa. Charlotte, Raleigh-Durham y Winston-Salem concentran la mayoría. No hubo asentamiento español estable en este territorio.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 1324570
+   "hispanos": 1324570,
+   "huella": 3.1,
+   "historia": "El fuerte San Juan, construido en el poblado nativo de Joara, fue el primer asentamiento europeo del interior del país (1567), pero sus habitantes lo quemaron año y medio después."
   },
   "de": {
    "nombre": "Delaware",
    "pct": 11.7,
    "texto": "Delaware no tuvo presencia colonial española. Su población hispana, 122.813 personas sobre 1.051.917 habitantes, el 11,7%, se formó con migración mexicana y guatemalteca a la avicultura del condado de Sussex y con comunidades puertorriqueña y dominicana en Wilmington y Georgetown. La proporción queda por debajo de la media nacional, que en 2024 fue del 20,0%.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 122813
+   "hispanos": 122813,
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "ga": {
    "nombre": "Georgia",
    "pct": 11.6,
    "texto": "La costa de Georgia fue la provincia española de Guale, con misiones franciscanas como Santa Catalina desde el siglo XVI; España las replegó hacia San Agustín a finales del XVII ante la presión inglesa. Lo hispano de hoy no desciende de allí: viene de la migración mexicana y centroamericana al área de Atlanta y a la agricultura del sur del estado desde los años noventa. Hoy, 11,6% y 1,30 millones de personas.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 1299200
+   "hispanos": 1299200,
+   "huella": 37.0,
+   "historia": "La cadena de misiones de Guale y Mocama, desde 1566, fue el primer asentamiento europeo del territorio, siglo y medio antes de Savannah. España se retiró a Florida en la década de 1680 y de ahí viene la ruptura."
   },
   "va": {
    "nombre": "Virginia",
    "pct": 11.6,
    "texto": "El primer intento europeo de asentamiento en la bahía de Chesapeake fue español: la misión jesuita de Ajacán, en 1570, destruida al año siguiente. No dejó continuidad alguna. Lo hispano actual se concentra en el norte de Virginia, con salvadoreños, bolivianos y peruanos llegados desde los años ochenta al área de Washington. Hoy el 11,6% del estado es hispano: 1,02 millones de personas.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 1017833
+   "hispanos": 1017833,
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "wy": {
    "nombre": "Wyoming",
    "pct": 11.1,
    "texto": "El estado menos poblado del país tiene, sin embargo, una proporción hispana apreciable: 11,1%, es decir 65.030 personas sobre 587.618 habitantes. La comunidad se formó con el trabajo ferroviario, la minería del carbón y el pastoreo de ovejas desde finales del siglo XIX, con núcleos en Cheyenne, Laramie y el condado de Sweetwater.",
-   "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003"
+   "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
+   "huella": 2.0,
+   "historia": "Solo la esquina suroeste del actual estado estuvo bajo soberanía mexicana, hasta 1848. Ni España ni México fundaron nada dentro de sus límites de hoy."
   },
   "hi": {
    "nombre": "Hawái",
    "pct": 10.2,
    "texto": "A comienzos del siglo XX las plantaciones de azúcar llevaron a Hawái unos miles de trabajadores puertorriqueños, y sus descendientes mantienen comunidad e identidad propias en las islas. Hoy el 10,2% de la población es hispana, 147.896 personas, también con mexicanos y centroamericanos de llegada reciente.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 147896
+   "hispanos": 147896,
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "ar": {
    "nombre": "Arkansas",
    "pct": 9.5,
    "texto": "Arkansas fue parte de la Luisiana española entre 1762 y 1800: el Fuerte Carlos III, en el Puesto de Arkansas, sufrió en 1783 el único combate de la guerra de independencia estadounidense en territorio del actual estado. La población hispana de hoy, 294.671 personas y 9,5%, llegó sobre todo a la avicultura y el procesamiento de alimentos del noroeste desde los años noventa.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 294671
+   "hispanos": 294671,
+   "huella": 14.4,
+   "historia": "El Puesto de Arkansas pasó a manos españolas en 1769 y se rebautizó fuerte Carlos III: fue el único punto guarnecido del territorio, y el asentamiento europeo original era francés."
   },
   "pa": {
    "nombre": "Pensilvania",
    "pct": 9.4,
    "texto": "La migración puertorriqueña de posguerra al norte de Filadelfia y a las ciudades industriales del valle del Lehigh dejó comunidades muy visibles en Allentown, Bethlehem, Reading y Lancaster, donde los hispanos son hoy una parte central de la población urbana. En todo el estado son 1,23 millones de personas, el 9,4% de los habitantes de Pensilvania.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 1232617
+   "hispanos": 1232617,
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "in": {
    "nombre": "Indiana",
    "pct": 9.0,
    "texto": "Los mexicanos llegaron al noroeste de Indiana desde los años diez del siglo XX, a las acerías de Gary y East Chicago y a los ferrocarriles. Hoy la población hispana es de 626.616 personas, el 9,0% del estado, repartida también por Indianápolis y las zonas agrícolas del norte.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 626616
+   "hispanos": 626616,
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "wi": {
    "nombre": "Wisconsin",
    "pct": 8.4,
    "texto": "Las curtidurías y fundiciones del sur de Milwaukee atrajeron trabajadores mexicanos desde los años veinte; más tarde llegaron puertorriqueños y, al campo, jornaleros para la industria láctea. Hoy el 8,4% de Wisconsin es hispano: 499.904 personas, a un paso del medio millón.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 499904
+   "hispanos": 499904,
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "sc": {
    "nombre": "Carolina del Sur",
    "pct": 7.9,
    "texto": "España fundó en 1566 Santa Elena, en la actual isla de Parris, capital de La Florida española durante una década y abandonada en 1587. No dejó población. Lo hispano de hoy, 434.217 personas y 7,9% del estado, es migración reciente a la construcción, la hostelería de la costa y la agricultura.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 434217
+   "hispanos": 434217,
+   "huella": 17.1,
+   "historia": "Santa Elena, en la actual isla de Parris, fue capital de La Florida entre 1566 y 1576 y se abandonó definitivamente en 1587. El desembarco de Lucas Vázquez de Ayllón fue en 1526, pero dónde se levantó San Miguel de Gualdape sigue en discusión."
   },
   "tn": {
    "nombre": "Tennessee",
    "pct": 7.8,
    "texto": "Tennessee no tuvo asentamiento español estable, aunque la expedición de Hernando de Soto cruzó el río Misisipi por esta zona en 1541. La población hispana es reciente: creció con la construcción y los servicios de Nashville y Memphis desde los años noventa. Hoy son 566.839 personas, el 7,8% del estado.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 566839
+   "hispanos": 566839,
+   "huella": 3.2,
+   "historia": "Espana construyo el fuerte San Fernando de las Barrancas en 1795, en lo que hoy es Memphis, y lo desmantelo en 1797 al aplicarse el Tratado de San Lorenzo. No hubo nada mas."
   },
   "ia": {
    "nombre": "Iowa",
    "pct": 7.8,
    "texto": "La población hispana de Iowa se formó en dos oleadas: trabajadores mexicanos en los ferrocarriles y los frigoríficos desde los años veinte, y migración mexicana y centroamericana a la industria cárnica desde los noventa, en localidades como Marshalltown, Storm Lake y West Liberty. Hoy son 253.224 personas, el 7,8% del estado.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 253224
+   "hispanos": 253224,
+   "huella": 8.8,
+   "historia": "El gobernador español de Luisiana concedió en 1796 las Minas de España a Julien Dubuque, colono francocanadiense: el título era español y el poblador no. Es toda la huella del estado."
   },
   "la": {
    "nombre": "Luisiana",
    "pct": 7.8,
    "texto": "Luisiana fue colonia española de 1762 a 1800. Tras el incendio de 1788, Nueva Orleans se reconstruyó bajo administración española: la arquitectura del Barrio Francés es en buena parte española, no francesa. Entre 1778 y 1783 llegaron los isleños canarios a la parroquia de San Bernardo y su habla española sobrevivió hasta el siglo XX. El gobernador Bernardo de Gálvez tomó Baton Rouge a los británicos en 1779. Hoy el estado es 7,8% hispano: 357.628 personas.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 357628
+   "hispanos": 357628,
+   "huella": 19.4,
+   "historia": "Española de hecho de 1769 a 1803. España fundó Nueva Iberia y Galveztown en 1779 y reconstruyó Nueva Orleans tras los incendios de 1788 y 1794, de donde viene su casco histórico de aire español."
   },
   "ak": {
    "nombre": "Alaska",
    "pct": 7.7,
    "texto": "Las expediciones españolas de Juan Pérez, en 1774, y de Bodega y Quadra llegaron hasta estas costas, y de ahí vienen topónimos como Valdez, Córdova y la bahía de Bucareli: reclamación cartográfica sin asentamiento. La población hispana actual, 57.229 personas y 7,7% del estado, se concentra en Anchorage y vive del sector público, la pesca y los servicios.",
-   "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003"
+   "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
+   "huella": 0.0,
+   "historia": "Cuatro expediciones entre 1774 y 1792 dejaron nombres que siguen en el mapa —Valdez, Cordova, Revillagigedo, Bucareli— pero ningun poblado. La formula, que mide asentamiento, le da cero."
   },
   "mn": {
    "nombre": "Minnesota",
    "pct": 6.7,
    "texto": "La comunidad hispana de Minnesota empezó con jornaleros mexicanos de la remolacha azucarera que se asentaron en el West Side de Saint Paul a partir de los años veinte; después llegaron mexicanos, ecuatorianos y centroamericanos a las Ciudades Gemelas y a la industria cárnica del sur. Hoy son 388.435 personas, el 6,7% del estado.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 388435
+   "hispanos": 388435,
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "mi": {
    "nombre": "Míchigan",
    "pct": 6.1,
    "texto": "Las fábricas de automóviles y las remolacheras llevaron mexicanos a Míchigan desde los años veinte; el barrio de Mexicantown, en el suroeste de Detroit, nació de ahí. Hoy la población hispana es de 621.831 personas, el 6,1% del estado, con núcleos también en Grand Rapids, Holland y Saginaw.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 621831
+   "hispanos": 621831,
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "al": {
    "nombre": "Alabama",
    "pct": 6.0,
    "texto": "Móvil fue española entre 1780, cuando Bernardo de Gálvez se la tomó a los británicos y la integró en la Florida Occidental, y 1813, cuando Estados Unidos la ocupó durante la guerra de 1812. Esa etapa no dejó población hispana continua. La de hoy, 306.966 personas y 6,0% del estado, es migración reciente a la construcción, la avicultura y las plantas de automóviles.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 306966
+   "hispanos": 306966,
+   "huella": 14.3,
+   "historia": "Espana tomo Mobila en 1780 y la retuvo hasta 1813, y fundo los fuertes San Esteban y Confederacion. El primer asentamiento europeo permanente del territorio, sin embargo, fue frances, en 1702."
   },
   "mo": {
    "nombre": "Misuri",
    "pct": 5.6,
    "texto": "San Luis y Santa Genoveva estuvieron bajo administración española entre 1762 y 1800, dentro de la Luisiana española, con gobernadores y milicia españoles pero población mayoritariamente francesa. La comunidad hispana actual, 346.700 personas y 5,6% del estado, se concentra en el Westside de Kansas City y en el sur de San Luis.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 346700
+   "hispanos": 346700,
+   "huella": 19.4,
+   "historia": "San Luis fue la capital de la Alta Luisiana española. Bajo España se fundaron Carondelet, San Fernando (hoy Florissant), Nuevo Madrid (1789) y Cabo Girardeau (1793), pero los primeros colonos europeos fueron franceses."
   },
   "ky": {
    "nombre": "Kentucky",
    "pct": 5.5,
    "texto": "Kentucky no tuvo presencia colonial española. Su población hispana es reciente y creció con la cría de caballos, la construcción y la industria de Louisville y Lexington desde los años noventa. Hoy son 252.640 personas, el 5,5% del estado, muy por debajo de la media nacional del 20,0%.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 252640
+   "hispanos": 252640,
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "oh": {
    "nombre": "Ohio",
    "pct": 5.1,
    "texto": "La comunidad hispana más antigua de Ohio es puertorriqueña: desde finales de los años cuarenta las acerías de Lorain y Cleveland reclutaron trabajadores de la isla. Después llegaron mexicanos al noroeste agrícola, a Toledo y Fremont. Hoy son 606.933 personas, el 5,1% del estado.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 606933
+   "hispanos": 606933,
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "nh": {
    "nombre": "Nuevo Hampshire",
    "pct": 5.0,
    "texto": "Nuevo Hampshire tiene una de las proporciones hispanas más bajas de Nueva Inglaterra: 5,0%, es decir 70.912 personas sobre 1,41 millones de habitantes. La comunidad es reciente y se concentra en Manchester y Nashua, con origen sobre todo dominicano y puertorriqueño, por cercanía con el norte de Massachusetts.",
-   "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003"
+   "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "nd": {
    "nombre": "Dakota del Norte",
    "pct": 5.0,
    "texto": "Dakota del Norte quedó dentro de la Luisiana que España administró entre 1762 y 1800: una reclamación en el mapa, sin asentamiento ni gobierno efectivo tan al norte. La población hispana actual, 39.853 personas y 5,0% del estado, creció con el auge petrolero de la cuenca de Bakken y con la industria cárnica. Es uno de los conjuntos hispanos más pequeños del país.",
-   "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003"
+   "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "mt": {
    "nombre": "Montana",
    "pct": 4.9,
    "texto": "Montana no tuvo asentamiento español. Su población hispana se formó con el pastoreo de ovejas, el ferrocarril y la remolacha azucarera desde finales del siglo XIX, con núcleos en Billings y el valle del Yellowstone. Hoy son 55.506 personas, el 4,9% del estado, sobre 1,14 millones de habitantes.",
-   "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003"
+   "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
+   "huella": 8.0,
+   "historia": "Sin presencia española de ninguna clase: su puntaje sale entero del nombre, que es la palabra montaña. Es el caso que mejor muestra el límite de medir toponimia como si fuera historia."
   },
   "sd": {
    "nombre": "Dakota del Sur",
    "pct": 4.9,
    "texto": "Dakota del Sur quedó dentro de la Luisiana que España administró entre 1762 y 1800, sin asentamiento ni control efectivo. Su población hispana es reciente: 44.947 personas, el 4,9% del estado, ligada sobre todo a la industria cárnica de Sioux Falls y Huron y al trabajo agrícola del este.",
-   "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003"
+   "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "ms": {
    "nombre": "Misisipi",
    "pct": 4.0,
    "texto": "Natchez fue española entre 1779 y 1798, cuando Bernardo de Gálvez tomó la Florida Occidental a los británicos; el trazado español de la ciudad todavía se reconoce. Esa etapa no dejó continuidad demográfica. Hoy Misisipi es 4,0% hispano, 118.529 personas: una de las cinco proporciones más bajas de los 52 territorios de esta lista.",
    "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
-   "hispanos": 118529
+   "hispanos": 118529,
+   "huella": 12.9,
+   "historia": "El distrito de Natchez fue español de 1779 a 1798 y España levantó el fuerte Nogales en 1791, en el actual Vicksburg. Antes se habían asentado los franceses, en 1699, en la bahía de Biloxi."
   },
   "vt": {
    "nombre": "Vermont",
    "pct": 2.7,
    "texto": "Vermont tiene la tercera proporción hispana más baja del país, después de Virginia Occidental y Maine: 2,7%, es decir 17.401 personas sobre 648.493 habitantes, el conjunto hispano más pequeño de los cincuenta estados. Hay jornaleros latinoamericanos en las granjas lácteas, pero no una comunidad urbana consolidada.",
-   "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003"
+   "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "me": {
    "nombre": "Maine",
    "pct": 2.3,
    "texto": "Maine tiene la segunda proporción hispana más baja del país: 2,3%, es decir 32.869 personas sobre 1,41 millones de habitantes. No hubo presencia colonial española y la migración latinoamericana ha sido escasa; en los últimos años han llegado trabajadores a la hostelería de la costa y al procesamiento de marisco.",
-   "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003"
+   "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   },
   "wv": {
    "nombre": "Virginia Occidental",
    "pct": 2.3,
    "texto": "Virginia Occidental tiene la menor proporción hispana del país: 2,3%, es decir 41.002 personas sobre 1.769.979 habitantes. No hubo presencia colonial española aquí ni se ha formado una comunidad hispana urbana comparable a la de los estados vecinos. Es también el dato con el margen de error relativo más alto de los 52: más o menos 1.640 personas, un 4% del total.",
-   "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003"
+   "fuente": "U.S. Census Bureau, American Community Survey (ACS) 2024, estimaciones de 1 año, tabla B03003. https://data.census.gov/table/ACSDT1Y2024.B03003",
+   "huella": 0.0,
+   "historia": "Sin presencia española ni mexicana histórica."
   }
  },
  "epocas": [
@@ -1004,6 +1108,336 @@ EH.MAPA_CONTENIDO = {
    "texto": "Por este puerto entró y salió casi todo lo que unió a España con Nueva España durante tres siglos: la plata hacia Sevilla, los libros, los caballos y la viruela. Cortés fundó aquí la Villa Rica de la Vera Cruz en 1519 y usó un truco legal: al constituir un cabildo dejaba de depender del gobernador de Cuba. Para que nadie volviera, inutilizó sus naves. El fuerte de San Juan de Ulúa, en el islote de enfrente, fue lo último que España entregó de México: su guarnición se rindió en 1825, cuatro años después de la independencia.",
    "fuente": "INEGI, Censo de Población y Vivienda 2020; Archivo General de la Nación (México), fondo Marina; INAH, Fuerte de San Juan de Ulúa",
    "fundacion": "Fundada en 1519"
+  },
+  "2.18,41.38": {
+   "texto": "En abril de 1493 Colón entró en Barcelona con seis o siete taínos, loros y algo de oro, y fue recibido por Fernando II e Isabel I; la tradición sitúa la escena en el Salón del Tinell, pero los documentos solo aseguran que ocurrió en la ciudad. Cuatro meses antes, el 7 de diciembre de 1492, el rey había estado a punto de morir en la plaza del Rey: Joan de Canyamars, un campesino catalán, le abrió el cuello de una cuchillada. Fernando escuchó el relato de las Indias con la herida recién cosida. Debajo de todo aquello seguía Barcino, la colonia romana.",
+   "fuente": "Dietari de l'Antic Consell Barceloní (Manual de Novells Ardits), entradas de diciembre de 1492 y abril de 1493; crónica de Pedro Miguel Carbonell; conjunto arqueológico de Barcino, MUHBA.",
+   "fundacion": "poblado ibero previo (Barkeno), colonia romana de Barcino hacia el 10 a. C."
+  },
+  "-0.40,39.49": {
+   "texto": "Todos los jueves a mediodía, siete u ocho hombres con blusón negro se sientan en sillas de madera ante la puerta de los Apóstoles de la catedral y reparten el agua del Turia. Es el Tribunal de las Aguas: juzga en valenciano y de palabra, sin abogados, y su fallo no se apela. Las acequias que administra quedaron reconocidas en el derecho del reino tras la conquista de Jaume I, que entró en la ciudad el 9 de octubre de 1238, y el reparto que aplica viene de época andalusí. La UNESCO lo inscribió en 2009 como patrimonio inmaterial. La ciudad romana, Valentia, se había fundado en 138 a. C. con veteranos licenciados.",
+   "fuente": "UNESCO, Lista representativa del patrimonio cultural inmaterial (2009); Furs de València; Periochae de Tito Livio, libro 55, sobre la fundación de Valentia.",
+   "fundacion": "Valentia romana fundada en 138 a. C., en territorio edetano"
+  },
+  "-0.89,41.65": {
+   "texto": "El nombre de la ciudad es el nombre de un emperador pasado por tres idiomas. Hacia el 14 a. C. se fundó Caesar Augusta sobre Salduie, poblado sedetano que ya acuñaba moneda propia; fue la única ciudad del imperio que llevó el nombre completo de Augusto, y se repartió en lotes entre veteranos de las legiones IV Macedónica, VI Victrix y X Gémina. En árabe quedó Saraqusta, capital de una taifa rica en impuestos y en astrónomos, hasta que el 18 de diciembre de 1118 entró en ella Alfonso I el Batallador. Saraqusta se dijo después Zaragoza: Augusto sigue ahí, desfigurado.",
+   "fuente": "Ruta de Caesaraugusta y Museo del Foro, Ayuntamiento de Zaragoza; monetario ibérico y romano del Museo de Zaragoza; documentación de la conquista de 1118 de Alfonso I.",
+   "fundacion": "ciudad ibera de Salduie previa, Caesar Augusta hacia el 14 a. C."
+  },
+  "-6.34,38.91": {
+   "texto": "Durante siglos, lo que hoy es el teatro romano de Mérida fue una loma con unas piedras asomando a la que los vecinos llamaban Las Siete Sillas; nadie sabía que debajo había un graderío para unas 6.000 personas. Se excavó a partir de 1910, con José Ramón Mélida al frente, y en 1933 Margarita Xirgu representó allí la Medea de Séneca en versión de Unamuno. Hubo una segunda cita en 1934 y después diecinueve años de silencio: el festival volvió en 1953, y desde entonces no ha parado. La ciudad se había fundado en el 25 a. C. para los soldados licenciados —emeriti— de las legiones V Alaudae y X Gémina, y su puente sobre el Guadiana tenía 60 arcos.",
+   "fuente": "Consorcio de la Ciudad Monumental de Mérida; UNESCO, Conjunto Arqueológico de Mérida (1993); Turismo de Extremadura, fichas del teatro romano y del puente sobre el Guadiana.",
+   "fundacion": "Emerita Augusta, fundada en el 25 a. C."
+  },
+  "-4.12,40.95": {
+   "texto": "El 11 de diciembre de 1474 murió Enrique IV en Madrid. Dos días después, en Segovia, su media hermana Isabel se hizo proclamar reina con la espada desnuda llevada delante y la punta hacia arriba: un gesto de justicia que a varios nobles les pareció una insolencia, porque Fernando, su marido, estaba en Aragón y no se había enterado. Llegó en enero, furioso, y el 15 de enero de 1475 firmaron la Concordia de Segovia, que puso por escrito quién mandaba en qué. Isabel jugaba con ventaja: tenía dentro de la ciudad el Alcázar y el tesoro real.",
+   "fuente": "Crónicas de Alfonso de Palencia y Hernando del Pulgar sobre la proclamación de 1474; texto de la Concordia de Segovia (enero de 1475).",
+   "fundacion": "oppidum celtibérico previo, municipio romano; sin fecha de fundación"
+  },
+  "-4.75,41.65": {
+   "texto": "Colón murió en Valladolid el 20 de mayo de 1506, el día siguiente de firmar su testamento, sin haber recuperado los cargos que le reclamaba a la Corona y convencido todavía de haber llegado a Asia. Lo enterraron en un convento de la ciudad, y allí empezó el viaje más largo de su vida: a Sevilla en 1509, a Santo Domingo hacia 1542, a La Habana en 1795 y otra vez a Sevilla en 1898, cada mudanza con una guerra detrás. Santo Domingo sostiene que los huesos buenos son los suyos; un análisis de ADN publicado en 2006 apoyó los de Sevilla.",
+   "fuente": "Testamento de Cristóbal Colón, 19 de mayo de 1506; Casa-Museo de Colón, Valladolid; Catedral de Sevilla y estudio genético de 2006 dirigido por José Antonio Lorente.",
+   "fundacion": "núcleo anterior repoblado por Pedro Ansúrez entre 1072 y 1095"
+  },
+  "-6.93,37.25": {
+   "texto": "Palos no se ofreció voluntaria. El 30 de abril de 1492 una provisión real le ordenó entregar dos carabelas armadas y tripuladas, como pago de una pena que la villa debía a la Corona. La orden se leyó en voz alta en la iglesia de San Jorge y el pueblo se hizo el sordo, hasta que Martín Alonso Pinzón, armador de allí mismo, puso su nombre y su dinero detrás del viaje; entonces aparecieron los marineros. Zarparon antes del amanecer del 3 de agosto de 1492, unos noventa hombres, y volvieron el 15 de marzo de 1493.",
+   "fuente": "Real provisión de 30 de abril de 1492 (Archivo General de Indias); Diario del primer viaje en la copia de Bartolomé de las Casas; Muelle de las Carabelas, Diputación de Huelva.",
+   "fundacion": "villa documentada desde el siglo XIV, sin acta de fundación"
+  },
+  "-5.88,39.47": {
+   "texto": "Francisco Pizarro nació en Trujillo hacia 1478, hijo no reconocido de un capitán, y murió apuñalado en Lima en 1541. Lo que volvió del Perú a este pueblo fue dinero: los palacios de la plaza mayor se levantaron con el rescate de Atahualpa. En el Palacio de la Conquista, los bustos de la fachada son Pizarro, la princesa inca Inés Huaylas Yupanqui y su hija Francisca, nacida en Perú en 1534, casada con su propio tío Hernando y, durante años, una de las mujeres más ricas de Extremadura. Del mismo pueblo salió Francisco de Orellana, que bajó el Amazonas en 1542.",
+   "fuente": "Palacio de la Conquista de Trujillo (bustos e inscripciones de la fachada); Agustín de Zárate, Historia del descubrimiento y conquista del Perú (1555); entradas de Francisco Pizarro y Francisca Pizarro en el Diccionario Biográfico de la Real Academia de la Historia.",
+   "fundacion": "Turgalium romano y Turyala andalusí; tomada por Fernando III en 1232"
+  },
+  "-103.33,20.67": {
+   "texto": "Guadalajara hubo que fundarla cuatro veces en diez años porque las tres primeras no aguantaron. La gente de Nuño de Guzmán la plantó en Nochistlán (1532), luego en Tonalá (1533) y después en Tlacotán (1535). En 1541 la rebelión del Mixtón la dejó sitiada, y allí murió Pedro de Alvarado, el conquistador de Guatemala, el 4 de julio de 1541: no lo aplastó su propio caballo, sino el del escribano Baltasar de Montoya, que rodó cuesta abajo encima de él. Las familias supervivientes discutieron si huir; la tradición atribuye a Beatriz Hernández la frase que zanjó la junta, «el rey es mi gallo». El 14 de febrero de 1542 firmaron el acta en Atemajac. Esa es la Guadalajara de hoy.",
+   "fuente": "Acta de fundación del 14 de febrero de 1542, Archivo Histórico de Jalisco; Enciclopedia de los Municipios de México, ficha de Guadalajara (INAFED).",
+   "fundacion": "cuatro fundaciones entre 1532 y 1542 (la definitiva, 14 de febrero de 1542, en el valle de Atemajac, habitado por cocas y tecuexes)"
+  },
+  "-102.58,22.77": {
+   "texto": "El 8 de septiembre de 1546 Juan de Tolosa acampó al pie del cerro de La Bufa, en tierra zacateca, y unos indígenas del lugar le mostraron piedras con plata. El campamento se volvió una de las ciudades más ricas de Nueva España: Felipe II le concedió escudo y el título de Muy Noble y Leal en 1588, y de aquí arrancaba el Camino Real de Tierra Adentro, la ruta de la plata que subía hasta Santa Fe de Nuevo México. Final abrupto: el 23 de junio de 1914 la División del Norte de Pancho Villa tomó el cerro a sangre, y Victoriano Huerta renunció tres semanas después, el 15 de julio.",
+   "fuente": "INAH, Centro Histórico de Zacatecas; expediente UNESCO nº 676 (1993); partes de guerra de la División del Norte, junio de 1914.",
+   "fundacion": "1546, en territorio zacateco y caxcán"
+  },
+  "-100.33,25.67": {
+   "texto": "Monterrey hubo que fundarla tres veces. Alberto del Canto puso Santa Lucía en 1577 y la abandonaron. En 1582 Luis de Carvajal y de la Cueva fundó la villa de San Luis Rey de Francia; era judío converso, la Inquisición lo arrestó en 1589 y murió en prisión en 1591, y su villa se vació. El 20 de septiembre de 1596 Diego de Montemayor volvió con doce familias y refundó el sitio como Ciudad Metropolitana de Nuestra Señora de Monterrey, por el virrey conde de Monterrey. Tres siglos después, la Fundidora de Fierro y Acero (1900) convirtió ese pueblo de doce familias en la capital industrial del norte.",
+   "fuente": "Acta de fundación de 1596, Archivo Histórico de Monterrey; proceso inquisitorial de Luis de Carvajal y de la Cueva, AGN, Ramo Inquisición.",
+   "fundacion": "tres intentos: 1577, 1582 y la refundación del 20 de septiembre de 1596, junto al manantial de Santa Lucía, en territorio de grupos seminómadas del noreste"
+  },
+  "-96.67,17.08": {
+   "texto": "Antes de los españoles aquí había una guarnición mexica, Huaxyácac, puesta para vigilar la ruta al Soconusco; los zapotecas llevaban siglos en el valle y Monte Albán ya estaba abandonado. Los españoles levantaron la villa de Antequera en 1529 y Carlos V le dio título de ciudad en 1532. Pero lo gordo pasó en enero de 1932: Alfonso Caso abrió la Tumba 7 de Monte Albán y sacó más de 400 objetos de oro, jade y hueso tallado, de factura mixteca, el mayor hallazgo de orfebrería prehispánica del continente. La ciudad se llama Oaxaca de Juárez desde 1872, por Benito Juárez, zapoteco nacido en Guelatao en 1806.",
+   "fuente": "Alfonso Caso, «Las exploraciones en Monte Albán, temporada 1931-1932», INAH; Enciclopedia de los Municipios de México, ficha de Oaxaca de Juárez (INAFED).",
+   "fundacion": "guarnición mexica de Huaxyácac anterior, en valle zapoteco; villa española de Antequera en 1529, título de ciudad en 1532"
+  },
+  "-90.50,19.83": {
+   "texto": "Campeche es la única ciudad amurallada de México, y la amurallaron por miedo. Francisco de Montejo «el Mozo» fundó la villa en 1540 sobre el asentamiento maya de Ah Kin Pech; el puerto exportaba palo de tinte y eso lo convirtió en imán de corsarios, hasta que en 1663 una flota pirata saqueó la ciudad completa. El 3 de enero de 1686 empezó la muralla y en octubre de 1704 el ingeniero Jaime Franck cerró el hexágono: 2.741 metros de perímetro, ocho baluartes, 225.024 pesos y dieciocho años de obra. La UNESCO la declaró Patrimonio de la Humanidad en 1999.",
+   "fuente": "Ficha de la Ciudad Histórica Fortificada de Campeche, Sistema de Información Cultural, Secretaría de Cultura (sic.cultura.gob.mx); «Murallas de Campeche» e «Historia de San Francisco de Campeche», Wikipedia en español, consultadas el 7 de octubre de 2026.",
+   "fundacion": "señorío maya de Ah Kin Pech (Can Pech) anterior; villa española el 4 de octubre de 1540"
+  },
+  "-99.62,18.57": {
+   "texto": "Taxco no tiene acta de fundación: es un real de minas que creció sobre el pueblo nahua de Tlachco, donde los enviados de Cortés buscaban estaño hacia 1528 y encontraron plata. El personaje es José de la Borda, que llegó sin nada y dio con la veta de San Ignacio; con ese dinero pagó entera la iglesia de Santa Prisca (1751-1758), una de las fachadas más desbordadas del barroco americano, y dejó la frase que todavía se repite: «Dios da a Borda y Borda da a Dios». Segundo acto: el estadounidense William Spratling llegó en 1929 y abrió taller. Hasta entonces Taxco exportaba mineral, no joyas.",
+   "fuente": "INAH, templo de Santa Prisca y San Sebastián, Taxco; Enciclopedia de los Municipios de México, ficha de Taxco de Alarcón (INAFED).",
+   "fundacion": "pueblo nahua de Tlachco anterior; real de minas español desde 1528, sin acta de fundación"
+  },
+  "-100.38,20.63": {
+   "texto": "La fundación de Querétaro la negoció un otomí, no un español: Conín, comerciante bautizado como Fernando de Tapia, que en los lienzos coloniales aparece como el que entrega la ciudad. La fecha tradicional es el 25 de julio de 1531, día de Santiago, y la leyenda dice que la batalla se detuvo cuando el sol se eclipsó y apareció una cruz en el cielo. El dato duro, y todavía visible: el acueducto que pagó Juan Antonio de Urrutia y Arana, marqués del Villar del Águila, entre 1726 y 1738 —74 arcos, 1.280 metros, 23 de altura—. Y en el Cerro de las Campanas fusilaron a Maximiliano el 19 de junio de 1867.",
+   "fuente": "«Los Arcos», Asociación Nacional de Ciudades Mexicanas del Patrimonio Mundial (ciudadespatrimonio.mx); Acueducto de Querétaro, Historic Civil Engineering Landmark de la ASCE; Enciclopedia de los Municipios de México, ficha de Querétaro (INAFED).",
+   "fundacion": "asentamiento otomí anterior; fundación tradicional el 25 de julio de 1531"
+  },
+  "-91.52,14.83": {
+   "texto": "En febrero de 1524 las huestes de Pedro de Alvarado derrotaron a los k'iche' en los llanos de El Pinal; la tradición sitúa ahí la muerte de Tecún Umán. Sobre Xelajuj No'j, los aliados tlaxcaltecas pusieron el nombre náhuatl Quetzaltenango. En 1838 la ciudad fue capital del Estado de Los Altos, sexto estado de la Federación Centroamericana, con su propia bandera y moneda; Rafael Carrera lo disolvió por las armas en enero de 1840. El 24 de octubre de 1902 el volcán Santa María reventó al lado, en una de las erupciones mayores del siglo XX, y enterró los cafetales de la costa en ceniza.",
+   "fuente": "Cartas de relación de Pedro de Alvarado (1524); documentación del Estado de Los Altos y la campaña de Rafael Carrera (1838-1840); catálogo de erupciones del Global Volcanism Program (Smithsonian) y la literatura geológica sobre el Santa María 1902.",
+   "fundacion": "asentamiento k'iche' de Xelajuj No'j anterior, ocupada por los españoles en 1524"
+  },
+  "-85.96,15.91": {
+   "texto": "Aquí se acabó el hombre que quiso ser dueño de Centroamérica. William Walker, el filibustero de Tennessee que llegó a presidente de Nicaragua en 1856 y restableció la esclavitud, desembarcó en 1860 en la costa hondureña para repetir la jugada. La marina británica lo capturó y lo entregó a las autoridades de Honduras: el 12 de septiembre de 1860 fue fusilado en Trujillo, con 36 años, y su tumba sigue en el cementerio viejo. Es la misma bahía donde Colón había tocado tierra firme en agosto de 1502, en su cuarto viaje.",
+   "fuente": "Relaciones del cuarto viaje de Colón; crónicas de la fundación atribuida a Juan de Medina por orden de Francisco de las Casas; partes del capitán Nowell Salmon (HMS Icarus) y prensa hondureña y estadounidense de 1860 sobre la captura y ejecución de Walker.",
+   "fundacion": "zona poblada antes (Guaymura), villa española en mayo de 1525"
+  },
+  "-88.58,14.58": {
+   "texto": "Durante cinco años el tribunal supremo de Centroamérica funcionó en un pueblo de montaña. La Real Audiencia de los Confines, creada por cédula del 13 de septiembre de 1543, expedida en Valladolid, para hacer cumplir las Leyes Nuevas de 1542 —las que prohibían esclavizar indígenas—, se instaló en Gracias el 16 de mayo de 1544 y gobernaba desde Chiapas hasta Panamá. Los encomenderos protestaron por lo apartado del sitio y en 1549 el tribunal se mudó a Santiago de Guatemala. Gracias se quedó con el nombre y sin el poder. A pocas leguas, en Cerquín, el lenca Lempira había resistido hasta 1537.",
+   "fuente": "Cédulas reales de 1542-1543 y actuaciones de la Real Audiencia y Chancillería de los Confines de Guatemala y Nicaragua; Wikipedia en español «Gracias (Lempira)» y reportajes históricos de El Heraldo y La Prensa (Honduras) sobre las tres fundaciones.",
+   "fundacion": "fundada en Opoa en octubre de 1536, refundada en su sitio definitivo el 14 de enero de 1539"
+  },
+  "-89.09,14.07": {
+   "texto": "Parte del añil que teñía la ropa de Europa salía de aquí: Suchitoto fue el mayor mercado del tinte en El Salvador, y de eso vienen los muros gruesos, los zaguanes y la iglesia de Santa Lucía. Recibió título de ciudad el 15 de julio de 1858, con Gerardo Barrios. Después el tinte sintético alemán hundió el añil y, entre 1973 y 1976, la represa del Cerrón Grande sobre el río Lempa inundó el valle: el pueblo despertó a la orilla de un lago que antes no existía. En los años ochenta fue frente de guerra y se vació de gente.",
+   "fuente": "Decreto de título de ciudad de 1858 (gobierno de Gerardo Barrios); documentación de CEL sobre la central hidroeléctrica Cerrón Grande; Wikipedia en español «Lago Suchitlán» y «Cerrón Grande Dam» para fechas de obra y superficie.",
+   "fundacion": "poblado pipil anterior, villa colonial y ciudad desde el 15 de julio de 1858"
+  },
+  "-86.09,11.97": {
+   "texto": "El 13 de abril de 1538, un sábado de cuaresma, el fraile dominico Blas del Castillo se hizo bajar con poleas al cráter del volcán Masaya. Llevaba una cruz para espantar al demonio y un martillo para picar la roca: estaba convencido de que el lago incandescente del fondo era oro fundido, y bajó en secreto para que no se enteraran los poderosos de León. Repitió el descenso tres veces y las muestras no eran oro ni plata. Nueve años antes, en 1529, fray Francisco de Bobadilla había plantado una cruz en el borde para exorcizar lo que llamaban la Boca del Infierno.",
+   "fuente": "Gonzalo Fernández de Oviedo, Historia general y natural de las Indias (descripción del Masaya, 1529); relación del descenso de fray Blas del Castillo recogida por Oviedo; reportajes documentados de La Prensa (Nicaragua) sobre el episodio y la «Boca del Infierno».",
+   "fundacion": "poblado chorotega anterior, título de villa de San Fernando de Masaya en 1819"
+  },
+  "-84.83,9.97": {
+   "texto": "Una lengua de arena de unos ocho kilómetros fue durante medio siglo la salida de Costa Rica al mundo. El 29 de abril de 1814 se habilitó como puerto mayor y por ahí empezó a irse el café: en carretas de bueyes desde el Valle Central, semanas de barro hasta el muelle, y de ahí a Valparaíso y a Londres. Juan Rafael Mora le dio el título de ciudad en 1858, tras la participación de los porteños en la Campaña Nacional. En 1890 el ferrocarril al Atlántico llegó a Limón, el café cambió de océano y el Pacífico esperó su propio tren hasta 1910.",
+   "fuente": "Expediente de habilitación del puerto ante la Real Audiencia de Guatemala (1814); decreto de título de ciudad de 1858; Wikipedia en español «Historia de Puntarenas» y «Puntarenas (ciudad)»; INCOP, reseña histórica del puerto.",
+   "fundacion": "sin acta de fundación española: puerto habilitado el 29 de abril de 1814, ciudad desde 1858"
+  },
+  "-83.03,10.00": {
+   "texto": "Colón ancló frente a la isla Uvita el 25 de septiembre de 1502 y siguió de largo. El puerto nació de verdad en 1871, cuando Costa Rica empezó un ferrocarril al Atlántico para sacar el café. La obra tardó 19 años y se llevó miles de vidas por malaria; los contratistas trajeron jamaiquinos, chinos e italianos. Minor Keith, que la terminó en 1890, se quedó con tierra a los lados, plantó banano y en 1899 fundó la United Fruit. Un contrato bananero de 1934 prohibió emplear trabajadores negros en la zona del Pacífico, y Limón quedó siendo el país donde se podía vivir.",
+   "fuente": "Diario del cuarto viaje de Colón (1502); contratos Soto-Keith y documentación del Ferrocarril al Atlántico (1871-1890); contrato bananero de 1934 (Asamblea Legislativa de Costa Rica); estudios sobre la migración afrocaribeña a Limón.",
+   "fundacion": "fondeadero de Colón en 1502, puerto abierto en 1871 con el ferrocarril al Atlántico"
+  },
+  "-79.88,9.37": {
+   "texto": "Durante siglo y medio la plata del Perú se cambiaba por género europeo en una aldea del Caribe. La feria duraba de treinta a sesenta días, y en ese mes el lugar era uno de los mercados más caros del mundo: se dormía en la calle a precio de palacio. Francis Drake murió de disentería frente a esta bahía el 28 de enero de 1596 y lo echaron al mar en un ataúd de plomo. Henry Morgan la saqueó en 1668; el almirante Edward Vernon la arrasó el 21 de noviembre de 1739. España mandó sus flotas por el Cabo de Hornos y la feria no volvió.",
+   "fuente": "Documentación del sistema de flotas y ferias de Tierra Firme (Archivo General de Indias, Casa de Contratación); relaciones de la fundación por Francisco Valverde y Mercado (1597); crónica del último viaje de Drake (1595-1596); partes británicos del ataque de Vernon, noviembre de 1739.",
+   "fundacion": "bautizado Puerto Bello por Colón en 1502, fundado como San Felipe de Portobelo el 20 de marzo de 1597"
+  },
+  "-79.44,21.93": {
+   "texto": "En 1518 Hernán Cortés pasó por Trinidad reclutando hombres para la expedición a México: la villa tenía cuatro años y ya servía de trampolín hacia el continente. Tres siglos después el azúcar del Valle de los Ingenios la hizo rica, con decenas de ingenios trabajados por miles de esclavizados y la torre de Manaca-Iznaga, de más de cuarenta metros, levantada hacia 1816 para vigilar los cañaverales; su campana marcaba la jornada. Cuando el azúcar se mudó a Matanzas y Cienfuegos, Trinidad quedó detenida en el tiempo, y por eso mismo la UNESCO la inscribió como Patrimonio de la Humanidad en 1988.",
+   "fuente": "UNESCO, Lista del Patrimonio Mundial, expediente 460 «Trinidad y el Valle de los Ingenios» (1988); Oficina del Conservador de la Ciudad de Trinidad.",
+   "fundacion": "asentamiento taíno previo en la región de Guamuhaya, villa española en 1514"
+  },
+  "-74.50,20.35": {
+   "texto": "Diego Velázquez la fundó en 1511 como Nuestra Señora de la Asunción: primera villa y primera capital de Cuba, hasta que el gobierno se trasladó a Santiago en 1515. En su iglesia se conserva la Cruz de la Parra, que la tradición atribuye a Colón en 1492. En 1987 un equipo con el belga Roger Dechamps, la cubana Raquel Carrera y el historiador Alejandro Hartmann la examinó: la madera no es europea sino antillana, Coccoloba diversifolia, y el carbono 14 la sitúa con 95% de certeza entre los años 860 y 1530. La reliquia es caribeña, no traída de España.",
+   "fuente": "Estudio de 1987 de R. Dechamps (Museo Real de África Central, Tervuren), R. Carrera (Instituto de Investigaciones Forestales de Cuba) y A. Hartmann, recogido por Juventud Rebelde (6-ago-2011) y EcuRed, entrada «Cruz de la Parra».",
+   "fundacion": "región taína poblada, primera villa española en 1511"
+  },
+  "-77.92,21.38": {
+   "texto": "Nació en 1514 como Santa María del Puerto del Príncipe junto al mar y se mudó dos veces; en 1528 quedó tierra adentro, entre dos ríos, buscando pastos y distancia de los corsarios. No le sirvió: en 1668 Henry Morgan la saqueó de todos modos. De ahí viene la leyenda de sus calles, un laberinto de plazuelas y callejones torcidos que, según el relato popular, se trazó para perder a los asaltantes; los historiadores lo discuten y lo atribuyen al crecimiento sin plan. Sin río navegable, la ciudad guardó el agua de lluvia en tinajones de barro. La UNESCO inscribió su centro histórico en 2008.",
+   "fuente": "UNESCO, Lista del Patrimonio Mundial, expediente 1270 «Centro histórico de Camagüey» (2008); crónicas del saqueo de Puerto Príncipe de 1668.",
+   "fundacion": "villa de 1514 en la costa, trasladada al sitio actual en 1528"
+  },
+  "-70.69,19.79": {
+   "texto": "En 1605 y 1606 el gobernador Antonio de Osorio cumplió una orden de Felipe III: quemar las ciudades del norte y el oeste de la isla para cortar el contrabando con holandeses, ingleses y franceses. Puerto Plata, fundada hacia 1502, fue incendiada y sus vecinos obligados a marcharse tierra adentro; de aquel traslado forzoso salieron pueblos como Monte Plata y Bayaguana. La bahía quedó casi vacía más de un siglo, con la fortaleza San Felipe como única guardia. La ciudad volvió a nacer el 22 de julio de 1736, repoblada con familias canarias traídas por la Corona: la misma ciudad, dos fundaciones separadas por ciento treinta años de monte.",
+   "fuente": "Estudio «Fundación de Puerto Plata, las devastaciones de 1605-1606 y su repoblación con inmigrantes canarios en el siglo XVIII» (academia.edu); entrada «Devastaciones de Osorio».",
+   "fundacion": "costa taína poblada, fundación hacia 1502, destruida en 1605 y refundada el 22 de julio de 1736"
+  },
+  "-70.67,19.50": {
+   "texto": "La ciudad ha muerto dos veces. El 2 de diciembre de 1562 un terremoto la derribó y los sobrevivientes la rehicieron a orillas del Yaque del Norte, donde sigue. En septiembre de 1863, durante la Guerra de la Restauración contra España, fueron los propios dominicanos quienes la incendiaron: con las tropas españolas atrincheradas en la fortaleza, los rebeldes prefirieron quemar sus casas antes que dejarles la plaza. De esa decisión salió el gobierno provisional que llevó al fin de la anexión en 1865. El nombre viene de los primeros hidalgos pobladores, los treinta «caballeros» que la tradición sitúa en los años finales del siglo XV.",
+   "fuente": "Crónicas y documentos de la Guerra de la Restauración (1863-1865); Academia Dominicana de la Historia, sobre el terremoto de 1562 y el traslado al Yaque.",
+   "fundacion": "en el Cibao taíno ya poblado, fundación a finales del siglo XV; sitio actual desde los años 1560"
+  },
+  "-66.62,18.00": {
+   "texto": "El 21 de marzo de 1937, Domingo de Ramos, la policía disparó contra una marcha del Partido Nacionalista en la calle Marina. Las cifras varían según la fuente: entre diecinueve y veintiún muertos, dos de ellos policías, y de un centenar a más de doscientos heridos. Una comisión independiente presidida por el abogado Arthur Garfield Hays investigó los hechos y los llamó masacre, nombre que quedó. La misma ciudad guarda uno de los edificios más fotografiados de Puerto Rico: el Parque de Bombas, pabellón de franjas rojas y negras levantado en 1882 para una feria agrícola e industrial y convertido al año siguiente en cuartel de bomberos.",
+   "fuente": "Informe de la Comisión Hays (1937); contraste de cifras en prensa puertorriqueña: Metro PR (21-mar-2013), Noticel (27-mar-2019) y Claridad.",
+   "fundacion": "territorio taíno del sur, poblado desde el siglo XVII y reconocido como pueblo en 1692"
+  },
+  "-67.14,18.20": {
+   "texto": "Fue la segunda villa de la isla, fundada en 1511 por orden de Juan Ponce de León y bautizada en honor de Germana de Foix, segunda esposa de Fernando el Católico. Durante sesenta años no logró quedarse quieta: los corsarios franceses la quemaron varias veces y los vecinos la fueron moviendo, hasta que Felipe II autorizó en 1570 el traslado a las lomas de Santa Marta, cumplido en 1573 y fuera del alcance de un desembarco. Allí sigue. En diciembre de 1606 los dominicos recibieron licencia para levantar aquí el convento de Porta Coeli; su capilla se data en 1609 y es de las más antiguas que quedan en pie en América.",
+   "fuente": "Enciclopedia de Puerto Rico (Fundación Puertorriqueña de las Humanidades), entrada «Municipio de San Germán»; Histopedia de Puerto Rico, «La villa de San Germán».",
+   "fundacion": "suroeste taíno ya poblado, villa de 1511 en la costa; sitio actual desde 1573"
+  },
+  "-71.13,8.40": {
+   "texto": "Juan Rodríguez Suárez fundó Santiago de los Caballeros de Mérida en 1558 sin permiso de la Audiencia de Santa Fe, en tierras de pueblos timoto-cuicas. Lo juzgaron por usurpar funciones de la Corona y lo condenaron a muerte; escapó y la sentencia nunca se cumplió, pero su ciudad quedó anulada. Juan de Maldonado la refundó en 1559 y la trasladó a la meseta entre los ríos Chama y Albarregas, donde sigue. En 1785 abrió el Real Colegio Seminario de San Buenaventura, germen de la Universidad de Los Andes. Y en 1960 se inauguró el teleférico a Pico Espejo: 12,5 kilómetros de cable hasta los 4.765 metros.",
+   "fuente": "Academia Nacional de la Historia de Venezuela (proceso contra Rodríguez Suárez y refundación de Maldonado); historia institucional de la Universidad de Los Andes; Sistema Teleférico de Mérida",
+   "fundacion": "1558, refundada en 1559 (valles de pueblos timoto-cuicas)"
+  },
+  "-71.66,10.73": {
+   "texto": "El 14 de diciembre de 1922 el pozo Barroso II reventó en la costa oriental del lago, cerca de Cabimas, y escupió crudo durante nueve días a razón de unos 100.000 barriles diarios sin control. Ese chorro convirtió el lago de Maracaibo en el centro petrolero del país. Antes la ciudad había sido fundada tres veces sobre una zona de palafitos añú: Ambrosio Alfínger en 1529, Alonso Pacheco en 1569 y Pedro Maldonado en 1574, ya como Nueva Zamora. El 24 de julio de 1823 la batalla naval del lago puso fin a la guerra de independencia en territorio venezolano; en el continente siguió hasta Ayacucho, en 1824. Hasta 1962 se cruzaba en ferry.",
+   "fuente": "Academia Nacional de la Historia de Venezuela (fundaciones y batalla del Lago); crónica petrolera de Barroso II (Caribbean Petroleum / Ministerio de Energía y Petróleo)",
+   "fundacion": "asentamientos añú anteriores; fundada tres veces: 1529, 1569 y 1574"
+  },
+  "-63.60,8.10": {
+   "texto": "Se llamó Angostura porque ahí el Orinoco se estrecha a unos 900 metros. El 22 de mayo de 1764 Joaquín Sabás Moreno de Mendoza cumplió la real orden de trasladar a ese paso la ciudad de Santo Tomé de Guayana, levantada en 1595 y mudada varias veces antes, y en 1819 fue la capital de la revolución: el 15 de febrero Bolívar abrió el Congreso de Angostura con su discurso más citado, y el 17 de diciembre ese mismo Congreso proclamó la República de Colombia. En 1824 el médico alemán Johann Siegert empezó a preparar allí un amargo para la tropa; el nombre del pueblo se le quedó pegado aunque la fábrica se mudó a Trinidad en 1875. La ciudad pasó a llamarse Ciudad Bolívar en 1846.",
+   "fuente": "Actas del Congreso de Angostura (1819); Academia Nacional de la Historia de Venezuela; historia corporativa de Angostura sobre el traslado de 1875",
+   "fundacion": "1764, como Angostura (con intentos previos de Santo Tomé de Guayana desde 1595)"
+  },
+  "-74.20,11.25": {
+   "texto": "Rodrigo de Bastidas desembarcó el 29 de julio de 1525 en una bahía que ya tenía dueños: los pueblos tairona de Bonda y Taganga vivían allí y resistieron décadas. Es la ciudad fundada por españoles más antigua de Colombia que nunca se abandonó, y también la más castigada: piratas y corsarios la asaltaron una veintena de veces entre los siglos XVI y XVIII, hasta el punto de que los vecinos huían al monte por costumbre. El 17 de diciembre de 1830 Simón Bolívar murió en la quinta de San Pedro Alejandrino, en una cama prestada por un comerciante español.",
+   "fuente": "Academia Colombiana de Historia (fundación de 1525 y asaltos corsarios); Museo Quinta de San Pedro Alejandrino (fecha y circunstancias de la muerte de Bolívar)",
+   "fundacion": "29 de julio de 1525, sobre una bahía tairona poblada (Bonda, Taganga)"
+  },
+  "-73.37,5.55": {
+   "texto": "Hernán Suárez de Villalobos la fundó el 12 de junio de 1572 y la nombró por Andrés Díaz Venero de Leiva, primer presidente de la Real Audiencia del Nuevo Reino de Granada. Su plaza empedrada mide unos 14.000 metros cuadrados, de las mayores de América, y nunca se asfaltó. En octubre de 1812 sesionó allí el Congreso de las Provincias Unidas de la Nueva Granada, y en diciembre de 1823 murió en la villa Antonio Nariño, el que había traducido e impreso los derechos del hombre. Debajo hay un mar cretácico: en 1977, en la vereda Monquirá, un campesino descubrió un pliosaurio de unos siete metros que se conserva en el sitio del hallazgo.",
+   "fuente": "Academia Colombiana de Historia (fundación y Congreso de 1812); Museo El Fósil y Centro de Investigaciones Paleontológicas de Villa de Leyva (el ejemplar de kronosaurio)",
+   "fundacion": "12 de junio de 1572"
+  },
+  "-74.74,9.23": {
+   "texto": "Santa Cruz de Mompox se fundó en 1537 en tierras del cacique Mompoj, sobre un poblado malibú; hay fuentes que corren la fundación a 1540 y le cambian el fundador. Durante dos siglos fue la aduana obligatoria del Magdalena: todo lo que subía hacia Bogotá paraba aquí. Después el río se fue. El brazo de Mompox se colmató y en el siglo XIX la navegación se mudó al brazo de Loba; la ciudad quedó varada, sin obras nuevas, y por eso llegó entera a 1995, cuando la Unesco la declaró patrimonio mundial. Bolívar reclutó allí cientos de hombres hacia 1812.",
+   "fuente": "Expediente de la Unesco del Centro Histórico de Santa Cruz de Mompox (1995); historiografía local recogida en la historia del municipio, que registra las dos fechas de fundación (1537 y 1540)",
+   "fundacion": "1537 (fecha discutida), en territorio del cacique Mompoj, sobre poblado malibú"
+  },
+  "-79.21,-3.99": {
+   "texto": "Alonso de Mercadillo la fundó dos veces: hacia 1546 en el valle de Garrochamba y en 1548 la trasladó al valle de Cuxibamba, entre los ríos Malacatos y Zamora, en territorio palta donde los incas ya habían pasado. Su dato más terco es eléctrico: en 1897 una veintena de vecinos —José Miguel Burneo, Ramón Eguiguren, Manuel Carrión y el ingeniero Alberto Rhor entre ellos— juntó plata, trajo de Francia dos turbinas de 12 kilovatios y las montó en el río Malacatos. En abril de 1899 se encendió el alumbrado público: Loja fue la primera ciudad del Ecuador con luz eléctrica.",
+   "fuente": "Reportaje histórico de Ecuavisa sobre los 125 años de la electrificación del Ecuador (turbinas del Malacatos, 1897-1899); Casa de la Cultura Ecuatoriana, núcleo de Loja, para las fundaciones de Mercadillo",
+   "fundacion": "territorio palta con presencia inca previa; 1546 (discutida) y traslado en 1548"
+  },
+  "-79.02,-8.12": {
+   "texto": "A pocos kilómetros de la plaza mayor está Chan Chan, la capital del reino chimú: unos 14 km2 de muros de adobe —1.414 hectáreas según la delimitación de la Unesco—, la mayor ciudad de barro de América, levantada desde hacia 850 d. C. y absorbida por los incas hacia 1470. Diego de Almagro plantó la villa española al lado, en 1534, y Pizarro la llamó Trujillo por su pueblo de Extremadura. En 1687, con los corsarios subiendo por el Pacífico, se mandó cercarla con una muralla elíptica de adobe; de aquel anillo hoy solo quedan tramos sueltos, encajados entre casas y avenidas.",
+   "fuente": "UNESCO, ficha de la Zona Arqueológica de Chan Chan (criterios y extensión del sitio); Municipalidad Provincial de Trujillo, reseña histórica",
+   "fundacion": "capital chimú de Chan Chan anterior, villa española en 1534"
+  },
+  "-78.53,-7.15": {
+   "texto": "Aquí no hubo fundación española: la ciudad ya existía y era el centro administrativo inca del norte, con los baños termales donde Atahualpa acampaba. El 16 de noviembre de 1532 Francisco Pizarro, con unos 168 hombres, lo capturó en la plaza en una emboscada de una sola tarde. Atahualpa ofreció llenar de oro una sala hasta donde alcanzaba su brazo alzado, y dos veces de plata. Lo cumplió y lo ejecutaron igual, en 1533. El Cuarto del Rescate sigue en pie —11,80 por 7,30 metros y 3,10 de alto— y es el único edificio inca que queda en la ciudad.",
+   "fuente": "Municipalidad Provincial de Cajamarca (gob.pe), \"La conquista y el virreinato en Cajamarca\"; Britannica, \"Battle of Cajamarca (1532)\"; ficha del Cuarto del Rescate",
+   "fundacion": "ciudad inca preexistente, sin acta de fundación española"
+  },
+  "-63.23,-17.75": {
+   "texto": "Esta ciudad se mudó unos 220 kilómetros. Ñuflo de Chávez la fundó el 26 de febrero de 1561 junto al arroyo Sutó, en lo que hoy es San José de Chiquitos, buscando la ruta al Paraguay y la plata del Perú. Quedaba demasiado lejos de todo y demasiado expuesta, así que los vecinos la fueron corriendo al oeste hasta asentarse en San Lorenzo de la Frontera, junto al río Piraí, en la década de 1590, llevándose el nombre puesto. Chávez no lo vio: lo mataron los itatines en 1568.",
+   "fuente": "Comité pro Santa Cruz, \"Fundación de Santa Cruz, 26 de febrero de 1561\"; Wikipedia, \"Santa Cruz de la Sierra\" y \"Ñuflo de Chaves\"",
+   "fundacion": "26 de febrero de 1561, en otro emplazamiento; trasladada al sitio actual en la década de 1590"
+  },
+  "-67.13,-17.98": {
+   "texto": "Se fundó el 1 de noviembre de 1606 como Villa de San Felipe de Austria, encima de un cerro con plata y sobre tierra de los urus, que son los que le dan el nombre. La plata se agotó y lo que sostuvo a la región fue el estaño: Oruro se volvió el centro urbano y ferroviario de la minería boliviana del estaño, aunque la mina que hizo la fortuna de Simón Patiño —La Salvadora, que compró el 16 de agosto de 1897 y cuya veta rica apareció hacia 1900— no estaba aquí. En 1952 el Estado nacionalizó las minas. Hoy lo que convoca es el Carnaval, declarado patrimonio por la Unesco en 2001.",
+   "fuente": "Gobierno Autónomo Municipal de Oruro, reseña de fundación; UNESCO, proclamación del Carnaval de Oruro como obra maestra del patrimonio oral e inmaterial (2001)",
+   "fundacion": "territorio uru anterior, villa española el 1 de noviembre de 1606"
+  },
+  "-71.62,-33.05": {
+   "texto": "Valparaíso no tiene acta de fundación. Juan de Saavedra llegó en 1536 a una ensenada donde ya vivía gente, el caserío que los cronistas llaman Quintil, y el puerto se fue formando solo, sin damero ni plaza mayor: de ahí los cerros tomados, los ascensores y las escaleras. En 1827 nació allí El Mercurio de Valparaíso, el diario en castellano más antiguo que todavía se publica. El terremoto del 16 de agosto de 1906 lo arrasó, y en 1914 el Canal de Panamá le quitó de golpe los barcos que antes doblaban el Cabo de Hornos.",
+   "fuente": "UNESCO, ficha del Área Histórica de la Ciudad Portuaria de Valparaíso (2003); Memoria Chilena (Biblioteca Nacional), Valparaíso y El Mercurio de Valparaíso",
+   "fundacion": "caserío indígena de Quintil anterior, llegada española en 1536, sin acta de fundación"
+  },
+  "-73.25,-39.80": {
+   "texto": "Pedro de Valdivia la fundó el 9 de febrero de 1552 sobre Ainil, una población mapuche-huilliche que ya ocupaba la confluencia de los ríos. En 1599 los mapuche al mando de Pelantaro la destruyeron y la ciudad desapareció del mapa casi medio siglo; en 1643 una flota holandesa ocupó la bahía vacía unos meses y el susto fue tal que en 1645 la Corona la refundó como un sistema de fuertes a la entrada del río: Corral, Niebla, Mancera. El 22 de mayo de 1960 le tocó el terremoto más fuerte jamás registrado, de magnitud 9,5.",
+   "fuente": "Memoria Chilena (Biblioteca Nacional de Chile), \"Valdivia\" y el sistema de fuertes de la bahía de Corral; USGS, catálogo de grandes terremotos (Chile, 1960)",
+   "fundacion": "asentamiento mapuche-huilliche de Ainil anterior, fundación el 9 de febrero de 1552"
+  },
+  "-64.18,-31.40": {
+   "texto": "Jerónimo Luis de Cabrera la fundó el 6 de julio de 1573 junto al río Suquía, en una zona de asentamientos comechingones; al año siguiente sus propios rivales lo destituyeron y lo decapitaron. Lo que hizo a Córdoba fue el colegio jesuita: de 1613 arranca la casa de estudios que en 1622 pudo otorgar grados, la universidad más antigua del país. De esas mismas aulas salió en 1918 la Reforma Universitaria, que cambió el gobierno de las universidades en media América Latina. La Manzana Jesuítica es patrimonio de la humanidad desde el año 2000.",
+   "fuente": "Universidad Nacional de Córdoba, historia institucional; UNESCO, ficha de la Manzana y Estancias Jesuíticas de Córdoba (2000)",
+   "fundacion": "asentamientos comechingones anteriores, fundación el 6 de julio de 1573"
+  },
+  "-65.42,-24.78": {
+   "texto": "La fundó Hernando de Lerma el 16 de abril de 1582, en un valle ya poblado, y la bautizó Ciudad de Lerma por sí mismo; a él lo terminaron preso y muerto en una cárcel de España y el nombre no cuajó. Su momento llegó el 20 de febrero de 1813: Manuel Belgrano derrotó allí al ejército realista de Pío Tristán y, en vez de llevarse a los prisioneros, los dejó ir bajo juramento de no volver a pelear contra la revolución. Después vino Martín Miguel de Güemes y su guerra de gauchos, que frenó años las invasiones desde el Alto Perú.",
+   "fuente": "Gobierno de la Provincia de Salta, reseña histórica de la fundación; Archivo General de la Nación / Academia Nacional de la Historia, batalla de Salta (1813)",
+   "fundacion": "valle poblado por comunidades diaguitas y pulares, fundación el 16 de abril de 1582"
+  },
+  "-55.87,-27.35": {
+   "texto": "Nació el 25 de marzo de 1615 como reducción jesuítica, Nuestra Señora de la Encarnación de Itapúa, fundada por Roque González de Santa Cruz entre los guaraníes de la zona, y no estaba aquí: estaba en la otra orilla del Paraná, donde hoy se levanta Posadas. La cruzaron después, en balsas. Lo extraordinario pasó cuatro siglos más tarde: la represa de Yacyretá subió el embalse y el centro bajo de la ciudad, con su mercado y sus calles, quedó bajo el agua. Miles de familias se mudaron a barrios nuevos y sobre lo inundado se construyó una playa urbana.",
+   "fuente": "Municipalidad de Encarnación, \"Historia de la ciudad\"; Entidad Binacional Yacyretá, cronología del llenado del embalse (cota 83)",
+   "fundacion": "población guaraní de Itapúa, reducción jesuítica el 25 de marzo de 1615"
+  },
+  "-57.97,-31.39": {
+   "texto": "El punto de partida es militar y modesto: el 8 de noviembre de 1756 el gobernador de Montevideo, José Joaquín de Viana, mandó levantar unos cuarteles provisorios junto al salto del río Uruguay, el rápido que cortaba la navegación. La población definitiva arranca en 1817, a partir de un campamento militar portugués; el departamento se creó en 1837 y el rango de ciudad llegó por decreto del 8 de junio de 1863. Allí nació, el 31 de diciembre de 1878, Horacio Quiroga, el de los cuentos de la selva, que se quitó la vida en 1937. Y allí, desde 1979, Uruguay y Argentina se reparten la electricidad de Salto Grande, la represa binacional tendida entre las dos orillas.",
+   "fuente": "Intendencia de Salto, \"Historia y archivos\"; Comisión Técnica Mixta de Salto Grande, cronología de la obra; biografía de Horacio Quiroga",
+   "fundacion": "cuarteles de 1756, poblamiento definitivo en 1817, ciudad en 1863"
+  },
+  "-117.10,32.67": {
+   "texto": "El 16 de julio de 1769 Junípero Serra levantó la cruz en una loma sobre Cosoy, aldea kumeyaay habitada mucho antes de que llegara nadie de España. La expedición había salido de la Baja con unos 300 hombres y el escorbuto se llevó a decenas antes de clavar el primer poste. Seis años después, la noche del 4 al 5 de noviembre de 1775, cientos de kumeyaay quemaron la misión, ya trasladada a Nipaguay, y mataron al fraile Luis Jayme. Se reconstruyó en adobe. Cabrillo había fondeado en la bahía en 1542 y el nombre lo puso Vizcaíno en 1602.",
+   "fuente": "Diario de fray Junípero Serra (1769), edición de Antonine Tibesar; archivo histórico de la Misión Basílica San Diego de Alcalá; National Park Service, Cabrillo National Monument.",
+   "fundacion": "aldea kumeyaay de Cosoy anterior, presidio y misión en 1769"
+  },
+  "-119.72,34.44": {
+   "texto": "El presidio se plantó el 21 de abril de 1782, el último de los cuatro de la Alta California, pegado a Syuxtun, pueblo chumash cuyas canoas de tablas cosidas —el tomol— cruzaban el canal hasta las islas. La misión llegó en 1786. Pero lo que hoy se ve es mucho más joven: el terremoto del 29 de junio de 1925 derribó el centro, y la ciudad respondió creando una junta de arquitectura que obligó a reconstruir en estilo español. Esas tejas y esos arcos blancos no son del siglo XVIII; son una decisión de urbanismo de 1925.",
+   "fuente": "Santa Barbara Trust for Historic Preservation, El Presidio de Santa Bárbara State Historic Park; USGS, reseña del terremoto de Santa Bárbara de 1925.",
+   "fundacion": "pueblo chumash de Syuxtun anterior, presidio en 1782"
+  },
+  "-121.89,36.60": {
+   "texto": "Sebastián Vizcaíno bautizó el puerto el 16 de diciembre de 1602 en honor al virrey Gaspar de Zúñiga, conde de Monterrey, y lo describió tan bien que casi lo pierde: la expedición de Gaspar de Portolá pasó de largo en 1769 sin reconocerlo y acabó dando con la bahía de San Francisco. Volvió, y el 3 de junio de 1770 levantó allí el presidio, junto a las rancherías rumsen. Monterey fue capital de la Alta California con España y con México, y en 1849 la convención que escribió la primera constitución del estado la imprimió en español y en inglés.",
+   "fuente": "Relación del viaje de Sebastián Vizcaíno (1602-1603); California State Parks, Monterey State Historic Park; actas de la Convención Constitucional de Monterey, 1849.",
+   "fundacion": "aldeas rumsen (ohlone) anteriores, puerto nombrado en 1602 y presidio en 1770"
+  },
+  "-110.89,32.21": {
+   "texto": "El nombre no es español: viene del o'odham Cuk Son, «base negra», por la falda oscura del cerro que hoy llaman Sentinel Peak, donde ya se cultivaba maíz junto al río. El 20 de agosto de 1775, Hugo O'Conor —un irlandés al servicio del rey de España, al que llamaban «el capitán colorado»— eligió el sitio del presidio de San Agustín del Tucsón, y la guarnición se mudó desde Tubac al año siguiente. El 1 de mayo de 1782 un ataque apache estuvo a punto de tomarlo: lo defendió, herido, el capitán Pedro Allande y Saavedra.",
+   "fuente": "Arizona Historical Society, documentación del presidio de San Agustín del Tucsón; Kieran McCarty, «Desert Documentary: The Spanish Years» (1976).",
+   "fundacion": "aldea o'odham de Cuk Son anterior, presidio en 1775"
+  },
+  "-106.51,31.78": {
+   "texto": "El 30 de abril de 1598, tras días de sed, la expedición de Juan de Oñate —unos 500 colonos y, según sus propias relaciones, miles de cabezas de ganado— llegó al vado del Río Grande, celebró misa y tomó posesión de todo lo que había al norte. De aquel banquete sale la pretensión de que la primera acción de gracias ocurrió allí, 23 años antes de Plymouth. La misión de Guadalupe se fundó el 8 de diciembre de 1659, en la orilla sur, hoy Ciudad Juárez. Y en 1682, huyendo de la revuelta pueblo de 1680, los tigua fundaron Ysleta del Sur, que sigue en pie.",
+   "fuente": "«Don Juan de Oñate, Colonizer of New Mexico», edición de George P. Hammond y Agapito Rey (1953); historia oficial del Ysleta del Sur Pueblo.",
+   "fundacion": "paso del río en territorio manso y suma, vado tomado en 1598 y misión de 1659 en la orilla sur"
+  },
+  "-87.22,30.42": {
+   "texto": "En agosto de 1559, Tristán de Luna y Arellano entró en la bahía con once naves y unas 1.500 personas para fundar la primera ciudad europea permanente de lo que hoy es Estados Unidos. Cinco semanas después, el 19 de septiembre, un huracán hundió casi toda la flota con la comida aún en las bodegas. Vinieron el hambre y los motines, y en 1561 la Corona ordenó abandonarlo todo. No es leyenda: en la bahía se han localizado tres pecios de aquella flota (1992, 2006 y 2016) y en 2015 se identificó el campamento en tierra. Pensacola se refundó en 1698.",
+   "fuente": "University of West Florida, proyectos arqueológicos Luna Settlement y Emanuel Point Shipwrecks; relaciones de la expedición de Tristán de Luna y Arellano, Archivo General de Indias.",
+   "fundacion": "asentamiento español en 1559, abandonado en 1561 y refundado en 1698"
+  },
+  "-90.04,30.00": {
+   "texto": "España recibió Luisiana en 1762 y le costó cobrarla: los criollos franceses expulsaron al gobernador Antonio de Ulloa en 1768 y en 1769 Alejandro O'Reilly desembarcó con más de dos mil soldados y fusiló a cinco cabecillas. Pero lo que de verdad cambió la ciudad fue el fuego. El Viernes Santo 21 de marzo de 1788 ardieron 856 edificios, casi el casco entero, y en 1794 otros 212. Las ordenanzas españolas de reconstrucción impusieron ladrillo, teja y galerías, así que el llamado Barrio Francés es, piedra por piedra, español. El Cabildo y la catedral salen de ahí.",
+   "fuente": "Actas del Cabildo de Nueva Orleans, Louisiana State Museum (The Cabildo); estudios de Gilbert C. Din sobre la Luisiana española.",
+   "fundacion": "fundada por Francia en 1718, bajo gobierno español de 1763 a 1803"
+  },
+  "-105.42,37.20": {
+   "texto": "En abril de 1851, unas cincuenta familias hispanas de Taos y Abiquiú cruzaron hacia el norte y trazaron San Luis de la Culebra, el pueblo habitado más antiguo de Colorado. Se fundó en territorio que ya era de Estados Unidos desde 1848, pero poblando una merced mexicana de 1844, en tierras que los ute recorrían desde mucho antes. Lo primero que cavaron fue la acequia: su derecho de agua, fechado el 10 de abril de 1852, es el más antiguo reconocido del estado y todavía riega. Al lado sigue La Vega, un ejido de unas 600 acres que se pastorea en común.",
+   "fuente": "History Colorado y Colorado Encyclopedia, entradas sobre San Luis y las acequias del valle de San Luis; registro de derechos de agua de la División 3 de Colorado.",
+   "fundacion": "1851, poblando la merced mexicana de Sangre de Cristo de 1844"
+  },
+  "120.39,17.57": {
+   "texto": "En 1572 Juan de Salcedo plantó la Villa Fernandina sobre Bigan, un puerto fluvial donde las juncas chinas ya cambiaban seda por oro ilocano. De ahí salió una casta rara: mestizos de sangley que se enriquecieron con el añil y el tabaco y se construyeron casas de piedra abajo y madera arriba, almacén en el bajo y salón en el alto. En esa misma plaza, el 20 de septiembre de 1763, los españoles ahorcaron a María Josefa Gabriela Silang, viuda de Diego Silang, después de colgar a casi un centenar de sus hombres. La UNESCO declaró el casco histórico Patrimonio Mundial en 1999.",
+   "fuente": "UNESCO, Centro del Patrimonio Mundial, ficha 502 «Historic City of Vigan» (inscripción de 1999); National Historical Commission of the Philippines, marcadores de Vigan y de la revuelta de Diego y Gabriela Silang (1762-1763).",
+   "fundacion": "poblado de Bigan preexistente, villa espanola en 1572"
+  },
+  "122.55,10.71": {
+   "texto": "El puerto se abrió al comercio exterior en 1855 y en veinte años Iloilo dejó de vivir del tejido de piña y jusi para mover el azúcar de Negros: el vicecónsul británico Nicholas Loney prestaba dinero a los hacenderos y metió molinos de vapor, y los telares de Molo se hundieron. Lo que casi nadie recuerda: cuando Manila cayó ante los estadounidenses el 13 de agosto de 1898, el gobierno español de Filipinas se mudó aquí. Iloilo fue su última capital, hasta que el general Diego de los Ríos evacuó la plaza en la Nochebuena de 1898 y la entregó a los revolucionarios filipinos.",
+   "fuente": "National Historical Commission of the Philippines, marcadores del gobierno español de 1898 y del Grito de Santa Bárbara; «A Britisher in the Philippines: the Letters of Nicholas Loney» (Manila, Biblioteca Nacional, 1964) para el azúcar y los molinos.",
+   "fundacion": "poblados de Irong-Irong y Ogtong anteriores; Villa Rica de Arevalo en 1581"
+  },
+  "122.08,6.92": {
+   "texto": "El 23 de junio de 1635 el jesuita Melchor de Vera puso la primera piedra del Real Fuerte de San José, hoy fuerte del Pilar. Para levantarlo juntaron albañiles y soldados traídos de Cebú, Pampanga, Luzón y Nueva España, que no se entendían entre sí; la explicación más aceptada es que de ese español de obra salió el chabacano, lengua criolla con gramática filipina y vocabulario español, viva hoy en Zamboanga y con primas en Cavite y Ternate. En 1663 España abandonó el fuerte para defender Manila de Koxinga, y el ingeniero Juan Sicarra lo reconstruyó en 1718-1719 bajo la advocación del Pilar.",
+   "fuente": "Museo Nacional de Filipinas, marcador y museo del fuerte del Pilar (fechas de 1635, 1663 y 1718-1719); John M. Lipski, estudios sobre el chabacano de Zamboanga y los criollos hispanofilipinos.",
+   "fundacion": "asentamientos subanun y lutaos anteriores; primera piedra del fuerte el 23 de junio de 1635"
+  },
+  "9.77,1.87": {
+   "texto": "Bata creció como factoría en la costa ndowe, entre los ríos Utonde y Ekuku, y en 1900 el sitio lo ocupaban los franceses. Ese mismo año el Tratado de París del 27 de junio fijó los límites del Muni y el enclave quedó para España, que se quedó con 26.017 kilómetros cuadrados frente a las pretensiones mucho mayores que había llevado a la mesa. Bata fue capital de la Guinea continental y puerto de la madera okume y del cacao. El 7 de marzo de 2021 estallaron los depósitos del cuartel de Nkoantoma y se llevaron por delante barrios enteros de la ciudad.",
+   "fuente": "Tratado de París de 27 de junio de 1900 entre Francia y España sobre límites en el golfo de Guinea; Mariano L. de Castro y María Luisa de la Calle, trabajos sobre la colonización española del golfo de Guinea; comunicados oficiales guineanos de marzo de 2021 sobre Nkoantoma.",
+   "fundacion": "factoria comercial anterior, ciudad formalizada en 1900"
+  },
+  "10.57,1.45": {
+   "texto": "Se llamó Oyala y Djibloho antes de llamarse Ciudad de la Paz: una capital abierta a machete en la selva de Wele-Nzas, a 454 metros de altitud, a 20 kilómetros del aeropuerto de Mengomeyén y lejos del mar. Ese es el punto. Teodoro Obiang, que llegó al poder por el golpe de agosto de 1979 y sobrevivió al intento de marzo de 2004, quiso un gobierno que no se pueda tomar desde la costa. El plano trae avenidas de seis carriles, una presa en el río Wele y la Universidad Afroamericana de África Central, abierta en 2015. El distrito mide 81,5 kilómetros cuadrados. El traslado no está consumado: Malabo sigue siendo la capital oficial del país.",
+   "fuente": "Ficha «Ciudad de la Paz / Oyala» y «Provincia de Djibloho» en Wikipedia en español, consultadas el 7 de octubre de 2026 (superficie, altitud y cronología administrativa); reportajes de prensa internacional sobre la construcción de Oyala.",
+   "fundacion": "obras iniciadas hacia 2011-2012 junto a la aldea de Oyala"
+  },
+  "-15.94,23.71": {
+   "texto": "En noviembre de 1884, mientras en Berlín se repartía África, el teniente Emilio Bonelli desembarcó en la península de Río de Oro y plantó una caseta de madera: eso fue Villa Cisneros. España declaró el protectorado el 26 de diciembre de aquel año. En 1932 la República la convirtió en colonia penitenciaria y allí fueron a parar deportados del levantamiento del Alto Llobregat y, en agosto, implicados en la sublevación del general Sanjurjo. España se marchó en 1976; Mauritania ocupó la plaza y renunció a ella en 1979, y desde entonces la administra Marruecos. Hoy la bahía es una de las mecas del kitesurf.",
+   "fuente": "Real orden de 26 de diciembre de 1884 por la que España declara el protectorado de Río de Oro; artículo «La colonia penitenciaria de Villa Cisneros. Deportaciones», revista Historia y Comunicación Social, Universidad Complutense de Madrid.",
+   "fundacion": "establecimiento espanol de Villa Cisneros, noviembre de 1884"
+  },
+  "-11.68,26.73": {
+   "texto": "Esmara no la fundaron los españoles. La levantó hacia 1898 el chej Ma el Ainin como capital religiosa y base contra la penetración francesa: hizo traer canteros para una mezquita y un ksar de piedra en pleno desierto, y la mezquita nunca se terminó. En 1913 una columna francesa la destruyó. El 15 de mayo de 1934, después de la sumisión pactada con las tribus, una unidad española al mando del capitán Bullón entró en el pueblo, y Smara quedó como puesto de las Tropas Nómadas hasta la retirada de 1975-1976. Las ruinas del ksar y de la mezquita siguen en pie.",
+   "fuente": "«Los fuertes del Sahara español», comunicación académica de la ACAMI (2023), para los puestos militares y la cronología de 1934; Encyclopaedia Britannica, entrada «Smara», para la fundación de Ma el Ainin y la destrucción francesa de 1913.",
+   "fundacion": "fundada hacia 1898 por el chej Ma el Ainin; guarnicion espanola desde 1934"
+  },
+  "28.98,41.01": {
+   "texto": "En 1493, un año después de la expulsión, los hermanos David y Samuel ibn Nahmías montaron en Constantinopla la primera imprenta del Imperio otomano y sacaron un libro en hebreo. Los recién llegados organizaron sus sinagogas por procedencia —el kal de Aragón, el de Castilla, el de Portugal, el de Córdoba— en Balat y Hasköy, y su judeoespañol acabó imponiéndose incluso sobre los judíos romaniotas que ya vivían allí y hablaban griego. Hoy queda El Amaneser, suplemento mensual del semanario Şalom escrito íntegramente en judeoespañol: el único periódico del mundo en esa lengua. Su número 200 salió en 2021.",
+   "fuente": "Centro de Investigaciones sobre la Cultura Sefardí Otomano-Turca de Estambul (editor de El Amaneser); Encyclopaedia Judaica, entrada «Istanbul»",
+   "fundacion": "Bizancio griego hacia 660 a.C., refundada como Constantinopla en 330"
+  },
+  "22.94,40.64": {
+   "texto": "El 15 de marzo de 1943 salió de la estación de Salónica el primer convoy hacia Auschwitz-Birkenau. Hasta agosto fueron diecinueve, cargados en el gueto Baron Hirsch, pegado a las vías. Las cifras no cuadran del todo entre fuentes —entre 42.830 y 48.974 deportados—, pero el resultado sí: más de 38.000 fueron gaseados al llegar, y al terminar la guerra quedaban en la ciudad menos de 2.000 judíos de una comunidad que llevaba allí cuatro siglos y medio hablando judeoespañol. Tres meses antes, en diciembre de 1942, el cementerio judío fue arrasado; sobre el solar está hoy el campus de la Universidad Aristóteles.",
+   "fuente": "Enciclopedia del Holocausto del USHMM, entrada «Salonika»; Holocaust Memorial Day Trust, «15 March 1943»; Stefania Zezza en Sephardic Horizons, vol. 6",
+   "fundacion": "fundada en 316 a.C. por Casandro sobre aldeas que ya existían, entre ellas Terma"
+  },
+  "18.41,43.86": {
+   "texto": "Laura Papo Bohoreta (Sarajevo, 1891-1942) decidió que el judeoespañol de su barrio merecía escribirse. Recogió romances, refranes y canciones que las mujeres se habían pasado de memoria desde el siglo XVI, y en 1932 firmó «La mužer sefardí de Bosna», el primer estudio sobre ellas, redactado en su propia lengua. Sus obras de teatro se representaron en la ciudad. Murió en 1942, poco después de que se llevaran a sus hijos. Los sefardíes aparecen en los registros otomanos de Sarajevo desde 1565, como comerciantes de paño fino, y levantaron Il Kal Viejo en 1581: el edificio sigue en pie y hoy es el Museo Judío.",
+   "fuente": "Museo Judío de Bosnia y Herzegovina (sinagoga de 1581); «The Sephardim of Bosnia», Spirit of Bosnia, vol. 3, n.º 1 (2008)",
+   "fundacion": "sobre el poblado medieval de Vrhbosna, ciudad otomana fundada hacia 1461"
+  },
+  "-5.36,35.58": {
+   "texto": "En 1862 la Alliance Israélite Universelle abrió en Tetuán su primera escuela del mundo: antes que en París, Estambul o Bagdad. Enseñaba en francés a chicos que en casa hablaban haketía, el judeoespañol del norte de Marruecos trenzado con árabe y hebreo —«ferazmal», «mazal», «meldar»—. La judería se había mudado al mellah nuevo hacia 1808 y España ocupó la ciudad en 1860; entre la escuela francesa y el castellano de los recién llegados, el habla vieja se fue borrando sin que nadie la prohibiera. Los tetuaníes emigraron después a Israel, Caracas, Madrid y Ceuta. Queda la sinagoga de Isaac Bengualid y queda el cementerio judío de la ladera.",
+   "fuente": "Archivos de la Alliance Israélite Universelle (París), escuela de Tetuán, 1862; Yaakov Bentolila, estudios sobre la haketía, Universidad Ben Gurión",
+   "fundacion": "núcleo meriní anterior arrasado en el siglo XV, refundada hacia 1484-1492 por exiliados granadinos"
   }
  },
  "causas": {
@@ -1050,7 +1484,7 @@ EH.MAPA_CONTENIDO = {
    "fuente": "Naciones Unidas, División de Asuntos Oceánicos y del Derecho del Mar (DOALOS), «Chronological lists of ratifications of, accessions and successions to the Convention and the related Agreements», consultado el 3 de octubre de 2026: https://www.un.org/depts/los/reference_files/chronological_lists_of_ratifications.htm — y Colección de Tratados de las Naciones Unidas, capítulo XXI.6, estado de firmas y ratificaciones: https://treaties.un.org"
   }
  },
- "rotuloMar": "Franja aproximada: 200 millas nauticas, 370 km de mar con derechos exclusivos sobre pesca, petroleo y fondo marino. Son derechos economicos, no soberania.",
+ "rotuloMar": "Franja aproximada: 200 millas náuticas, 370 km de mar con derechos exclusivos sobre pesca, petróleo y fondo marino. Son derechos económicos, no soberanía.",
  "sefardi": {
   "que-es": {
    "titulo": "Qué es el ladino (judeoespañol)",
@@ -1119,5 +1553,6 @@ EH.MAPA_CONTENIDO = {
    "texto": "No se conoce ningún retrato pintado del natural. La imagen que todo el mundo usa es el óleo del Museo Naval de Madrid: anónimo, fechado en 1853, copia de un original del siglo XVIII que estaba en manos de sus descendientes y que donó el marqués de Ovieco el 14 de julio de 1853; se restauró en 1992. Es decir, la cara que circula se pintó 112 años después de su muerte. Muestra medio cuerpo en óvalo, ligeramente girado, peluca larga, el ojo izquierdo perdido y entrecerrado, sin parche, y la mano izquierda apoyada en el bastón de general.",
    "fuente": "Centro Virtual Cervantes, Museo Naval de Madrid, Sala 3, personajes: «copia anónima del año 1853 de un original» (https://cvc.cervantes.es/actcult/museo_naval/sala3/personajes/personajes_02.htm); Biblioteca Virtual de Defensa, ficha «Retrato del teniente general de la Armada Blas de Lezo», registro 40977 (https://bibliotecavirtual.defensa.gob.es/BVMDefensa/es/consulta/registro.do?id=40977); Museo Naval de Madrid, exposición «Blas de Lezo, el valor del Mediohombre», 2013-2014"
   }
- }
+ },
+ "huellaMetodo": "ESCALA DE HUELLA HISTÓRICA ESPAÑOLA (0-100), v1, 7 de octubre de 2026.\n\nEs una SEGUNDA medida, distinta de la que ya pinta el globo. La capa actual mide población hispana de hoy; esta mide cuanto tiempo y con cuanta densidad hubo administración y poblamiento español o mexicano dentro de las fronteras actuales de cada estado. No son la misma cosa y no deben compartir leyenda.\n\nDEFINICIÓN QUE LO DECIDE TODO. \"Soberania efectiva\" = años en que España mantuvo dentro del actual estado al menos un asentamiento, guarnicion o sede administrativa permanente. La soberanía solo reclamada en los mapas no cuenta. Por eso Florida empieza en 1565 y no en 1513, y por eso once estados de la antigua Luisiana puntúan casi cero.\n\nFÓRMULA: H = A + B + C + D + E (máximo 100)\n\nA. AÑOS DE SOBERANÍA ESPAÑOLA EFECTIVA — 30 puntos\nA = 30 x (años / 300), con tope en 30. La referencia de 300 años la fija Puerto Rico (1508-1898), que llega al tope.\n\nB. AÑOS DE SOBERANÍA MEXICANA POSTERIOR — 10 puntos\nB = 10 x (años / 27); 27 años es el periodo completo, 1821-1848. Cuando México cubrió solo parte del actual estado: 10 si fue todo o casi todo, 5 si fue una parte sustancial, 2 si fue solo una franja. Texas cuenta 15 años (1821-1836).\n\nC. PRIMERA FUNDACIÓN EUROPEA PERMANENTE DEL ESTADO — 20 puntos\n20 = española, anterior a 1600 y habitada sin interrupción hasta hoy\n17 = española, siglo XVII\n14 = española, siglo XVIII\n11 = española, siglo XIX\n10 = española y la primera del estado, pero abandonada después\n 6 = hubo asentamiento español permanente, pero otra potencia europea se asentó antes\n 3 = solo fuertes o misiones de menos de 20 años, sin continuidad\n 0 = ningún asentamiento español\n\nD. NÚMERO DE ASENTAMIENTOS ESPAÑOLES PERMANENTES — 25 puntos\nMisiones, presidios, pueblos y villas fundados bajo soberanía española o mexicana que estuvieron habitados 20 años o más. Bandas: 25 o más -> 25; 15-24 -> 20; 8-14 -> 15; 4-7 -> 10; 1-3 -> 5; 0 -> 0.\n\nE. TOPONIMIA — 15 puntos\nNombre del estado: 8 si es español (Florida, Nuevo México, California, Nevada, Colorado, Montana, Puerto Rico); 5 si es un nombre indígena transmitido por el español (Texas, Arizona, Utah); 0 si no.\nCiudades: 7 x (ciudades con nombre español entre las diez mayores del estado / 10). Se usa solo el ORDEN del censo de 2020; no se publica ninguna cifra de población de ninguna ciudad.\n\nRANKING: HUELLA HISTÓRICA frente a POBLACIÓN HISPANA ACTUAL\n(el segundo número es el puesto en la capa que ya tiene el globo, con Puerto Rico incluido)\n\n 1. Puerto Rico     90,0  ->  1.o\n 2. Nuevo México    87,6  ->  2.o\n 3. Florida         78,0  ->  7.o\n 4. California      66,4  ->  3.o\n 5. Texas           60,9  ->  4.o\n 6. Arizona         52,5  ->  5.o\n 7. Georgia         37,0  -> ~23.o\n 8. Nevada          20,1  ->  6.o\n 9. Luisiana        19,4  -> ~34.o\n10. Misuri          19,4  -> ~39.o\n\nFLORIDA: 3.a en huella histórica y 7.a en población hispana. Si el globo cuenta solo estados y deja Puerto Rico aparte como territorio, Florida sale 2.a, detrás de Nuevo México.\n\nNO SALE PRIMERA y no la vamos a mover. Puerto Rico la supera por 390 años de soberanía frente a 236. Nuevo México la supera por tres cosas concretas: 27 años de soberanía mexicana que Florida no tuvo (Florida paso de España a Estados Unidos en 1821 sin etapa mexicana), continuidad sin el hueco británico de 1763-1783, y una toponimia urbana mucho más viva. Donde Florida gana a todos los estados es en el factor C, con la fundación europea permanente más antigua del pais continental, y empata en el tope del factor D.\n\nDONDE SE SEPARAN LAS DOS MEDIDAS, que es el punto del encargo:\n- La historia pesa más que la demografía en Georgia (7.a en huella, ~23.a en población), Luisiana (9.a y ~34.a), Misuri (10.o y ~39.o), Carolina del Sur, Alabama y Misisipi. Son estados que la capa actual deja prácticamente apagados.\n- La demografía pesa más que la historia en Nueva Jersey, Nueva York, Illinois, Connecticut y Rhode Island: están entre los diez primeros por población hispana y sacan 0,0 en esta escala, porque no hubo ni soberanía ni asentamiento español. Por eso no aparecen en la lista de fichas.\n- Florida se mueve cuatro puestos hacia arriba; el movimiento más grande de todos es el de Misuri, veintinueve puestos.\n\nLÍMITES QUE LA ESCALA ENSEÑA DE SÍ MISMA: Montana saca 8,0 sin un solo dia de presencia española, solo por su nombre; Oregón y Alaska sacan 0,0 pese a expediciones reales y a una toponimia marítima que sigue en el mapa. La fórmula mide soberanía y poblamiento, no exploración. Está en advertencias que hacer con eso."
 };

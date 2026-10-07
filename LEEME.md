@@ -59,7 +59,7 @@ y enseña seis capas que se encienden y apagan.
 | **Los veinticuatro** | Cada nación con el color de su estatus, el mismo código que ya usaba la leyenda. |
 | **Mar de 200 millas** | Una franja azul pegada a la costa de cada nación hispana. |
 | **Causas territoriales** | Las ocho que ya declara el Gran Plan: Malvinas, Georgias, Esequibo, Gibraltar, Belice, el Sáhara, Puerto Rico y el litoral que Bolivia perdió en 1879. Más los sectores antárticos. |
-| **EE. UU. por estados** | Los 50 estados y el Distrito de Columbia, con un interruptor entre **dos medidas**: su población hispana de hoy, o su huella histórica española. |
+| **EE. UU. por estados** | Los 50 estados y el Distrito de Columbia, con un interruptor entre **dos medidas**: su población hispana de hoy, o su huella histórica española (ver más abajo). |
 | **Ciudades** | 1.855 ciudades que van apareciendo al acercarse, con su nombre. |
 | **Huella sefardí** | Los países donde se habló el judeoespañol cinco siglos. |
 
@@ -141,6 +141,37 @@ con una sola frase.
   20°-80° O. El solapamiento chileno-argentino se pinta aparte **porque es el
   argumento**: 21 grados reclamados dos veces.
 
+### Florida: las dos medidas, y por qué hacían falta
+
+Se pidió que Florida saliera «más amarilla, porque es un estado muy hispano y
+con mucha historia hispana». Las dos cosas son verdad y **no son la misma**, y
+el mapa solo enseñaba una.
+
+- Por **población hispana**, Florida es el **séptimo** estado: 28,7 %. Es un
+  dato del censo y subirlo sería falsearlo.
+- Por **huella histórica española**, Florida es la **tercera** de todo el país,
+  con 78 sobre 100, detrás de Puerto Rico (90) y Nuevo México (87,6). Si el
+  mapa contara solo estados y dejara a Puerto Rico aparte, sería la segunda.
+
+Así que el globo tiene un **interruptor** entre las dos, y la ficha de cada
+estado enseña las dos juntas. Esa diferencia es la lección: Georgia es séptima
+en historia y la vigesimotercera en población; Misuri sube **veintinueve
+puestos** al cambiar de medida.
+
+**La escala de huella es una interpretación, no una estadística oficial**, y
+por eso se publica con su fórmula entera (`EH.MAPA_CONTENIDO.huellaMetodo`):
+años de soberanía española efectiva (30 puntos), de soberanía mexicana (10),
+la primera fundación europea permanente del estado (20), el número de
+asentamientos españoles que duraron (25) y la toponimia (15). «Soberanía
+efectiva» significa que hubo al menos un asentamiento o sede administrativa
+permanente: la reclamada sobre un mapa no cuenta, y por eso Florida empieza en
+1565 y no en 1513.
+
+La escala enseña sus propios límites: **Montana saca 8 sin un solo día de
+presencia española**, solo porque su nombre es una palabra castellana; Oregón y
+Alaska sacan 0 pese a las expediciones reales y a una toponimia marítima que
+sigue en las cartas. Mide soberanía y poblamiento, no exploración.
+
 ### El dato que corrige un eslogan
 
 **Texas no es «mitad hispano»: es el 40,3 %.** Ningún estado llega al 50 %; el
@@ -175,9 +206,9 @@ Lo hice así por tres razones concretas, y las tres se pueden discutir:
 
 ### Las fichas de ciudad
 
-**Cincuenta y cuatro ciudades tienen historia**, al menos una por cada uno de
-los veinte países, más Manila, Cebú, Malabo, El Aaiún, San Agustín, Santa Fe,
-San Antonio y Los Ángeles. Salen con **punto dorado**; las otras mil ochocientas
+**Ciento veinte ciudades tienen historia**, al menos tres por cada uno de los
+veinte países, más doce de Estados Unidos, cinco de Filipinas, tres de Guinea
+Ecuatorial, tres del Sáhara Occidental y cuatro de la diáspora sefardí. Salen con **punto dorado**; las otras mil ochocientas
 salen con punto gris y el globo lo dice —«todavía no hay ficha de esta
 ciudad»— en vez de rellenarlas con un párrafo genérico.
 
