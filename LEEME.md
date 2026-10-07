@@ -59,7 +59,7 @@ y enseña seis capas que se encienden y apagan.
 | **Los veinticuatro** | Cada nación con el color de su estatus, el mismo código que ya usaba la leyenda. |
 | **Mar de 200 millas** | Una franja azul pegada a la costa de cada nación hispana. |
 | **Causas territoriales** | Las ocho que ya declara el Gran Plan: Malvinas, Georgias, Esequibo, Gibraltar, Belice, el Sáhara, Puerto Rico y el litoral que Bolivia perdió en 1879. Más los sectores antárticos. |
-| **EE. UU. por estados** | Los 50 estados y el Distrito de Columbia, cada uno con un tono según su población hispana. |
+| **EE. UU. por estados** | Los 50 estados y el Distrito de Columbia, con un interruptor entre **dos medidas**: su población hispana de hoy, o su huella histórica española. |
 | **Ciudades** | 1.855 ciudades que van apareciendo al acercarse, con su nombre. |
 | **Huella sefardí** | Los países donde se habló el judeoespañol cinco siglos. |
 
@@ -75,9 +75,27 @@ con una sola frase.
    que en cada época estaban bajo gobierno hispano. La frontera exacta de 1680
    habría que inventarla, y el panel de cada época lo advierte.
 2. **La banda azul no es la zona económica exclusiva real.** Es una franja
-   aproximada de 200 millas náuticas desde la costa; las zonas reales se
-   recortan donde dos países se solapan. Y son **derechos económicos, no
-   soberanía**: confundir las dos cosas invalidaría el mapa entero.
+   aproximada de 200 millas náuticas **desde la costa, y solo desde la costa**;
+   las zonas reales se recortan donde dos países se solapan. Y son **derechos
+   económicos, no soberanía**: confundir las dos cosas invalidaría el mapa
+   entero.
+
+   > **Un defecto que estuvo publicado y ya no está.** La banda se dibujaba
+   > sobre el contorno *entero* de cada país, fronteras de tierra incluidas.
+   > Eso producía dos disparates visibles: el mar de Uruguay y el de Argentina
+   > se metían doscientas millas dentro de Brasil, y **Bolivia y Paraguay, que
+   > no tienen mar, salían rodeados de océano**. Ahora se calcula qué trozo del
+   > contorno es costa —un vértice es frontera de tierra si otro país tiene un
+   > vértice casi en el mismo sitio— y solo se traza eso.
+   >
+   > Lo que sigue sin ser exacto: donde una costa acaba en una frontera, la
+   > banda se corta en seco, y la frontera marítima real entre dos vecinos no
+   > es perpendicular a la orilla.
+   >
+   > **Estados Unidos no lleva banda**, a propósito: está en este mapa por sus
+   > sesenta y ocho millones de hispanos, no como Estado hispano, y pintarle
+   > doscientas millas de «mar hispano» alrededor sería una reclamación que
+   > nadie ha hecho y un titular regalado al contrario.
 3. **El rojo de una causa no dice «esto es nuestro».** Dice «esto está en
    disputa», y el Gran Plan publica también el argumento de la otra parte.
 
