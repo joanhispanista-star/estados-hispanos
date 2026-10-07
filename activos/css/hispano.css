@@ -775,6 +775,69 @@ select.eh-entrada{appearance:none;-webkit-appearance:none;cursor:pointer;
 .eh-globo__ciudades-lista button:hover span{color:var(--suave)}
 .eh-globo__ciudades-lista button:focus-visible{outline:2px solid var(--oro);outline-offset:1px}
 
+/* =========================================================================
+   EL PANEL DE DETALLE
+   =========================================================================
+   Se acopla a un lado del globo y NO lo tapa: el lienzo recoloca su centro
+   para seguir entero a la vista (eso lo hace medir(), en globo.js). Antes de
+   esto, la ficha llevaba un enlace que cambiaba de pagina, y con la pagina se
+   perdia la posicion del globo, el aumento y la epoca que uno hubiera puesto.
+   ========================================================================= */
+/* Por defecto, acoplado ABAJO. El costado solo cuando el JavaScript lo dice
+   con la clase .eh-globo--lateral, porque es el unico que sabe lo que mide el
+   contenedor de verdad. */
+.eh-globo__panel{
+  position:absolute;right:0;left:0;top:auto;bottom:0;width:auto;
+  height:min(56%,420px);
+  border-top:1px solid var(--linea2);
+  transform:translateY(100%);
+  background:linear-gradient(to top,var(--bg2) 88%,rgba(27,15,18,.94));
+  padding:1.1rem 1.1rem 1.4rem;overflow-y:auto;overscroll-behavior:contain;
+  /* Fuera de la vista y sin ocupar sitio mientras esta cerrado: con
+     visibility:hidden deja de ser alcanzable con el tabulador, que si no
+     mandaria el foco a un panel invisible. */
+  visibility:hidden;
+  transition:transform .22s ease,visibility .22s;
+}
+.eh-globo--lateral .eh-globo__panel{
+  left:auto;top:0;bottom:0;width:min(380px,42%);height:auto;
+  border-top:0;border-left:1px solid var(--linea);
+  background:linear-gradient(to left,var(--bg2) 86%,rgba(27,15,18,.92));
+  transform:translateX(100%);
+}
+.eh-globo__panel.on,.eh-globo--lateral .eh-globo__panel.on{transform:none;visibility:visible}
+.eh-globo__panel-cerrar{
+  position:absolute;top:.5rem;right:.6rem;
+  width:30px;height:30px;display:grid;place-items:center;
+  background:rgba(18,8,10,.75);color:var(--suave);
+  border:1px solid var(--linea2);border-radius:8px;
+  font-size:1.15rem;line-height:1;cursor:pointer;
+}
+.eh-globo__panel-cerrar:hover{color:var(--oro2);border-color:var(--oro3)}
+.eh-globo__panel-cab{display:flex;gap:.7rem;align-items:center;margin:0 2rem .7rem 0}
+.eh-globo__panel-cab h4{margin:0;font-family:var(--display);font-size:1.3rem}
+.eh-globo__panel-cab p{margin:.1rem 0 0;font-size:.76rem}
+.eh-globo__panel h5{
+  margin:1rem 0 .25rem;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--oro);
+}
+.eh-globo__panel p{font-size:.84rem;line-height:1.55;color:var(--suave);margin:0 0 .55rem}
+.eh-globo__panel ul{margin:.2rem 0 .6rem;padding-left:1.1rem}
+.eh-globo__panel li{font-size:.84rem;line-height:1.5;color:var(--suave);margin-bottom:.3rem}
+.eh-globo__lema{font-family:var(--display);font-size:1rem;color:var(--oro2)!important;margin-bottom:.8rem!important}
+/* La parte que incomoda se marca, no se esconde: es media razon de ser del sitio. */
+.eh-globo__incomoda{border-left:2px solid var(--rojo2);padding-left:.7rem;color:var(--texto)!important}
+.eh-globo__datos{display:grid;grid-template-columns:auto 1fr;gap:.15rem .7rem;margin:.6rem 0 .8rem;font-size:.8rem}
+.eh-globo__dato{display:contents}
+.eh-globo__datos dt{color:var(--tenue);white-space:nowrap}
+.eh-globo__datos dd{margin:0;color:var(--texto)}
+.eh-globo__panel-ir{
+  display:inline-block;margin-top:.7rem;padding:.4rem .8rem;
+  background:none;border:1px solid var(--linea2);border-radius:999px;
+  color:var(--suave);font:inherit;font-size:.76rem;text-decoration:none;cursor:pointer;
+}
+.eh-globo__panel-ir:hover{border-color:var(--oro3);color:var(--oro2)}
+
 /* El retrato dibujado dentro de una ficha de ciudad */
 .eh-globo__retrato{margin:.5rem 0;display:flex;justify-content:center}
 .eh-globo__retrato svg{width:100%;max-width:150px;height:auto;border-radius:6px}

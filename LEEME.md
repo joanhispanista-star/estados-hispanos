@@ -66,6 +66,33 @@ y enseña seis capas que se encienden y apagan.
 Y una **línea del tiempo** de doce épocas, de 1492 a hoy: al moverla, el mapa
 cambia y enseña qué territorios estaban bajo gobierno hispano en cada una.
 
+### Pulsar algo no te saca del mapa
+
+Al pulsar un país, una ciudad, un estado o una causa sale una **tarjeta
+pequeña** con lo esencial y dos botones: una **×** para cerrarla y **«Ampliar la
+información»**. Ampliar abre un **panel al lado del globo** con la ficha
+completa, y el globo **se recoloca para seguir entero a la vista**: no se pierde
+ni la posición, ni el aumento, ni la época que tuvieras puesta. En pantalla
+ancha el panel se acopla a la derecha; en el teléfono, abajo. `Escape` cierra.
+
+Antes la tarjeta llevaba un enlace («Ver la ficha completa») que cambiaba de
+página, y con la página se perdía todo lo demás.
+
+El panel enseña, según lo que pulses:
+
+- **Una nación**: nombre oficial, lema, capital, población, hispanohablantes,
+  gentilicio, moneda, independencia, lo que enorgullece, sus figuras, lo que
+  aporta a la Hispanidad y **la nota honesta, la parte que incomoda**, que no se
+  omite nunca.
+- **Una ciudad**: su historia, el retrato si lo tiene, y un botón para saltar a
+  su país sin cerrar nada.
+- **Un estado de EE. UU.**: las dos medidas juntas, población hispana e historia
+  española.
+- **Una causa territorial**: quién la reclama, la situación real, el fundamento
+  jurídico, **lo que responde la otra parte**, la vía legítima y la advertencia.
+  El contraargumento va con el mismo tamaño que el resto: esconderlo sería hacer
+  propaganda.
+
 ### Tres cosas que el globo NO hace, y lo dice en pantalla
 
 Esto no es modestia: es lo que impide que un adversario desmonte el mapa entero

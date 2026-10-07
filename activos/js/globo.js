@@ -327,6 +327,22 @@ EH.globo = (function () {
       sefardi: opciones.sefardi !== false
     };
 
+    /* EL PANEL DE DETALLE
+       Se pidio expresamente que al pulsar un pais o un sitio historico el mapa
+       NO desapareciera. Antes la ficha llevaba un enlace ("Ver la ficha
+       completa") que cambiaba de pagina: el globo se perdia, y con el la
+       posicion, el aumento y la epoca que uno hubiera puesto.
+       Ahora la informacion completa sale en un panel AL LADO, y el globo se
+       recoloca para seguir entero a la vista. En pantalla ancha el panel se
+       acopla a la derecha; en un telefono, abajo. */
+    var panelAbierto = false, seleccion = null, panelEl = null;
+
+    function sitioPanel() {
+      if (!panelAbierto) return { w: 0, h: 0 };
+      if (An >= 760) return { w: Math.min(380, Math.round(An * 0.42)), h: 0 };
+      return { w: 0, h: Math.min(Math.round(Al * 0.56), 420) };
+    }
+
     var lienzo = document.createElement('canvas');
     lienzo.className = 'eh-globo__lienzo';
     lienzo.setAttribute('role', 'img');
@@ -345,8 +361,21 @@ EH.globo = (function () {
       lienzo.height = Math.round(Al * dpr);
       lienzo.style.width = An + 'px';
       lienzo.style.height = Al + 'px';
-      cx = An / 2; cy = Al / 2;
-      R = Math.min(An, Al) * 0.455;
+      /* QUIEN DECIDE DONDE SE ACOPLA EL PANEL
+         Lo decide el JavaScript, mirando el ancho del CONTENEDOR, y se lo
+         comunica al CSS con una clase. Antes el CSS lo decidia por su cuenta
+         con una media query sobre el ancho de la VENTANA, y no son lo mismo:
+         con la ventana a 790 px el contenedor medía 710, asi que el CSS
+         acoplaba el panel al costado mientras el lienzo dejaba el hueco
+         abajo. El panel tapaba el globo y abajo quedaba una franja vacia. */
+      contenedor.classList.toggle('eh-globo--lateral', An >= 760);
+
+      /* El globo se centra en el hueco QUE QUEDA, no en el lienzo entero: con
+         el panel abierto, centrarlo en el lienzo lo dejaria medio tapado. */
+      var sp = sitioPanel();
+      cx = (An - sp.w) / 2;
+      cy = (Al - sp.h) / 2;
+      R = Math.min(An - sp.w, Al - sp.h) * 0.455;
     }
 
     /* ---------- proyección ---------- */
@@ -1000,8 +1029,9 @@ EH.globo = (function () {
          dice "esto esta en disputa", y el Gran Plan publica tambien el
          argumento de la otra parte. Sin esta frase, el mapa reclama. */
       html += '<p class="eh-tenue" style="font-size:.72rem">El color marca una disputa abierta, no una ' +
-        'propiedad. El Gran Plan publica tambien el argumento de la otra parte.</p>' +
-        '<a class="eh-boton eh-boton--p eh-boton--oro" href="' + EH.BASE + 'plan.html#causas">Ver las ocho causas</a>';
+        'propiedad. El Gran Plan publica tambien el argumento de la otra parte.</p>';
+      seleccion = { tipo: 'causa', dato: k };
+      html += PIE_AMPLIAR;
       caja(html, punto);
     }
 
@@ -1225,6 +1255,164 @@ EH.globo = (function () {
       }
     }
 
+    /* ---------- el panel de detalle ---------- */
+    function fila(etiqueta, valor) {
+      if (!valor && valor !== 0) return '';
+      return '<div class="eh-globo__dato"><dt>' + EH.escapar(etiqueta) + '</dt>' +
+             '<dd>' + EH.escapar(String(valor)) + '</dd></div>';
+    }
+
+    function parrafos(titulo, texto) {
+      if (!texto) return '';
+      return '<h5>' + EH.escapar(titulo) + '</h5><p>' + EH.escapar(texto) + '</p>';
+    }
+
+    function detalleNacion(n) {
+      var h = '<header class="eh-globo__panel-cab">' +
+        (EH.banderas ? EH.banderas.svg(n.id, 44) : '') +
+        '<div><h4>' + EH.escapar(n.nombre) + '</h4>' +
+        (n.nombreOficial ? '<p class="eh-tenue">' + EH.escapar(n.nombreOficial) + '</p>' : '') +
+        '</div></header>';
+      if (n.lema) h += '<p class="eh-globo__lema">«' + EH.escapar(n.lema) + '»</p>';
+      h += '<dl class="eh-globo__datos">' +
+        fila('Capital', n.capital) +
+        fila('Población', n.poblacion ? EH.poblacion(n.poblacion) : null) +
+        fila('Hispanohablantes', n.hispanohablantes ? EH.poblacion(n.hispanohablantes) : null) +
+        fila('Gentilicio', n.gentilicio) +
+        fila('Moneda', n.moneda) +
+        fila('Independencia', n.independencia) +
+        '</dl>';
+      if (n.resumen) h += '<p>' + EH.escapar(n.resumen) + '</p>';
+      if (n.orgullo && n.orgullo.length) {
+        h += '<h5>Lo que enorgullece</h5><ul>' +
+          n.orgullo.map(function (x) { return '<li>' + EH.escapar(x) + '</li>'; }).join('') + '</ul>';
+      }
+      if (n.figuras && n.figuras.length) {
+        h += '<h5>Figuras</h5><ul>' +
+          n.figuras.map(function (x) { return '<li>' + EH.escapar(typeof x === 'string' ? x : (x.nombre || '')) + '</li>'; }).join('') + '</ul>';
+      }
+      h += parrafos('Lo que aporta a la Hispanidad', n.aporteALaHispanidad);
+      /* La nota honesta NO se omite nunca. Es la parte que incomoda, y el
+         sitio existe en parte por publicarla. */
+      if (n.notaHonesta) {
+        h += '<h5>Y lo que incomoda</h5><p class="eh-globo__incomoda">' + EH.escapar(n.notaHonesta) + '</p>';
+      }
+      if (n.confianzaDatos) {
+        h += '<p class="eh-tenue" style="font-size:.72rem">Fiabilidad de las cifras: ' +
+          EH.escapar(n.confianzaDatos) + '. Confírmalas con el organismo del país antes de usarlas en público.</p>';
+      }
+      h += '<a class="eh-globo__panel-ir" href="' + EH.BASE + 'naciones.html#' + EH.escapar(n.id) + '">Abrir la página de ' + EH.escapar(n.nombre) + '</a>';
+      return h;
+    }
+
+    function detalleCiudad(cd) {
+      var f = FICHAS_CIUDAD[clave(cd)], nac = porId[cd.pais];
+      var h = '<header class="eh-globo__panel-cab">' +
+        (nac && EH.banderas ? EH.banderas.svg(nac.id, 40) : '') +
+        '<div><h4>' + EH.escapar(cd.nombre) + '</h4>' +
+        '<p class="eh-tenue">' + (nac ? EH.escapar(nac.nombre) : 'Diáspora sefardí') +
+        (f && f.fundacion ? ' · ' + EH.escapar(f.fundacion) : '') + '</p></div></header>';
+      if (f && f.retrato && EH.retratos && EH.retratos[f.retrato]) {
+        h += '<div class="eh-globo__retrato">' + EH.retratos[f.retrato]() + '</div>';
+      }
+      if (f) {
+        h += '<p>' + EH.escapar(f.texto) + '</p>';
+        if (f.fuente) h += '<p class="eh-tenue" style="font-size:.72rem">' + EH.escapar(f.fuente) + '</p>';
+      } else {
+        h += '<p class="eh-tenue">Todavía no hay ficha de esta ciudad. Las que ya la tienen salen con el punto dorado.</p>';
+      }
+      h += '<dl class="eh-globo__datos">' +
+        fila('Población del área urbana', cd.pob ? EH.poblacion(cd.pob * 1000) : null) +
+        fila('Coordenadas', cd.lat.toFixed(2) + ', ' + cd.lon.toFixed(2)) +
+        '</dl>' +
+        '<p class="eh-tenue" style="font-size:.72rem">La población sale de una sola fuente para las 1.861 ' +
+        'ciudades del mapa (Natural Earth) y es la del área urbana, no la del municipio.</p>';
+      if (nac) {
+        h += '<button type="button" class="eh-globo__panel-ir" data-nacion="' + EH.escapar(nac.id) + '">Ver ' + EH.escapar(nac.nombre) + '</button>';
+      }
+      return h;
+    }
+
+    function detalleEstado(es) {
+      var d = DATOS_ESTADO[(es.s || '').toLowerCase()] || {};
+      var h = '<header class="eh-globo__panel-cab"><div><h4>' +
+        EH.escapar(d.nombre || es.nombre) + '</h4>' +
+        '<p class="eh-tenue">Estados Unidos</p></div></header>';
+      h += '<dl class="eh-globo__datos">' +
+        fila('Población hispana hoy', typeof d.pct === 'number' ? d.pct.toFixed(1).replace('.', ',') + ' %' : null) +
+        fila('En personas', d.hispanos ? EH.poblacion(d.hispanos) : null) +
+        fila('Huella histórica española', typeof d.huella === 'number' ? d.huella.toFixed(0) + ' / 100' : null) +
+        '</dl>';
+      if (d.texto) h += '<p>' + EH.escapar(d.texto) + '</p>';
+      if (d.historia) h += parrafos('Huella española', d.historia);
+      if (d.fuente) h += '<p class="eh-tenue" style="font-size:.72rem">' + EH.escapar(d.fuente) + '</p>';
+      h += '<a class="eh-globo__panel-ir" href="' + EH.BASE + 'eeuu.html">La Hispanidad de Estados Unidos</a>';
+      return h;
+    }
+
+    function detalleCausa(k) {
+      var mapa = { malvinas: 'malvinas', georgias: 'malvinas', esequibo: 'esequibo',
+                   gibraltar: 'gibraltar', belice: 'belice', antartida: 'antartida' };
+      var c = null;
+      if (EH.PLAN && EH.PLAN.causas) {
+        EH.PLAN.causas.forEach(function (x) { if (x.id === mapa[k]) c = x; });
+      }
+      var f = (CONT.causas || {})[k];
+      var h = '<header class="eh-globo__panel-cab"><div><h4>' +
+        EH.escapar((c && c.nombre) || (f && f.titulo) || NOMBRE_CAUSA[k] || k) + '</h4>' +
+        '<p class="eh-tenue" style="color:var(--rojo2)">Territorio en disputa</p></div></header>';
+      if (f && f.texto) h += '<p>' + EH.escapar(f.texto) + '</p>';
+      if (c) {
+        h += parrafos('Quién lo reclama', c.quienReclama);
+        h += parrafos('La situación real', c.situacionReal);
+        h += parrafos('El fundamento jurídico', c.fundamentoJuridico);
+        /* El contraargumento va SIEMPRE y con el mismo tamano que el resto. Es
+           la regla de la casa: cada causa se publica con el argumento de la
+           otra parte, y esconderlo aqui seria hacer propaganda. */
+        h += parrafos('Lo que responde la otra parte', c.contraargumento);
+        h += parrafos('La vía legítima', c.viaLegitima);
+        h += parrafos('El horizonte', c.horizonte);
+        if (c.advertencia) {
+          h += '<h5>Advertencia</h5><p class="eh-globo__incomoda">' + EH.escapar(c.advertencia) + '</p>';
+        }
+      }
+      h += '<p class="eh-tenue" style="font-size:.72rem">El color rojo marca una disputa abierta, no una ' +
+        'propiedad.</p>' +
+        '<a class="eh-globo__panel-ir" href="' + EH.BASE + 'plan.html#causas">Las ocho causas del Gran Plan</a>';
+      return h;
+    }
+
+    function ampliar() {
+      if (!seleccion) return;
+      var h = '';
+      if (seleccion.tipo === 'nacion') h = detalleNacion(seleccion.dato);
+      else if (seleccion.tipo === 'ciudad') h = detalleCiudad(seleccion.dato);
+      else if (seleccion.tipo === 'estado') h = detalleEstado(seleccion.dato);
+      else if (seleccion.tipo === 'causa') h = detalleCausa(seleccion.dato);
+      if (!h) return;
+      var vieja = contenedor.querySelector('.eh-mapa__ficha');
+      if (vieja) vieja.remove();
+      panelEl.querySelector('.eh-globo__panel-cuerpo').innerHTML = h;
+      panelEl.classList.add('on');
+      panelEl.scrollTop = 0;
+      panelAbierto = true;
+      medir();
+      pintar();
+      panelEl.querySelector('.eh-globo__panel-cerrar').focus();
+    }
+
+    function cerrarPanel() {
+      if (!panelAbierto) return;
+      panelAbierto = false;
+      panelEl.classList.remove('on');
+      medir();
+      pintar();
+      lienzo.focus();
+    }
+
+    var PIE_AMPLIAR = '<button type="button" class="eh-boton eh-boton--p eh-boton--oro" data-ampliar="1">' +
+      'Ampliar la información</button>';
+
     /* ---------- fichas ---------- */
     function caja(html, punto) {
       var vieja = contenedor.querySelector('.eh-mapa__ficha');
@@ -1236,6 +1424,8 @@ EH.globo = (function () {
       c.style.left = Math.min(Math.max(lc.left - cc.left + punto.x + 14, 8), Math.max(8, cc.width - 320)) + 'px';
       c.style.top = '8px';
       contenedor.appendChild(c);
+      var bAmp = c.querySelector('[data-ampliar]');
+      if (bAmp) bAmp.addEventListener('click', ampliar);
       /* Se mide DESPUES de meterla en la pagina y se sube si no cabe: hasta que
          no esta puesta no se sabe lo que mide, y una ficha con retrato mide el
          doble que una sin el. Antes se colocaba a ciegas junto al punto y el
@@ -1275,10 +1465,8 @@ EH.globo = (function () {
         html += '<p class="eh-tenue">Todavía no hay ficha de esta ciudad. Las que ya la tienen ' +
                 'salen con el punto dorado.</p>';
       }
-      if (nac) {
-        html += '<a class="eh-boton eh-boton--p eh-boton--oro" href="' + EH.BASE + 'naciones.html#' +
-          EH.escapar(nac.id) + '">Ver ' + EH.escapar(nac.nombre) + '</a>';
-      }
+      seleccion = { tipo: 'ciudad', dato: cd };
+      html += PIE_AMPLIAR;
       caja(html, punto);
       repintar();
     }
@@ -1302,7 +1490,8 @@ EH.globo = (function () {
       } else {
         html += '<p class="eh-tenue">Sin dato de población hispana para este estado.</p>';
       }
-      html += '<a class="eh-boton eh-boton--p eh-boton--oro" href="' + EH.BASE + 'eeuu.html">La Hispanidad de Estados Unidos</a>';
+      seleccion = { tipo: 'estado', dato: es };
+      html += PIE_AMPLIAR;
       caja(html, punto);
     }
 
@@ -1326,7 +1515,45 @@ EH.globo = (function () {
     var aviso = document.createElement('div');
     aviso.className = 'eh-globo__aumento';
     escena.appendChild(aviso);
+
+    panelEl = document.createElement('aside');
+    panelEl.className = 'eh-globo__panel';
+    panelEl.setAttribute('aria-label', 'Información ampliada');
+    panelEl.innerHTML =
+      '<button type="button" class="eh-globo__panel-cerrar" aria-label="Cerrar la información">×</button>' +
+      '<div class="eh-globo__panel-cuerpo"></div>';
+    panelEl.querySelector('.eh-globo__panel-cerrar').addEventListener('click', cerrarPanel);
+    /* Dentro del panel puede haber un boton para saltar a otra nacion sin
+       cerrar nada. */
+    panelEl.addEventListener('click', function (ev) {
+      var b = ev.target.closest('[data-nacion]');
+      if (!b) return;
+      var n = porId[b.getAttribute('data-nacion')];
+      if (!n) return;
+      seleccion = { tipo: 'nacion', dato: n };
+      elegido = n.id;
+      ampliar();
+      volar(n.lon, n.lat * 0.8, Math.max(escala, 2.2));
+    });
+    escena.appendChild(panelEl);
     contenedor.appendChild(escena);
+
+    /* Escape cierra lo que haya abierto, que es lo que espera cualquiera. */
+    contenedor.addEventListener('keydown', function (ev) {
+      if (ev.key !== 'Escape') return;
+      if (panelAbierto) { cerrarPanel(); return; }
+      var fh = contenedor.querySelector('.eh-mapa__ficha');
+      if (fh) { fh.remove(); lienzo.focus(); }
+    });
+
+    contenedor.__ehGlobo = {
+      pieAmpliar: function () { return PIE_AMPLIAR; },
+      engancharAmpliar: function (cont, sel) {
+        seleccion = sel;
+        var b = cont.querySelector('[data-ampliar]');
+        if (b) b.addEventListener('click', ampliar);
+      }
+    };
 
     function sincronizarMandos() {
       var bG = mandos.querySelector('[data-a=girar]');
@@ -1552,15 +1779,19 @@ EH.globo = (function () {
     },
     ficha: function (contenedor, nacion, punto) {
       /* La ficha de nación es la de mapa.js. El globo solo le dice dónde
-         ponerla: le pasa un objeto que finge ser un elemento con posición,
-         porque es lo único que esa función lee. */
+         ponerla —le pasa un objeto que finge ser un elemento con posición,
+         porque es lo único que esa función lee— y le cambia el pie: en vez del
+         enlace que se lleva al visitante a otra página, un botón que abre el
+         panel AL LADO del globo. */
       if (!EH.mapa || !EH.mapa.ficha) return;
       var c = contenedor.getBoundingClientRect();
+      var api = contenedor.__ehGlobo;
       EH.mapa.ficha(contenedor, nacion, {
         getBoundingClientRect: function () {
           return { left: c.left + (punto ? punto.x : c.width / 2), top: c.top + (punto ? punto.y : 40) };
         }
-      });
+      }, api ? { pie: api.pieAmpliar() } : null);
+      if (api) api.engancharAmpliar(contenedor, { tipo: 'nacion', dato: nacion });
     }
   };
 })();

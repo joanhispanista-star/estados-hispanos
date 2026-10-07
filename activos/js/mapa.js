@@ -236,8 +236,11 @@ EH.mapa = (function () {
       });
     },
 
-    /* La ficha flotante que sale al tocar una nación. */
-    ficha: function (contenedor, nacion, nodo) {
+    /* La ficha flotante que sale al tocar una nación.
+       `opciones.pie` sustituye el enlace del final. El globo lo usa para poner
+       un botón de ampliar en vez de un enlace: alli el mapa NO puede
+       desaparecer de la pantalla, que es justo lo que hace un enlace. */
+    ficha: function (contenedor, nacion, nodo, opciones) {
       var vieja = contenedor.querySelector('.eh-mapa__ficha');
       if (vieja) vieja.remove();
 
@@ -253,8 +256,9 @@ EH.mapa = (function () {
           '<span>' + EH.escapar(nacion.capital) + '</span>' +
         '</div>' +
         '<p>' + EH.escapar((nacion.orgullo && nacion.orgullo[0]) || nacion.resumen || '') + '</p>' +
-        '<a class="eh-boton eh-boton--p eh-boton--oro" href="' + EH.BASE + 'naciones.html#' +
-          EH.escapar(nacion.id) + '">Ver la ficha completa</a>';
+        ((opciones && opciones.pie) ||
+          '<a class="eh-boton eh-boton--p eh-boton--oro" href="' + EH.BASE + 'naciones.html#' +
+          EH.escapar(nacion.id) + '">Ver la ficha completa</a>');
 
       // Se coloca junto al nodo, y el CSS la ancla abajo en pantallas
       // estrechas para que no se salga por un lado.
