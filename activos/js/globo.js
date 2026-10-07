@@ -1031,6 +1031,7 @@ EH.globo = (function () {
       html += '<p class="eh-tenue" style="font-size:.72rem">El color marca una disputa abierta, no una ' +
         'propiedad. El Gran Plan publica tambien el argumento de la otra parte.</p>';
       seleccion = { tipo: 'causa', dato: k };
+      if (panelAbierto) { ampliar(); return; }
       html += PIE_AMPLIAR;
       caja(html, punto);
     }
@@ -1414,6 +1415,15 @@ EH.globo = (function () {
       'Ampliar la información</button>';
 
     /* ---------- fichas ---------- */
+    /* Con el panel ya abierto, pulsar otra cosa lo CAMBIA directamente en vez
+       de sacar la tarjeta pequena por delante. Si no, quedaban las dos cosas a
+       la vez contando paises distintos, que es peor que cualquiera de las dos
+       por separado. */
+    function mostrar(construir, punto) {
+      if (panelAbierto) { ampliar(); return; }
+      construir(punto);
+    }
+
     function caja(html, punto) {
       var vieja = contenedor.querySelector('.eh-mapa__ficha');
       if (vieja) vieja.remove();
@@ -1466,6 +1476,7 @@ EH.globo = (function () {
                 'salen con el punto dorado.</p>';
       }
       seleccion = { tipo: 'ciudad', dato: cd };
+      if (panelAbierto) { ampliar(); repintar(); return; }
       html += PIE_AMPLIAR;
       caja(html, punto);
       repintar();
@@ -1491,6 +1502,7 @@ EH.globo = (function () {
         html += '<p class="eh-tenue">Sin dato de población hispana para este estado.</p>';
       }
       seleccion = { tipo: 'estado', dato: es };
+      if (panelAbierto) { ampliar(); return; }
       html += PIE_AMPLIAR;
       caja(html, punto);
     }
@@ -1547,6 +1559,8 @@ EH.globo = (function () {
     });
 
     contenedor.__ehGlobo = {
+      panelAbierto: function () { return panelAbierto; },
+      ampliarCon: function (sel) { seleccion = sel; ampliar(); },
       pieAmpliar: function () { return PIE_AMPLIAR; },
       engancharAmpliar: function (cont, sel) {
         seleccion = sel;
@@ -1778,6 +1792,11 @@ EH.globo = (function () {
       return crear(contenedor, naciones, opciones || {});
     },
     ficha: function (contenedor, nacion, punto) {
+      var apiPrev = contenedor.__ehGlobo;
+      if (apiPrev && apiPrev.panelAbierto && apiPrev.panelAbierto()) {
+        apiPrev.ampliarCon({ tipo: 'nacion', dato: nacion });
+        return;
+      }
       /* La ficha de nación es la de mapa.js. El globo solo le dice dónde
          ponerla —le pasa un objeto que finge ser un elemento con posición,
          porque es lo único que esa función lee— y le cambia el pie: en vez del
