@@ -219,9 +219,9 @@ Lo hice así por tres razones concretas, y las tres se pueden discutir:
 
 ### Las fichas de ciudad
 
-**Ciento veintiuna ciudades tienen historia**, al menos tres por cada uno de los
-veinte países, más doce de Estados Unidos, cinco de Filipinas, tres de Guinea
-Ecuatorial, tres del Sáhara Occidental y cuatro de la diáspora sefardí. Salen con **punto dorado**; las otras mil ochocientas
+**Ciento setenta y una ciudades tienen historia**, al menos **cuatro** por cada uno de
+los veinte países, más doce de Estados Unidos, cinco de Filipinas, cinco de
+Guinea Ecuatorial, cinco del Sáhara Occidental y siete de la diáspora sefardí. Salen con **punto dorado**; las otras mil ochocientas
 salen con punto gris y el globo lo dice —«todavía no hay ficha de esta
 ciudad»— en vez de rellenarlas con un párrafo genérico.
 
@@ -259,10 +259,19 @@ Sancti Spíritus**, la de **Villa de Leyva sobre Tunja** y la de **Ciudad de la
 Paz sobre Evinayong**. Cuatro historias en el sitio equivocado, y ninguna daba
 error.
 
-Ahora la tolerancia es de **0,10 grados** —once kilómetros, el margen normal
-entre dos listas de coordenadas de la misma ciudad—, salvo que la ciudad del
-mapa se llame igual, en cuyo caso es la misma aunque la coordenada venga de
-otra fuente. Y la ficha que no encuentra su ciudad **no se pega a la vecina**:
+**Se intentó con tres tolerancias y las tres fallaron.** Con 0,60 grados,
+Mompox acabó sobre Magangué. Con 0,10, Chichicastenango sobre Santa Cruz del
+Quiché (0,098) e Izalco sobre Sonsonate (0,054). Con 0,04, las ruinas de Jesús
+de Tavarangüé sobre Hohenau, que está a tres kilómetros de verdad. No hay
+número que lo arregle, porque el problema no es la distancia: **son sitios
+distintos que están cerca**.
+
+Lo que decide es el **nombre**. Son la misma ciudad si comparten una palabra
+significativa —admitiendo una letra de diferencia, para que «Cuzco» y «Cusco»
+casen— y están a menos de 0,6 grados. Y se busca la ciudad más cercana *cuyo
+nombre case*, no la más cercana a secas: a San Diego le ganaba National City,
+que está a siete kilómetros, y se añadía un San Diego duplicado al lado del que
+ya había. Y la ficha que no encuentra su ciudad **no se pega a la vecina**:
 se añade al mapa su propia ciudad. Así entraron once: Segovia, Trujillo de
 Cáceres, Suchitoto, Portobelo, Trinidad, Baracoa, San Germán, Mompox, Villa de
 Leyva, San Luis de Colorado y Ciudad de la Paz.

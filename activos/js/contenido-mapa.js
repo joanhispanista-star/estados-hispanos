@@ -1139,7 +1139,7 @@ EH.MAPA_CONTENIDO = {
    "fuente": "Testamento de Cristóbal Colón, 19 de mayo de 1506; Casa-Museo de Colón, Valladolid; Catedral de Sevilla y estudio genético de 2006 dirigido por José Antonio Lorente.",
    "fundacion": "núcleo anterior repoblado por Pedro Ansúrez entre 1072 y 1095"
   },
-  "-6.93,37.25": {
+  "-6.89,37.23": {
    "texto": "Palos no se ofreció voluntaria. El 30 de abril de 1492 una provisión real le ordenó entregar dos carabelas armadas y tripuladas, como pago de una pena que la villa debía a la Corona. La orden se leyó en voz alta en la iglesia de San Jorge y el pueblo se hizo el sordo, hasta que Martín Alonso Pinzón, armador de allí mismo, puso su nombre y su dinero detrás del viaje; entonces aparecieron los marineros. Zarparon antes del amanecer del 3 de agosto de 1492, unos noventa hombres, y volvieron el 15 de marzo de 1493.",
    "fuente": "Real provisión de 30 de abril de 1492 (Archivo General de Indias); Diario del primer viaje en la copia de Bartolomé de las Casas; Muelle de las Carabelas, Diputación de Huelva.",
    "fundacion": "villa documentada desde el siglo XIV, sin acta de fundación"
@@ -1349,7 +1349,7 @@ EH.MAPA_CONTENIDO = {
    "fuente": "Intendencia de Salto, \"Historia y archivos\"; Comisión Técnica Mixta de Salto Grande, cronología de la obra; biografía de Horacio Quiroga",
    "fundacion": "cuarteles de 1756, poblamiento definitivo en 1817, ciudad en 1863"
   },
-  "-117.10,32.67": {
+  "-117.18,32.82": {
    "texto": "El 16 de julio de 1769 Junípero Serra levantó la cruz en una loma sobre Cosoy, aldea kumeyaay habitada mucho antes de que llegara nadie de España. La expedición había salido de la Baja con unos 300 hombres y el escorbuto se llevó a decenas antes de clavar el primer poste. Seis años después, la noche del 4 al 5 de noviembre de 1775, cientos de kumeyaay quemaron la misión, ya trasladada a Nipaguay, y mataron al fraile Luis Jayme. Se reconstruyó en adobe. Cabrillo había fondeado en la bahía en 1542 y el nombre lo puso Vizcaíno en 1602.",
    "fuente": "Diario de fray Junípero Serra (1769), edición de Antonine Tibesar; archivo histórico de la Misión Basílica San Diego de Alcalá; National Park Service, Cabrillo National Monument.",
    "fundacion": "aldea kumeyaay de Cosoy anterior, presidio y misión en 1769"
@@ -1443,6 +1443,256 @@ EH.MAPA_CONTENIDO = {
    "texto": "En 1862 la Alliance Israélite Universelle abrió en Tetuán su primera escuela del mundo: antes que en París, Estambul o Bagdad. Enseñaba en francés a chicos que en casa hablaban haketía, el judeoespañol del norte de Marruecos trenzado con árabe y hebreo —«ferazmal», «mazal», «meldar»—. La judería se había mudado al mellah nuevo hacia 1808 y España ocupó la ciudad en 1860; entre la escuela francesa y el castellano de los recién llegados, el habla vieja se fue borrando sin que nadie la prohibiera. Los tetuaníes emigraron después a Israel, Caracas, Madrid y Ceuta. Queda la sinagoga de Isaac Bengualid y queda el cementerio judío de la ladera.",
    "fuente": "Archivos de la Alliance Israélite Universelle (París), escuela de Tetuán, 1862; Yaakov Bentolila, estudios sobre la haketía, Universidad Ben Gurión",
    "fundacion": "núcleo meriní anterior arrasado en el siglo XV, refundada hacia 1484-1492 por exiliados granadinos"
+  },
+  "-56.43,-25.75": {
+   "texto": "Villa Rica del Espíritu Santo nació en 1570 en el Guairá, al oriente del Paraná, en tierras que hoy son brasileñas. Cuando los bandeirantes de São Paulo arrasaron la región entre 1628 y 1632 para capturar indígenas, la ciudad entera se puso a caminar: cambió de sitio varias veces, siempre hacia el poniente, hasta clavar su plaza en 1682 al pie del Ybytyruzú. No es una metáfora — los vecinos cargaban el cabildo, la imagen del santo y el nombre. Aquí nació Manuel Ortiz Guerrero, el poeta que le puso letra a «India».",
+   "fuente": "Historiografía paraguaya sobre los traslados de Villa Rica del Espíritu Santo; coordenadas tomadas de la ficha geográfica de Villarrica (departamento de Guairá), consultada el 8 de octubre de 2026.",
+   "fundacion": "1570 (año discutido), emplazamiento definitivo en 1682"
+  },
+  "-57.43,-23.41": {
+   "texto": "La Villa Real de la Concepción se plantó en 1773 por orden del gobernador Agustín Fernando de Pinedo con dos tareas incómodas: frenar las cabalgatas mbayá-guaycurú y marcar presencia frente al avance portugués por el norte. El río fue su oficio: por su puerto bajaron la yerba mate y el tanino del quebracho, y de ese dinero le quedó el apodo de «la Perla del Norte». También fue cuartel de rebeldes dos veces: en la revolución liberal de 1904 su guarnición leal se rindió sin combate ante las fuerzas llegadas por el río, y aquí se levantó el cuartel en marzo de 1947, lo que abrió la guerra civil.",
+   "fuente": "Reseña histórica de Concepción y del departamento de Concepción (fundación por Agustín Fernando de Pinedo, 1773); coordenadas verificadas el 8 de octubre de 2026.",
+   "fundacion": "Fundada en 1773"
+  },
+  "-55.70,-27.13": {
+   "texto": "La última reducción fundada sobre el Paraná, en junio de 1706, fue también la más ambiciosa: unas ocho hectáreas de plaza, talleres, viviendas en hilera y dos templos. En 1728 vivían allí unos 3.000 guaraníes. Lo que hay que mirar es el friso de piedra de la iglesia mayor: una fila de ángeles músicos con arpa, clave, órgano y maracas. No es adorno piadoso — en las reducciones había orquestas guaraníes que ejecutaban barroco europeo, y el friso retrata lo que de verdad se oía. La obra quedó trunca con la expulsión de los jesuitas en 1767.",
+   "fuente": "Expediente de la UNESCO «Misiones jesuíticas de La Santísima Trinidad de Paraná y Jesús de Tavarangue» (inscripción de 1993) y fichas derivadas; coordenadas de las ruinas 27°07′55″S 55°42′07″O, verificadas el 8 de octubre de 2026.",
+   "fundacion": "reducción jesuítica fundada en junio de 1706"
+  },
+  "-55.75,-27.06": {
+   "texto": "El pueblo de Jesús se fundó en 1685 junto al río Monday y se mudó varias veces hasta parar aquí en 1760. Siete años después llegó la orden de expulsión y la obra se congeló a media altura: el templo nunca recibió techo. Por eso se ve lo que en una iglesia terminada queda escondido, y algo que no se repite en América: arcos trilobulados de aire mudéjar, rarísimos a este lado del Atlántico. El edificio iba a ser de los mayores de todas las misiones, con tres naves. Comparte con Trinidad la inscripción de la UNESCO de 1993.",
+   "fuente": "Expediente de la UNESCO n.º 648 y fichas de las ruinas de Jesús de Tavarangüé; coordenadas 27°03′22″S 55°45′09″O, verificadas el 8 de octubre de 2026. Las medidas exactas del templo varían según la fuente y no se afirman aquí.",
+   "fundacion": "reducción fundada en 1685, trasladada a este sitio en 1760"
+  },
+  "-58.51,-27.07": {
+   "texto": "Carlos Antonio López mandó fortificar en 1854 un codo del río Paraguay donde ningún barco podía pasar sin exponer el costado. Allí se alinearon casi dos kilómetros de baterías y una cadena tendida de orilla a orilla que, al izarse, dejaba a los buques quietos bajo los cañones. La llamaron el Gibraltar de Sudamérica. En la guerra de la Triple Alianza aguantó más de dos años, con hasta 24.000 hombres y con Francisco Solano López adentro; el 19 de febrero de 1868 los acorazados brasileños forzaron el paso y el 25 de julio cayó. El tratado aliado ordenó arrasarla.",
+   "fuente": "Fichas históricas de la Fortaleza de Humaitá y del sitio de Humaitá (guerra de la Triple Alianza); coordenadas 27°04′06″S 58°30′31″O, verificadas el 8 de octubre de 2026.",
+   "fundacion": "fortificación iniciada en 1854, el pueblo creció alrededor"
+  },
+  "-66.17,-17.41": {
+   "texto": "El valle ya trabajaba cuando llegaron los españoles: los incas lo llamaban Qochapampa y Huayna Cápac instaló allí miles de mitmaqkuna traídos de lejos para sembrar maíz para el Estado. Sobre eso se fundó la Villa de Oropesa en 1571, refundada en 1574, y el oficio no cambió de fondo: trigo y maíz subiendo a Potosí para alimentar las minas. El 27 de mayo de 1812, con los hombres ya derrotados, mujeres y ancianas defendieron la colina de San Sebastián contra las tropas de Goyeneche. De esa fecha viene el Día de la Madre en Bolivia, y la colina se llama la Coronilla.",
+   "fuente": "Historia regional del valle de Cochabamba (ocupación incaica con mitmaqkuna y abastecimiento de Potosí) y relato de la Coronilla, 27 de mayo de 1812; coordenadas de la plaza 14 de Septiembre.",
+   "fundacion": "Villa de Oropesa, 1571, refundada en 1574"
+  },
+  "-64.75,-21.52": {
+   "texto": "Luis de Fuentes y Vargas la fundó el 4 de julio de 1574 por orden del virrey Toledo, y el nombre lo decía todo: Villa de San Bernardo de la Frontera de Tarixa. Era un puesto de frontera contra los chiriguanos, que la hostigaron más de un siglo. El 15 de abril de 1817, en La Tablada, la guerrilla de Eustaquio «Moto» Méndez derrotó a la columna realista y la ciudad quedó libre. Lo raro vino después: en 1826 su cabildo decidió por cuenta propia pertenecer a Bolivia y no a Salta. Argentina siguió reclamando el territorio durante décadas.",
+   "fuente": "Crónica de la fundación de la Villa de San Bernardo de la Frontera de Tarixa (1574) y de la batalla de La Tablada (1817). La fecha exacta del acuerdo del cabildo de 1826 y el tratado que cerró el reclamo argentino no se reverificaron en esta ronda.",
+   "fundacion": "4 de julio de 1574"
+  },
+  "-60.78,-17.85": {
+   "texto": "A pocos kilómetros del pueblo hay un campo de ruinas que casi nadie busca: Santa Cruz de la Sierra la Vieja, la ciudad que Ñuflo de Chaves fundó en 1561 y que luego se mudó hacia el poniente, a más de 250 kilómetros, hasta el sitio que ocupa hoy. La misión de San José se levantó en 1698, con los padres Felipe Suárez y Dionisio Ávila, sobre población chiquitana que ya estaba allí. Su conjunto es el único de Chiquitos construido en piedra: los demás son de adobe y madera. Las misiones chiquitanas entraron en la lista de la UNESCO en 1990.",
+   "fuente": "Fichas de las misiones jesuíticas de Chiquitos (fundación de 1698 por Felipe Suárez y Dionisio Ávila, única iglesia del conjunto en piedra) e inscripción UNESCO de 1990; coordenadas 17°50′44″S 60°44′26″O, consultadas el 8 de octubre de 2026.",
+   "fundacion": "misión jesuítica fundada en 1698"
+  },
+  "-80.52,8.33": {
+   "texto": "Gaspar de Espinosa ya conocía el terreno: en 1516 lo había recorrido saqueando los señoríos del Pacífico, con Francisco Pizarro y Diego de Almagro entre su gente. Volvió el 20 de mayo de 1522, por orden del gobernador Pedro Arias Dávila, y plantó la villa sobre el territorio del cacique Natá, cuyo nombre se quedó con el pueblo que lo desalojó. Se llamó «de los Caballeros» porque el suelo se repartió entre hidalgos. De aquí salieron las entradas a Veragua y los refuerzos hacia Nicaragua. La iglesia de Santiago Apóstol, hoy basílica menor, conserva fábrica del siglo XVIII.",
+   "fuente": "Gonzalo Fernández de Oviedo, Historia general y natural de las Indias (entrada de Gaspar de Espinosa por Natá y Escoria, 1516); crónicas de la gobernación de Castilla del Oro sobre la fundación de 1522; Wikipedia en español «Natá de los Caballeros» y «Basílica Menor Santiago Apóstol de Natá».",
+   "fundacion": "fundada el 20 de mayo de 1522 sobre el señorío del cacique Natá"
+  },
+  "-79.47,9.58": {
+   "texto": "Diego de Nicuesa desembarcó aquí en 1510 con lo que le quedaba de una expedición deshecha, y la tradición le atribuye la frase que dio nombre al puerto. El sitio se abandonó y Diego de Albítez lo repobló hacia 1519. Fue la boca caribeña del Camino Real: por aquí salía la plata del Perú. El 29 de julio de 1572 Francis Drake tomó la plaza de madrugada con unos setenta hombres, pero una herida de bala en la pierna lo dejó desangrándose y sus marineros se lo llevaron sin la plata. En 1597 la Corona mudó la feria a Portobelo y el pueblo quedó vacío.",
+   "fuente": "Relaciones del viaje de Diego de Nicuesa en Fernández de Oviedo; «Sir Francis Drake Revived» (Londres, 1626), relato del asalto de 1572 compilado por Philip Nichols; documentación del sistema de flotas y ferias de Tierra Firme, Archivo General de Indias; Wikipedia en español «Nombre de Dios (Panamá)».",
+   "fundacion": "primer asentamiento en 1510, repoblado hacia 1519-1520"
+  },
+  "-82.43,8.43": {
+   "texto": "Se fundó el 19 de marzo de 1602 como San José de David, aunque las fuentes se contradicen sobre el fundador: unas nombran a Juan López de Sequeira y otras a Francisco de Gama. Trescientos diecinueve años después tuvo la guerra al lado. El 21 de febrero de 1921 una columna costarricense al mando del coronel Héctor Zúñiga Mora ocupó Pueblo Nuevo de Coto, entonces del distrito panameño de Alanje, a pocas horas de David. En ese frente del Pacífico los costarricenses fueron derrotados, y el 5 de marzo todo había acabado por presión de Estados Unidos. El límite no se cerró hasta 1941.",
+   "fuente": "Relaciones de la fundación de San José de David (1602), con el desacuerdo sobre el fundador recogido en Wikipedia en español «David (ciudad)»; documentación de la Guerra de Coto en el Archivo Nacional de Panamá y el Archivo Nacional de Costa Rica; texto del tratado de límites Echandi Montero-Fernández Jaén, 1 de mayo de 1941.",
+   "fundacion": "fundada el 19 de marzo de 1602 como San José de David"
+  },
+  "-80.28,7.76": {
+   "texto": "Nació de una huida. El 28 de enero de 1671 Henry Morgan incendió Panamá la Vieja, y un grupo de familias acomodadas se embarcó hacia la península de Azuero; la tradición las pone al mando del capitán gallego Gil Jacinto Barahona y data el pueblo hacia el 19 de julio de 1671. Traían a Santa Librada por patrona y le empezaron el templo de inmediato: el altar mayor se estrenó el 20 de julio de 1679 y la obra se cerró en 1725. Aquí nació, el 28 de noviembre de 1856, Belisario Porras, tres veces presidente de Panamá.",
+   "fuente": "Crónicas del asalto de Morgan a Panamá la Vieja (1671); historia de la parroquia de Santa Librada publicada por la Diócesis de Chitré y por La Estrella de Panamá; Wikipedia en español «Distrito de Las Tablas» y «Belisario Porras».",
+   "fundacion": "hacia el 19 de julio de 1671, fecha de tradición y sin acta conocida"
+  },
+  "-84.09,9.94": {
+   "texto": "A las seis y cuarto de la tarde del sábado 9 de agosto de 1884 se encendieron veinticinco lámparas de carbón en el centro de San José, alimentadas por una planta hidroeléctrica de cincuenta kilovatios instalada en Aranjuez, junto a una caída del río Torres; la montaron el ingeniero Manuel Víctor Dengo Bertora y el guatemalteco Luis Batres García, y la pagó el café. Se repite que fue la tercera ciudad del mundo con luz pública: eso es un mito discutido, la fecha no. Sesenta y un años antes ni era capital: la ganó el 5 de abril de 1823 en el cerro de Ochomogo.",
+   "fuente": "Acuerdos del cabildo de Cartago sobre la Boca del Monte (1737-1738); partes de la batalla de Ochomogo, 5 de abril de 1823; ICE, «La primera planta eléctrica en Costa Rica» (documento institucional, datos de potencia, lámparas y constructores); Archivo Nacional de Costa Rica, «Un momento con la historia», agosto de 2021; artículo «San José y el mito de la tercera ciudad con luz eléctrica», Cambio Político.",
+   "fundacion": "poblada desde 1738 como Villa Nueva de la Boca del Monte"
+  },
+  "-84.12,9.99": {
+   "texto": "Fadrique Gutiérrez levantó aquí, desde 1876, una torre de defensa con un defecto que se ve a simple vista: las troneras se ensanchan hacia fuera, de modo que recogen el fuego enemigo en vez de desviarlo. El escultor murió sin terminar la fortificación y quedó la torre sola, El Fortín, que la provincia convirtió en su emblema y el Estado protege como monumento. El poblado arrancó en 1706, cuando vecinos salidos de Cartago levantaron una ermita en el paraje de Alvirilla; en 1714 se mudó al sitio que los indígenas llamaban Cubujuquí, y tomó el nombre de Heredia en 1763, por el gobernador Alonso Fernández de Heredia. En 1823 peleó del lado perdedor en Ochomogo y la capital se le fue a San José.",
+   "fuente": "Documentación de la Villa Vieja de Cubujuquí (1706) y del cambio de nombre en 1763 bajo el gobernador Alonso Fernández de Heredia; expedientes del Centro de Investigación y Conservación del Patrimonio Cultural de Costa Rica sobre El Fortín; Wikipedia en español «El Fortín (Heredia)» y «Fadrique Gutiérrez».",
+   "fundacion": "villa de 1706 con el nombre de Cubujuquí"
+  },
+  "-85.45,10.15": {
+   "texto": "Aquí no hubo acta de fundación: el pueblo era la cabecera del cacique Nicoya, chorotega, cuando Gil González Dávila llegó en 1523 y lo bautizó. Durante tres siglos el Partido de Nicoya dependió de León, en Nicaragua. El 25 de julio de 1824 el cabildo abierto votó pasarse a Costa Rica; Santa Cruz lo acompañó y Guanacaste, la actual Liberia, votó por Nicaragua. El Congreso Federal lo ratificó el 9 de diciembre de 1825, y la frontera no quedó cerrada hasta el tratado Cañas-Jerez del 15 de abril de 1858. La iglesia de San Blas, del siglo XVII, sigue en servicio.",
+   "fuente": "Acta del cabildo abierto de Nicoya del 25 de julio de 1824 y decreto de ratificación del Congreso Federal de Centroamérica del 9 de diciembre de 1825; texto del tratado Cañas-Jerez (1858); relación del viaje de Gil González Dávila (1522-1523) en Fernández de Oviedo.",
+   "fundacion": "pueblo chorotega anterior, sin acta de fundación española; presencia española desde 1523"
+  },
+  "-89.56,13.99": {
+   "texto": "En 1902 los cafetaleros de Santa Ana se pusieron a construir un teatro a la europea y lo estrenaron el 27 de febrero de 1910; por los planos pasaron Francisco Durini y Cristóbal Molinari. Mientras el grano se vendía bien, aquel escenario trajo ópera y zarzuela a una ciudad de occidente. En 1933, con el precio del café hundido tras la crisis, se acabó la época de oro del teatro. Enfrente, la catedral neogótica se levantaba desde 1906, y el 11 de febrero de 1913 Santa Ana tuvo diócesis propia. La ciudad española creció encima de Sihuatehuacán, asentamiento pipil anterior a la conquista.",
+   "fuente": "Teatro Nacional de Santa Ana, ficha del Ministerio de Cultura de El Salvador (portal.cultura.gob.sv); Diario El Salvador, reportaje sobre los 113 años del teatro.",
+   "fundacion": "villa española levantada sobre el poblado pipil de Sihuatehuacán, hacia 1569 (fecha discutida)"
+  },
+  "-89.67,13.74": {
+   "texto": "El 22 de enero de 1932, con el precio del café en el suelo, miles de campesinos indígenas tomaron Izalco a machete. Encabezaba el levantamiento el cacique José Feliciano Ama, nacido en 1881, mayordomo de la cofradía del Corpus Christi desde 1917 y por tanto la voz que llevaba los reclamos del pueblo ante el gobierno. Duró días. El régimen de Maximiliano Hernández Martínez respondió matando a quien tuviera traza de indígena, y el 28 de enero colgaron a Ama de un árbol del parque Saldaña, en el barrio La Asunción. Después de 1932 en Izalco se dejó de hablar náhuat en público.",
+   "fuente": "Expedientes y bibliografía sobre la matanza de 1932 en El Salvador; ContraPunto (El Salvador), «José Feliciano Ama, cacique y líder indígena (1932)».",
+   "fundacion": "pueblo pipil anterior a la conquista; los dos Izalcos se unieron en una sola villa en el siglo XIX (fecha discutida)"
+  },
+  "-89.36,13.83": {
+   "texto": "En 1976 una topadora estaba terraceando un terreno en San Juan Opico para construir silos de granos y partió una pared de barro endurecido. Debajo había una aldea maya entera: la erupción de la Loma Caldera la había sepultado bajo cinco a siete metros de ceniza. No se ha encontrado ni un cuerpo. La gente alcanzó a salir corriendo y dejó la cena servida, los petates tendidos, las vasijas con comida y un sembradío de yuca en pie, el único campo de yuca prehispánico documentado en América. Por eso le dicen la Pompeya de América. La UNESCO la inscribió como Patrimonio Mundial en 1993.",
+   "fuente": "UNESCO, Centro del Patrimonio Mundial, ficha 675 «Joya de Cerén Archaeological Site»; Ministerio de Cultura de El Salvador.",
+   "fundacion": "aldea maya sepultada hacia el año 600 d. C.; redescubierta en 1976"
+  },
+  "-88.18,13.48": {
+   "texto": "El 8 de mayo de 1530 el capitán Luis de Moscoso plantó San Miguel de la Frontera. No era una ciudad para vivir: era una plaza de guerra para someter al señorío lenca de Chaparrastique, nombre del lugar que ya existía y que se traduce como «lugar de las orquídeas hermosas». La frontera se quedó en el nombre y en 1586 el poblado recibió el título de ciudad. El volcán que comparte ese nombre sigue mandando: el 29 de diciembre de 2013 el Chaparrastique soltó una columna de ceniza de varios kilómetros y obligó a evacuar los cantones de su falda, a unos quince kilómetros del centro.",
+   "fuente": "Reseña histórica de San Miguel (fundación de 1530 y título de ciudad de 1586); boletines del Ministerio de Medio Ambiente y Recursos Naturales de El Salvador sobre la erupción del 29 de diciembre de 2013.",
+   "fundacion": "fundada el 8 de mayo de 1530 sobre territorio del señorío lenca de Chaparrastique"
+  },
+  "-89.88,16.93": {
+   "texto": "La isla se llamaba Nojpetén y era la capital de los itzaes, el último Estado maya independiente. Hernán Cortés pasó por ahí en 1525, camino a Honduras, y dejó un caballo cojo que los itzaes acabaron veneran-do como Tzimin Chac; frailes que llegaron décadas después se lo encontraron convertido en ídolo. Ciento setenta y dos años más tarde, el 13 de marzo de 1697, Martín de Ursúa y Arizmendi, gobernador de Yucatán, cruzó el lago en una galeota armada y tomó la isla. Derribaron los templos y encima levantaron la actual Flores. Ese día se cerró la conquista de Mesoamérica, casi dos siglos después de Tenochtitlan.",
+   "fuente": "Prensa Libre (Guatemala), «1697: la conquista de Tayasal, último reducto maya»; crónicas de la conquista del Petén.",
+   "fundacion": "Nojpetén, capital itzá anterior a la conquista; tomada el 13 de marzo de 1697"
+  },
+  "-89.35,14.57": {
+   "texto": "En 1594 el escultor Quirio Cataño talló un Cristo de madera oscura —de naranjo, según la tradición— que acabó en el pueblo de Esquipulas y lo convirtió en el santuario más visitado de Centroamérica; su fiesta cae el 15 de enero. La basílica blanca de cuatro torres que lo guarda se inauguró en 1759. El nombre del pueblo salió de Guatemala en los años ochenta: aquí se reunieron los cinco presidentes centroamericanos en mayo de 1986, y el acuerdo de paz que nació de ese proceso, Esquipulas II, se firmó el 7 de agosto de 1987 en Ciudad de Guatemala. Óscar Arias ganó el Nobel ese mismo año.",
+   "fuente": "Reseña histórica de la Catedral Basílica de Esquipulas; texto del Acuerdo de Esquipulas II, firmado el 7 de agosto de 1987.",
+   "fundacion": "asentamiento ch'orti' anterior; pueblo colonial de mediados del siglo XVI (fecha discutida)"
+  },
+  "-91.11,14.94": {
+   "texto": "Entre 1701 y 1703 el fraile dominico Francisco Ximénez estuvo de cura en Santo Tomás Chichicastenango y le pusieron en las manos un manuscrito en k'iche' escrito con letras latinas. Lo copió en una columna y lo tradujo al español en la de al lado, en algún momento de esos dos años: no se conoce la fecha exacta en que lo terminó. Ese cuaderno es la única vía por la que conocemos el Popol Vuh, porque el original k'iche' se perdió. Hoy el manuscrito de Ximénez está en la Newberry Library de Chicago. La iglesia donde apareció sigue en pie sobre la plataforma de un templo prehispánico, y en sus gradas se sigue quemando copal.",
+   "fuente": "Manuscrito de Francisco Ximénez, Newberry Library (Chicago); cronología del Popol Vuh, libro sagrado k'iche'.",
+   "fundacion": "pueblo k'iche' de Chuwi'la, anterior a la conquista; cabecera colonial del siglo XVI"
+  },
+  "-83.77,12.00": {
+   "texto": "El nombre viene del corsario neerlandés Abraham Blauvelt, que usaba esta laguna hacia 1633. Bluefields fue la capital de la Mosquitia: el Tratado de Managua de 1860 la dejó bajo soberanía nicaragüense pero con autogobierno miskito, en la llamada Reserva Mosquitia. El 12 de febrero de 1894 el general Rigoberto Cabezas ocupó la ciudad con tropas y en noviembre la Convención Mosquita liquidó la Reserva. En Managua eso se enseña como «la Reincorporación»; en la costa, mucha gente lo cuenta como una anexión. Aquí se habla criollo inglés y la iglesia morava sigue pesando más que cualquier oficina.",
+   "fuente": "Tratado Zeledón-Wyke (Managua, 1860) y Convención Mosquita de 1894; CIJ, «Controversia territorial y marítima (Nicaragua c. Colombia)», sentencia del 19 de noviembre de 2012.",
+   "fundacion": "poblado miskito y kukra con presencia europea desde la década de 1630, sin acta de fundación"
+  },
+  "-87.17,12.53": {
+   "texto": "El Realejo fue el astillero del Pacífico centroamericano: con cedro de la zona y jarcia traída de Nicoya se botaban allí los barcos del comercio con Panamá y el Perú. Por eso lo buscaron los piratas. En 1685 llegaron Edward Davis, Charles Swan y William Knight con ocho naves y 640 hombres; 470 desembarcaron, marcharon tierra adentro, saquearon León y al volver quemaron El Realejo, que los vecinos ya habían dejado vacío. Zarparon el 7 de septiembre de 1685. El puerto nunca recuperó el pulso y en el siglo XIX su tráfico pasó a Corinto.",
+   "fuente": "Troy S. Floyd, «Realejo: A Forgotten Colonial Port and Shipbuilding Center in Nicaragua», Hispanic American Historical Review 51(2), 1971.",
+   "fundacion": "fundado hacia 1532-1534"
+  },
+  "-85.82,11.44": {
+   "texto": "El istmo de Rivas, poco más de veinte kilómetros entre el lago Cocibolca y el Pacífico, fue atajo interoceánico: desde 1851 la compañía de Cornelius Vanderbilt cruzaba por aquí a los viajeros que iban a California. Ese negocio trajo al filibustero William Walker, derrotado en Rivas el 29 de junio de 1855. El 11 de abril de 1856, en la segunda batalla, sus hombres se atrincheraron en el mesón de Guerra; el maestro Enmanuel Mongalo y Rubio le prendió fuego bajo las balas y los obligó a salir. Walker terminó fusilado en Trujillo, Honduras, el 12 de septiembre de 1860.",
+   "fuente": "Partes y documentos de la Guerra Nacional (1855-1857) recogidos por la Academia de Geografía e Historia de Nicaragua; registros de la Accessory Transit Company.",
+   "fundacion": "valle nicarao, erigido en villa española en 1717"
+  },
+  "-88.04,15.78": {
+   "texto": "La Corona construyó San Fernando de Omoa para que la plata de las minas de Tegucigalpa saliera escoltada y para frenar a los británicos de Belice y la Mosquitia: muros de piedra coralina, foso y la mayor obra militar de Centroamérica. No sirvió de mucho. El 16 de octubre de 1779, con unos 150 hombres entre soldados y marineros, los británicos la asaltaron y se la quedaron junto con la plata que esperaba embarque. La ocuparon apenas hasta finales de noviembre de ese año: las fiebres y el contraataque español los echaron de allí.",
+   "fuente": "Partes del asalto británico de 1779 (expedición de Luttrell y Dalrymple); «Planos de la Fortaleza, Puerto y Población de Omoa», Biblioteca Virtual de Defensa (España).",
+   "fundacion": "fortaleza levantada entre 1756 y 1775"
+  },
+  "-86.52,16.33": {
+   "texto": "Tras perder la segunda guerra caribe (1795-1797), los británicos deportaron de San Vicente a unos 5.000 garífunas. Los dejaron primero en el islote de Baliceaux, donde murió más de la mitad de hambre y de fiebre amarilla. El 12 de abril de 1797 desembarcaron 2.026 sobrevivientes en Punta Gorda, Roatán, sin provisiones. De allí pasaron a Trujillo y desde la costa hondureña poblaron el litoral de Belice, Guatemala y Nicaragua; Honduras conmemora esa fecha cada año. Las islas fueron colonia británica en 1852 y pasaron a Honduras por el tratado Wyke-Cruz, firmado el 28 de noviembre de 1859.",
+   "fuente": "Expedientes británicos de la deportación de San Vicente (1797) y Tratado Wyke-Cruz (1859); recuentos recogidos en la conmemoración hondureña del 12 de abril.",
+   "fundacion": "isla poblada antes de 1502, asentamiento garífuna desde 1797"
+  },
+  "-87.19,13.30": {
+   "texto": "Cristóbal de la Cueva levantó aquí la villa de Xerez de la Frontera de Choluteca en marzo de 1535, sobre tierra chorotega y en la ruta hacia el golfo de Fonseca. Lo que la hizo famosa fue 1998: en octubre el huracán Mitch descargó más de 900 milímetros de lluvia en tres días sobre la zona. El puente nuevo, obra de ingeniería japonesa inaugurada ese mismo año, aguantó sin daños; lo que se movió fue el río Choluteca, que se abrió otro cauce y dejó el puente cruzando tierra seca. Hoy se estudia como un cálculo correcto sobre un supuesto equivocado.",
+   "fuente": "USGS, informes hidrológicos sobre Honduras tras el huracán Mitch (2001); CIJ, «Controversia fronteriza terrestre, insular y marítima (El Salvador/Honduras, Nicaragua interviniente)», sentencia del 11 de septiembre de 1992.",
+   "fundacion": "villa española en marzo de 1535, fecha discutida"
+  },
+  "-65.22,-26.81": {
+   "texto": "El 9 de julio de 1816, en una casa alquilada a Francisca Bazán de Laguna, los diputados de las Provincias Unidas firmaron la independencia. El acta se mandó imprimir en español, quechua y aymara: la guerra se peleaba en el Alto Perú y había que leerla en voz alta a gente que no hablaba castellano. Cuatro años antes, el 24 de septiembre de 1812, Manuel Belgrano desobedeció la orden de retirarse a Córdoba y venció al ejército realista a las puertas del pueblo. La ciudad tampoco estaba en su sitio original: nació en 1565 en Ibatín y se mudó en 1685.",
+   "fuente": "Coordenadas: Wikipedia en español, «Plaza Independencia (Tucumán)», consultado el 8 de octubre de 2026. Relato: texto del Acta de la Independencia del 9 de julio de 1816 y bibliografía estándar sobre el Congreso de Tucumán y la batalla de 1812.",
+   "fundacion": "fundada en 1565 en Ibatín y trasladada al emplazamiento actual en 1685"
+  },
+  "-68.82,-32.88": {
+   "texto": "El 20 de marzo de 1861, a las 20:36, un terremoto borró la ciudad en menos de un minuto. Las cifras de muertos no coinciden entre fuentes: la más citada es 4.247 y otras llegan a unos 6.000, sobre una población de alrededor de 18.000 habitantes. En lugar de reconstruir encima, el gobierno mandó trazar una Mendoza nueva al suroeste: el agrimensor Julio Balloffet puso calles anchas, la Plaza Independencia en el centro y cuatro plazas satélites alrededor, pensadas como lugares donde correr cuando volviera a temblar. El agua que riega esos árboles baja por acequias que los huarpes ya usaban antes de 1561.",
+   "fuente": "Coordenadas: latlong.net, ficha de Plaza Independencia (Mendoza), consultado el 8 de octubre de 2026. Terremoto y ciudad nueva: Wikipedia en español, «Terremoto de Mendoza de 1861», y reportajes de MDZ Online (20 de marzo de 2022 y 20 de marzo de 2025), que recogen las dos horquillas de víctimas.",
+   "fundacion": "fundada el 2 de marzo de 1561 y refundada en 1562"
+  },
+  "-60.67,-32.95": {
+   "texto": "Rosario no tiene acta de fundación ni fundador: creció sola sobre el Pago de los Arroyos, a partir de una merced de tierras de 1689 y de la capilla que Santiago de Montenegro levantó hacia 1731. Recién el 3 de agosto de 1852 un decreto de Justo José de Urquiza le dio título de ciudad. Antes de todo eso, el 27 de febrero de 1812, Manuel Belgrano izó por primera vez la bandera celeste y blanca en la barranca, en la batería Independencia que acababa de armar para vigilar el Paraná. La piedra del monumento se puso en 1898 y se inauguró en 1957.",
+   "fuente": "Coordenadas y cronología del monumento: Wikipedia en español, «Monumento histórico nacional a la Bandera», y la ficha oficial en argentina.gob.ar/cultura/monumentos, consultadas el 8 de octubre de 2026. Las baterías Libertad e Independencia figuran en ambas.",
+   "fundacion": "sin acta de fundación: poblada desde fines del siglo XVII, con título de ciudad en 1852"
+  },
+  "-68.31,-54.79": {
+   "texto": "El 12 de octubre de 1884 Augusto Lasserre izó la bandera argentina en Ushuaia, pero no sobre tierra vacía: ahí funcionaba desde 1869 una misión anglicana, abierta por Waite Stirling y continuada por Thomas Bridges, que vivió entre los yámanas y armó un diccionario de su lengua con más de treinta mil palabras. Hoy es casi todo lo que queda escrito de ese idioma. En 1902 llegó el presidio: los presos talaron el bosque, construyeron el pueblo y tendieron el ferrocarril con el que acarreaban la leña. La cárcel cerró en 1947; el tren y el edificio quedaron.",
+   "fuente": "Fecha de fundación y presidio: bibliografía estándar sobre la Expedición Lasserre de 1884 y el Presidio de Ushuaia. Coordenadas: Wikipedia en español, «Museo del Fin del Mundo» (Maipú 173), consultado el 8 de octubre de 2026. El tamaño del diccionario de Bridges queda sin confirmar en fuente primaria.",
+   "fundacion": "izamiento de la bandera el 12 de octubre de 1884, sobre una misión anglicana de 1869"
+  },
+  "-70.94,-53.16": {
+   "texto": "Chile ocupó el estrecho con una goleta de madera: la Ancud salió de Chiloé en mayo de 1843 con poco más de veinte personas y el 21 de septiembre izó la bandera en Fuerte Bulnes, antes de que otra potencia reclamara el paso. El fuerte era invivible —viento, suelo malo, leña escasa—, así que en diciembre de 1848 José de los Santos Mardones mudó la colonia unos sesenta kilómetros al norte, a Punta Arenosa. Lo que la volvió rica fue la lana: hacia 1877 el gobernador Diego Dublé Almeyda hizo traer unas trescientas ovejas y de ahí salieron las grandes estancias.",
+   "fuente": "Fuerte Bulnes, la Ancud y el traslado de 1848: historiografía estándar de Magallanes. Coordenadas de la Plaza Benjamín Muñoz Gamero: fichas geográficas consultadas el 8 de octubre de 2026 (evendo.com y Wikipedia, «Punta Arenas»), coincidentes en el centro de la plaza.",
+   "fundacion": "colonia instalada en Fuerte Bulnes en 1843 y trasladada a Punta Arenas en diciembre de 1848"
+  },
+  "-73.76,-42.48": {
+   "texto": "Castro se fundó el 12 de febrero de 1567 con el nombre de Santiago de Castro y es una de las ciudades más antiguas que siguen en pie en Chile. Lo extraordinario es cómo terminó aquí la colonia: Chiloé fue el último territorio español en Chile y uno de los dos últimos reductos realistas de Sudamérica. Cuando el resto del continente ya era independiente, en el archipiélago seguía ondeando la bandera del rey, y solo capituló con el Tratado de Tantauco, firmado el 15 de enero de 1826, ocho años después de la independencia de Chile. En 1600 el corsario holandés Baltazar de Cordes la había tomado y saqueado.",
+   "fuente": "Fundación y coordenadas de la Plaza de Armas: Wikipedia, «Castro, Chile», y la ficha de la Plaza de Armas de Castro en appchiloeturismo.cl, consultadas el 8 de octubre de 2026. Tratado de Tantauco: texto del tratado de 15 de enero de 1826.",
+   "fundacion": "fundada el 12 de febrero de 1567 como Santiago de Castro"
+  },
+  "-58.08,-32.33": {
+   "texto": "A Paysandú le dicen «La Heroica» por treinta días de 1864. El 6 de diciembre las fuerzas de Venancio Flores y la escuadra brasileña del almirante Tamandaré empezaron a bombardear la ciudad; adentro resistía Leandro Gómez con alrededor de mil hombres y municiones contadas. Cayó el 2 de enero de 1865 y Gómez, ya rendido, fue fusilado ese mismo día. El nombre viene de mucho antes y no es español: «Pay Sandú» significa «padre Sandú» en guaraní, por el religioso que encabezó el puesto de ganado que la misión de Yapeyú instaló en esta costa del río Uruguay.",
+   "fuente": "Sitio de 1864-65: historiografía uruguaya estándar sobre la Guerra de la Triple Alianza y la defensa de Leandro Gómez; no se pudo reverificar en esta ronda el número exacto de defensores. Coordenadas: Wikipedia, «Paysandú» (32°19′17″S 58°04′32″O), consultado el 8 de octubre de 2026; corresponden al casco céntrico, no a una plaza concreta.",
+   "fundacion": "origen en un puesto de ganado de la misión de Yapeyú, siglo XVIII"
+  },
+  "-58.32,-33.40": {
+   "texto": "Es el poblado más antiguo que sigue habitado en Uruguay y no lo fundaron colonos: nació como reducción franciscana para los chanás, con el nombre de Santo Domingo Soriano, levantada hacia 1624 en una isla del río Negro. La mudaron varias veces hasta fijarla en 1708 en el sitio actual; Montevideo no empezó a construirse hasta 1724. En la madrugada del 28 de febrero de 1811, a pocos kilómetros, en el arroyo Asencio, Pedro Viera y Venancio Benavides se alzaron contra España y en días tomaron Mercedes y Soriano: así arrancó la revolución oriental, la que llamaron «la admirable alarma».",
+   "fuente": "Fundación, traslados y antigüedad relativa frente a Colonia del Sacramento: Wikipedia, «Villa Soriano», y «Soriano Department», consultados el 8 de octubre de 2026. Coordenadas: la misma ficha (33°24′00″S 58°19′12″O), redondeadas; son del pueblo, no de un punto del casco. Grito de Asencio: historiografía uruguaya estándar.",
+   "fundacion": "reducción franciscana hacia 1624, en su emplazamiento actual desde 1708"
+  },
+  "-70.52,19.22": {
+   "texto": "En 1494 Colón mandó levantar el fuerte de la Concepción en la Vega Real, en pleno territorio del cacicazgo taíno de Maguá, no en un vacío. La villa que creció alrededor llegó a ser sede de obispado en 1511, por bula de Julio II, a la vez que Santo Domingo y San Juan. El 2 de diciembre de 1562 un terremoto la derribó entera. Los sobrevivientes no reconstruyeron: cargaron lo que pudieron y se mudaron a la orilla del río Camú, donde está hoy La Vega. Las ruinas de la ciudad muerta siguen en pie y se llaman La Vega Vieja.",
+   "fuente": "Parque Nacional Histórico y Arqueológico Ruinas de La Vega Vieja (Ministerio de Cultura, R. D.); bula \"Romanus Pontifex\" de Julio II, 8 de agosto de 1511, sobre la erección de los obispados de Santo Domingo, Concepción de la Vega y San Juan.",
+   "fundacion": "1494 (fuerte de la Concepción), reconstruida en su emplazamiento actual después de 1562"
+  },
+  "-68.71,18.62": {
+   "texto": "El cacicazgo de Higüey fue el último de La Española en caer, y la villa española se montó encima. Bartolomé de las Casas contó la campaña: en 1504 el cacique Cotubanamá fue capturado escondido en una cueva de la isla Saona y ahorcado en Santo Domingo. Sobre ese territorio, Juan Ponce de León —antes de pasar a Puerto Rico— organizó Salvaleón de Higüey y se hizo una casa de piedra que todavía se visita en San Rafael del Yuma. Cuatro siglos y medio después, entre 1954 y 1971, se levantó allí la basílica de la Altagracia, de hormigón desnudo, proyecto de los arquitectos franceses Pierre Dupré y André Dunoyer de Segonzac, ganadores del concurso internacional de 1947.",
+   "fuente": "Bartolomé de las Casas, \"Historia de las Indias\", libro II (guerra de Higüey y muerte de Cotubanamá); archivo de la Basílica de Nuestra Señora de la Altagracia, Higüey.",
+   "fundacion": "principios del siglo XVI, hacia 1502-1505 (fecha discutida)"
+  },
+  "-69.33,19.21": {
+   "texto": "Samaná se fundó en 1756 con familias canarias que el gobernador Francisco Rubio y Peñaranda llevó a la bahía para que no la ocupara ninguna otra potencia. Lo inesperado vino después: en 1824 y 1825, invitados por el presidente haitiano Jean-Pierre Boyer, llegaron varios cientos de afroamericanos libres de Filadelfia y Baltimore. Trajeron el metodismo y el inglés, y sus descendientes, los americanos de Samaná, siguieron predicando y cantando en inglés más de siglo y medio. Su templo, «la Churcha», llegó mucho más tarde: se fabricó en Inglaterra y se armó pieza por pieza en 1901, y fue el único edificio de madera que quedó en pie tras el incendio que arrasó el pueblo en 1946. En 1976 el gobierno demolió buena parte del pueblo viejo para rehacerlo pensando en el turismo.",
+   "fuente": "Martha Ellen Davis, investigaciones y grabaciones sobre \"los americanos de Samaná\" y su tradición religiosa; Archivo General de la Nación (R. D.), documentación sobre la repoblación canaria de 1756.",
+   "fundacion": "1756 (Santa Bárbara de Samaná, con colonos canarios)"
+  },
+  "-71.64,19.85": {
+   "texto": "El 25 de marzo de 1895, en una casa de Montecristi, José Martí y Máximo Gómez firmaron el manifiesto que abría la última guerra de independencia de Cuba; salieron de allí rumbo a la isla el 1 de abril y Martí murió en combate el 19 de mayo. Gómez, dominicano, vivía en el pueblo: su casa es hoy museo. Montecristi llevaba siglos de ir y venir: fundada en el siglo XVI, quedó vacía con las devastaciones de Osorio de 1605 y 1606, cuando la Corona obligó a quemar y despoblar el norte para cortar el contrabando con holandeses e ingleses, y se repobló con canarios en el siglo XVIII.",
+   "fuente": "Manifiesto de Montecristi, 25 de marzo de 1895, texto en las Obras completas de José Martí; Casa-Museo Máximo Gómez, Montecristi; crónicas de las devastaciones de Osorio (1605-1606).",
+   "fundacion": "siglo XVI (fecha discutida, suele darse 1533), despoblada en 1605-1606 y repoblada en el siglo XVIII como San Fernando de Monte Cristi"
+  },
+  "-66.73,18.44": {
+   "texto": "Arecibo lleva el nombre del cacique Arasibo, cuyo poblado estaba allí antes que nada español, y quedó constituida en villa en 1616. Pero su historia famosa empieza en 1963: en un sumidero de piedra caliza al sur del pueblo abrió el radiotelescopio de Arecibo, un plato de 305 metros que fue el mayor del mundo durante más de medio siglo. Desde él, en 1974, se envió al cúmulo M13 un mensaje de 1.679 bits con la fórmula del ADN y la silueta de una persona. El 1 de diciembre de 2020, tras romperse varios cables, la plataforma de instrumentos —unas 900 toneladas— cayó sobre el plato y lo destrozó.",
+   "fuente": "National Science Foundation, informes sobre la rotura de cables y el colapso del telescopio de Arecibo (agosto-diciembre de 2020); documentación del Mensaje de Arecibo preparado por Frank Drake y Carl Sagan (1974).",
+   "fundacion": "1616 como Villa de San Felipe del Arecibo, sobre el territorio del cacique Arasibo"
+  },
+  "-65.88,18.43": {
+   "texto": "Loíza se llama así por Yuiza, la única cacica documentada de Puerto Rico, muerta hacia 1513; la tradición dice que estuvo casada con Pedro Mejías, un africano libre. En las haciendas de caña del río Grande de Loíza se formó una de las poblaciones negras libres más densas de la isla, y de ahí salió la bomba. Las fiestas de Santiago Apóstol, del 25 al 28 de julio, sacan tres imágenes distintas del mismo santo —la de los hombres, la de las mujeres y la de los niños— y los vejigantes con caretas de coco seco, que Castor Ayala empezó a hacer en su taller de Medianía Alta hacia 1950.",
+   "fuente": "Ricardo Alegría, \"La fiesta de Santiago Apóstol en Loíza Aldea\" (1954); Instituto de Cultura Puertorriqueña, documentación sobre el taller de caretas de Castor Ayala en Medianía Alta.",
+   "fundacion": "poblado taíno de la cacica Yuiza; constituida como pueblo en el siglo XVIII (suele darse 1719, fecha discutida)"
+  },
+  "-65.44,18.15": {
+   "texto": "En 1941 la Marina de Estados Unidos expropió cerca de dos terceras partes de Vieques y empujó a miles de vecinos hacia una franja central; el extremo este fue campo de bombardeo durante sesenta años. El 19 de abril de 1999 una bomba errada lanzada desde un caza mató a David Sanes Rodríguez, vigilante civil viequense. Siguieron cuatro años de campamentos dentro del polígono, desobediencia civil y cientos de detenciones, hasta que el 1 de mayo de 2003 la Marina cesó el fuego y se fue. El terreno pasó a ser refugio federal y la limpieza de explosivos y contaminación sigue en marcha.",
+   "fuente": "Traspaso de los terrenos de la Marina de EE. UU. al US Fish and Wildlife Service, 1 de mayo de 2003; expediente del este de Vieques en la lista de prioridades nacionales de limpieza (Superfund) de la EPA; nominación del Fortín Conde de Mirasol al Registro Nacional de Lugares Históricos.",
+   "fundacion": "el pueblo de Isabel Segunda se constituyó en 1843, sobre una isla poblada desde época precolombina"
+  },
+  "11.32,1.63": {
+   "texto": "De este rincón de selva fang salieron los dos únicos presidentes que ha tenido el país. Francisco Macías Nguema nació en 1924 en Nsegayong, distrito de Mongomo, y gobernó desde octubre de 1968. Su sobrino Teodoro Obiang Nguema, nacido en Acoacán el 5 de junio de 1942, lo derrocó el 3 de agosto de 1979 y lo hizo fusilar el 29 de septiembre de ese mismo año. Desde entonces el pueblo recibió carretera asfaltada, la basílica de la Inmaculada Concepción, consagrada en 2011, y el aeropuerto internacional de Mengomeyén, inaugurado el 12 de octubre de 2012 y una de las iglesias más grandes de África.",
+   "fuente": "Max Liniger-Goumaz, «Historical Dictionary of Equatorial Guinea»; Ibrahim K. Sundiata, «Equatorial Guinea: Colonialism, State Terror and the Search for Stability» (1990).",
+   "fundacion": "poblado fang anterior a la colonia, convertido en puesto administrativo español en el siglo XX (sin año de fundación documentado)."
+  },
+  "5.63,-1.41": {
+   "texto": "Una isla de unos 17 km² donde se habla fa d'ambô, un criollo de base portuguesa, dentro del único país hispanohablante de África. Naves portuguesas la avistaron un 1 de enero —1471 o 1473, según la fuente— y de ahí el nombre, Ano Bom. España la recibió junto con Fernando Poo por el Tratado de El Pardo, firmado el 11 de marzo de 1778. El conde de Argelejo murió ese mismo año y su segundo, Primo de Rivera, abandonó la expedición en 1780. Los annoboneses se gobernaron solos, con su propio vicario laico, hasta que España se instaló de verdad en 1885.",
+   "fuente": "Texto del Tratado de El Pardo (1778) en la «Colección de los tratados de paz» de España; Max Liniger-Goumaz, «Historical Dictionary of Equatorial Guinea»; Armando Zamora Segorbe, estudios sobre el fa d'ambô.",
+   "fundacion": "poblamiento desde finales del siglo XV, capital isleña consolidada bajo administración española en el siglo XIX."
+  },
+  "-9.65,26.12": {
+   "texto": "El último soldado español salió del Sáhara el 26 de febrero de 1976; al día siguiente, en este pozo del desierto, el Frente Polisario proclamó la República Árabe Saharaui Democrática. El acta se leyó bajo una jaima, tres meses después de la Marcha Verde y de los Acuerdos de Madrid del 14 de noviembre de 1975, que repartieron la administración del territorio entre Marruecos y Mauritania sin consultar a sus habitantes. Bir Lehlu quedó como capital provisional de la RASD hasta 2008, cuando el título pasó a Tifariti. Está al este del muro de arena marroquí, en zona bajo control del Polisario.",
+   "fuente": "Acuerdos de Madrid, registrados en la Serie de Tratados de la ONU; Tony Hodges, «Western Sahara: The Roots of a Desert War» (1983).",
+   "fundacion": "pozo y campamento beduino sin año de fundación, con valor político desde 1976."
+  },
+  "-8.13,27.50": {
+   "texto": "No son una ciudad: son campamentos en la hamada argelina, levantados entre 1975 y 1976 por quienes huyeron de la guerra. Llevan los nombres de los pueblos que dejaron atrás —El Aaiún, Auserd, Smara, Dajla y, desde 2011, Bojador— y Rabuni hace de sede administrativa. El Polisario y los refugiados denuncian bombardeos marroquíes sobre los campamentos de desplazados de Um Draiga y Guelta Zemmur en febrero de 1976; Rabat lo niega. El alto el fuego llegó el 6 de septiembre de 1991, con la MINURSO creada por la Resolución 690 del 29 de abril. El referéndum previsto en el plan de arreglo de 1991 sigue sin celebrarse treinta y cinco años después; el Consejo de Seguridad renueva el mandato de la MINURSO año tras año.",
+   "fuente": "Resolución 690 del Consejo de Seguridad de la ONU (29 de abril de 1991); informes del ACNUR sobre la operación en los campamentos de Tinduf; Tony Hodges, «Western Sahara: The Roots of a Desert War» (1983).",
+   "fundacion": "fundados entre 1975 y 1976."
+  },
+  "27.14,38.42": {
+   "texto": "En 1626 nació aquí Sabbatai Zeví, hijo de un agente comercial del puerto. En 1665 se proclamó mesías y media diáspora sefardí le creyó: hubo quien vendió la casa para esperar el fin de los tiempos. El sultán Mehmed IV lo hizo llevar a Edirne y en septiembre de 1666 Zeví se convirtió al islam con el nombre de Aziz Mehmed Efendi; de sus seguidores salieron los dönme. La judería de Kemeraltı llegó a reunir nueve sinagogas en pocos cientos de metros, entre ellas Bikur Holim, de 1724. El gran incendio de 1922 arrasó los barrios griego y armenio y la dejó casi intacta.",
+   "fuente": "Gershom Scholem, «Sabbatai Sebi: el mesías místico» (1957); Henri Nahum, «Juifs de Smyrne, XIXe-XXe siècle» (1997).",
+   "fundacion": "ciudad milenaria (Esmirna antigua, refundada en el siglo IV a.C.); la judería sefardí se forma tras 1492."
+  },
+  "28.23,36.44": {
+   "texto": "El 23 de julio de 1944 el mando alemán ordenó a los judíos de Rodas presentarse con sus documentos. Reunieron a 1.673 personas, las embarcaron en barcazas hasta El Pireo pasando por Cos y Leros, y de allí siguieron en vagones de ganado: llegaron a Auschwitz-Birkenau el 16 de agosto, unos 2.400 kilómetros después. Fue la deportación más larga del Holocausto. Sobrevivieron 151. El cónsul turco Selahattin Ülkümen consiguió la liberación de 42 personas alegando nacionalidad turca, aunque solo trece tenían pasaporte turco; aviones alemanes bombardearon después el consulado y su mujer, Mihrinissa, embarazada, murió a consecuencia del ataque. La sinagoga Kahal Shalom, de 1577, sigue en pie en la judería.",
+   "fuente": "Museo Judío de Rodas (rhodesjewishmuseum.org, sección «Holocaust»); expediente de Selahattin Ülkümen, Justo entre las Naciones, Yad Vashem (1989).",
+   "fundacion": "ciudad fundada en 408-407 a.C. por la unión de Yáliso, Camiro y Lindo."
+  },
+  "-5.81,35.76": {
+   "texto": "Aquí se hablaba haketía: castellano antiguo mezclado con hebreo y árabe, la lengua de los sefardíes del norte de Marruecos, que todavía llamaban «la ley de Sefarad» a lo suyo. La sinagoga Nahón, costeada por Moisés Nahón en 1878, fue una de varias en la calle que hoy llaman de las Sinagogas; se restauró en 1994 y funciona como museo. La comunidad se vació en pocos años: entre 1961 y 1964 la Operación Yakhín trasladó a unos 97.000 judíos marroquíes a Israel con el consentimiento tácito de Hasán II, y las guerras de 1967 y 1973 se llevaron a casi todos los demás.",
+   "fuente": "Michael M. Laskier, «North African Jewry in the Twentieth Century» (1994); Iacob M. Hassán y los estudios de haketía del CSIC; Sarah Leibovici, «Chronique des Juifs de Tétouan» (1984).",
+   "fundacion": "origen fenicio-cartaginés (Tingis), anterior al siglo V a.C."
   }
  },
  "causas": {
