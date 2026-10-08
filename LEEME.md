@@ -60,11 +60,42 @@ y enseña seis capas que se encienden y apagan.
 | **Mar de 200 millas** | Una franja azul pegada a la costa de cada nación hispana. |
 | **Causas territoriales** | Las ocho que ya declara el Gran Plan: Malvinas, Georgias, Esequibo, Gibraltar, Belice, el Sáhara, Puerto Rico y el litoral que Bolivia perdió en 1879. Más los sectores antárticos. |
 | **EE. UU. por estados** | Los 50 estados y el Distrito de Columbia, con un interruptor entre **dos medidas**: su población hispana de hoy, o su huella histórica española (ver más abajo). |
-| **Ciudades** | 1.855 ciudades que van apareciendo al acercarse, con su nombre. |
+| **Ciudades** | 1.892 ciudades que van apareciendo al acercarse. **El tamaño del punto es la gente que vive ahí**, en escala logarítmica: con la población en crudo, Ciudad de México saldría con un punto de tres centímetros y a su lado no se vería nada. |
+| **Manchas urbanas** | El área construida de cada ciudad, desde ×4. No viaja con la página: son 370 KB y se piden la primera vez que alguien se acerca de verdad. |
+| **Miembros** | Un círculo por nación, del tamaño de la gente inscrita, con el número dentro. |
 | **Huella sefardí** | Los países donde se habló el judeoespañol cinco siglos. |
 
 Y una **línea del tiempo** de doce épocas, de 1492 a hoy: al moverla, el mapa
 cambia y enseña qué territorios estaban bajo gobierno hispano en cada una.
+
+### Dónde está la gente, y dónde están los nuestros
+
+Tres capas distintas que contestan tres preguntas distintas:
+
+- **El tamaño del punto de cada ciudad es su población.** Las doce mayores
+  aglomeraciones se ven desde el primer momento, sin ampliar nada.
+- **Las manchas urbanas** enseñan el área construida: que Lima se derrama
+  cuarenta kilómetros por la costa, que Bogotá es una cuña contra el cerro,
+  que Caracas cabe en un valle y por eso no puede crecer.
+- **Los miembros**: un círculo por nación, del tamaño de la gente inscrita.
+
+> **Por qué las manchas urbanas no son calles.** Un callejero de verdad se baja
+> por teselas de un servidor, y eso rompe las dos promesas del sitio: abrir con
+> doble clic sin internet, y no contarle a ningún tercero quién está mirando.
+> En una plataforma de afiliación política, pedir la tesela de una ciudad le
+> dice a ese servidor exactamente qué está mirando el visitante: el mismo
+> problema que el píxel de una red social, con otro nombre.
+
+> **Por qué los miembros se cuentan por nación y no por ciudad.** La afiliación
+> política es dato sensible, y en un pueblo con un solo inscrito un punto en el
+> mapa es un nombre. Bajar a ciudad es una decisión que hay que tomar a
+> sabiendas, con un mínimo de inscritos por punto — no un efecto secundario de
+> haber podido.
+
+> **Y el número dice de dónde sale.** En modo demostración el renglón avisa de
+> que solo se ven los inscritos de ese navegador, no los del movimiento. Sin
+> ese aviso, cualquiera que se inscribiera vería un «1» y creería que es el
+> primero de toda la Hispanidad.
 
 ### Pulsar algo no te saca del mapa
 
@@ -131,6 +162,12 @@ con una sola frase.
    > Lo que sigue sin ser exacto: donde una costa acaba en una frontera, la
    > banda se corta en seco, y la frontera marítima real entre dos vecinos no
    > es perpendicular a la orilla.
+   >
+   > **Las Malvinas y la Guayana Esequiba sí llevan mar, y en rojo.** En las
+   > Malvinas porque el Reino Unido licencia esa pesca desde 1987; en el
+   > Esequibo porque frente a esa costa está el bloque donde se encontró el
+   > petróleo, y ahí el mar es casi todo el asunto. Solo se dibuja su borde
+   > atlántico: el resto de su perímetro es frontera de tierra y no genera mar.
    >
    > **Estados Unidos no lleva banda**, a propósito: está en este mapa por sus
    > sesenta y ocho millones de hispanos, no como Estado hispano, y pintarle

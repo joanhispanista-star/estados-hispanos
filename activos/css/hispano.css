@@ -396,6 +396,11 @@ p:last-child{margin-bottom:0}
   background:rgba(93,168,214,.30);
   border-right:1px dashed rgba(126,196,236,.9);
 }
+.eh-mapa__punto--mar-disputa{
+  width:22px;height:9px;border-radius:2px;
+  background:rgba(181,29,51,.30);
+  border-right:1px dashed rgba(240,125,143,.95);
+}
 
 /* La ficha que sale al tocar un nodo. En móvil sube desde abajo. */
 .eh-mapa__ficha{
@@ -760,6 +765,14 @@ select.eh-entrada{appearance:none;-webkit-appearance:none;cursor:pointer;
 /* La tira de ciudades con historia. Es lo que hace que las fichas se
    encuentren: antes habia que ampliar el globo tres veces y media para toparse
    con la primera, y quien abria la portada no se enteraba de que existian. */
+/* El renglon que dice cuanta gente hay inscrita y de donde sale ese numero. */
+.eh-globo__miembros{
+  margin:0;padding:.55rem .7rem;border-top:1px solid var(--linea);
+  font-size:.8rem;color:var(--suave);
+}
+.eh-globo__miembros:empty{display:none}
+.eh-globo__miembros strong{color:var(--oro2);font-size:1rem}
+
 .eh-globo__ciudades{padding:.6rem .7rem;border-top:1px solid var(--linea)}
 .eh-globo__ciudades-tit{margin:0 0 .45rem;font-size:.78rem;color:var(--suave)}
 .eh-globo__ciudades-lista{

@@ -96,6 +96,37 @@ EH.globo = (function () {
      matriz, no el país. Sin esto serían 50.000 llamadas a Math.cos por
      fotograma y el globo iría a tirones en cualquier teléfono. */
   var paises = null, estados = null, causas = null, ciudades = null, RETICULA = null;
+  var urbano = null, urbanoPedido = false;
+  var alLlegarUrbano = [];
+
+  /* LAS MANCHAS URBANAS NO VIAJAN CON LA PAGINA.
+     Son 370 KB y solo hacen falta al ampliar, asi que se piden la primera vez
+     que alguien se acerca de verdad. Se traen con una etiqueta <script> y no
+     con fetch porque bajo file:// —que es como promete abrir este sitio— un
+     fetch a un archivo local esta bloqueado y un script no. */
+  function pedirUrbano() {
+    if (urbanoPedido) return;
+    urbanoPedido = true;
+    if (window.EH.URBANO) { prepararUrbano(); return; }
+    EH.alCargarUrbano = prepararUrbano;
+    var s = document.createElement('script');
+    s.src = (EH.BASE || '') + 'activos/js/urbano.js';
+    s.onerror = function () {
+      /* Si no llega, el mapa sigue funcionando sin esa capa y lo dice; antes
+         de esto, un archivo que no cargara dejaba una casilla marcada que no
+         pintaba nada y ninguna explicacion. */
+      urbano = [];
+      alLlegarUrbano.forEach(function (f) { f(false); });
+      alLlegarUrbano = [];
+    };
+    document.head.appendChild(s);
+  }
+
+  function prepararUrbano() {
+    urbano = (EH.URBANO || []).map(aPieza);
+    alLlegarUrbano.forEach(function (f) { f(true); });
+    alLlegarUrbano = [];
+  }
 
   function aPieza(plano) {
     var n = plano.length / 2, v = new Float64Array(n * 3), i, lon, lat, cl;
@@ -207,94 +238,142 @@ EH.globo = (function () {
   /* 200 millas nauticas en grados de LATITUD: 370,4 km sobre los 111,1 km que
      mide un grado. En longitud hay que dividir por el coseno de la latitud. */
   var GRADOS200 = 370.4 / 111.1;
+  /* Las causas cuyo MAR tambien esta en disputa, y no solo la tierra. Las
+     Malvinas, por la zona de pesca que el Reino Unido licencia desde 1987; y
+     la Guayana Esequiba, porque frente a su costa esta el bloque donde se
+     encontro el petroleo: ahi el mar es casi todo el asunto. */
+  var MAR_EN_DISPUTA = ['malvinas', 'georgias', 'esequibo'];
   var CELDA = 0.5;
 
-  function marcarCostas() {
-    var rejilla = {}, i, j, k, c, pieza, ll, n;
+  /* Calcula el borde de las 200 millas de una pieza que ya tiene marcada su
+     costa. Se saco a su propia funcion para poder aplicarlo tambien a las
+     Malvinas y a la Guayana Esequiba, que no son paises de la lista pero si
+     tienen mar, y en disputa. */
+  function calcularBorde(pieza) {
+    var ll = pieza.ll, n = pieza.n, k;
+    /* Hacia donde es "fuera" lo decide por donde da la vuelta el anillo: si el
+       area con signo es positiva gira en sentido antihorario y fuera queda a
+       la derecha de la marcha. Suponerlo seria apostar a como viene ordenada
+       la fuente. */
+    var area = 0;
+    for (k = 0; k < n; k++) {
+      var k2 = (k + 1) % n;
+      area += ll[k * 2] * ll[k2 * 2 + 1] - ll[k2 * 2] * ll[k * 2 + 1];
+    }
+    var fuera = area > 0 ? 1 : -1;
+    var off = new Float64Array(n * 3);
+    /* La direccion de la costa se toma en una VENTANA ANCHA, no entre el
+       vertice anterior y el siguiente. Con la ventana corta, cada entrante
+       giraba la normal de golpe y el limite salia con picos y lazos: en el
+       Caribe parecia una marana. */
+    var VENT = 4;
+    for (k = 0; k < n; k++) {
+      var a0 = (k - VENT + n * 2) % n, a1 = (k + VENT) % n;
+      var la0 = ll[k * 2 + 1];
+      var cosla = Math.max(Math.cos(la0 * RAD), 0.08);   /* tope cerca del polo */
+      var tx = (ll[a1 * 2] - ll[a0 * 2]) * cosla;
+      var ty = ll[a1 * 2 + 1] - ll[a0 * 2 + 1];
+      var tl = Math.sqrt(tx * tx + ty * ty) || 1;
+      var nx = (ty / tl) * fuera, ny = (-tx / tl) * fuera;
+      /* La longitud se divide por el coseno de la latitud: un grado de
+         longitud se encoge segun se sube, y sin esto la banda de Chile saldria
+         del triple de ancha que la de Colombia. */
+      var lonO = ll[k * 2] + nx * GRADOS200 / cosla;
+      var latO = Math.max(-89.5, Math.min(89.5, la0 + ny * GRADOS200));
+      var lr = latO * RAD, cl2 = Math.cos(lr), lo2 = lonO * RAD;
+      off[k * 3] = cl2 * Math.cos(lo2);
+      off[k * 3 + 1] = cl2 * Math.sin(lo2);
+      off[k * 3 + 2] = Math.sin(lr);
+    }
+    pieza.off = off;
+    pieza.so = new Float32Array(n * 2);
+  }
 
-    function meter(lon, lat, pais) {
+  function marcarCostas() {
+    var rejilla = {}, costera = {}, i, j, k, c, pieza, ll, n;
+
+    function meter(malla, lon, lat, dueno) {
       var g = Math.floor(lon / CELDA) + ',' + Math.floor(lat / CELDA);
-      (rejilla[g] || (rejilla[g] = [])).push(lon, lat, pais);
+      (malla[g] || (malla[g] = [])).push(lon, lat, dueno);
     }
 
+    function hayCerca(malla, lon, lat, eps, excepto) {
+      var gx = Math.floor(lon / CELDA), gy = Math.floor(lat / CELDA);
+      for (var dx = -1; dx <= 1; dx++) {
+        for (var dy = -1; dy <= 1; dy++) {
+          c = malla[(gx + dx) + ',' + (gy + dy)];
+          if (!c) continue;
+          for (var q = 0; q < c.length; q += 3) {
+            if (excepto !== undefined && c[q + 2] === excepto) continue;
+            if (Math.abs(c[q] - lon) < eps && Math.abs(c[q + 1] - lat) < eps) return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    /* Primera pasada: todos los vertices de todos los paises. */
     for (i = 0; i < paises.length; i++) {
       for (j = 0; j < paises[i].piezas.length; j++) {
         ll = paises[i].piezas[j].ll;
-        for (k = 0; k < ll.length; k += 2) meter(ll[k], ll[k + 1], i);
+        for (k = 0; k < ll.length; k += 2) meter(rejilla, ll[k], ll[k + 1], i);
       }
     }
 
+    /* Segunda: que trozo del contorno de cada pais es COSTA.
+       Un vertice es frontera de tierra si OTRO pais tiene un vertice casi en
+       el mismo sitio: Natural Earth deriva las fronteras de una topologia
+       comun, asi que dos vecinos comparten practicamente los mismos puntos a
+       lo largo de su linde. En mar abierto no hay nadie al lado.
+       Se hace para TODOS los paises, no solo los hispanos, porque la costa
+       ajena hace falta despues: es lo que permite saber que trozo de la
+       Guayana Esequiba da al Atlantico y cual es frontera con Guyana. */
     for (i = 0; i < paises.length; i++) {
-      if (!paises[i].hispano) continue;       /* solo se dibuja la banda de los nuestros */
       for (j = 0; j < paises[i].piezas.length; j++) {
         pieza = paises[i].piezas[j];
         ll = pieza.ll; n = pieza.n;
         var costa = new Uint8Array(n);
         for (k = 0; k < n; k++) {
-          var lon = ll[k * 2], lat = ll[k * 2 + 1], vecino = false;
-          var gx = Math.floor(lon / CELDA), gy = Math.floor(lat / CELDA);
-          for (var dx = -1; dx <= 1 && !vecino; dx++) {
-            for (var dy = -1; dy <= 1 && !vecino; dy++) {
-              c = rejilla[(gx + dx) + ',' + (gy + dy)];
-              if (!c) continue;
-              for (var q = 0; q < c.length; q += 3) {
-                if (c[q + 2] === i) continue;        /* el pais no es vecino de si mismo */
-                if (Math.abs(c[q] - lon) < EPS_BORDE && Math.abs(c[q + 1] - lat) < EPS_BORDE) {
-                  vecino = true; break;
-                }
-              }
-            }
-          }
-          costa[k] = vecino ? 0 : 1;
+          costa[k] = hayCerca(rejilla, ll[k * 2], ll[k * 2 + 1], EPS_BORDE, i) ? 0 : 1;
+          if (costa[k]) meter(costera, ll[k * 2], ll[k * 2 + 1], i);
         }
         pieza.costa = costa;
-
-        /* EL BORDE DE LAS 200 MILLAS, punto a punto.
-           Hasta ahora el mar era un trazo grueso y translucido: una mancha
-           azul sin canto. No se veia donde acababa el de un pais y empezaba el
-           del vecino, y era justo lo que habia que ensenar.
-           Para cada vertice de costa se calcula a donde cae su limite: se toma
-           la direccion de la costa (del vertice anterior al siguiente), se gira
-           noventa grados HACIA FUERA y se avanzan 200 millas nauticas.
-           Hacia fuera depende de por donde da la vuelta el anillo, asi que
-           primero se mide con el area con signo: si es positiva el anillo gira
-           en sentido antihorario y fuera queda a la derecha de la marcha.
-           La longitud se divide por el coseno de la latitud porque un grado de
-           longitud se encoge segun se sube: sin eso, la banda de Chile saldria
-           del triple de ancha que la de Colombia. */
-        var area = 0;
-        for (k = 0; k < n; k++) {
-          var k2 = (k + 1) % n;
-          area += ll[k * 2] * ll[k2 * 2 + 1] - ll[k2 * 2] * ll[k * 2 + 1];
-        }
-        var fuera = area > 0 ? 1 : -1;
-        var off = new Float64Array(n * 3);
-        /* La direccion de la costa se toma en una VENTANA ANCHA, no entre el
-           vertice anterior y el siguiente. Con la ventana corta, cada entrante
-           de la costa giraba la normal de golpe y el limite salia con picos y
-           lazos: en el Caribe parecia una marana. Mirando cuatro vertices a
-           cada lado, la direccion se promedia y el limite sale liso, que es
-           ademas lo que hace una frontera maritima de verdad. */
-        var VENT = 4;
-        for (k = 0; k < n; k++) {
-          var a0 = (k - VENT + n * 2) % n, a1 = (k + VENT) % n;
-          var la0 = ll[k * 2 + 1];
-          var cosla = Math.max(Math.cos(la0 * RAD), 0.08);   /* tope cerca del polo */
-          var tx = (ll[a1 * 2] - ll[a0 * 2]) * cosla;
-          var ty = ll[a1 * 2 + 1] - ll[a0 * 2 + 1];
-          var tl = Math.sqrt(tx * tx + ty * ty) || 1;
-          var nx = (ty / tl) * fuera, ny = (-tx / tl) * fuera;
-          var lonO = ll[k * 2] + nx * GRADOS200 / cosla;
-          var latO = Math.max(-89.5, Math.min(89.5, la0 + ny * GRADOS200));
-          var lr = latO * RAD, cl2 = Math.cos(lr), lo2 = lonO * RAD;
-          off[k * 3] = cl2 * Math.cos(lo2);
-          off[k * 3 + 1] = cl2 * Math.sin(lo2);
-          off[k * 3 + 2] = Math.sin(lr);
-        }
-        pieza.off = off;
-        pieza.so = new Float32Array(n * 2);
       }
     }
+
+    /* Tercera: el borde de las 200 millas, solo para quien lo va a dibujar. */
+    for (i = 0; i < paises.length; i++) {
+      if (!paises[i].hispano) continue;
+      for (j = 0; j < paises[i].piezas.length; j++) calcularBorde(paises[i].piezas[j]);
+    }
+
+    /* Cuarta: el mar de las causas que lo tienen.
+       LAS MALVINAS y la GUAYANA ESEQUIBA no son paises de la lista, pero su
+       mar es parte de la disputa y en el Esequibo es casi todo el asunto: ahi
+       esta el bloque donde se encontro petroleo. Aqui la regla cambia: un
+       vertice de la causa es COSTA si esta cerca de un vertice que ya se sabe
+       costero de algun pais. En las Malvinas eso vale para todo su contorno,
+       porque son islas; en el Esequibo solo para su borde atlantico, que es el
+       unico trozo que coincide con la costa de Guyana. El resto de su
+       perimetro es frontera de tierra y no genera mar.
+       El margen es mayor que el de las fronteras porque estas dos geometrias
+       vienen de la capa de areas en disputa, a 1:10 millones, y los paises a
+       1:50: las mismas costas, dibujadas con distinto detalle. */
+    MAR_EN_DISPUTA.forEach(function (clave) {
+      var grupo = causas[clave];
+      if (!grupo) return;
+      for (var g = 0; g < grupo.length; g++) {
+        var pz = grupo[g], l2 = pz.ll, m = pz.n, u, hay = 0;
+        var cst = new Uint8Array(m);
+        for (u = 0; u < m; u++) {
+          cst[u] = hayCerca(costera, l2[u * 2], l2[u * 2 + 1], 0.25) ? 1 : 0;
+          hay += cst[u];
+        }
+        if (!hay) continue;
+        pz.costa = cst;
+        calcularBorde(pz);
+      }
+    });
   }
 
   function mezclar(a, b, t) {
@@ -368,6 +447,8 @@ EH.globo = (function () {
     var medidaEEUU = 'poblacion';
 
     var capas = {
+      urbano: opciones.urbano !== false,
+      miembros: opciones.miembros !== false,
       mar: opciones.mar !== false,
       causas: opciones.causas !== false,
       estados: opciones.estados !== false,
@@ -384,6 +465,26 @@ EH.globo = (function () {
        recoloca para seguir entero a la vista. En pantalla ancha el panel se
        acopla a la derecha; en un telefono, abajo. */
     var panelAbierto = false, seleccion = null, panelEl = null;
+
+    /* CUANTA GENTE HAY INSCRITA Y DONDE.
+       Sale de la misma capa de datos que el padron del panel, asi que funciona
+       igual con la base en la nube que en modo demostracion; la diferencia la
+       dice el rotulo, no el dibujo.
+       SOLO POR NACION, nunca por ciudad. La afiliacion politica es dato
+       sensible y en un pueblo con un solo inscrito, un punto en el mapa es un
+       nombre. Si alguna vez se baja a ciudad, que sea una decision tomada a
+       sabiendas y con un minimo de inscritos por punto, no un efecto
+       secundario de haber podido. */
+    var porNacion = null, totalMiembros = 0, miembrosListos = false;
+    if (EH.datos && EH.datos.estadisticas) {
+      EH.datos.estadisticas().then(function (s) {
+        porNacion = (s && s.porNacion) || {};
+        totalMiembros = Object.keys(porNacion).reduce(function (a, k) { return a + porNacion[k]; }, 0);
+        miembrosListos = true;
+        repintar();
+        sincronizarMiembros();
+      }).catch(function () { miembrosListos = true; porNacion = {}; sincronizarMiembros(); });
+    }
 
     function sitioPanel() {
       if (!panelAbierto) return { w: 0, h: 0 };
@@ -621,7 +722,7 @@ EH.globo = (function () {
            vecino. Con el cuadrado la banda se corta a la altura del limite. */
         ctx.lineCap = 'butt';
         ctx.lineWidth = Math.max(2, r * MILLAS200 * 2);
-        ctx.strokeStyle = 'rgba(93,168,214,.22)';
+        ctx.strokeStyle = 'rgba(93,168,214,' + Math.max(0.07, Math.min(0.22, 0.30 - escala * 0.016)).toFixed(3) + ')';
         ctx.beginPath();
         for (i = 0; i < paises.length; i++) {
           var pm = paises[i];
@@ -694,11 +795,86 @@ EH.globo = (function () {
               }
             }
           }
+          /* Los limites se apagan al acercar. Son la respuesta a "de quien es
+             este mar", y esa pregunta se hace mirando el continente; cuando
+             uno esta dentro de una ciudad, media docena de circulos
+             discontinuos cruzandose encima solo estorban. El del pais senalado
+             no se apaga: ese se esta mirando a proposito. */
+          var tenue = suyo ? 1 : Math.max(0.12, Math.min(1, 1.9 - escala * 0.17));
           ctx.setLineDash(suyo ? [] : [6, 4]);
           ctx.lineWidth = suyo ? 1.6 : 0.9;
-          ctx.strokeStyle = suyo ? 'rgba(150,215,255,.95)' : 'rgba(126,196,236,.50)';
+          ctx.strokeStyle = suyo ? 'rgba(150,215,255,.95)' : 'rgba(126,196,236,' + (0.5 * tenue).toFixed(3) + ')';
           ctx.stroke();
         }
+        /* --- el mar en disputa ---
+           Mismo dibujo que el de los veinte, pero en rojo: la banda dice que
+           hay mar, el color dice que no esta resuelto de quien es. Va DESPUES
+           de los demas para que se vea encima donde se solapan, que en el
+           Esequibo es justo lo que pasa con la zona que reclama Venezuela. */
+        var hayDisputa = false;
+        ctx.save();
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'butt';
+        ctx.lineWidth = Math.max(2, r * MILLAS200 * 2);
+        ctx.strokeStyle = 'rgba(181,29,51,.20)';
+        ctx.beginPath();
+        MAR_EN_DISPUTA.forEach(function (clave) {
+          var grupo = causas[clave];
+          if (!grupo) return;
+          for (var g = 0; g < grupo.length; g++) {
+            var pz = grupo[g];
+            if (!pz.costa || proyectar(pz) !== 2) continue;
+            hayDisputa = true;
+            var sq = pz.s, mm = pz.n, ab = false, c1;
+            for (var w = 0; w <= mm; w++) {
+              var ii = w % mm;
+              if (pz.costa[ii]) {
+                c1 = ii * 2;
+                if (!ab) { ctx.moveTo(sq[c1], sq[c1 + 1]); ab = true; }
+                else ctx.lineTo(sq[c1], sq[c1 + 1]);
+              } else ab = false;
+            }
+          }
+        });
+        ctx.stroke();
+        ctx.restore();
+
+        if (hayDisputa) {
+          ctx.save();
+          ctx.setLineDash([5, 4]);
+          ctx.lineWidth = 1.1;
+          ctx.strokeStyle = 'rgba(240,125,143,' + Math.max(0.2, Math.min(0.8, 1.6 - escala * 0.14)).toFixed(3) + ')';
+          ctx.beginPath();
+          MAR_EN_DISPUTA.forEach(function (clave) {
+            var grupo = causas[clave];
+            if (!grupo) return;
+            for (var g = 0; g < grupo.length; g++) {
+              var pz = grupo[g];
+              if (!pz.costa || !pz.off || proyectar(pz) !== 2) continue;
+              proyectarBorde(pz);
+              var sc2 = pz.s, so2 = pz.so, mm2 = pz.n, ab2 = false, i0 = -1, iu = -1;
+              var largo2 = 0;
+              for (var w2 = 0; w2 < mm2; w2++) largo2 += pz.costa[w2];
+              if (largo2 < 4) continue;
+              for (var u2 = 0; u2 <= mm2; u2++) {
+                var ix2 = u2 % mm2;
+                if (pz.costa[ix2]) {
+                  if (!ab2) { ctx.moveTo(so2[ix2 * 2], so2[ix2 * 2 + 1]); ab2 = true; i0 = ix2; }
+                  else ctx.lineTo(so2[ix2 * 2], so2[ix2 * 2 + 1]);
+                  iu = ix2;
+                } else if (ab2) {
+                  ctx.lineTo(sc2[iu * 2], sc2[iu * 2 + 1]);
+                  ctx.moveTo(sc2[i0 * 2], sc2[i0 * 2 + 1]);
+                  ctx.lineTo(so2[i0 * 2], so2[i0 * 2 + 1]);
+                  ab2 = false;
+                }
+              }
+            }
+          });
+          ctx.stroke();
+          ctx.restore();
+        }
+
         ctx.setLineDash([]);
         ctx.restore();
       }
@@ -868,6 +1044,25 @@ EH.globo = (function () {
         ctx.fill();
       });
 
+      /* --- manchas urbanas ---
+         Debajo de los puntos y de los nombres: es el suelo construido, no una
+         etiqueta. Solo desde x4: por debajo de eso una ciudad entera mide dos
+         pixeles y la mancha es un borron. */
+      if (capas.urbano && escala >= 4) {
+        if (!urbanoPedido) pedirUrbano();
+        if (urbano && urbano.length) {
+          ctx.beginPath();
+          var hayU = false;
+          for (i = 0; i < urbano.length; i++) {
+            if (proyectar(urbano[i]) === 2) { trazar(urbano[i]); hayU = true; }
+          }
+          if (hayU) {
+            ctx.fillStyle = 'rgba(255,241,214,.30)';
+            ctx.fill();
+          }
+        }
+      }
+
       /* --- ciudades --- */
       var puestas = [];
       var visibles = [];
@@ -884,7 +1079,11 @@ EH.globo = (function () {
           ctx.textBaseline = 'middle';
           for (i = 0; i < ciudadesOrden.length; i++) {
             var cd = ciudadesOrden[i];
-            if (!cd._ficha && (umbral < 0 || cd._rango > umbral)) continue;
+            /* Las doce mayores aglomeraciones se ven desde el primer
+               momento, sin ampliar: es lo que contesta "donde esta la gente"
+               antes de tocar nada. Su nombre espera a x1,6 como los demas. */
+            var esGigante = cd.rango <= 1;
+            if (!cd._ficha && !esGigante && (umbral < 0 || cd._rango > umbral)) continue;
             var p = mat[0] * cd.x + mat[1] * cd.y + mat[2] * cd.z;
             if (p <= 0.02) continue;             /* de espaldas o pegada al canto */
             var sx = cx + r * (mat[3] * cd.x + mat[4] * cd.y);
@@ -895,7 +1094,7 @@ EH.globo = (function () {
             /* El nombre tarda un poco mas en salir que el punto: a la escala
                del mundo entero, cincuenta y cuatro rotulos se pisan unos a
                otros y no se lee ninguno. El punto solo, en cambio, cabe. */
-            var conNombre = !tieneFicha || escala >= 1.9;
+            var conNombre = tieneFicha ? escala >= 1.9 : (esGigante ? escala >= 1.6 : true);
             var anchoT = conNombre ? ctx.measureText(cd.nombre).width : 0;
             var caja = conNombre ? [sx + 5, sy - 7, sx + 11 + anchoT, sy + 7]
                                  : [sx - 5, sy - 5, sx + 5, sy + 5];
@@ -914,15 +1113,25 @@ EH.globo = (function () {
             visibles.push(cd);
 
             var destacada = sobreCiudad === cd;
+            /* EL TAMANO DEL PUNTO ES LA GENTE QUE VIVE AHI.
+               Antes todos los puntos median lo mismo y el mapa decia que Lima
+               y un pueblo de ocho mil habitantes pesan igual. Es logaritmico y
+               no lineal: con la poblacion en crudo, Ciudad de Mexico saldria
+               con un punto de tres centimetros y a su lado no se veria nada
+               mas. La poblacion viene en miles. */
+            /* Y se atenua a vista de mundo. Con el tamano completo, los
+               ciento setenta puntos de las ciudades con historia tapaban el
+               mapa desde el primer momento: la informacion estaba, pero el
+               mapa no se leia. Crece con el aumento. */
+            var rp = Math.min(1.7 + Math.log(1 + cd.pob) / 1.55, 9) *
+                     Math.min(1, 0.45 + escala * 0.2);
             ctx.beginPath();
-            ctx.arc(sx, sy, tieneFicha ? 3.1 : 2, 0, TAU);
-            ctx.fillStyle = tieneFicha ? '#f0c46b' : 'rgba(245,236,226,.62)';
+            ctx.arc(sx, sy, destacada ? rp + 2 : rp, 0, TAU);
+            ctx.fillStyle = tieneFicha ? 'rgba(240,196,107,.92)' : 'rgba(245,236,226,.52)';
             ctx.fill();
-            if (tieneFicha) {
-              ctx.strokeStyle = 'rgba(18,8,10,.8)';
-              ctx.lineWidth = 1;
-              ctx.stroke();
-            }
+            ctx.strokeStyle = tieneFicha ? 'rgba(18,8,10,.85)' : 'rgba(18,8,10,.45)';
+            ctx.lineWidth = tieneFicha ? 1.1 : 0.7;
+            ctx.stroke();
             if (conNombre) {
               ctx.fillStyle = destacada ? '#fff6e6' : (tieneFicha ? '#f6d79a' : 'rgba(245,236,226,.78)');
               ctx.strokeStyle = 'rgba(7,13,21,.85)';
@@ -941,6 +1150,36 @@ EH.globo = (function () {
          sobrevivia de fotogramas anteriores, asi que una ciudad que ya se
          habia salido de la pantalla seguia respondiendo al clic. */
       visiblesCiudad = visibles;
+
+      /* --- los miembros ---
+         Un circulo por nacion, del tamano de la gente que hay inscrita, y el
+         numero dentro cuando cabe. Va encima de todo lo demas porque es lo
+         unico del mapa que cambia solo: lo demas es geografia. */
+      if (capas.miembros && miembrosListos && porNacion && totalMiembros > 0) {
+        naciones.forEach(function (n) {
+          var cuantos = porNacion[n.id] || 0;
+          if (!cuantos || !vivaEn(n.id)) return;
+          var q = puntoEn(n.lon, n.lat);
+          if (!q.visible) return;
+          var rr = Math.min(7 + Math.log(1 + cuantos) * 5.5, 38);
+          ctx.beginPath();
+          ctx.arc(q.x, q.y, rr, 0, TAU);
+          ctx.fillStyle = 'rgba(217,164,65,.22)';
+          ctx.fill();
+          ctx.strokeStyle = 'rgba(240,196,107,.85)';
+          ctx.lineWidth = 1.4;
+          ctx.stroke();
+          if (rr > 12) {
+            ctx.font = '700 ' + Math.min(Math.round(rr * 0.62), 17) + 'px ui-sans-serif,system-ui,sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = '#fff6e6';
+            ctx.fillText(String(cuantos), q.x, q.y);
+            ctx.textAlign = 'left';
+            ctx.textBaseline = 'alphabetic';
+          }
+        });
+      }
 
       ctx.restore();
 
@@ -1711,7 +1950,9 @@ EH.globo = (function () {
       { k: 'causas', t: 'Causas territoriales', d: 'Las ocho del Gran Plan, en disputa' },
       { k: 'estados', t: 'EE.UU. por estados', d: 'Tono según su población hispana' },
       { k: 'ciudades', t: 'Ciudades', d: 'Aparecen al acercar' },
-      { k: 'sefardi', t: 'Huella sefardí', d: 'Donde se habló el judeoespañol' }
+      { k: 'sefardi', t: 'Huella sefardí', d: 'Donde se habló el judeoespañol' },
+      { k: 'urbano', t: 'Manchas urbanas', d: 'El área construida de cada ciudad, al acercar' },
+      { k: 'miembros', t: 'Miembros', d: 'Dónde hay gente inscrita en el movimiento' }
     ];
     var panel = null;
     if (opciones.capas !== false) {
@@ -1743,6 +1984,8 @@ EH.globo = (function () {
         var k = ev.target.getAttribute('data-c');
         if (!k) return;
         capas[k] = ev.target.checked;
+        if (k === 'urbano' && ev.target.checked) pedirUrbano();
+        if (k === 'miembros') sincronizarMiembros();
         repintar();
       });
       contenedor.appendChild(panel);
@@ -1844,6 +2087,35 @@ EH.globo = (function () {
       contenedor.appendChild(tc);
     }
 
+    /* Un renglon bajo el globo que dice cuanta gente hay y DE DONDE SALE ESE
+       NUMERO. Sin esto, en modo demostracion el mapa ensenaria los inscritos
+       del navegador de quien mira como si fueran los del movimiento. */
+    var avisoMiembros = document.createElement('p');
+    avisoMiembros.className = 'eh-globo__miembros';
+    contenedor.appendChild(avisoMiembros);
+
+    function sincronizarMiembros() {
+      if (!capas.miembros) { avisoMiembros.textContent = ''; return; }
+      if (!miembrosListos) { avisoMiembros.textContent = 'Contando inscritos…'; return; }
+      /* El nombre es EH.CONFIG, en mayusculas, igual que lo lee datos.js. Con
+         EH.config esto daba siempre "modo demostracion", que ahora mismo es la
+         respuesta correcta por casualidad y dejaria de serlo el dia que Joan
+         conecte Supabase: el mapa seguiria avisando de algo que ya no pasa. */
+      var C = EH.CONFIG || {};
+      var nube = !!(C.supabase && C.supabase.url && C.supabase.anon);
+      if (!totalMiembros) {
+        avisoMiembros.innerHTML = 'Todavía no hay nadie inscrito' +
+          (nube ? '.' : ' <span class="eh-tenue">· y en modo demostración solo se vería a quien se inscriba en este mismo navegador</span>');
+        return;
+      }
+      var cuantas = Object.keys(porNacion).length;
+      avisoMiembros.innerHTML = '<strong>' + totalMiembros + '</strong> ' +
+        (totalMiembros === 1 ? 'persona inscrita' : 'personas inscritas') +
+        ' en ' + cuantas + (cuantas === 1 ? ' nación' : ' naciones') +
+        (nube ? '' : ' <span class="eh-tenue">· modo demostración: solo las de este navegador, no las del movimiento</span>');
+    }
+    sincronizarMiembros();
+
     if (opciones.leyenda !== false) {
       var ley = document.createElement('div');
       ley.className = 'eh-mapa__leyenda';
@@ -1854,6 +2126,7 @@ EH.globo = (function () {
         '<span><i class="eh-mapa__punto" style="background:#3a6ea5"></i> Herencia y diáspora</span>' +
         '<span><i class="eh-mapa__punto" style="background:#4a3a52"></i> Huella sefardí</span>' +
         '<span><i class="eh-mapa__punto eh-mapa__punto--mar"></i> Mar de 200 millas · la línea de puntos es el límite</span>' +
+        '<span><i class="eh-mapa__punto eh-mapa__punto--mar-disputa"></i> Mar en disputa: Malvinas y Guayana Esequiba</span>' +
         '<span><i class="eh-mapa__punto" style="background:#f0c46b;box-shadow:0 0 0 1px #12080a"></i> Ciudad con historia</span>' +
         '<span>Arrastra para girar · rueda o pellizco para acercar · doble clic para ir</span>';
       contenedor.appendChild(ley);
