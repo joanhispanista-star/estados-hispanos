@@ -204,6 +204,9 @@ EH.globo = (function () {
      aproximacion. Pero se acaba a la altura del limite, que es lo que antes no
      pasaba. */
   var EPS_BORDE = 0.14;          /* grados; ~15 km */
+  /* 200 millas nauticas en grados de LATITUD: 370,4 km sobre los 111,1 km que
+     mide un grado. En longitud hay que dividir por el coseno de la latitud. */
+  var GRADOS200 = 370.4 / 111.1;
   var CELDA = 0.5;
 
   function marcarCostas() {
@@ -245,6 +248,51 @@ EH.globo = (function () {
           costa[k] = vecino ? 0 : 1;
         }
         pieza.costa = costa;
+
+        /* EL BORDE DE LAS 200 MILLAS, punto a punto.
+           Hasta ahora el mar era un trazo grueso y translucido: una mancha
+           azul sin canto. No se veia donde acababa el de un pais y empezaba el
+           del vecino, y era justo lo que habia que ensenar.
+           Para cada vertice de costa se calcula a donde cae su limite: se toma
+           la direccion de la costa (del vertice anterior al siguiente), se gira
+           noventa grados HACIA FUERA y se avanzan 200 millas nauticas.
+           Hacia fuera depende de por donde da la vuelta el anillo, asi que
+           primero se mide con el area con signo: si es positiva el anillo gira
+           en sentido antihorario y fuera queda a la derecha de la marcha.
+           La longitud se divide por el coseno de la latitud porque un grado de
+           longitud se encoge segun se sube: sin eso, la banda de Chile saldria
+           del triple de ancha que la de Colombia. */
+        var area = 0;
+        for (k = 0; k < n; k++) {
+          var k2 = (k + 1) % n;
+          area += ll[k * 2] * ll[k2 * 2 + 1] - ll[k2 * 2] * ll[k * 2 + 1];
+        }
+        var fuera = area > 0 ? 1 : -1;
+        var off = new Float64Array(n * 3);
+        /* La direccion de la costa se toma en una VENTANA ANCHA, no entre el
+           vertice anterior y el siguiente. Con la ventana corta, cada entrante
+           de la costa giraba la normal de golpe y el limite salia con picos y
+           lazos: en el Caribe parecia una marana. Mirando cuatro vertices a
+           cada lado, la direccion se promedia y el limite sale liso, que es
+           ademas lo que hace una frontera maritima de verdad. */
+        var VENT = 4;
+        for (k = 0; k < n; k++) {
+          var a0 = (k - VENT + n * 2) % n, a1 = (k + VENT) % n;
+          var la0 = ll[k * 2 + 1];
+          var cosla = Math.max(Math.cos(la0 * RAD), 0.08);   /* tope cerca del polo */
+          var tx = (ll[a1 * 2] - ll[a0 * 2]) * cosla;
+          var ty = ll[a1 * 2 + 1] - ll[a0 * 2 + 1];
+          var tl = Math.sqrt(tx * tx + ty * ty) || 1;
+          var nx = (ty / tl) * fuera, ny = (-tx / tl) * fuera;
+          var lonO = ll[k * 2] + nx * GRADOS200 / cosla;
+          var latO = Math.max(-89.5, Math.min(89.5, la0 + ny * GRADOS200));
+          var lr = latO * RAD, cl2 = Math.cos(lr), lo2 = lonO * RAD;
+          off[k * 3] = cl2 * Math.cos(lo2);
+          off[k * 3 + 1] = cl2 * Math.sin(lo2);
+          off[k * 3 + 2] = Math.sin(lr);
+        }
+        pieza.off = off;
+        pieza.so = new Float32Array(n * 2);
       }
     }
   }
@@ -424,6 +472,24 @@ EH.globo = (function () {
       return 2;
     }
 
+    /* Proyecta el borde de las 200 millas con la misma regla que todo lo
+       demas: lo que queda de espaldas se empuja al canto del disco. */
+    function proyectarBorde(pieza) {
+      var v = pieza.off, s = pieza.so, n = pieza.n, r = R * escala;
+      for (var i = 0; i < n; i++) {
+        var x = v[i * 3], y = v[i * 3 + 1], z = v[i * 3 + 2];
+        var p = mat[0] * x + mat[1] * y + mat[2] * z;
+        var d = mat[3] * x + mat[4] * y;
+        var a = mat[6] * x + mat[7] * y + mat[8] * z;
+        if (p < 0) {
+          var mg = Math.sqrt(d * d + a * a) || 1;
+          d /= mg; a /= mg;
+        }
+        s[i * 2] = cx + r * d;
+        s[i * 2 + 1] = cy - r * a;
+      }
+    }
+
     function trazar(pieza) {
       var s = pieza.s, n = pieza.n;
       ctx.moveTo(s[0], s[1]);
@@ -555,7 +621,7 @@ EH.globo = (function () {
            vecino. Con el cuadrado la banda se corta a la altura del limite. */
         ctx.lineCap = 'butt';
         ctx.lineWidth = Math.max(2, r * MILLAS200 * 2);
-        ctx.strokeStyle = 'rgba(93,168,214,.20)';
+        ctx.strokeStyle = 'rgba(93,168,214,.22)';
         ctx.beginPath();
         for (i = 0; i < paises.length; i++) {
           var pm = paises[i];
@@ -587,6 +653,53 @@ EH.globo = (function () {
           }
         }
         ctx.stroke();
+
+        /* --- el canto de las 200 millas, y las lineas laterales ---
+           Esto es lo que convierte la mancha en una delimitacion. El trazo
+           discontinuo marca el limite exterior; las dos lineas cortas que
+           salen de los extremos de cada tramo de costa cierran la zona y
+           ensenan donde empieza la del vecino.
+           El pais sobre el que esta el cursor se dibuja con linea continua y
+           mas clara: asi se lee de un vistazo CUAL es su mar. */
+        for (i = 0; i < paises.length; i++) {
+          var pb = paises[i];
+          if (!pb.hispano || !porId[pb.id] || !vivaEn(pb.id)) continue;
+          if (porId[pb.id].estatus === 'diaspora') continue;
+          var suyo = (sobre === pb.id || elegido === pb.id);
+          ctx.beginPath();
+          for (j = 0; j < pb.piezas.length; j++) {
+            var pc = pb.piezas[j];
+            if (!pc.costa || proyectar(pc) !== 2) continue;
+            proyectarBorde(pc);
+            /* Un tramo de costa de dos o tres puntos es un islote: su limite
+               sale como un garabato y no aporta nada. Se cuenta antes y se
+               salta. El relleno si los dibuja, asi que el islote sigue
+               teniendo su mar; lo que no tiene es canto. */
+            var sc = pc.s, so = pc.so, nn = pc.n, abierto = false, ini = -1, ult = -1;
+            var largo = 0;
+            for (var w = 0; w < nn; w++) largo += pc.costa[w];
+            if (largo < 6) continue;
+            for (var u = 0; u <= nn; u++) {
+              var ix = u % nn;
+              if (pc.costa[ix] && u < nn + 1) {
+                if (!abierto) { ctx.moveTo(so[ix * 2], so[ix * 2 + 1]); abierto = true; ini = ix; }
+                else ctx.lineTo(so[ix * 2], so[ix * 2 + 1]);
+                ult = ix;
+              } else if (abierto) {
+                /* Cerrar el tramo: del borde a la costa por los dos extremos. */
+                ctx.lineTo(sc[ult * 2], sc[ult * 2 + 1]);
+                ctx.moveTo(sc[ini * 2], sc[ini * 2 + 1]);
+                ctx.lineTo(so[ini * 2], so[ini * 2 + 1]);
+                abierto = false;
+              }
+            }
+          }
+          ctx.setLineDash(suyo ? [] : [6, 4]);
+          ctx.lineWidth = suyo ? 1.6 : 0.9;
+          ctx.strokeStyle = suyo ? 'rgba(150,215,255,.95)' : 'rgba(126,196,236,.50)';
+          ctx.stroke();
+        }
+        ctx.setLineDash([]);
         ctx.restore();
       }
 
@@ -1740,7 +1853,7 @@ EH.globo = (function () {
         '<span><i class="eh-mapa__punto" style="background:#b51d33"></i> En disputa</span>' +
         '<span><i class="eh-mapa__punto" style="background:#3a6ea5"></i> Herencia y diáspora</span>' +
         '<span><i class="eh-mapa__punto" style="background:#4a3a52"></i> Huella sefardí</span>' +
-        '<span><i class="eh-mapa__punto" style="background:rgba(93,168,214,.5)"></i> Mar de 200 millas</span>' +
+        '<span><i class="eh-mapa__punto eh-mapa__punto--mar"></i> Mar de 200 millas · la línea de puntos es el límite</span>' +
         '<span><i class="eh-mapa__punto" style="background:#f0c46b;box-shadow:0 0 0 1px #12080a"></i> Ciudad con historia</span>' +
         '<span>Arrastra para girar · rueda o pellizco para acercar · doble clic para ir</span>';
       contenedor.appendChild(ley);

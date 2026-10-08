@@ -1199,7 +1199,7 @@ EH.MAPA_CONTENIDO = {
    "fuente": "Cédulas reales de 1542-1543 y actuaciones de la Real Audiencia y Chancillería de los Confines de Guatemala y Nicaragua; Wikipedia en español «Gracias (Lempira)» y reportajes históricos de El Heraldo y La Prensa (Honduras) sobre las tres fundaciones.",
    "fundacion": "fundada en Opoa en octubre de 1536, refundada en su sitio definitivo el 14 de enero de 1539"
   },
-  "-89.09,14.07": {
+  "-89.03,13.94": {
    "texto": "Parte del añil que teñía la ropa de Europa salía de aquí: Suchitoto fue el mayor mercado del tinte en El Salvador, y de eso vienen los muros gruesos, los zaguanes y la iglesia de Santa Lucía. Recibió título de ciudad el 15 de julio de 1858, con Gerardo Barrios. Después el tinte sintético alemán hundió el añil y, entre 1973 y 1976, la represa del Cerrón Grande sobre el río Lempa inundó el valle: el pueblo despertó a la orilla de un lago que antes no existía. En los años ochenta fue frente de guerra y se vació de gente.",
    "fuente": "Decreto de título de ciudad de 1858 (gobierno de Gerardo Barrios); documentación de CEL sobre la central hidroeléctrica Cerrón Grande; Wikipedia en español «Lago Suchitlán» y «Cerrón Grande Dam» para fechas de obra y superficie.",
    "fundacion": "poblado pipil anterior, villa colonial y ciudad desde el 15 de julio de 1858"
@@ -1219,12 +1219,12 @@ EH.MAPA_CONTENIDO = {
    "fuente": "Diario del cuarto viaje de Colón (1502); contratos Soto-Keith y documentación del Ferrocarril al Atlántico (1871-1890); contrato bananero de 1934 (Asamblea Legislativa de Costa Rica); estudios sobre la migración afrocaribeña a Limón.",
    "fundacion": "fondeadero de Colón en 1502, puerto abierto en 1871 con el ferrocarril al Atlántico"
   },
-  "-79.88,9.37": {
+  "-79.66,9.55": {
    "texto": "Durante siglo y medio la plata del Perú se cambiaba por género europeo en una aldea del Caribe. La feria duraba de treinta a sesenta días, y en ese mes el lugar era uno de los mercados más caros del mundo: se dormía en la calle a precio de palacio. Francis Drake murió de disentería frente a esta bahía el 28 de enero de 1596 y lo echaron al mar en un ataúd de plomo. Henry Morgan la saqueó en 1668; el almirante Edward Vernon la arrasó el 21 de noviembre de 1739. España mandó sus flotas por el Cabo de Hornos y la feria no volvió.",
    "fuente": "Documentación del sistema de flotas y ferias de Tierra Firme (Archivo General de Indias, Casa de Contratación); relaciones de la fundación por Francisco Valverde y Mercado (1597); crónica del último viaje de Drake (1595-1596); partes británicos del ataque de Vernon, noviembre de 1739.",
    "fundacion": "bautizado Puerto Bello por Colón en 1502, fundado como San Felipe de Portobelo el 20 de marzo de 1597"
   },
-  "-79.44,21.93": {
+  "-79.98,21.80": {
    "texto": "En 1518 Hernán Cortés pasó por Trinidad reclutando hombres para la expedición a México: la villa tenía cuatro años y ya servía de trampolín hacia el continente. Tres siglos después el azúcar del Valle de los Ingenios la hizo rica, con decenas de ingenios trabajados por miles de esclavizados y la torre de Manaca-Iznaga, de más de cuarenta metros, levantada hacia 1816 para vigilar los cañaverales; su campana marcaba la jornada. Cuando el azúcar se mudó a Matanzas y Cienfuegos, Trinidad quedó detenida en el tiempo, y por eso mismo la UNESCO la inscribió como Patrimonio de la Humanidad en 1988.",
    "fuente": "UNESCO, Lista del Patrimonio Mundial, expediente 460 «Trinidad y el Valle de los Ingenios» (1988); Oficina del Conservador de la Ciudad de Trinidad.",
    "fundacion": "asentamiento taíno previo en la región de Guamuhaya, villa española en 1514"
@@ -1254,7 +1254,7 @@ EH.MAPA_CONTENIDO = {
    "fuente": "Informe de la Comisión Hays (1937); contraste de cifras en prensa puertorriqueña: Metro PR (21-mar-2013), Noticel (27-mar-2019) y Claridad.",
    "fundacion": "territorio taíno del sur, poblado desde el siglo XVII y reconocido como pueblo en 1692"
   },
-  "-67.14,18.20": {
+  "-67.04,18.08": {
    "texto": "Fue la segunda villa de la isla, fundada en 1511 por orden de Juan Ponce de León y bautizada en honor de Germana de Foix, segunda esposa de Fernando el Católico. Durante sesenta años no logró quedarse quieta: los corsarios franceses la quemaron varias veces y los vecinos la fueron moviendo, hasta que Felipe II autorizó en 1570 el traslado a las lomas de Santa Marta, cumplido en 1573 y fuera del alcance de un desembarco. Allí sigue. En diciembre de 1606 los dominicos recibieron licencia para levantar aquí el convento de Porta Coeli; su capilla se data en 1609 y es de las más antiguas que quedan en pie en América.",
    "fuente": "Enciclopedia de Puerto Rico (Fundación Puertorriqueña de las Humanidades), entrada «Municipio de San Germán»; Histopedia de Puerto Rico, «La villa de San Germán».",
    "fundacion": "suroeste taíno ya poblado, villa de 1511 en la costa; sitio actual desde 1573"
@@ -1280,14 +1280,19 @@ EH.MAPA_CONTENIDO = {
    "fundacion": "29 de julio de 1525, sobre una bahía tairona poblada (Bonda, Taganga)"
   },
   "-73.37,5.55": {
-   "texto": "Hernán Suárez de Villalobos la fundó el 12 de junio de 1572 y la nombró por Andrés Díaz Venero de Leiva, primer presidente de la Real Audiencia del Nuevo Reino de Granada. Su plaza empedrada mide unos 14.000 metros cuadrados, de las mayores de América, y nunca se asfaltó. En octubre de 1812 sesionó allí el Congreso de las Provincias Unidas de la Nueva Granada, y en diciembre de 1823 murió en la villa Antonio Nariño, el que había traducido e impreso los derechos del hombre. Debajo hay un mar cretácico: en 1977, en la vereda Monquirá, un campesino descubrió un pliosaurio de unos siete metros que se conserva en el sitio del hallazgo.",
-   "fuente": "Academia Colombiana de Historia (fundación y Congreso de 1812); Museo El Fósil y Centro de Investigaciones Paleontológicas de Villa de Leyva (el ejemplar de kronosaurio)",
-   "fundacion": "12 de junio de 1572"
+   "texto": "Antes de Tunja estaba Hunza, sede del zaque, uno de los dos grandes señoríos muiscas. Gonzalo Suárez Rendón la refundó como ciudad española el 6 de agosto de 1539 encima de ese asentamiento. A 2.820 metros es la capital departamental más alta de Colombia. Lo raro está en los techos: la casa del fundador y otras casonas del siglo XVI conservan pinturas murales con rinocerontes, elefantes y dioses paganos, copiados de grabados europeos por encargo de encomenderos, algo casi único en la América colonial. En 1819 el ejército libertador pasó por aquí: Pantano de Vargas el 25 de julio, Boyacá el 7 de agosto.",
+   "fuente": "Academia Boyacense de Historia; Casa del Fundador Suárez Rendón (UPTC) para las pinturas murales; ICANH sobre el señorío muisca de Hunza",
+   "fundacion": "6 de agosto de 1539, sobre Hunza, capital del zaque muisca"
   },
-  "-74.74,9.23": {
+  "-74.43,9.24": {
    "texto": "Santa Cruz de Mompox se fundó en 1537 en tierras del cacique Mompoj, sobre un poblado malibú; hay fuentes que corren la fundación a 1540 y le cambian el fundador. Durante dos siglos fue la aduana obligatoria del Magdalena: todo lo que subía hacia Bogotá paraba aquí. Después el río se fue. El brazo de Mompox se colmató y en el siglo XIX la navegación se mudó al brazo de Loba; la ciudad quedó varada, sin obras nuevas, y por eso llegó entera a 1995, cuando la Unesco la declaró patrimonio mundial. Bolívar reclutó allí cientos de hombres hacia 1812.",
    "fuente": "Expediente de la Unesco del Centro Histórico de Santa Cruz de Mompox (1995); historiografía local recogida en la historia del municipio, que registra las dos fechas de fundación (1537 y 1540)",
    "fundacion": "1537 (fecha discutida), en territorio del cacique Mompoj, sobre poblado malibú"
+  },
+  "-73.53,5.63": {
+   "texto": "Hernán Suárez de Villalobos la fundó el 12 de junio de 1572 y la nombró por Andrés Díaz Venero de Leiva, primer presidente de la Real Audiencia del Nuevo Reino de Granada. Su plaza empedrada mide unos 14.000 metros cuadrados, de las mayores de América, y nunca se asfaltó. En octubre de 1812 sesionó allí el Congreso de las Provincias Unidas de la Nueva Granada, y en diciembre de 1823 murió en la villa Antonio Nariño, el que había traducido e impreso los derechos del hombre. Debajo hay un mar cretácico: en 1977, en la vereda Monquirá, un campesino descubrió un pliosaurio de unos siete metros que se conserva en el sitio del hallazgo.",
+   "fuente": "Academia Colombiana de Historia (fundación y Congreso de 1812); Museo El Fósil y Centro de Investigaciones Paleontológicas de Villa de Leyva (el ejemplar de kronosaurio)",
+   "fundacion": "12 de junio de 1572"
   },
   "-79.21,-3.99": {
    "texto": "Alonso de Mercadillo la fundó dos veces: hacia 1546 en el valle de Garrochamba y en 1548 la trasladó al valle de Cuxibamba, entre los ríos Malacatos y Zamora, en territorio palta donde los incas ya habían pasado. Su dato más terco es eléctrico: en 1897 una veintena de vecinos —José Miguel Burneo, Ramón Eguiguren, Manuel Carrión y el ingeniero Alberto Rhor entre ellos— juntó plata, trajo de Francia dos turbinas de 12 kilovatios y las montó en el río Malacatos. En abril de 1899 se encendió el alumbrado público: Loja fue la primera ciudad del Ecuador con luz eléctrica.",
@@ -1404,7 +1409,7 @@ EH.MAPA_CONTENIDO = {
    "fuente": "Tratado de París de 27 de junio de 1900 entre Francia y España sobre límites en el golfo de Guinea; Mariano L. de Castro y María Luisa de la Calle, trabajos sobre la colonización española del golfo de Guinea; comunicados oficiales guineanos de marzo de 2021 sobre Nkoantoma.",
    "fundacion": "factoria comercial anterior, ciudad formalizada en 1900"
   },
-  "10.57,1.45": {
+  "10.82,1.59": {
    "texto": "Se llamó Oyala y Djibloho antes de llamarse Ciudad de la Paz: una capital abierta a machete en la selva de Wele-Nzas, a 454 metros de altitud, a 20 kilómetros del aeropuerto de Mengomeyén y lejos del mar. Ese es el punto. Teodoro Obiang, que llegó al poder por el golpe de agosto de 1979 y sobrevivió al intento de marzo de 2004, quiso un gobierno que no se pueda tomar desde la costa. El plano trae avenidas de seis carriles, una presa en el río Wele y la Universidad Afroamericana de África Central, abierta en 2015. El distrito mide 81,5 kilómetros cuadrados. El traslado no está consumado: Malabo sigue siendo la capital oficial del país.",
    "fuente": "Ficha «Ciudad de la Paz / Oyala» y «Provincia de Djibloho» en Wikipedia en español, consultadas el 7 de octubre de 2026 (superficie, altitud y cronología administrativa); reportajes de prensa internacional sobre la construcción de Oyala.",
    "fundacion": "obras iniciadas hacia 2011-2012 junto a la aldea de Oyala"

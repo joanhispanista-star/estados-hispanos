@@ -115,6 +115,19 @@ con una sola frase.
    > contorno es costa —un vértice es frontera de tierra si otro país tiene un
    > vértice casi en el mismo sitio— y solo se traza eso.
    >
+   > **Cada país tiene su límite dibujado.** La banda ya no es una mancha azul
+   > sin canto: una **línea de puntos** marca dónde acaban las 200 millas, y
+   > dos líneas cortas cierran la zona por los lados, donde empieza la del
+   > vecino. Al pasar por encima de un país, su mar se dibuja con línea
+   > continua y más clara, para que se lea de un vistazo cuál es.
+   >
+   > El límite se calcula girando noventa grados la dirección de la costa y
+   > avanzando 200 millas, con la longitud dividida por el coseno de la latitud
+   > —sin eso, la banda de Chile saldría del triple de ancha que la de
+   > Colombia—. La dirección se toma en una ventana de cuatro vértices a cada
+   > lado: con una ventana corta, cada entrante giraba la normal de golpe y en
+   > el Caribe salía una maraña de picos.
+   >
    > Lo que sigue sin ser exacto: donde una costa acaba en una frontera, la
    > banda se corta en seco, y la frontera marítima real entre dos vecinos no
    > es perpendicular a la orilla.
@@ -206,7 +219,7 @@ Lo hice así por tres razones concretas, y las tres se pueden discutir:
 
 ### Las fichas de ciudad
 
-**Ciento veinte ciudades tienen historia**, al menos tres por cada uno de los
+**Ciento veintiuna ciudades tienen historia**, al menos tres por cada uno de los
 veinte países, más doce de Estados Unidos, cinco de Filipinas, tres de Guinea
 Ecuatorial, tres del Sáhara Occidental y cuatro de la diáspora sefardí. Salen con **punto dorado**; las otras mil ochocientas
 salen con punto gris y el globo lo dice —«todavía no hay ficha de esta
@@ -236,6 +249,28 @@ Por la misma razón, **tampoco se publican los campos de cifras sueltas** de las
 41 errores críticos (números de decreto cambiados, capturas de pesca con un 45 %
 de error, ediciones de la UNESCO mal numeradas). El relato va corregido; los
 números sueltos esperan.
+
+### Una historia contada sobre la ciudad equivocada
+
+Las fichas se pegaban a la ciudad del mapa **más cercana**, con medio grado de
+tolerancia. Medio grado son cincuenta y cinco kilómetros, así que la historia
+de **Mompox acabó contándose sobre Magangué**, la de **Trinidad de Cuba sobre
+Sancti Spíritus**, la de **Villa de Leyva sobre Tunja** y la de **Ciudad de la
+Paz sobre Evinayong**. Cuatro historias en el sitio equivocado, y ninguna daba
+error.
+
+Ahora la tolerancia es de **0,10 grados** —once kilómetros, el margen normal
+entre dos listas de coordenadas de la misma ciudad—, salvo que la ciudad del
+mapa se llame igual, en cuyo caso es la misma aunque la coordenada venga de
+otra fuente. Y la ficha que no encuentra su ciudad **no se pega a la vecina**:
+se añade al mapa su propia ciudad. Así entraron once: Segovia, Trujillo de
+Cáceres, Suchitoto, Portobelo, Trinidad, Baracoa, San Germán, Mompox, Villa de
+Leyva, San Luis de Colorado y Ciudad de la Paz.
+
+Y una corrección a la fuente: Natural Earth etiqueta Puerto Plata como **«El
+higo luperon»**, que es un caserío de al lado. Las coordenadas son las de
+Puerto Plata y la ficha es la de Puerto Plata: el que estaba mal era el
+nombre.
 
 ### El Sáhara se quedaba con una aldea
 

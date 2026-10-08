@@ -389,6 +389,13 @@ p:last-child{margin-bottom:0}
 .eh-mapa__leyenda{display:flex;gap:1.1rem;flex-wrap:wrap;justify-content:center;padding:.85rem;border-top:1px solid var(--linea);font-size:.76rem;color:var(--tenue)}
 .eh-mapa__leyenda span{display:inline-flex;align-items:center;gap:.4rem}
 .eh-mapa__punto{width:9px;height:9px;border-radius:50%;display:inline-block}
+/* La muestra del mar no es un punto: es una franja con su canto de puntos,
+   que es justo lo que hay que reconocer en el mapa. */
+.eh-mapa__punto--mar{
+  width:22px;height:9px;border-radius:2px;
+  background:rgba(93,168,214,.30);
+  border-right:1px dashed rgba(126,196,236,.9);
+}
 
 /* La ficha que sale al tocar un nodo. En móvil sube desde abajo. */
 .eh-mapa__ficha{
