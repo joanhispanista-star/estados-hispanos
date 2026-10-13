@@ -4,8 +4,9 @@
    QUÉ ES
    La Tierra, que se arrastra con el dedo y se amplía hasta ver los pueblos.
    Encima van capas: los veinticuatro, el mar que les corresponde, las ocho
-   causas territoriales, los estados de Estados Unidos coloreados por su
-   población hispana, las ciudades con su historia y una línea del tiempo.
+   causas territoriales, las disputas de límites con su estado, los estados
+   de Estados Unidos coloreados por su población hispana, las ciudades con su
+   historia y una línea del tiempo.
 
    POR QUÉ CANVAS Y NO SVG
    El mapa plano (mapa.js) es SVG y así debe seguir: treinta polígonos quietos.
@@ -37,14 +38,20 @@
      de hoy que en cada época estaban bajo gobierno hispano. Dibujar la
      frontera exacta de 1680 sería inventarla, y el panel de la época lo
      advierte con todas las letras.
-   - La banda azul del mar NO es la zona económica exclusiva real: es una
-     franja aproximada de 200 millas náuticas desde la costa. Las zonas reales
-     se recortan donde dos países se solapan, y eso aquí no se dibuja.
+   - El mar SÍ es el real (Marine Regions, mares.js), pero esos datos son de
+     2023. Lo que pasó después —sentencias, tratados— no está en esa
+     geometría: está en las fichas de disputa (disputas.js), con su fecha.
+     La franja calculada de 200 millas solo se dibuja si mares.js no llega.
+   - El color de una disputa dice en qué ESTADO está —abierta, ante un
+     tribunal, resuelta—, no quién tiene razón. Entre dos naciones hispanas
+     el movimiento no toma partido, y la ficha lo dice.
+   - Lo único del mar que se dibuja calculado está rayado y lo avisa: el que
+     hay frente a la Guayana Esequiba, que ninguna fuente traza.
    - El color de una causa territorial NO dice «esto es nuestro». Dice «esto
      está en disputa y el Gran Plan explica las dos posturas».
 
-   DEPENDE DE: mundo.js, estados-eeuu.js, ciudades.js, causas.js,
-   contenido-mapa.js (los textos), banderas.js y mapa.js (la ficha de nación,
+   DEPENDE DE: mundo.js, estados-eeuu.js, ciudades.js, causas.js, mares.js,
+   disputas.js, contenido-mapa.js (los textos), banderas.js y mapa.js (la ficha de nación,
    que es la misma del mapa plano: una sola copia de ese cuadro).
    ========================================================================= */
 
@@ -98,6 +105,7 @@ EH.globo = (function () {
   var paises = null, estados = null, causas = null, ciudades = null, RETICULA = null;
   var urbano = null, urbanoPedido = false;
   var mares = null;
+  var disputas = null;
   var detalle = null, detallePedido = false;
 
   /* Las fronteras a 1:10 se piden la primera vez que alguien amplia por
@@ -170,6 +178,24 @@ EH.globo = (function () {
     'Falkland / Malvinas Islands': 'Lo administra el Reino Unido desde 1833 y lo reclama Argentina.',
     'South Georgia and the South Sandwich Islands': 'Lo administra el Reino Unido y lo reclama Argentina.'
   };
+  /* EL COLOR DE UNA DISPUTA ES SU ESTADO, nunca un bando. Rojo: abierta.
+     Naranja: la esta decidiendo un tribunal. Dorado: la decidio un tribunal
+     (el mismo dorado de los limites por sentencia). Verde: la cerro un
+     tratado. Violeta: regimen comun, el mismo de las zonas compartidas.
+     Gris azulado: congelada, que es lo que hace el Tratado Antartico. */
+  var ESTADO_DISPUTA = {
+    'sin-resolver':            { t: 'Sin resolver',               c: '#ef5d73' },
+    'pendiente-ante-tribunal': { t: 'Pendiente ante un tribunal', c: '#f29a4a' },
+    'resuelta-por-tribunal':   { t: 'Resuelta por un tribunal',   c: '#f0c46b' },
+    'resuelta-por-tratado':    { t: 'Resuelta por tratado',       c: '#8fd0a8' },
+    'regimen-conjunto':        { t: 'Régimen común',              c: '#ac8fe6' },
+    'congelada-por-tratado':   { t: 'Congelada por tratado',      c: '#9fb4cc' }
+  };
+  var TIPO_DISPUTA = {
+    'terrestre': 'En tierra', 'maritima': 'En el mar', 'terrestre-y-maritima': 'En tierra y en el mar'
+  };
+  function estadoDe(dd) { return ESTADO_DISPUTA[dd.d.estado] || ESTADO_DISPUTA['sin-resolver']; }
+
   var alLlegarUrbano = [];
 
   /* LAS MANCHAS URBANAS NO VIAJAN CON LA PAGINA.
@@ -277,6 +303,19 @@ EH.globo = (function () {
           return { n: l.n, c: l.c, t: l.t, a: l.a, b: l.b, f: l.f, piezas: l.p.map(aPieza) };
         })
       };
+    }
+
+    /* Las disputas: el rombo va en su coordenada; "zona" es el area en tierra
+       (Natural Earth) y "mar" el area calculada, en las pocas que la tienen. */
+    if (EH.DISPUTAS && EH.DISPUTAS.lista) {
+      disputas = EH.DISPUTAS.lista.map(function (d) {
+        var lo = d.lon * RAD, la = d.lat * RAD, cl = Math.cos(la);
+        return {
+          d: d, x: cl * Math.cos(lo), y: cl * Math.sin(lo), z: Math.sin(la),
+          zona: (d.zona || []).map(aPieza),
+          mar: d.mar ? d.mar.piezas.map(aPieza) : []
+        };
+      });
     }
 
     var lineas = [], lon, lat, p;
@@ -536,6 +575,7 @@ EH.globo = (function () {
       miembros: opciones.miembros !== false,
       mar: opciones.mar !== false,
       causas: opciones.causas !== false,
+      disputas: opciones.disputas !== false,
       estados: opciones.estados !== false,
       ciudades: opciones.ciudades !== false,
       sefardi: opciones.sefardi !== false
@@ -1057,6 +1097,30 @@ EH.globo = (function () {
         ctx.restore();
       }
 
+      /* --- el mar que ninguna fuente traza ---
+         Hoy solo uno: el que hay frente a la Guayana Esequiba. Marine Regions
+         se lo da entero a Guyana, que es quien lo administra; aqui se raya
+         encima porque depende de una tierra en disputa. RAYADO y no relleno:
+         es una aproximacion calculada en este mapa, y tiene que verse
+         distinta de lo que viene de una fuente. */
+      if (capas.disputas && hoy && disputas) {
+        for (i = 0; i < disputas.length; i++) {
+          var dm = disputas[i];
+          if (!dm.mar.length) continue;
+          ctx.beginPath();
+          if (!trazarSi(dm.mar)) continue;
+          ctx.fillStyle = rayado(estadoDe(dm).c, sobreDisputa === dm);
+          ctx.fill();
+          ctx.save();
+          ctx.setLineDash([4, 3]);
+          ctx.globalAlpha = 0.75;
+          ctx.strokeStyle = estadoDe(dm).c;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+          ctx.restore();
+        }
+      }
+
       /* --- el mundo ajeno, en penumbra ---
          Todo en un solo trazo: son 155 países y pintarlos de uno en uno cuesta
          310 cambios de estado del contexto por fotograma. */
@@ -1206,6 +1270,31 @@ EH.globo = (function () {
         }
       }
 
+      /* --- las areas en disputa, en tierra ---
+         Las de Natural Earth que no son causas del Gran Plan: el Campo de
+         Hielo Sur, el Rincon de Artigas, Olivenza, Guantanamo, Mbanie... Van
+         ENCIMA de los paises porque estan dentro de ellos, y con el color de
+         su estado: Mbanie sale dorada porque ya la decidio la Corte. */
+      if (capas.disputas && hoy && disputas) {
+        ctx.save();
+        ctx.setLineDash([3, 2]);
+        for (i = 0; i < disputas.length; i++) {
+          var dz = disputas[i];
+          if (!dz.zona.length) continue;
+          ctx.beginPath();
+          if (!trazarSi(dz.zona)) continue;
+          ctx.fillStyle = estadoDe(dz).c;
+          ctx.globalAlpha = sobreDisputa === dz ? 0.55 : 0.30;
+          ctx.fill();
+          ctx.globalAlpha = 0.95;
+          ctx.strokeStyle = estadoDe(dz).c;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+          ctx.globalAlpha = 1;
+        }
+        ctx.restore();
+      }
+
       /* --- un punto en cada capital ---
          No es decorativo: Puerto Rico, Guinea Ecuatorial y El Salvador son tan
          pequeños en una esfera de 600 píxeles que sin el punto no hay nada
@@ -1330,6 +1419,42 @@ EH.globo = (function () {
          habia salido de la pantalla seguia respondiendo al clic. */
       visiblesCiudad = visibles;
 
+      /* --- las disputas: un rombo por cada una ---
+         Rombo y no punto, para que no se confunda con una ciudad. Se dibujan
+         todas, tambien las resueltas: saber que el Beagle se cerro en 1984 o
+         el limite entre Peru y Chile en 2014 ensena tanto como saber cuales
+         siguen abiertas. Van encima de las ciudades porque son menos y son
+         a lo que se viene. */
+      var vistasD = [];
+      if (capas.disputas && hoy && disputas) {
+        var lado = escala < 2 ? 3.6 : 4.6;
+        for (i = 0; i < disputas.length; i++) {
+          var dd = disputas[i];
+          if (mat[0] * dd.x + mat[1] * dd.y + mat[2] * dd.z <= 0.02) continue;
+          var rx = cx + r * (mat[3] * dd.x + mat[4] * dd.y);
+          var ry = cy - r * (mat[6] * dd.x + mat[7] * dd.y + mat[8] * dd.z);
+          if (rx < -10 || rx > An + 10 || ry < -10 || ry > Al + 10) continue;
+          var ld = sobreDisputa === dd ? lado + 2 : lado;
+          ctx.beginPath();
+          ctx.moveTo(rx, ry - ld);
+          ctx.lineTo(rx + ld, ry);
+          ctx.lineTo(rx, ry + ld);
+          ctx.lineTo(rx - ld, ry);
+          ctx.closePath();
+          ctx.fillStyle = estadoDe(dd).c;
+          ctx.fill();
+          ctx.strokeStyle = 'rgba(10,6,8,.9)';
+          ctx.lineWidth = 1.1;
+          ctx.stroke();
+          dd._sx = rx; dd._sy = ry;
+          vistasD.push(dd);
+        }
+      }
+      /* Igual que las ciudades: lo pulsable se rehace en cada fotograma con
+         lo que se acaba de dibujar, para que un rombo que ya se fue de la
+         pantalla no siga respondiendo. */
+      visiblesDisputa = vistasD;
+
       /* --- los miembros ---
          Un circulo por nacion, del tamano de la gente que hay inscrita, y el
          numero dentro cuando cabe. Va encima de todo lo demas porque es lo
@@ -1373,7 +1498,10 @@ EH.globo = (function () {
       /* El nombre de lo que hay bajo el cursor. Va sobre el lienzo y no en un
          <div> para que no cambie el tamaño del contenedor al arrastrar. */
       var rot = null;
-      if (sobre && porId[sobre]) {
+      if (sobreDisputa && capas.disputas && hoy && visiblesDisputa.indexOf(sobreDisputa) >= 0) {
+        rot = { t: sobreDisputa.d.titulo + '  ·  ' + estadoDe(sobreDisputa).t,
+                x: sobreDisputa._sx, y: sobreDisputa._sy };
+      } else if (sobre && porId[sobre]) {
         var nd = porId[sobre], pq = puntoEn(nd.lon, nd.lat);
         if (pq.visible) rot = { t: nd.nombre, x: pq.x, y: pq.y };
       } else if (sobreEstado) {
@@ -1405,6 +1533,28 @@ EH.globo = (function () {
     }
 
     var visiblesCiudad = [], sobreEstado = null, sobreZona = null;
+    var visiblesDisputa = [], sobreDisputa = null;
+
+    /* La trama rayada del mar calculado. Una por color, hecha una vez: crear
+       un patron en cada fotograma son sesenta lienzos por segundo. */
+    var rayados = {};
+    function rayado(color, fuerte) {
+      var k = color + (fuerte ? '+' : '');
+      if (rayados[k]) return rayados[k];
+      var c = document.createElement('canvas');
+      c.width = c.height = 8;
+      var g = c.getContext('2d');
+      g.strokeStyle = color;
+      g.globalAlpha = fuerte ? 0.8 : 0.5;
+      g.lineWidth = 1.2;
+      g.beginPath();
+      g.moveTo(0, 8); g.lineTo(8, 0);
+      g.moveTo(-2, 2); g.lineTo(2, -2);
+      g.moveTo(6, 10); g.lineTo(10, 6);
+      g.stroke();
+      rayados[k] = ctx.createPattern(c, 'repeat');
+      return rayados[k];
+    }
 
     /* La llave con la que una ciudad busca su ficha: su propia coordenada.
        NO el nombre. Hay dos Granadas en el mapa (la de España y la de
@@ -1548,6 +1698,32 @@ EH.globo = (function () {
         'Lo posterior a 2023 está en las fichas de disputa.</p>';
       seleccion = null;
       caja(html, punto);
+    }
+
+    function disputaEn(px, py) {
+      if (!capas.disputas || epoca !== null) return null;
+      var mejor = null, mejorD = 110;       /* unos diez pixeles */
+      for (var i = 0; i < visiblesDisputa.length; i++) {
+        var d = visiblesDisputa[i];
+        var e = (d._sx - px) * (d._sx - px) + (d._sy - py) * (d._sy - py);
+        if (e < mejorD) { mejorD = e; mejor = d; }
+      }
+      return mejor;
+    }
+
+    /* conMar: false = las areas en tierra; true = el mar calculado. Se
+       vuelve a proyectar cada pieza antes de preguntar: una pieza de espaldas
+       conserva coordenadas de pantalla pegadas al canto y daria un "si"
+       falso junto al borde del globo. */
+    function areaDisputaEn(px, py, conMar) {
+      if (!capas.disputas || epoca !== null || !disputas) return null;
+      for (var i = 0; i < disputas.length; i++) {
+        var grupo = conMar ? disputas[i].mar : disputas[i].zona;
+        for (var j = 0; j < grupo.length; j++) {
+          if (proyectar(grupo[j]) === 2 && dentro(grupo[j], px, py)) return disputas[i];
+        }
+      }
+      return null;
     }
 
     function causaEn(px, py) {
@@ -1697,12 +1873,13 @@ EH.globo = (function () {
          no existe «pasar por encima» y el resaltado se quedaría pegado al
          último sitio tocado. */
       if (ev.pointerType === 'mouse') {
-        var cd = ciudadEn(p.x, p.y);
-        var q = cd ? null : quienEn(p.x, p.y);
-        var es = (cd || q) ? null : estadoEn(p.x, p.y);
-        if (cd !== sobreCiudad || q !== sobre || es !== sobreEstado) {
-          sobreCiudad = cd; sobre = q; sobreEstado = es;
-          lienzo.style.cursor = (cd || q || es) ? 'pointer' : 'grab';
+        var dpu = disputaEn(p.x, p.y);
+        var cd = dpu ? null : ciudadEn(p.x, p.y);
+        var q = (dpu || cd) ? null : quienEn(p.x, p.y);
+        var es = (dpu || cd || q) ? null : estadoEn(p.x, p.y);
+        if (dpu !== sobreDisputa || cd !== sobreCiudad || q !== sobre || es !== sobreEstado) {
+          sobreDisputa = dpu; sobreCiudad = cd; sobre = q; sobreEstado = es;
+          lienzo.style.cursor = (dpu || cd || q || es) ? 'pointer' : 'grab';
           repintar();
         }
       }
@@ -1716,8 +1893,16 @@ EH.globo = (function () {
       if (movido) return;
 
       var p = local(ev);
+      /* El rombo primero: es el blanco mas pequeno y el mas deliberado. Si
+         la ciudad ganara, Ceuta abriria la ciudad y nunca su disputa. */
+      var dpu = disputaEn(p.x, p.y);
+      if (dpu) { abrirDisputa(dpu, p); return; }
       var cd = ciudadEn(p.x, p.y);
       if (cd) { abrirCiudad(cd, p); return; }
+      /* Las areas en tierra van ANTES que el pais que las contiene: pulsar
+         dentro de Olivenza debe abrir Olivenza, no Espana. */
+      var dz = areaDisputaEn(p.x, p.y, false);
+      if (dz) { abrirDisputa(dz, p); return; }
       var q = quienEn(p.x, p.y);
       if (q) {
         elegido = q; velocidad = 0;
@@ -1732,6 +1917,8 @@ EH.globo = (function () {
          Venezuela aunque el Esequibo este al lado. */
       var ca = causaEn(p.x, p.y);
       if (ca) { abrirCausa(ca, p); return; }
+      var dmz = areaDisputaEn(p.x, p.y, true);
+      if (dmz) { abrirDisputa(dmz, p); return; }
       /* El mar se prueba el ULTIMO: casi todo el globo cerca de la costa es
          zona economica de alguien, y si fuera antes, no habria manera de
          pulsar una ciudad costera sin abrir la ficha de su mar. */
@@ -1742,8 +1929,8 @@ EH.globo = (function () {
     lienzo.addEventListener('pointercancel', soltar);
     lienzo.addEventListener('pointerleave', function (ev) {
       delete punteros[ev.pointerId];
-      if (ev.pointerType === 'mouse' && !arrastrando && (sobre || sobreCiudad || sobreEstado)) {
-        sobre = sobreCiudad = sobreEstado = null;
+      if (ev.pointerType === 'mouse' && !arrastrando && (sobre || sobreCiudad || sobreEstado || sobreDisputa)) {
+        sobre = sobreCiudad = sobreEstado = sobreDisputa = null;
         repintar();
       }
     });
@@ -1824,6 +2011,25 @@ EH.globo = (function () {
            la tarjeta sale en el centro, que es donde va a aterrizar. */
         var q = puntoEn(cd.lon, cd.lat);
         abrirCiudad(cd, q.visible ? q : { x: An / 2, y: Al / 2 });
+      }, 950);
+    }
+
+    /* Cuanto acercarse a cada disputa: a las de un islote o un pueblo, mucho;
+       a las de mar abierto, poco, que si no se ve agua y nada mas. */
+    function aumentoPara(dd) {
+      if (dd.d.id === 'antartida-reclamos-superpuestos') return 1.8;
+      if (dd.zona.length) return 7;
+      if (dd.d.tipo === 'maritima') return 3;
+      return 4.5;
+    }
+
+    function irADisputa(dd) {
+      if (!dd) return;
+      sobreDisputa = dd;
+      volar(dd.d.lon, dd.d.lat, aumentoPara(dd));
+      window.setTimeout(function () {
+        var q = puntoEn(dd.d.lon, dd.d.lat);
+        abrirDisputa(dd, q.visible ? q : { x: An / 2, y: Al / 2 });
       }, 950);
     }
 
@@ -1966,6 +2172,46 @@ EH.globo = (function () {
       return h;
     }
 
+    var NEUTRAL = 'Las dos partes son naciones hispanas. El movimiento no toma partido entre ellas: ' +
+      'aquí van las dos posiciones con el mismo espacio, y el mapa no pinta a ninguna como dueña.';
+
+    /* "La posicion de el Reino Unido" no es espanol: el articulo se contrae. */
+    function posicionDe(quien) {
+      return /^el /.test(quien) ? 'La posición del ' + quien.slice(3) : 'La posición de ' + quien;
+    }
+
+    function detalleDisputa(dd) {
+      var d = dd.d, e = estadoDe(dd);
+      var h = '<header class="eh-globo__panel-cab"><div><h4>' + EH.escapar(d.titulo) + '</h4>' +
+        '<p class="eh-tenue">' + EH.escapar(d.partes) + '</p></div></header>' +
+        '<p class="eh-globo__estado"><i class="eh-globo__rombo" style="background:' + e.c + '"></i>' +
+        EH.escapar(e.t) + ' <span class="eh-tenue">· ' + EH.escapar(TIPO_DISPUTA[d.tipo] || '') + '</span></p>' +
+        '<p>' + EH.escapar(d.texto) + '</p>';
+      if (d.hispanos) h += '<p class="eh-globo__neutral">' + EH.escapar(NEUTRAL) + '</p>';
+      /* Las dos posiciones, en el mismo formato y una detras de otra. Es la
+         regla de la casa y aqui no tiene excepcion: ni en las causas del Gran
+         Plan se esconde el argumento de la otra parte. */
+      h += parrafos(posicionDe(d.quienA), d.posicionA);
+      h += parrafos(posicionDe(d.quienB), d.posicionB);
+      if (d.hitos && d.hitos.length) {
+        h += '<h5>Los hitos</h5><ul class="eh-globo__hitos">' +
+          d.hitos.map(function (x) { return '<li>' + EH.escapar(x) + '</li>'; }).join('') + '</ul>';
+      }
+      h += parrafos('Lo que ha cambiado desde 2023', d.cambio);
+      if (d.mar) {
+        h += parrafos('El mar rayado', d.mar.nota +
+          (d.mar.km2 ? ' Unos ' + Math.round(d.mar.km2).toLocaleString('es') + ' km².' : ''));
+      }
+      h += '<p class="eh-tenue" style="font-size:.72rem">Fuentes: ' + EH.escapar(d.fuente) +
+        '. Confianza ' + EH.escapar(d.confianza) + '. Revisado al ' +
+        EH.escapar((EH.DISPUTAS && EH.DISPUTAS.fecha) || '') + '.</p>';
+      if (d.causa) {
+        h += '<button type="button" class="eh-globo__panel-ir" data-causa="' + EH.escapar(d.causa) + '">' +
+          'Es una causa del Gran Plan: ver su ficha</button>';
+      }
+      return h;
+    }
+
     function ampliar() {
       if (!seleccion) return;
       var h = '';
@@ -1973,6 +2219,7 @@ EH.globo = (function () {
       else if (seleccion.tipo === 'ciudad') h = detalleCiudad(seleccion.dato);
       else if (seleccion.tipo === 'estado') h = detalleEstado(seleccion.dato);
       else if (seleccion.tipo === 'causa') h = detalleCausa(seleccion.dato);
+      else if (seleccion.tipo === 'disputa') h = detalleDisputa(seleccion.dato);
       if (!h) return;
       var vieja = contenedor.querySelector('.eh-mapa__ficha');
       if (vieja) vieja.remove();
@@ -2065,6 +2312,33 @@ EH.globo = (function () {
       repintar();
     }
 
+    function abrirDisputa(dd, punto) {
+      sobreDisputa = dd;
+      var d = dd.d, e = estadoDe(dd);
+      /* La tarjeta pequena corta el texto. Mejor al final de una frase, si
+         hay una en el ultimo tercio; si no, en la ultima palabra entera y sin
+         el signo que la cierre: antes salia ".…" o un "El…" colgando. */
+      var corto = d.texto;
+      if (corto.length > 420) {
+        var trozo = corto.slice(0, 420), fin = trozo.lastIndexOf('. ');
+        corto = fin > 280 ? trozo.slice(0, fin + 1)
+                          : trozo.replace(/\s+\S*$/, '').replace(/[\s.,;:]+$/, '') + '…';
+      }
+      var html = '<h4>' + EH.escapar(d.titulo) + '</h4>' +
+        '<div class="met"><span style="color:' + e.c + '">◆ ' + EH.escapar(e.t) + '</span>' +
+          '<span>' + EH.escapar(d.partes) + '</span></div>' +
+        '<p>' + EH.escapar(corto) + '</p>';
+      if (d.hispanos) {
+        html += '<p class="eh-tenue" style="font-size:.72rem">Entre dos naciones hispanas: el movimiento ' +
+          'no toma partido.</p>';
+      }
+      seleccion = { tipo: 'disputa', dato: dd };
+      if (panelAbierto) { ampliar(); repintar(); return; }
+      html += PIE_AMPLIAR;
+      caja(html, punto);
+      repintar();
+    }
+
     function abrirEstado(es, punto) {
       var d = DATOS_ESTADO[(es.s || '').toLowerCase()];
       var html = '<h4>' + EH.escapar((d && d.nombre) || es.nombre) + '</h4>';
@@ -2121,6 +2395,13 @@ EH.globo = (function () {
     /* Dentro del panel puede haber un boton para saltar a otra nacion sin
        cerrar nada. */
     panelEl.addEventListener('click', function (ev) {
+      /* De una disputa a su causa del Gran Plan, sin cerrar el panel. */
+      var bc = ev.target.closest('[data-causa]');
+      if (bc) {
+        seleccion = { tipo: 'causa', dato: bc.getAttribute('data-causa') };
+        ampliar();
+        return;
+      }
       var b = ev.target.closest('[data-nacion]');
       if (!b) return;
       var n = porId[b.getAttribute('data-nacion')];
@@ -2177,8 +2458,10 @@ EH.globo = (function () {
 
     /* --- interruptores de capa --- */
     var ETIQUETAS = [
-      { k: 'mar', t: 'Mar de 200 millas', d: 'Franja aproximada de zona económica exclusiva' },
+      { k: 'mar', t: 'Mar y límites', d: 'Zonas económicas y límites reales, con su estado (Marine Regions, 2023)' },
       { k: 'causas', t: 'Causas territoriales', d: 'Las ocho del Gran Plan, en disputa' },
+      { k: 'disputas', t: 'Disputas de límites',
+        d: (disputas ? disputas.length : 0) + ' disputas de tierra y mar, cada una con su estado y las dos posiciones' },
       { k: 'estados', t: 'EE.UU. por estados', d: 'Tono según su población hispana' },
       { k: 'ciudades', t: 'Ciudades', d: 'Aparecen al acercar' },
       { k: 'sefardi', t: 'Huella sefardí', d: 'Donde se habló el judeoespañol' },
@@ -2318,6 +2601,41 @@ EH.globo = (function () {
       contenedor.appendChild(tc);
     }
 
+    /* LA TIRA DE DISPUTAS.
+       Por la misma razon que la de ciudades: un rombo de siete pixeles en
+       medio del Atlantico no lo encuentra nadie. Van ordenadas por estado,
+       las abiertas primero. Debajo, lo que falta por investigar: decir que
+       la lista no esta completa es parte de que sea fiable. */
+    if (opciones.disputasTira !== false && disputas && disputas.length) {
+      var abiertas = disputas.filter(function (x) { return x.d.estado === 'sin-resolver'; }).length;
+      var faltan = (EH.DISPUTAS && EH.DISPUTAS.pendientes) || [];
+      var td = document.createElement('div');
+      td.className = 'eh-globo__ciudades eh-globo__disputas';
+      td.innerHTML =
+        '<p class="eh-globo__ciudades-tit">' + disputas.length + ' disputas de tierra y mar ' +
+        '<span class="eh-tenue">· ' + abiertas + ' sin resolver · pulsa una y el globo va</span></p>' +
+        '<div class="eh-globo__ciudades-lista" role="group" aria-label="Disputas de límites">' +
+        disputas.map(function (x, i) {
+          var e = estadoDe(x);
+          return '<button type="button" data-d="' + i + '" title="' + EH.escapar(e.t) + '">' +
+            '<i class="eh-globo__rombo" style="background:' + e.c + '"></i>' +
+            EH.escapar(x.d.titulo) + '</button>';
+        }).join('') + '</div>' +
+        '<p class="eh-globo__disputas-nota eh-tenue">Revisado al ' +
+        EH.escapar((EH.DISPUTAS && EH.DISPUTAS.fecha) || '') + '. El color dice en qué estado está ' +
+        'cada disputa, no quién tiene razón.</p>' +
+        (faltan.length
+          ? '<details class="eh-globo__disputas-faltan"><summary>Lo que falta por investigar (' + faltan.length +
+            ')</summary><ul>' + faltan.map(function (f) { return '<li>' + EH.escapar(f) + '</li>'; }).join('') +
+            '</ul></details>'
+          : '');
+      td.addEventListener('click', function (ev) {
+        var b = ev.target.closest('button[data-d]');
+        if (b) irADisputa(disputas[parseInt(b.getAttribute('data-d'), 10)]);
+      });
+      contenedor.appendChild(td);
+    }
+
     /* Un renglon bajo el globo que dice cuanta gente hay y DE DONDE SALE ESE
        NUMERO. Sin esto, en modo demostracion el mapa ensenaria los inscritos
        del navegador de quien mira como si fueran los del movimiento. */
@@ -2361,6 +2679,13 @@ EH.globo = (function () {
         '<span><i class="eh-mapa__punto eh-mapa__punto--linea-tratado"></i> Límite por tratado</span>' +
         '<span><i class="eh-mapa__punto eh-mapa__punto--linea-tribunal"></i> Límite por sentencia</span>' +
         '<span><i class="eh-mapa__punto eh-mapa__punto--linea-disputa"></i> Límite sin resolver</span>' +
+        (disputas
+          ? '<span><i class="eh-mapa__punto eh-mapa__punto--rombo" style="background:#ef5d73"></i> Disputa abierta</span>' +
+            '<span><i class="eh-mapa__punto eh-mapa__punto--rombo" style="background:#f29a4a"></i> Ante un tribunal</span>' +
+            '<span><i class="eh-mapa__punto eh-mapa__punto--rombo" style="background:#f0c46b"></i>' +
+            '<i class="eh-mapa__punto eh-mapa__punto--rombo" style="background:#8fd0a8"></i> Resuelta</span>' +
+            '<span><i class="eh-mapa__punto eh-mapa__punto--rayado"></i> Mar calculado, no trazado</span>'
+          : '') +
         '<span><i class="eh-mapa__punto" style="background:#f0c46b;box-shadow:0 0 0 1px #12080a"></i> Ciudad con historia</span>' +
         '<span>Arrastra para girar · rueda o pellizco para acercar · doble clic para ir</span>';
       contenedor.appendChild(ley);

@@ -30,9 +30,8 @@
 
    OJO: ESTOS DATOS SON DE 2023
    Lo que haya pasado despues no esta en la geometria: sentencias, tratados o
-   leyes posteriores. Esas correcciones viven aparte, en contenido-mapa.js
-   (EH.MAPA_CONTENIDO.disputas), con su fecha y su fuente, y el globo las
-   aplica encima. Asi, el dia que salga la version 13 de Marine Regions se
+   leyes posteriores. Esas correcciones viven aparte, en disputas.js
+   (EH.DISPUTAS), con su fecha y su fuente, y el globo las dibuja encima. Asi, el dia que salga la version 13 de Marine Regions se
    sustituye este archivo y las correcciones siguen en su sitio.
    ========================================================================= */
 

@@ -28,7 +28,7 @@ igual que tu taller.
 
 | Pantalla | Qué hace |
 |---|---|
-| `index.html` | Portada: **el globo terráqueo** con las 24 naciones, el mar, las causas, los estados de EE. UU., las ciudades y la línea del tiempo. Más las cifras, la presidencia y el contador de adhesiones. |
+| `index.html` | Portada: **el globo terráqueo** con las 24 naciones, el mar, las causas, las disputas de límites, los estados de EE. UU., las ciudades y la línea del tiempo. Más las cifras, la presidencia y el contador de adhesiones. |
 | `naciones.html` | Las 24 entidades de la Hispanidad, una por una, con lo que enorgullece y lo que incomoda. |
 | `manifiesto.html` | El Manifiesto Hispano en 8 secciones. Cada una con su enlace propio y su botón de compartir. Descargable en texto. |
 | `plan.html` | Seis fases con fechas y metas medibles. Y las 8 causas territoriales, cada una con el argumento de la otra parte. |
@@ -52,12 +52,13 @@ igual que tu taller.
 
 La portada y `naciones.html` ya no llevan el mapa plano dibujado a mano: llevan
 **la Tierra**, que se arrastra con el dedo o el ratón, se amplía hasta 24 veces
-y enseña seis capas que se encienden y apagan.
+y enseña ocho capas que se encienden y apagan.
 
 | Capa | Qué pinta |
 |---|---|
 | **Los veinticuatro** | Cada nación con el color de su estatus, el mismo código que ya usaba la leyenda. |
-| **Mar de 200 millas** | Una franja azul pegada a la costa de cada nación hispana. |
+| **Mar y límites** | Las zonas económicas exclusivas **reales** y cada límite marítimo con su estado jurídico (Marine Regions, 2023). |
+| **Disputas de límites** | **54 disputas de tierra y mar**, cada una con un rombo del color de su estado, su ficha con las dos posiciones y lo que ha cambiado desde 2023. |
 | **Causas territoriales** | Las ocho que ya declara el Gran Plan: Malvinas, Georgias, Esequibo, Gibraltar, Belice, el Sáhara, Puerto Rico y el litoral que Bolivia perdió en 1879. Más los sectores antárticos. |
 | **EE. UU. por estados** | Los 50 estados y el Distrito de Columbia, con un interruptor entre **dos medidas**: su población hispana de hoy, o su huella histórica española (ver más abajo). |
 | **Ciudades** | 1.892 ciudades que van apareciendo al acercarse. **El tamaño del punto es la gente que vive ahí**, en escala logarítmica: con la población en crudo, Ciudad de México saldría con un punto de tres centímetros y a su lado no se vería nada. |
@@ -137,6 +138,73 @@ El panel enseña, según lo que pulses:
   jurídico, **lo que responde la otra parte**, la vía legítima y la advertencia.
   El contraargumento va con el mismo tamaño que el resto: esconderlo sería hacer
   propaganda.
+- **Una disputa de límites**: su estado, **la posición de cada parte con el
+  mismo espacio**, los hitos con fecha, lo que ha cambiado desde 2023, las
+  fuentes y la confianza. Si además es una causa del Gran Plan, un botón lleva a
+  la ficha de la causa sin cerrar nada.
+
+### Las disputas de límites (13 de octubre de 2026)
+
+Se pidió investigar a fondo dónde están los límites reales, con las disputas de
+tierra y de mar. Están en `activos/js/disputas.js`: **54 disputas** en cinco
+regiones —Caribe y Centroamérica, Guayana y Caribe oriental, Cono Sur y Andes,
+España y África, Filipinas—, investigadas por separado y revisadas después por
+un segundo lector que buscó errores. Encontró **2 críticos y 18 medios**; los
+veinte están corregidos, a mano y uno por uno.
+
+| Color del rombo | Estado | Cuántas |
+|---|---|---|
+| rojo | sin resolver | 32 |
+| naranja | pendiente ante un tribunal (Esequibo, Belice, Zapotillos) | 3 |
+| violeta | régimen común (golfo de Fonseca, Río de la Plata, Colombia–Jamaica, Barbados–Guyana) | 4 |
+| gris azulado | congelada por tratado (la Antártida) | 1 |
+| dorado | resuelta por un tribunal | 8 |
+| verde | resuelta por tratado | 6 |
+
+**El color dice en qué estado está una disputa, no quién tiene razón.** En las
+16 que enfrentan a dos naciones hispanas, la ficha lo dice expresamente: el
+movimiento no toma partido entre ellas.
+
+Debajo del globo hay una **tira con las 54**, ordenadas de abiertas a
+resueltas: al pulsar una, el globo vuela hasta ella y abre su ficha. Y debajo,
+plegada, la lista de **lo que falta por investigar** (14 asuntos: Alborán, La
+Güera, Guinea Ecuatorial–Camerún, Isla Suárez…). Decir que la lista no está
+completa es parte de que sea fiable.
+
+**Qué se dibuja además del rombo:**
+
+- **16 áreas en tierra**, de Natural Earth (*disputed areas*): el Campo de
+  Hielo Sur, el Rincón de Artigas, la Isla Brasilera, Olivenza, Guantánamo, el
+  triángulo del New River, Mbanié, Ceuta, Melilla, los peñones… Pulsar dentro
+  de Olivenza abre Olivenza, no España.
+- **Un mar calculado, rayado**: el que hay frente a la Guayana Esequiba. Ninguna
+  fuente lo traza —Marine Regions da toda esa zona a Guyana, que es quien la
+  administra—; aquí es la parte de la zona de Guyana al oeste de la
+  perpendicular a la costa en la boca del Esequibo (unos 90.500 km²). Va rayado
+  y no relleno, y su ficha dice que es una aproximación: depende de quién tenga
+  la tierra, y la Corte decide sobre la tierra, no sobre el mar.
+
+> **La Medialuna no se dibuja, a propósito.** Se calculó (el arco chileno de
+> 200 millas al este del meridiano 67° 16' O, al sur del Punto F, fuera de la
+> zona argentina) y salió **22.700 km², cuatro veces los 5.302 publicados**. La
+> diferencia es el límite exterior de la plataforma argentina de la Ley 27.557,
+> cuyas coordenadas no están aquí. Una figura cuatro veces mayor que la real no
+> se publica: va el rombo con su ficha, y el generador tiene la comprobación
+> puesta para el día que se añada ese dato.
+
+> **Lo que corrige a Marine Regions.** Guinea Ecuatorial–Gabón: la Corte falló
+> el 19 de mayo de 2025 que el título sobre Mbanié, Cocoteros y Conga es el que
+> tenía España, al que sucedió Guinea Ecuatorial; el área de Mbanié sale dorada
+> y la línea marítima sigue en rojo, porque esa todavía no la ha trazado nadie.
+> Y el mar del Esequibo, arriba.
+
+**Revisar antes que nada** cuando salga: la sentencia de la Corte sobre el
+Esequibo (audiencias cerradas el 11 de mayo de 2026, sin fecha de fallo) y la
+votación del mandato de la MINURSO del 31 de octubre de 2026.
+
+No se edita a mano: se regenera con los scripts de `herramientas/disputas/`,
+que está en el repositorio pero **no se publica**. Ahí está la investigación
+original, las veinte correcciones y cómo rehacerlo.
 
 ### Tres cosas que el globo NO hace, y lo dice en pantalla
 
@@ -168,7 +236,8 @@ con una sola frase.
    > Marcan Guinea Ecuatorial–Gabón como «sin resolver» cuando la Corte
    > Internacional de Justicia falló el 19 de mayo de 2025; y dan toda la zona
    > de Guyana como guyanesa, sin la reclamación venezolana sobre el mar del
-   > Esequibo. Esas correcciones van aparte, con su fecha y su fuente.
+   > Esequibo. Esas correcciones van aparte, en `disputas.js`, con su fecha y su
+   > fuente (ver «Las disputas de límites», arriba).
 
    > *Lo que había antes, para que conste:* una franja aproximada de 200 millas
    > náuticas **desde la costa, y solo desde la costa**;
@@ -212,12 +281,16 @@ con una sola frase.
    > doscientas millas de «mar hispano» alrededor sería una reclamación que
    > nadie ha hecho y un titular regalado al contrario.
 3. **El rojo de una causa no dice «esto es nuestro».** Dice «esto está en
-   disputa», y el Gran Plan publica también el argumento de la otra parte.
+   disputa», y el Gran Plan publica también el argumento de la otra parte. Y el
+   color de un rombo de disputa dice su **estado**, no quién tiene razón.
 
 ### De dónde salen los datos
 
 - **Fronteras, estados y ciudades:** Natural Earth (escalas 1:50 y 1:10).
   Dominio público. Se cita porque es de justicia, no porque obligue.
+- **Disputas de límites:** investigación por regiones al 13 de octubre de 2026,
+  con revisión adversaria; cada ficha cita sus fuentes y su grado de confianza.
+  Las áreas en tierra, de Natural Earth.
 - **Áreas en disputa:** Natural Earth, capa de *disputed areas*. Que la propia
   fuente cartográfica marque como disputados el Esequibo, Gibraltar y el sur de
   Belice —sin que lo haya marcado nadie de este movimiento— es el argumento.

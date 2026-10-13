@@ -409,6 +409,16 @@ p:last-child{margin-bottom:0}
   background:rgba(181,29,51,.30);
   border-right:1px dashed rgba(240,125,143,.95);
 }
+/* La disputa es un rombo, en el mapa y en la leyenda: un punto se
+   confundiria con una ciudad. */
+.eh-mapa__punto--rombo{width:8px;height:8px;border-radius:1px;transform:rotate(45deg);
+  box-shadow:0 0 0 1px rgba(10,6,8,.85)}
+.eh-mapa__punto--rombo + .eh-mapa__punto--rombo{margin-left:-1px}
+.eh-mapa__punto--rayado{
+  width:22px;height:9px;border-radius:2px;
+  background:repeating-linear-gradient(135deg,rgba(242,154,74,.75) 0 1.5px,transparent 1.5px 5px);
+  outline:1px dashed rgba(242,154,74,.7);outline-offset:-1px;
+}
 
 /* La ficha que sale al tocar un nodo. En móvil sube desde abajo. */
 .eh-mapa__ficha{
@@ -802,6 +812,26 @@ select.eh-entrada{appearance:none;-webkit-appearance:none;cursor:pointer;
 .eh-globo__ciudades-lista button:hover{border-color:var(--oro3);color:var(--oro2)}
 .eh-globo__ciudades-lista button:hover span{color:var(--suave)}
 .eh-globo__ciudades-lista button:focus-visible{outline:2px solid var(--oro);outline-offset:1px}
+
+/* La tira de disputas reutiliza la de ciudades; solo anade el rombo y la
+   nota de debajo. */
+.eh-globo__rombo{
+  display:inline-block;flex:0 0 auto;align-self:center;
+  width:7px;height:7px;margin-right:.1rem;border-radius:1px;transform:rotate(45deg);
+  box-shadow:0 0 0 1px rgba(10,6,8,.85);
+}
+/* Los titulos de disputa son largos ("Plataforma continental al sur del cabo
+   de Hornos"): en un telefono, sin dejarlos partirse, el boton salia por el
+   borde de la pantalla. */
+.eh-globo__disputas .eh-globo__ciudades-lista button{flex:0 1 auto;max-width:100%;text-align:left}
+.eh-globo__disputas-nota{margin:.45rem 0 0;font-size:.7rem}
+.eh-globo__disputas-faltan{margin:.3rem 0 0;font-size:.7rem;color:var(--tenue)}
+.eh-globo__disputas-faltan summary{cursor:pointer;color:var(--suave)}
+.eh-globo__disputas-faltan ul{margin:.3rem 0 0;padding-left:1.1rem}
+.eh-globo__estado{display:flex;align-items:center;gap:.45rem;margin:.2rem 0 .6rem;font-weight:600}
+.eh-globo__neutral{border-left:2px solid var(--oro3);padding:.1rem 0 .1rem .6rem;color:var(--suave);font-size:.82rem}
+.eh-globo__hitos{margin:.2rem 0 .6rem;padding-left:1.1rem;font-size:.82rem}
+.eh-globo__hitos li{margin:.15rem 0}
 
 /* =========================================================================
    EL PANEL DE DETALLE

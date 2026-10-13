@@ -14,10 +14,11 @@ obligatorio: se abre con doble clic en `index.html`.
 
 - **Un globo terráqueo** que se arrastra y se amplía hasta ver los pueblos.
   Las 24 entidades de la Hispanidad —incluidas Guinea Ecuatorial, el Sáhara
-  Occidental y Filipinas— con sus banderas dibujadas en SVG, el mar de 200
-  millas, las ocho causas territoriales, los estados de Estados Unidos
-  coloreados por su población hispana, 1.855 ciudades y una línea del tiempo
-  de 1492 a hoy.
+  Occidental y Filipinas— con sus banderas dibujadas en SVG, sus zonas
+  económicas y límites marítimos reales (Marine Regions), las ocho causas
+  territoriales, 54 disputas de tierra y mar con su estado y las dos
+  posiciones, los estados de Estados Unidos coloreados por su población
+  hispana, 1.892 ciudades y una línea del tiempo de 1492 a hoy.
 - **Manifiesto** en ocho secciones y **Gran Plan** con seis fases y ocho causas
   históricas, cada una con el argumento de la otra parte.
 - **Sala de Honor** con dieciocho figuras, de Blas de Lezo a Juan Latino.
@@ -57,9 +58,11 @@ No son declaraciones: están implementadas, y cada archivo explica por qué.
 7. **Cero fotografías de personas vivas** en la Sala de Honor.
 8. **Sin cookies, sin analítica de terceros y sin píxeles de redes.**
 9. **El mapa dice lo que no sabe.** La línea del tiempo no dibuja fronteras
-   históricas y lo advierte; la franja azul del mar son derechos económicos, no
+   históricas y lo advierte; el azul del mar son derechos económicos, no
    soberanía, y lo dice; el rojo de una causa marca una disputa, no una
-   propiedad, y el Gran Plan publica también el argumento de la otra parte.
+   propiedad, y el Gran Plan publica también el argumento de la otra parte; el
+   color de cada disputa de límites dice su estado, no quién tiene razón, y lo
+   único calculado —el mar frente al Esequibo— va rayado y avisado.
 
 ## Sobre las cifras
 
