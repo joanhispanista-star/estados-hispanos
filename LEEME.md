@@ -68,6 +68,20 @@ y enseña seis capas que se encienden y apagan.
 Y una **línea del tiempo** de doce épocas, de 1492 a hoy: al moverla, el mapa
 cambia y enseña qué territorios estaban bajo gobierno hispano en cada una.
 
+### La costa de cerca
+
+Al pasar de ×6, los veinticuatro se redibujan con sus fronteras a **escala
+1:10 millones**, cinco veces más detalladas que la capa del mundo: aparecen el
+delta del Orinoco con sus caños, los fiordos de Chile, la Ciénaga Grande de
+Santa Marta. Son 411 KB que **solo se bajan si alguien se acerca**.
+
+Estados Unidos no entra en esa capa: Alaska sola tiene más costa que toda
+Sudamérica y doblaba el peso, y su detalle ya lo da la capa de estados.
+
+El clic usa **la misma geometría que se dibuja**: si se dibujara el contorno de
+detalle y se pulsara contra el del mundo, un clic junto a la costa caería en el
+mar o en el país de al lado.
+
 ### Dónde está la gente, y dónde están los nuestros
 
 Tres capas distintas que contestan tres preguntas distintas:
@@ -132,8 +146,32 @@ con una sola frase.
 1. **La línea del tiempo no dibuja fronteras históricas.** Pinta países de HOY
    que en cada época estaban bajo gobierno hispano. La frontera exacta de 1680
    habría que inventarla, y el panel de cada época lo advierte.
-2. **La banda azul no es la zona económica exclusiva real.** Es una franja
-   aproximada de 200 millas náuticas **desde la costa, y solo desde la costa**;
+2. **El mar es el real, ya no una aproximación.** Desde el 13 de octubre de
+   2026 las zonas económicas exclusivas y sus límites salen de **Marine
+   Regions** (World EEZ v12, Flanders Marine Institute, 2023, licencia CC-BY
+   4.0), no de desplazar la costa 200 millas. Cada límite lleva su estado
+   jurídico y se dibuja distinto:
+
+   | Trazo | Qué es |
+   |---|---|
+   | línea fina continua | fijado por **tratado** (48) |
+   | línea dorada | fijado por **sentencia** de la Corte Internacional de Justicia (7) |
+   | rayas | **línea media** trazada a falta de acuerdo (44) |
+   | puntos | el **borde de las 200 millas**, hacia alta mar (21) |
+   | violeta | zona de **régimen común**, administrada a medias (8) |
+   | rayas rojas | **sin resolver**: dos Estados la trazan distinto (20) |
+
+   Las zonas en disputa van en rojo: Malvinas, Georgias, Gibraltar, Ceuta,
+   Melilla, Perejil, Alhucemas, Chafarinas, el Peñón y el mar del Sáhara.
+
+   > **Lo que Marine Regions NO recoge y hay que saber:** sus datos son de 2023.
+   > Marcan Guinea Ecuatorial–Gabón como «sin resolver» cuando la Corte
+   > Internacional de Justicia falló el 19 de mayo de 2025; y dan toda la zona
+   > de Guyana como guyanesa, sin la reclamación venezolana sobre el mar del
+   > Esequibo. Esas correcciones van aparte, con su fecha y su fuente.
+
+   > *Lo que había antes, para que conste:* una franja aproximada de 200 millas
+   > náuticas **desde la costa, y solo desde la costa**;
    las zonas reales se recortan donde dos países se solapan. Y son **derechos
    económicos, no soberanía**: confundir las dos cosas invalidaría el mapa
    entero.

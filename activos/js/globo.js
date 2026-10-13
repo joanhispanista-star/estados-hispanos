@@ -97,6 +97,79 @@ EH.globo = (function () {
      fotograma y el globo iría a tirones en cualquier teléfono. */
   var paises = null, estados = null, causas = null, ciudades = null, RETICULA = null;
   var urbano = null, urbanoPedido = false;
+  var mares = null;
+  var detalle = null, detallePedido = false;
+
+  /* Las fronteras a 1:10 se piden la primera vez que alguien amplia por
+     encima de x6, igual que las manchas urbanas y por las mismas razones:
+     pesan 411 KB y por debajo de x6 ese detalle no se veria. */
+  function pedirDetalle(alLlegar) {
+    if (detallePedido) return;
+    detallePedido = true;
+    function preparar() {
+      detalle = {};
+      var d = EH.MUNDO_DETALLE || {};
+      Object.keys(d).forEach(function (k) { detalle[k] = d[k].map(aPieza); });
+      if (alLlegar) alLlegar();
+    }
+    if (window.EH.MUNDO_DETALLE) { preparar(); return; }
+    EH.alCargarDetalle = preparar;
+    var s = document.createElement('script');
+    s.src = (EH.BASE || '') + 'activos/js/mundo-detalle.js';
+    s.onerror = function () { detalle = {}; };   /* sin detalle, el mapa sigue con 1:50 */
+    document.head.appendChild(s);
+  }
+
+  /* Los datos de Marine Regions vienen en ingles. Los rotulos se COMPONEN en
+     espanol a partir del tipo de zona y de los Estados, en vez de traducir la
+     frase inglesa: "Overlapping claim Falkland / Malvinas Islands: United
+     Kingdom / Argentina" no se puede traducir bien palabra por palabra, y en
+     un sitio que habla de soberania, un rotulo mal traducido es un rotulo que
+     toma partido sin querer. */
+  var SOBERANO_ES = {
+    'Spain': 'España', 'Mexico': 'México', 'Guatemala': 'Guatemala', 'Honduras': 'Honduras',
+    'El Salvador': 'El Salvador', 'Nicaragua': 'Nicaragua', 'Costa Rica': 'Costa Rica',
+    'Panama': 'Panamá', 'Cuba': 'Cuba', 'Dominican Republic': 'República Dominicana',
+    'Venezuela': 'Venezuela', 'Colombia': 'Colombia', 'Ecuador': 'Ecuador', 'Peru': 'Perú',
+    'Chile': 'Chile', 'Argentina': 'Argentina', 'Uruguay': 'Uruguay',
+    'Equatorial Guinea': 'Guinea Ecuatorial', 'Western Sahara': 'Sáhara Occidental',
+    'Philippines': 'Filipinas', 'United Kingdom': 'Reino Unido', 'Guyana': 'Guyana',
+    'United States': 'Estados Unidos', 'Belize': 'Belice', 'Morocco': 'Marruecos',
+    'Brazil': 'Brasil', 'Haiti': 'Haití', 'Jamaica': 'Jamaica', 'France': 'Francia',
+    'Portugal': 'Portugal', 'Gabon': 'Gabón', 'Sao Tome and Principe': 'Santo Tomé y Príncipe',
+    'Netherlands': 'Países Bajos', 'Trinidad and Tobago': 'Trinidad y Tobago',
+    'Bahamas': 'Bahamas', 'Malaysia': 'Malasia', 'China': 'China', 'Taiwan': 'Taiwán',
+    'Vietnam': 'Vietnam', 'Dominica': 'Dominica', 'Cameroon': 'Camerún', 'Nigeria': 'Nigeria'
+  };
+  var TERRITORIO_ES = {
+    'Falkland / Malvinas Islands': 'Islas Malvinas',
+    'South Georgia and the South Sandwich Islands': 'Georgias del Sur y Sandwich del Sur',
+    'Puerto Rico': 'Puerto Rico', 'Galapagos': 'Galápagos', 'Canary Islands': 'Canarias',
+    'Easter Island': 'Isla de Pascua', 'San Andrés y Providencia': 'San Andrés y Providencia'
+  };
+  function es(n) { return SOBERANO_ES[n] || n || ''; }
+
+  /* QUE MAR SE PINTA COMO NUESTRO. Antes se miraba si el Estado tenia nombre
+     en espanol en la tabla de arriba, y la tabla tiene tambien a Guyana, al
+     Reino Unido y a Brasil para poder rotular sus fichas: la zona de Guyana
+     salia en azul como si fuera hispana. Ahora es una lista cerrada con los
+     Estados de los veinticuatro, y nada mas. */
+  var MAR_HISPANO = {
+    'Spain': 1, 'Mexico': 1, 'Guatemala': 1, 'Honduras': 1, 'El Salvador': 1, 'Nicaragua': 1,
+    'Costa Rica': 1, 'Panama': 1, 'Cuba': 1, 'Dominican Republic': 1, 'Venezuela': 1,
+    'Colombia': 1, 'Ecuador': 1, 'Peru': 1, 'Chile': 1, 'Argentina': 1, 'Uruguay': 1,
+    'Equatorial Guinea': 1, 'Philippines': 1
+  };
+
+  /* El mar de las Malvinas y el de las Georgias lo administra el Reino Unido
+     y lo reclama Argentina. Marine Regions lo clasifica como zona britanica de
+     200 millas, que es la descripcion de quien lo controla; en este mapa se
+     dibuja como zona EN DISPUTA, que es la descripcion de su estado juridico.
+     Las dos cosas son verdad, y el rotulo dice las dos. */
+  var ZONAS_EN_DISPUTA = {
+    'Falkland / Malvinas Islands': 'Lo administra el Reino Unido desde 1833 y lo reclama Argentina.',
+    'South Georgia and the South Sandwich Islands': 'Lo administra el Reino Unido y lo reclama Argentina.'
+  };
   var alLlegarUrbano = [];
 
   /* LAS MANCHAS URBANAS NO VIAJAN CON LA PAGINA.
@@ -193,6 +266,18 @@ EH.globo = (function () {
     });
 
     marcarCostas();
+
+    if (EH.MARES) {
+      mares = {
+        zonas: EH.MARES.zonas.map(function (z) {
+          return { n: z.n, tipo: z.tipo, a: z.a, b: z.b, c: z.c, ter: z.ter, km2: z.km2,
+                   piezas: z.p.map(aPieza) };
+        }),
+        lineas: EH.MARES.lineas.map(function (l) {
+          return { n: l.n, c: l.c, t: l.t, a: l.a, b: l.b, f: l.f, piezas: l.p.map(aPieza) };
+        })
+      };
+    }
 
     var lineas = [], lon, lat, p;
     for (lon = -180; lon < 180; lon += 30) {
@@ -591,6 +676,32 @@ EH.globo = (function () {
       }
     }
 
+    /* Una LINEA no se proyecta como una figura. A una figura se le empujan
+       los puntos ocultos al canto del disco para cerrarla bien; a una linea
+       eso la arrastraria por el borde del globo. Aqui los puntos de espaldas
+       cortan el trazo y se sigue al otro lado, como en la reticula. */
+    /* Que contorno se usa para un pais: el de detalle si ya llego y estamos
+       cerca, el del mundo si no. Lo usan el DIBUJO y el CLIC, y tienen que
+       usar el mismo: si se dibujara el de detalle y se pulsara contra el del
+       mundo, un clic junto a la costa caeria en el mar o en el pais vecino. */
+    function piezasDe(ph) {
+      if (escala >= 6 && detalle && detalle[ph.id]) return detalle[ph.id];
+      return ph.piezas;
+    }
+
+    function trazarLinea(pieza) {
+      var v = pieza.v, n = pieza.n, r = R * escala, roto = true, algo = false;
+      for (var i = 0; i < n; i++) {
+        var x = v[i * 3], y = v[i * 3 + 1], z = v[i * 3 + 2];
+        if (mat[0] * x + mat[1] * y + mat[2] * z <= 0) { roto = true; continue; }
+        var px = cx + r * (mat[3] * x + mat[4] * y);
+        var py = cy - r * (mat[6] * x + mat[7] * y + mat[8] * z);
+        if (roto) { ctx.moveTo(px, py); roto = false; } else ctx.lineTo(px, py);
+        algo = true;
+      }
+      return algo;
+    }
+
     function trazar(pieza) {
       var s = pieza.s, n = pieza.n;
       ctx.moveTo(s[0], s[1]);
@@ -714,7 +825,74 @@ EH.globo = (function () {
          de los que se ven: alguien diria "en 1511 ya se reclamaba eso" y
          tendria razon en reirse. */
       var hoy = (epoca === null);
-      if (capas.mar && hoy) {
+      if (capas.mar && hoy && mares) {
+        /* --- EL MAR REAL ---
+           Zonas y limites de Marine Regions, cada uno con su estado. Se dibuja
+           antes que la tierra: los poligonos de zona llegan hasta la linea de
+           base y la tierra los tapa donde haga falta.
+           Las zonas de los veinticuatro van en azul; las que estan en disputa,
+           en rojo; las de regimen comun, en violeta. Ningun otro Estado lleva
+           relleno: el mar ajeno no se pinta, igual que la tierra ajena va en
+           penumbra. */
+        var ii, jj, zz;
+        var tono = Math.max(0.08, Math.min(0.22, 0.30 - escala * 0.016));
+        for (ii = 0; ii < mares.zonas.length; ii++) {
+          zz = mares.zonas[ii];
+          /* El Sahara Occidental va en rojo, no en azul: es una de las
+             veinticuatro, pero su mar esta tan en disputa como su tierra —
+             Marruecos legislo sobre esas aguas en 2020—, y pintarlo como
+             zona economica asentada seria dar por resuelto lo que no lo esta. */
+          var disputada = zz.tipo === 'disputa' || ZONAS_EN_DISPUTA[zz.ter] || zz.a === 'Western Sahara';
+          var nuestra = MAR_HISPANO[zz.a] || (zz.a === 'United States' && zz.ter === 'Puerto Rico');
+          if (!nuestra && !disputada && zz.tipo !== 'conjunto') continue;
+          ctx.beginPath();
+          var hayZ = false;
+          for (jj = 0; jj < zz.piezas.length; jj++) {
+            if (proyectar(zz.piezas[jj]) === 2) { trazar(zz.piezas[jj]); hayZ = true; }
+          }
+          if (!hayZ) continue;
+          var resalta = sobreZona === zz;
+          if (disputada) ctx.fillStyle = 'rgba(181,29,51,' + (tono * (resalta ? 2.4 : 1.25)).toFixed(3) + ')';
+          else if (zz.tipo === 'conjunto') ctx.fillStyle = 'rgba(140,110,200,' + (tono * (resalta ? 2.4 : 1.3)).toFixed(3) + ')';
+          else ctx.fillStyle = 'rgba(93,168,214,' + (tono * (resalta ? 2.2 : 1)).toFixed(3) + ')';
+          ctx.fill();
+        }
+
+        /* --- los limites, por su estado juridico ---
+           Un trazo distinto para cada cosa que puede ser un limite. Es lo que
+           contesta "esto quien lo decidio": un tratado, una sentencia, una
+           linea media a falta de acuerdo, o nadie todavia. */
+        var ESTILO = {
+          acordado: { d: [],      w: 0.9, c: 'rgba(170,215,240,.62)' },
+          tribunal: { d: [],      w: 1.3, c: 'rgba(240,196,107,.85)' },
+          media:    { d: [4, 3],  w: 0.8, c: 'rgba(170,215,240,.48)' },
+          exterior: { d: [1.5, 3], w: 0.8, c: 'rgba(126,196,236,.50)' },
+          conjunto: { d: [],      w: 1.1, c: 'rgba(170,140,230,.80)' },
+          disputa:  { d: [5, 3],  w: 1.4, c: 'rgba(240,125,143,.92)' }
+        };
+        var apagado = Math.max(0.15, Math.min(1, 1.9 - escala * 0.17));
+        ['exterior', 'media', 'acordado', 'conjunto', 'tribunal', 'disputa'].forEach(function (clase) {
+          var e = ESTILO[clase];
+          ctx.beginPath();
+          var hayL = false;
+          for (var a = 0; a < mares.lineas.length; a++) {
+            var ln = mares.lineas[a];
+            if (ln.c !== clase) continue;
+            for (var b = 0; b < ln.piezas.length; b++) if (trazarLinea(ln.piezas[b])) hayL = true;
+          }
+          if (!hayL) return;
+          ctx.save();
+          /* Las lineas en disputa y las de sentencia NO se apagan al acercar:
+             son las que se viene a mirar. Las demas si, para que al entrar en
+             una ciudad no la cruce media docena de rayas. */
+          ctx.globalAlpha = (clase === 'disputa' || clase === 'tribunal') ? 1 : apagado;
+          ctx.setLineDash(e.d);
+          ctx.lineWidth = e.w;
+          ctx.strokeStyle = e.c;
+          ctx.stroke();
+          ctx.restore();
+        });
+      } else if (capas.mar && hoy) {
         ctx.save();
         ctx.lineJoin = 'round';
         /* Remate CUADRADO, no redondo: donde la costa acaba en una frontera, un
@@ -955,7 +1133,8 @@ EH.globo = (function () {
         var activo = viva && (sobre === ph.id || elegido === ph.id);
 
         ctx.beginPath();
-        if (!trazarSi(ph.piezas)) continue;
+        if (escala >= 6 && !detallePedido) pedirDetalle(repintar);
+        if (!trazarSi(piezasDe(ph))) continue;
         ctx.fillStyle = activo ? col.b : col.r;
         ctx.fill();
         ctx.strokeStyle = activo ? '#fff6e6' : col.b;
@@ -1225,7 +1404,7 @@ EH.globo = (function () {
       }
     }
 
-    var visiblesCiudad = [], sobreEstado = null;
+    var visiblesCiudad = [], sobreEstado = null, sobreZona = null;
 
     /* La llave con la que una ciudad busca su ficha: su propia coordenada.
        NO el nombre. Hay dos Granadas en el mapa (la de España y la de
@@ -1317,11 +1496,58 @@ EH.globo = (function () {
       for (var i = 0; i < paises.length; i++) {
         var p = paises[i];
         if (!p.hispano || !porId[p.id] || !vivaEn(p.id)) continue;
-        for (var j = 0; j < p.piezas.length; j++) {
-          if (dentro(p.piezas[j], px, py)) return p.id;
+        var pz = piezasDe(p);
+        for (var j = 0; j < pz.length; j++) {
+          if (dentro(pz[j], px, py)) return p.id;
         }
       }
       return null;
+    }
+
+    function zonaEn(px, py) {
+      if (!mares || !capas.mar || epoca !== null) return null;
+      for (var i = 0; i < mares.zonas.length; i++) {
+        var z = mares.zonas[i];
+        for (var j = 0; j < z.piezas.length; j++) {
+          if (dentro(z.piezas[j], px, py)) return z;
+        }
+      }
+      return null;
+    }
+
+    function rotuloZona(z) {
+      if (z.a === 'Western Sahara' && z.tipo !== 'disputa') {
+        return { t: 'Mar del Sáhara Occidental', sub: 'Zona en disputa',
+                 nota: 'La controla y la ha legislado Marruecos; la ONU sigue listando el Sáhara como territorio no autónomo.' };
+      }
+      var disp = ZONAS_EN_DISPUTA[z.ter];
+      if (disp) return { t: 'Mar de ' + (TERRITORIO_ES[z.ter] || z.ter), sub: 'Zona en disputa', nota: disp };
+      if (z.tipo === 'disputa') {
+        var partes = [es(z.a), es(z.b), es(z.c)].filter(Boolean).join(', ');
+        return { t: 'Zona reclamada a la vez', sub: 'En disputa: ' + partes,
+                 nota: 'Más de un Estado la reclama. Hasta que no se resuelva, no es de ninguno.' };
+      }
+      if (z.tipo === 'conjunto') {
+        return { t: 'Zona de régimen común', sub: [es(z.a), es(z.b)].filter(Boolean).join(' y '),
+                 nota: 'La administran los dos Estados juntos, por tratado.' };
+      }
+      var ter = z.ter && z.ter !== z.a ? (TERRITORIO_ES[z.ter] || z.ter) : '';
+      return { t: 'Zona económica exclusiva', sub: es(z.a) + (ter ? ' · ' + ter : ''),
+               nota: 'Derechos exclusivos sobre la pesca, el petróleo y el fondo marino hasta 200 millas. ' +
+                     'Son derechos económicos, no soberanía.' };
+    }
+
+    function abrirZona(z, punto) {
+      var r = rotuloZona(z);
+      var html = '<h4>' + EH.escapar(r.t) + '</h4>' +
+        '<div class="met"><span' + (z.tipo === 'disputa' || ZONAS_EN_DISPUTA[z.ter] ? ' style="color:var(--rojo2)"' : '') + '>' +
+          EH.escapar(r.sub) + '</span>' +
+          (z.km2 ? '<span>' + EH.escapar(Math.round(z.km2).toLocaleString('es')) + ' km²</span>' : '') +
+        '</div><p>' + EH.escapar(r.nota) + '</p>' +
+        '<p class="eh-tenue" style="font-size:.7rem">Marine Regions, World EEZ v12 (VLIZ, 2023). ' +
+        'Lo posterior a 2023 está en las fichas de disputa.</p>';
+      seleccion = null;
+      caja(html, punto);
     }
 
     function causaEn(px, py) {
@@ -1506,6 +1732,11 @@ EH.globo = (function () {
          Venezuela aunque el Esequibo este al lado. */
       var ca = causaEn(p.x, p.y);
       if (ca) { abrirCausa(ca, p); return; }
+      /* El mar se prueba el ULTIMO: casi todo el globo cerca de la costa es
+         zona economica de alguien, y si fuera antes, no habria manera de
+         pulsar una ciudad costera sin abrir la ficha de su mar. */
+      var zn = zonaEn(p.x, p.y);
+      if (zn) { abrirZona(zn, p); return; }
     }
     lienzo.addEventListener('pointerup', soltar);
     lienzo.addEventListener('pointercancel', soltar);
@@ -2125,8 +2356,11 @@ EH.globo = (function () {
         '<span><i class="eh-mapa__punto" style="background:#b51d33"></i> En disputa</span>' +
         '<span><i class="eh-mapa__punto" style="background:#3a6ea5"></i> Herencia y diáspora</span>' +
         '<span><i class="eh-mapa__punto" style="background:#4a3a52"></i> Huella sefardí</span>' +
-        '<span><i class="eh-mapa__punto eh-mapa__punto--mar"></i> Mar de 200 millas · la línea de puntos es el límite</span>' +
-        '<span><i class="eh-mapa__punto eh-mapa__punto--mar-disputa"></i> Mar en disputa: Malvinas y Guayana Esequiba</span>' +
+        '<span><i class="eh-mapa__punto eh-mapa__punto--mar"></i> Zona económica exclusiva</span>' +
+        '<span><i class="eh-mapa__punto eh-mapa__punto--mar-disputa"></i> Zona en disputa</span>' +
+        '<span><i class="eh-mapa__punto eh-mapa__punto--linea-tratado"></i> Límite por tratado</span>' +
+        '<span><i class="eh-mapa__punto eh-mapa__punto--linea-tribunal"></i> Límite por sentencia</span>' +
+        '<span><i class="eh-mapa__punto eh-mapa__punto--linea-disputa"></i> Límite sin resolver</span>' +
         '<span><i class="eh-mapa__punto" style="background:#f0c46b;box-shadow:0 0 0 1px #12080a"></i> Ciudad con historia</span>' +
         '<span>Arrastra para girar · rueda o pellizco para acercar · doble clic para ir</span>';
       contenedor.appendChild(ley);

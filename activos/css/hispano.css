@@ -396,6 +396,14 @@ p:last-child{margin-bottom:0}
   background:rgba(93,168,214,.30);
   border-right:1px dashed rgba(126,196,236,.9);
 }
+/* Las muestras de las lineas: un trazo, no un punto, con el mismo estilo que
+   en el mapa. Es lo unico que permite leer que significa cada raya. */
+.eh-mapa__punto--linea-tratado,.eh-mapa__punto--linea-tribunal,.eh-mapa__punto--linea-disputa{
+  width:22px;height:0;border-radius:0;background:none;vertical-align:middle;
+}
+.eh-mapa__punto--linea-tratado{border-top:1.5px solid rgba(170,215,240,.85)}
+.eh-mapa__punto--linea-tribunal{border-top:2px solid rgba(240,196,107,.95)}
+.eh-mapa__punto--linea-disputa{border-top:2px dashed rgba(240,125,143,.95)}
 .eh-mapa__punto--mar-disputa{
   width:22px;height:9px;border-radius:2px;
   background:rgba(181,29,51,.30);
