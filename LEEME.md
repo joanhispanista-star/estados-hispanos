@@ -58,7 +58,7 @@ y enseña ocho capas que se encienden y apagan.
 |---|---|
 | **Los veinticuatro** | Cada nación con el color de su estatus, el mismo código que ya usaba la leyenda. |
 | **Mar y límites** | Las zonas económicas exclusivas **reales** y cada límite marítimo con su estado jurídico (Marine Regions, 2023). |
-| **Disputas de límites** | **54 disputas de tierra y mar**, cada una con un rombo del color de su estado, su ficha con las dos posiciones y lo que ha cambiado desde 2023. |
+| **Disputas de límites** | **64 disputas de tierra y mar**, cada una con un rombo del color de su estado y su nombre al acercarse, su ficha con las dos posiciones y lo que ha cambiado desde 2023. |
 | **Causas territoriales** | Las ocho que ya declara el Gran Plan: Malvinas, Georgias, Esequibo, Gibraltar, Belice, el Sáhara, Puerto Rico y el litoral que Bolivia perdió en 1879. Más los sectores antárticos. |
 | **EE. UU. por estados** | Los 50 estados y el Distrito de Columbia, con un interruptor entre **dos medidas**: su población hispana de hoy, o su huella histórica española (ver más abajo). |
 | **Ciudades** | 1.892 ciudades que van apareciendo al acercarse. **El tamaño del punto es la gente que vive ahí**, en escala logarítmica: con la población en crudo, Ciudad de México saldría con un punto de tres centímetros y a su lado no se vería nada. |
@@ -143,21 +143,30 @@ El panel enseña, según lo que pulses:
   fuentes y la confianza. Si además es una causa del Gran Plan, un botón lleva a
   la ficha de la causa sin cerrar nada.
 
-### Las disputas de límites (13 de octubre de 2026)
+### Las disputas de límites (revisadas al 22 de octubre de 2026)
 
 Se pidió investigar a fondo dónde están los límites reales, con las disputas de
-tierra y de mar. Están en `activos/js/disputas.js`: **54 disputas** en cinco
+tierra y de mar. Están en `activos/js/disputas.js`: **64 disputas** en cinco
 regiones —Caribe y Centroamérica, Guayana y Caribe oriental, Cono Sur y Andes,
-España y África, Filipinas—, investigadas por separado y revisadas después por
-un segundo lector que buscó errores. Encontró **2 críticos y 18 medios**; los
-veinte están corregidos, a mano y uno por uno.
+España y África, Filipinas—. Se han hecho dos pasadas, y en las dos cada
+resultado lo revisó un segundo lector que buscaba errores:
+
+- **13 de octubre**: 54 disputas. El revisor encontró 2 errores críticos y 18
+  medios, y los veinte se corrigieron a mano, uno por uno.
+- **22 de octubre**: novedades del 13 al 22 de octubre, los 14 asuntos que
+  faltaban y la geometría oficial de la Medialuna. Entraron 73 cambios
+  verificados y **10 fichas nuevas**: Bioko–Camerún, el Bajo Sabina, el Banco
+  de Reed, el arrecife Whitsun, Filipinas–Palaos, la Isla Suárez, el acuerdo
+  de la República Dominicana con Aruba y Curazao, la plataforma extendida del
+  Atlántico, la de Malvinas y el alto Maroni (Surinam y Francia).
 
 | Color del rombo | Estado | Cuántas |
 |---|---|---|
-| rojo | sin resolver | 32 |
+| rojo | sin resolver | 41 |
 | naranja | pendiente ante un tribunal (Esequibo, Belice, Zapotillos) | 3 |
 | violeta | régimen común (golfo de Fonseca, Río de la Plata, Colombia–Jamaica, Barbados–Guyana) | 4 |
 | gris azulado | congelada por tratado (la Antártida) | 1 |
+| verde pálido | firmada, sin entrar en vigor (República Dominicana–Aruba y Curazao) | 1 |
 | dorado | resuelta por un tribunal | 8 |
 | verde | resuelta por tratado | 6 |
 
@@ -165,46 +174,108 @@ veinte están corregidos, a mano y uno por uno.
 16 que enfrentan a dos naciones hispanas, la ficha lo dice expresamente: el
 movimiento no toma partido entre ellas.
 
-Debajo del globo hay una **tira con las 54**, ordenadas de abiertas a
-resueltas: al pulsar una, el globo vuela hasta ella y abre su ficha. Y debajo,
-plegada, la lista de **lo que falta por investigar** (14 asuntos: Alborán, La
-Güera, Guinea Ecuatorial–Camerún, Isla Suárez…). Decir que la lista no está
-completa es parte de que sea fiable.
+**Lo que cambió en las fichas el 22 de octubre**, entre otras cosas:
+
+- **Malvinas**: el 28 de septiembre Argentina inició un arbitraje de la
+  Convención del Mar contra el Reino Unido, y el 13 de octubre pidió al
+  Tribunal del Derecho del Mar medidas contra Sea Lion. La audiencia es el 10
+  y 11 de noviembre. El estado sigue «sin resolver»: el tribunal arbitral no
+  está constituido y la demanda no pide decidir la soberanía de las islas.
+- **Bolivia–Chile**: Kast visitó La Paz el 16 de octubre, la primera visita
+  oficial de un presidente chileno desde 1955. Las relaciones siguen sin
+  embajadores.
+- **San Andrés**: Colombia anunció para el 30 de noviembre un decreto con las
+  líneas de base del archipiélago.
+- **Sáhara**: el primer borrador para renovar la misión de la ONU, y la carta
+  del Polisario que amenaza con retirarse del proceso.
+- **Gibraltar**: el Parlamento Europeo no vota antes de diciembre (fecha
+  indicativa, 14 de diciembre).
+- **Esequibo**: a 22 de octubre la Corte no ha dictado sentencia ni anunciado
+  fecha.
+
+**La Medialuna ya está dibujada, con su forma real.** El 13 de octubre no se
+dibujó porque calculada salía cuatro veces mayor que la cifra publicada:
+faltaba el límite exterior argentino. Ahora se traza con **coordenadas
+oficiales**:
+
+- el **oeste** es el meridiano 67° 16' O del Tratado de 1984;
+- el **sur** es el límite de la Ley 27.557, los puntos RA-3458 a RA-3840 que
+  aprobó la Comisión de Límites de la Plataforma Continental en 2016, cotejados
+  uno a uno;
+- el **norte** es la línea argentina de 200 millas, calculada desde sus líneas
+  de base oficiales.
+
+Mide unos **4.970 km²**, y Chile cifra la superposición ante la ONU en
+«aproximadamente 5.300». El generador conserva la comprobación: solo la dibuja
+si casa con esa cifra.
+
+Debajo del globo hay una **tira con las 64**, ordenadas de abiertas a
+resueltas: al pulsar una, el globo vuela hasta ella, se acerca según lo que
+mide y abre su ficha. Debajo de la tira van dos listas:
+
+- **Próximas fechas**: las ocho fechas en que alguna ficha puede cambiar. La
+  primera es la votación del Consejo de Seguridad sobre el Sáhara, el 31 de
+  octubre.
+- **Lo que falta por investigar**: quedan 4 asuntos. Salto del Guairá, el texto
+  del tratado Guinea Ecuatorial–Camerún de 2023, las notas de 2015 sobre el
+  monte Tropic y el mar de Alborán. La isla de Alborán se investigó y se
+  descartó como disputa de soberanía: no consta que Marruecos la reclame
+  formalmente.
 
 **Qué se dibuja además del rombo:**
 
+- **El nombre corto** («Olivenza», «Esequibo», «Medialuna») desde ×2,6. En un
+  teléfono no existe «pasar por encima»: sin nombre, un rombo no decía qué era
+  hasta tocarlo.
 - **16 áreas en tierra**, de Natural Earth (*disputed areas*): el Campo de
   Hielo Sur, el Rincón de Artigas, la Isla Brasilera, Olivenza, Guantánamo, el
   triángulo del New River, Mbanié, Ceuta, Melilla, los peñones… Pulsar dentro
   de Olivenza abre Olivenza, no España.
-- **Un mar calculado, rayado**: el que hay frente a la Guayana Esequiba. Ninguna
-  fuente lo traza —Marine Regions da toda esa zona a Guyana, que es quien la
-  administra—; aquí es la parte de la zona de Guyana al oeste de la
-  perpendicular a la costa en la boca del Esequibo (unos 90.500 km²). Va rayado
-  y no relleno, y su ficha dice que es una aproximación: depende de quién tenga
-  la tierra, y la Corte decide sobre la tierra, no sobre el mar.
-
-> **La Medialuna no se dibuja, a propósito.** Se calculó (el arco chileno de
-> 200 millas al este del meridiano 67° 16' O, al sur del Punto F, fuera de la
-> zona argentina) y salió **22.700 km², cuatro veces los 5.302 publicados**. La
-> diferencia es el límite exterior de la plataforma argentina de la Ley 27.557,
-> cuyas coordenadas no están aquí. Una figura cuatro veces mayor que la real no
-> se publica: va el rombo con su ficha, y el generador tiene la comprobación
-> puesta para el día que se añada ese dato.
+- **La Medialuna, rellena**, porque es oficial.
+- **El mar frente a la Guayana Esequiba, rayado**, porque es un cálculo de este
+  mapa. Ninguna fuente lo traza: Marine Regions da toda esa zona a Guyana, que
+  es quien la administra. Aquí es la parte de la zona de Guyana al oeste de la
+  perpendicular a la costa en la boca del Esequibo, unos 90.500 km². Su ficha
+  dice que es una aproximación: depende de quién tenga la tierra, y la Corte
+  decide sobre la tierra, no sobre el mar.
 
 > **Lo que corrige a Marine Regions.** Guinea Ecuatorial–Gabón: la Corte falló
 > el 19 de mayo de 2025 que el título sobre Mbanié, Cocoteros y Conga es el que
-> tenía España, al que sucedió Guinea Ecuatorial; el área de Mbanié sale dorada
+> tenía España, al que sucedió Guinea Ecuatorial. El área de Mbanié sale dorada
 > y la línea marítima sigue en rojo, porque esa todavía no la ha trazado nadie.
 > Y el mar del Esequibo, arriba.
 
-**Revisar antes que nada** cuando salga: la sentencia de la Corte sobre el
-Esequibo (audiencias cerradas el 11 de mayo de 2026, sin fecha de fallo) y la
-votación del mandato de la MINURSO del 31 de octubre de 2026.
-
 No se edita a mano: se regenera con los scripts de `herramientas/disputas/`,
-que está en el repositorio pero **no se publica**. Ahí está la investigación
-original, las veinte correcciones y cómo rehacerlo.
+que está en el repositorio pero **no se publica**. Ahí están la investigación
+original, las correcciones del 13 de octubre (`corregir_disputas.py`), la
+revisión del 22 de octubre (`revision-2026-10-22.json`), la Medialuna
+(`medialuna.json`) y cómo rehacerlo.
+
+### Quince defectos del globo que encontró la auditoría del 22 de octubre
+
+Una auditoría del código, con un segundo lector que intentó refutar cada
+hallazgo, confirmó quince defectos. Todos están arreglados. Los que se notaban:
+
+- **Los estados de EE. UU. no se podían pulsar.** El país «Estados Unidos» se
+  probaba antes y ganaba siempre: ni Florida ni Texas abrían su ficha.
+- **En el teléfono, la ficha salía cortada un 40 % por la izquierda.**
+- **La causa de Belice se abría vacía**, sin el argumento de la otra parte: el
+  mapa la buscaba como «belice» y el Gran Plan la llama «belice-guatemala».
+- **Con un país hispano en el antípoda, todo el disco abría ese país**: con
+  Indochina en el centro, pulsar Tailandia abría Perú.
+- **A vista de mundo, las ciudades se tragaban el toque** sobre Centroamérica
+  y el Caribe. Ahora el punto de una ciudad sin nombre solo responde a seis
+  píxeles.
+- **La rueda atrapaba a quien subía por la portada.** Ahora amplía solo
+  después de pulsar el globo, o con Ctrl + rueda, y si no, lo dice con una
+  pista.
+- **Pulsar algo no paraba el giro**, así que la ficha se quedaba quieta
+  mientras el país se iba.
+- **El globo se repintaba sesenta veces por segundo aunque no se viera.**
+- Además: el rombo se acierta con el dedo (22 px), la × mide 44 px en táctil,
+  el resaltado de lo último tocado ya no se queda pegado, el dedo que queda
+  tras un pellizco sigue girando, y la leyenda sale de los mismos colores con
+  que se pinta.
 
 ### Tres cosas que el globo NO hace, y lo dice en pantalla
 

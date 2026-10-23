@@ -189,12 +189,32 @@ EH.globo = (function () {
     'resuelta-por-tribunal':   { t: 'Resuelta por un tribunal',   c: '#f0c46b' },
     'resuelta-por-tratado':    { t: 'Resuelta por tratado',       c: '#8fd0a8' },
     'regimen-conjunto':        { t: 'Régimen común',              c: '#ac8fe6' },
-    'congelada-por-tratado':   { t: 'Congelada por tratado',      c: '#9fb4cc' }
+    'congelada-por-tratado':   { t: 'Congelada por tratado',      c: '#9fb4cc' },
+    /* Un acuerdo firmado que aun no rige (Republica Dominicana con Aruba y
+       Curazao). No es una disputa ni esta resuelta: pintarlo de verde diria
+       que ya vale, y de rojo, que hay pleito. */
+    'firmada-sin-vigor':       { t: 'Firmada, sin entrar en vigor', c: '#c9dc8e' }
   };
   var TIPO_DISPUTA = {
     'terrestre': 'En tierra', 'maritima': 'En el mar', 'terrestre-y-maritima': 'En tierra y en el mar'
   };
   function estadoDe(dd) { return ESTADO_DISPUTA[dd.d.estado] || ESTADO_DISPUTA['sin-resolver']; }
+
+  /* De la llave de cada causa en el mapa al id de su ficha en EH.PLAN. Habia
+     dos copias de este diccionario y las dos decian 'belice' cuando el Plan
+     la llama 'belice-guatemala': la causa de Belice se abria sin texto y sin
+     el argumento de la otra parte, que es justo lo que no puede faltar. */
+  var CAUSA_PLAN = { malvinas: 'malvinas', georgias: 'malvinas', esequibo: 'esequibo',
+                     gibraltar: 'gibraltar', belice: 'belice-guatemala', antartida: 'antartida' };
+
+  /* Que zonas del mar se pintan. Lo usan el DIBUJO y el CLIC: si el clic
+     probara tambien las que no se pintan, el mar de Brasil abriria una ficha
+     sin que se viera nada debajo del dedo. */
+  function zonaPintada(zz) {
+    return zz.tipo === 'disputa' || zz.tipo === 'conjunto' || !!ZONAS_EN_DISPUTA[zz.ter] ||
+           zz.a === 'Western Sahara' || !!MAR_HISPANO[zz.a] ||
+           (zz.a === 'United States' && zz.ter === 'Puerto Rico');
+  }
 
   var alLlegarUrbano = [];
 
@@ -621,7 +641,8 @@ EH.globo = (function () {
     lienzo.className = 'eh-globo__lienzo';
     lienzo.setAttribute('role', 'img');
     lienzo.setAttribute('aria-label',
-      'Globo terráqueo giratorio con las ' + naciones.length + ' naciones y territorios de la Hispanidad resaltados.');
+      'Globo terráqueo giratorio con las ' + naciones.length + ' naciones y territorios de la Hispanidad resaltados. ' +
+      'Flechas para girar; más y menos para acercar.');
     var ctx = lienzo.getContext('2d');
     var An = 0, Al = 0, cx = 0, cy = 0, R = 0, dpr = 1;
 
@@ -883,8 +904,7 @@ EH.globo = (function () {
              Marruecos legislo sobre esas aguas en 2020—, y pintarlo como
              zona economica asentada seria dar por resuelto lo que no lo esta. */
           var disputada = zz.tipo === 'disputa' || ZONAS_EN_DISPUTA[zz.ter] || zz.a === 'Western Sahara';
-          var nuestra = MAR_HISPANO[zz.a] || (zz.a === 'United States' && zz.ter === 'Puerto Rico');
-          if (!nuestra && !disputada && zz.tipo !== 'conjunto') continue;
+          if (!zonaPintada(zz)) continue;
           ctx.beginPath();
           var hayZ = false;
           for (jj = 0; jj < zz.piezas.length; jj++) {
@@ -1097,22 +1117,32 @@ EH.globo = (function () {
         ctx.restore();
       }
 
-      /* --- el mar que ninguna fuente traza ---
-         Hoy solo uno: el que hay frente a la Guayana Esequiba. Marine Regions
-         se lo da entero a Guyana, que es quien lo administra; aqui se raya
-         encima porque depende de una tierra en disputa. RAYADO y no relleno:
-         es una aproximacion calculada en este mapa, y tiene que verse
-         distinta de lo que viene de una fuente. */
+      /* --- el mar en disputa que Marine Regions no trae ---
+         Dos areas. La MEDIALUNA de Chile y Argentina va RELLENA: sus lados
+         salen de coordenadas oficiales (Ley 27.557, CLPC 2016, Tratado de
+         1984). El mar frente a la GUAYANA ESEQUIBA va RAYADO: Marine Regions
+         se lo da entero a Guyana, que lo administra, y la linea que lo separa
+         es un calculo de este mapa. Tiene que verse distinto de lo que viene
+         de una fuente. */
       if (capas.disputas && hoy && disputas) {
         for (i = 0; i < disputas.length; i++) {
           var dm = disputas[i];
           if (!dm.mar.length) continue;
           ctx.beginPath();
           if (!trazarSi(dm.mar)) continue;
-          ctx.fillStyle = rayado(estadoDe(dm).c, sobreDisputa === dm);
-          ctx.fill();
+          var oficial = dm.d.mar && dm.d.mar.oficial;
+          if (oficial) {
+            ctx.save();
+            ctx.globalAlpha = sobreDisputa === dm ? 0.6 : 0.38;
+            ctx.fillStyle = estadoDe(dm).c;
+            ctx.fill();
+            ctx.restore();
+          } else {
+            ctx.fillStyle = rayado(estadoDe(dm).c, sobreDisputa === dm);
+            ctx.fill();
+          }
           ctx.save();
-          ctx.setLineDash([4, 3]);
+          ctx.setLineDash(oficial ? [] : [4, 3]);
           ctx.globalAlpha = 0.75;
           ctx.strokeStyle = estadoDe(dm).c;
           ctx.lineWidth = 1;
@@ -1210,7 +1240,7 @@ EH.globo = (function () {
          Encima de la mancha de EE.UU., cada uno con su tono según su población
          hispana. Sin esta capa el mapa dice que Vermont es tan hispano como
          Nuevo México, y se equivoca por un factor de veinte. */
-      if (capas.estados && estados.length && vivaEn('estados-unidos-hispano') && porId['estados-unidos-hispano']) {
+      if (estadosVisibles()) {
         for (i = 0; i < estados.length; i++) {
           var es = estados[i];
           var dat = DATOS_ESTADO[(es.s || '').toLowerCase()];
@@ -1427,7 +1457,9 @@ EH.globo = (function () {
          a lo que se viene. */
       var vistasD = [];
       if (capas.disputas && hoy && disputas) {
-        var lado = escala < 2 ? 3.6 : 4.6;
+        /* A vista de mundo el rombo se mide con el globo: en un telefono la
+           esfera mide 340 pixeles y sesenta rombos de siete tapaban el mapa. */
+        var lado = escala < 2 ? Math.max(2.4, Math.min(3.6, R / 80)) : 4.6;
         for (i = 0; i < disputas.length; i++) {
           var dd = disputas[i];
           if (mat[0] * dd.x + mat[1] * dd.y + mat[2] * dd.z <= 0.02) continue;
@@ -1448,6 +1480,32 @@ EH.globo = (function () {
           ctx.stroke();
           dd._sx = rx; dd._sy = ry;
           vistasD.push(dd);
+        }
+        /* EL NOMBRE, desde x2,6. En un telefono no hay "pasar por encima":
+           sin nombre, un rombo no dice que es hasta que se toca. Se reparte
+           el sitio con los nombres de las ciudades (puestas) con la misma
+           regla de codazos: si choca, no sale, y el rombo sigue ahi. */
+        if (escala >= 2.6) {
+          ctx.font = '600 11px ui-sans-serif,system-ui,sans-serif';
+          ctx.textBaseline = 'middle';
+          ctx.lineJoin = 'round';
+          for (i = 0; i < vistasD.length; i++) {
+            var dn = vistasD[i], tn = dn.d.corto || dn.d.titulo;
+            var wn = ctx.measureText(tn).width;
+            var cn = [dn._sx + 7, dn._sy - 7, dn._sx + 13 + wn, dn._sy + 7];
+            var chocaN = false;
+            for (j = 0; j < puestas.length; j++) {
+              var on = puestas[j];
+              if (cn[0] < on[2] && cn[2] > on[0] && cn[1] < on[3] && cn[3] > on[1]) { chocaN = true; break; }
+            }
+            if (chocaN) continue;
+            puestas.push(cn);
+            ctx.strokeStyle = 'rgba(7,13,21,.9)';
+            ctx.lineWidth = 3;
+            ctx.strokeText(tn, dn._sx + 8, dn._sy);
+            ctx.fillStyle = estadoDe(dn).c;
+            ctx.fillText(tn, dn._sx + 8, dn._sy);
+          }
         }
       }
       /* Igual que las ciudades: lo pulsable se rehace en cada fotograma con
@@ -1500,6 +1558,7 @@ EH.globo = (function () {
       var rot = null;
       if (sobreDisputa && capas.disputas && hoy && visiblesDisputa.indexOf(sobreDisputa) >= 0) {
         rot = { t: sobreDisputa.d.titulo + '  ·  ' + estadoDe(sobreDisputa).t,
+                corto: (sobreDisputa.d.corto || sobreDisputa.d.titulo) + '  ·  ' + estadoDe(sobreDisputa).t,
                 x: sobreDisputa._sx, y: sobreDisputa._sy };
       } else if (sobre && porId[sobre]) {
         var nd = porId[sobre], pq = puntoEn(nd.lon, nd.lat);
@@ -1520,6 +1579,12 @@ EH.globo = (function () {
       if (rot) {
         ctx.font = '600 13px ui-sans-serif,system-ui,sans-serif';
         var w = ctx.measureText(rot.t).width;
+        /* Un titulo largo no cabe en un telefono: salia cortado por la
+           izquierda. Si no cabe, el nombre corto. */
+        if (w > An - 24 && rot.corto) {
+          rot.t = rot.corto;
+          w = ctx.measureText(rot.t).width;
+        }
         var tx = Math.min(Math.max(rot.x + 10, 4), An - w - 14);
         var ty = Math.min(Math.max(rot.y - 12, 18), Al - 6);
         ctx.fillStyle = 'rgba(10,6,8,.86)';
@@ -1572,6 +1637,10 @@ EH.globo = (function () {
     }
 
     /* ---------- el latido ---------- */
+    var enVista = true;
+    if (window.IntersectionObserver) {
+      new IntersectionObserver(function (e) { enVista = e[0].isIntersecting; }).observe(lienzo);
+    }
     function latido(ahora) {
       if (animando) {
         if (!animando.t0) animando.t0 = ahora;
@@ -1584,6 +1653,10 @@ EH.globo = (function () {
         pintar();
       } else if (arrastrando) {
         /* mientras se arrastra pinta el propio manejador del puntero */
+      } else if (!enVista) {
+        /* Fuera de la vista no se gira ni se pinta: en un telefono, el globo
+           girando por debajo de la tira de ciudades gastaba bateria y le
+           robaba fotogramas al desplazamiento de la pagina. */
       } else if (Math.abs(velocidad) > 0.004) {
         giroLon += velocidad;
         velocidad *= 0.955;                 /* frenada: el globo pesa */
@@ -1601,6 +1674,11 @@ EH.globo = (function () {
        contexto, y aquí hay un factor de densidad de píxeles puesto. Serían dos
        sistemas de coordenadas y un fallo que solo asoma en pantallas Retina. */
     function dentro(pieza, px, py) {
+      /* Se vuelve a proyectar ANTES de preguntar. Una pieza de espaldas guarda
+         sus puntos empujados al canto del disco, y si el antipoda del centro
+         cae dentro de un pais, ese anillo empujado rodea el disco entero: con
+         Indochina en el centro, pulsar Tailandia abria Peru. */
+      if (proyectar(pieza) !== 2) return false;
       if (px < pieza.x0 || px > pieza.x1 || py < pieza.y0 || py > pieza.y1) return false;
       var s = pieza.s, n = pieza.n, d = false;
       for (var i = 0, j = n - 1; i < n; j = i++) {
@@ -1617,10 +1695,14 @@ EH.globo = (function () {
         var c = visiblesCiudad[i];
         if (c._sx === undefined) continue;
         /* La etiqueta también vale como blanco: apuntar a un punto de tres
-           píxeles con el dedo es imposible. */
-        if (px >= c._sx - 7 && px <= c._sx + (c._ancho || 0) + 8 && Math.abs(py - c._sy) < 9) return c;
+           píxeles con el dedo es imposible. Pero SOLO si hay etiqueta: a vista
+           de mundo las ciudades salen sin nombre, a diez píxeles unas de
+           otras, y con un blanco de doce píxeles cada una se tragaban el toque
+           de Centroamérica y del Caribe entero. Sin nombre, seis píxeles. */
+        var conNombre = (c._ancho || 0) > 0;
+        if (conNombre && px >= c._sx - 7 && px <= c._sx + c._ancho + 8 && Math.abs(py - c._sy) < 9) return c;
         var d = (c._sx - px) * (c._sx - px) + (c._sy - py) * (c._sy - py);
-        if (d < mejorD) { mejorD = d; mejor = c; }
+        if (d < Math.min(mejorD, conNombre ? 144 : 36)) { mejorD = d; mejor = c; }
       }
       return mejor;
     }
@@ -1646,6 +1728,7 @@ EH.globo = (function () {
       for (var i = 0; i < paises.length; i++) {
         var p = paises[i];
         if (!p.hispano || !porId[p.id] || !vivaEn(p.id)) continue;
+        if (p.id === 'estados-unidos-hispano' && estadosVisibles()) continue;
         var pz = piezasDe(p);
         for (var j = 0; j < pz.length; j++) {
           if (dentro(pz[j], px, py)) return p.id;
@@ -1658,6 +1741,7 @@ EH.globo = (function () {
       if (!mares || !capas.mar || epoca !== null) return null;
       for (var i = 0; i < mares.zonas.length; i++) {
         var z = mares.zonas[i];
+        if (!zonaPintada(z)) continue;
         for (var j = 0; j < z.piezas.length; j++) {
           if (dentro(z.piezas[j], px, py)) return z;
         }
@@ -1697,12 +1781,19 @@ EH.globo = (function () {
         '<p class="eh-tenue" style="font-size:.7rem">Marine Regions, World EEZ v12 (VLIZ, 2023). ' +
         'Lo posterior a 2023 está en las fichas de disputa.</p>';
       seleccion = null;
+      /* El mar no tiene ficha ampliada: con el panel abierto se cierra, para
+         no dejar panel y tarjeta a la vez contando cosas distintas. */
+      if (panelAbierto) cerrarPanel();
+      sobreZona = z;
       caja(html, punto);
+      repintar();
     }
 
-    function disputaEn(px, py) {
+    function disputaEn(px, py, tactil) {
       if (!capas.disputas || epoca !== null) return null;
-      var mejor = null, mejorD = 110;       /* unos diez pixeles */
+      /* Unos diez pixeles con raton y veintidos con el dedo: un rombo de
+         cuatro pixeles no se acierta con una yema de diez milimetros. */
+      var mejor = null, mejorD = tactil ? 484 : 110;
       for (var i = 0; i < visiblesDisputa.length; i++) {
         var d = visiblesDisputa[i];
         var e = (d._sx - px) * (d._sx - px) + (d._sy - py) * (d._sy - py);
@@ -1711,16 +1802,13 @@ EH.globo = (function () {
       return mejor;
     }
 
-    /* conMar: false = las areas en tierra; true = el mar calculado. Se
-       vuelve a proyectar cada pieza antes de preguntar: una pieza de espaldas
-       conserva coordenadas de pantalla pegadas al canto y daria un "si"
-       falso junto al borde del globo. */
+    /* conMar: false = las areas en tierra; true = las del mar. */
     function areaDisputaEn(px, py, conMar) {
       if (!capas.disputas || epoca !== null || !disputas) return null;
       for (var i = 0; i < disputas.length; i++) {
         var grupo = conMar ? disputas[i].mar : disputas[i].zona;
         for (var j = 0; j < grupo.length; j++) {
-          if (proyectar(grupo[j]) === 2 && dentro(grupo[j], px, py)) return disputas[i];
+          if (dentro(grupo[j], px, py)) return disputas[i];
         }
       }
       return null;
@@ -1768,9 +1856,7 @@ EH.globo = (function () {
               (k === 'antartida' ? c.antartida : null);
       var delPlan = null;
       if (EH.PLAN && EH.PLAN.causas) {
-        var mapa = { malvinas: 'malvinas', georgias: 'malvinas', esequibo: 'esequibo',
-                     gibraltar: 'gibraltar', belice: 'belice', antartida: 'antartida' };
-        EH.PLAN.causas.forEach(function (x) { if (x.id === mapa[k]) delPlan = x; });
+        EH.PLAN.causas.forEach(function (x) { if (x.id === CAUSA_PLAN[k]) delPlan = x; });
       }
       var html = '<h4>' + EH.escapar((f && f.titulo) || NOMBRE_CAUSA[k] || k) + '</h4>' +
         '<div class="met"><span style="color:var(--rojo2)">Territorio en disputa</span></div>';
@@ -1790,8 +1876,15 @@ EH.globo = (function () {
       caja(html, punto);
     }
 
+    /* Cuando se ven los estados, el pais "Estados Unidos" queda debajo de
+       ellos y no debe ganar el clic: antes ganaba siempre, porque se prueba
+       antes, y ningun estado se podia pulsar ni pasar por encima. */
+    function estadosVisibles() {
+      return !!(capas.estados && estados.length && vivaEn('estados-unidos-hispano') && porId['estados-unidos-hispano']);
+    }
+
     function estadoEn(px, py) {
-      if (!capas.estados) return null;
+      if (!estadosVisibles()) return null;
       for (var i = 0; i < estados.length; i++) {
         for (var j = 0; j < estados[i].piezas.length; j++) {
           if (dentro(estados[i].piezas[j], px, py)) return estados[i];
@@ -1887,15 +1980,31 @@ EH.globo = (function () {
 
     function soltar(ev) {
       delete punteros[ev.pointerId];
+      var eraPinza = !!pinza;
       if (Object.keys(punteros).length < 2) pinza = null;
+      /* Tras un pellizco, el dedo que queda sigue girando el globo. Antes
+         habia que levantarlo y volver a apoyarlo. */
+      var resto = Object.keys(punteros);
+      if (eraPinza && resto.length === 1) {
+        arrastrando = true; movido = true; ult = punteros[resto[0]];
+        return;
+      }
       if (!arrastrando) return;
       arrastrando = false; ult = null;
       if (movido) return;
 
+      /* Pulsar algo PARA el giro. Si no, la ficha se quedaba quieta y el pais
+         se iba: a los quince segundos la tarjeta senalaba el oceano. */
+      if (girando) { girando = false; sincronizarMandos(); }
+      /* Con el dedo no existe "pasar por encima": el resaltado de lo ultimo
+         tocado se quedaba pegado sobre el globo hasta tocar otra cosa igual. */
+      var tactil = ev.pointerType !== 'mouse';
+      if (tactil) { sobreDisputa = null; sobreCiudad = null; }
+
       var p = local(ev);
       /* El rombo primero: es el blanco mas pequeno y el mas deliberado. Si
          la ciudad ganara, Ceuta abriria la ciudad y nunca su disputa. */
-      var dpu = disputaEn(p.x, p.y);
+      var dpu = disputaEn(p.x, p.y, tactil);
       if (dpu) { abrirDisputa(dpu, p); return; }
       var cd = ciudadEn(p.x, p.y);
       if (cd) { abrirCiudad(cd, p); return; }
@@ -1926,7 +2035,11 @@ EH.globo = (function () {
       if (zn) { abrirZona(zn, p); return; }
     }
     lienzo.addEventListener('pointerup', soltar);
-    lienzo.addEventListener('pointercancel', soltar);
+    /* Un gesto que cancela el sistema no es un toque: no abre nada. */
+    lienzo.addEventListener('pointercancel', function (ev) {
+      delete punteros[ev.pointerId];
+      pinza = null; arrastrando = false; ult = null;
+    });
     lienzo.addEventListener('pointerleave', function (ev) {
       delete punteros[ev.pointerId];
       if (ev.pointerType === 'mouse' && !arrastrando && (sobre || sobreCiudad || sobreEstado || sobreDisputa)) {
@@ -1941,7 +2054,25 @@ EH.globo = (function () {
        costaba buscar un botón. Este término medio es el de los mapas serios:
        dentro del globo la rueda amplía, y cuando ya no se puede ampliar más
        (o menos) el gesto vuelve a desplazar la página. */
+    /* Y SOLO cuando el globo esta "tomado": despues de pulsarlo, o con Ctrl.
+       Sin esto, quien subia por la portada con el cursor cruzando el globo
+       quedaba atrapado: cada golpe de rueda hacia arriba ampliaba, y hacian
+       falta veinticinco para llegar al tope y que la pagina volviera a
+       moverse. Es lo que hacen los mapas incrustados serios. */
+    var tomado = false, pistaHasta = 0;
+    lienzo.addEventListener('pointerdown', function () { tomado = true; });
+    lienzo.addEventListener('pointerleave', function (ev) { if (ev.pointerType === 'mouse') tomado = false; });
     lienzo.addEventListener('wheel', function (ev) {
+      if (!tomado && !ev.ctrlKey && !ev.metaKey) {
+        /* No se para el desplazamiento: se dice como ampliar, y nada mas. */
+        var ahora = ev.timeStamp || 0;
+        if (ahora > pistaHasta) {
+          pistaHasta = ahora + 2200;
+          pista.classList.add('on');
+          window.setTimeout(function () { pista.classList.remove('on'); }, 1800);
+        }
+        return;
+      }
       var fuera = (ev.deltaY > 0 && escala <= ESCALA_MIN) || (ev.deltaY < 0 && escala >= ESCALA_MAX);
       if (fuera) return;                     /* sin preventDefault: scroll normal */
       ev.preventDefault();
@@ -2018,6 +2149,20 @@ EH.globo = (function () {
        a las de mar abierto, poco, que si no se ve agua y nada mas. */
     function aumentoPara(dd) {
       if (dd.d.id === 'antartida-reclamos-superpuestos') return 1.8;
+      /* Las que tienen un area de mar dibujada se acercan segun lo que mide:
+         la Medialuna son 160 por 39 km y a x3 no se ve; el mar del Esequibo
+         ocupa medio Atlantico de Guyana y a x8 no cabe. */
+      if (dd.d.mar && dd.d.mar.piezas && dd.d.mar.piezas.length) {
+        var x0 = 999, x1 = -999, y0 = 999, y1 = -999;
+        dd.d.mar.piezas.forEach(function (pl) {
+          for (var k = 0; k < pl.length; k += 2) {
+            x0 = Math.min(x0, pl[k]); x1 = Math.max(x1, pl[k]);
+            y0 = Math.min(y0, pl[k + 1]); y1 = Math.max(y1, pl[k + 1]);
+          }
+        });
+        var ext = Math.max((x1 - x0) * Math.cos((y0 + y1) / 2 * RAD), y1 - y0);
+        return Math.max(2.5, Math.min(14, 18 / ext));
+      }
       if (dd.zona.length) return 7;
       if (dd.d.tipo === 'maritima') return 3;
       return 4.5;
@@ -2025,6 +2170,14 @@ EH.globo = (function () {
 
     function irADisputa(dd) {
       if (!dd) return;
+      /* Una disputa de hoy no se abre sobre el mapa de 1650, ni con la capa
+         apagada: saldria una ficha sobre un mapa que no la muestra. */
+      if (epoca !== null && btnHoy) btnHoy.click();
+      if (!capas.disputas) {
+        capas.disputas = true;
+        var cb = panel && panel.querySelector('[data-c=disputas]');
+        if (cb) cb.checked = true;
+      }
       sobreDisputa = dd;
       volar(dd.d.lon, dd.d.lat, aumentoPara(dd));
       window.setTimeout(function () {
@@ -2115,8 +2268,9 @@ EH.globo = (function () {
         fila('Población del área urbana', cd.pob ? EH.poblacion(cd.pob * 1000) : null) +
         fila('Coordenadas', cd.lat.toFixed(2) + ', ' + cd.lon.toFixed(2)) +
         '</dl>' +
-        '<p class="eh-tenue" style="font-size:.72rem">La población sale de una sola fuente para las 1.861 ' +
-        'ciudades del mapa (Natural Earth) y es la del área urbana, no la del municipio.</p>';
+        '<p class="eh-tenue" style="font-size:.72rem">La población sale de una sola fuente para las ' +
+        ciudades.length.toLocaleString('es') + ' ciudades del mapa (Natural Earth) y es la del área urbana, ' +
+        'no la del municipio.</p>';
       if (nac) {
         h += '<button type="button" class="eh-globo__panel-ir" data-nacion="' + EH.escapar(nac.id) + '">Ver ' + EH.escapar(nac.nombre) + '</button>';
       }
@@ -2141,11 +2295,9 @@ EH.globo = (function () {
     }
 
     function detalleCausa(k) {
-      var mapa = { malvinas: 'malvinas', georgias: 'malvinas', esequibo: 'esequibo',
-                   gibraltar: 'gibraltar', belice: 'belice', antartida: 'antartida' };
       var c = null;
       if (EH.PLAN && EH.PLAN.causas) {
-        EH.PLAN.causas.forEach(function (x) { if (x.id === mapa[k]) c = x; });
+        EH.PLAN.causas.forEach(function (x) { if (x.id === CAUSA_PLAN[k]) c = x; });
       }
       var f = (CONT.causas || {})[k];
       var h = '<header class="eh-globo__panel-cab"><div><h4>' +
@@ -2199,7 +2351,7 @@ EH.globo = (function () {
       }
       h += parrafos('Lo que ha cambiado desde 2023', d.cambio);
       if (d.mar) {
-        h += parrafos('El mar rayado', d.mar.nota +
+        h += parrafos(d.mar.oficial ? 'El área dibujada' : 'El mar rayado', d.mar.nota +
           (d.mar.km2 ? ' Unos ' + Math.round(d.mar.km2).toLocaleString('es') + ' km².' : ''));
       }
       h += '<p class="eh-tenue" style="font-size:.72rem">Fuentes: ' + EH.escapar(d.fuente) +
@@ -2273,7 +2425,11 @@ EH.globo = (function () {
       var alto = c.getBoundingClientRect().height;
       var arriba = lc.top - cc.top + punto.y - 10;
       c.style.top = Math.max(Math.min(arriba, cc.height - alto - 8), 8) + 'px';
-      c.querySelector('.eh-mapa__cerrar').addEventListener('click', function () { c.remove(); });
+      c.querySelector('.eh-mapa__cerrar').addEventListener('click', function () {
+        c.remove();
+        sobreDisputa = sobreCiudad = sobreZona = null;
+        repintar();
+      });
       return c;
     }
 
@@ -2385,6 +2541,12 @@ EH.globo = (function () {
     aviso.className = 'eh-globo__aumento';
     escena.appendChild(aviso);
 
+    var pista = document.createElement('div');
+    pista.className = 'eh-globo__pista';
+    pista.setAttribute('aria-hidden', 'true');
+    pista.textContent = 'Pulsa el globo para acercar con la rueda, o usa Ctrl + rueda';
+    escena.appendChild(pista);
+
     panelEl = document.createElement('aside');
     panelEl.className = 'eh-globo__panel';
     panelEl.setAttribute('aria-label', 'Información ampliada');
@@ -2419,7 +2581,11 @@ EH.globo = (function () {
       if (ev.key !== 'Escape') return;
       if (panelAbierto) { cerrarPanel(); return; }
       var fh = contenedor.querySelector('.eh-mapa__ficha');
-      if (fh) { fh.remove(); lienzo.focus(); }
+      if (fh) {
+        fh.remove(); lienzo.focus();
+        sobreDisputa = sobreCiudad = sobreZona = null;
+        repintar();
+      }
     });
 
     contenedor.__ehGlobo = {
@@ -2437,6 +2603,7 @@ EH.globo = (function () {
       var bG = mandos.querySelector('[data-a=girar]');
       bG.textContent = girando ? '⏸' : '▶';
       bG.classList.toggle('on', girando);
+      bG.setAttribute('aria-pressed', girando ? 'true' : 'false');
       mandos.querySelector('[data-a=mas]').disabled = escala >= ESCALA_MAX;
       mandos.querySelector('[data-a=menos]').disabled = escala <= ESCALA_MIN;
       aviso.textContent = escala > 1.05 ? '×' + escala.toFixed(1).replace('.0', '').replace('.', ',') : '';
@@ -2463,7 +2630,7 @@ EH.globo = (function () {
       { k: 'disputas', t: 'Disputas de límites',
         d: (disputas ? disputas.length : 0) + ' disputas de tierra y mar, cada una con su estado y las dos posiciones' },
       { k: 'estados', t: 'EE.UU. por estados', d: 'Tono según su población hispana' },
-      { k: 'ciudades', t: 'Ciudades', d: 'Aparecen al acercar' },
+      { k: 'ciudades', t: 'Ciudades', d: 'Las que tienen historia y las mayores, desde el principio; el resto, al acercar' },
       { k: 'sefardi', t: 'Huella sefardí', d: 'Donde se habló el judeoespañol' },
       { k: 'urbano', t: 'Manchas urbanas', d: 'El área construida de cada ciudad, al acercar' },
       { k: 'miembros', t: 'Miembros', d: 'Dónde hay gente inscrita en el movimiento' }
@@ -2525,6 +2692,8 @@ EH.globo = (function () {
       var btnHoy = tiempo.querySelector('[data-t=hoy]');
 
       function pintarEpoca() {
+        /* El lector de pantalla anunciaba "7" en vez de "1810". */
+        rango.setAttribute('aria-valuetext', epoca === null ? 'Hoy' : String(EPOCAS[epoca].ano));
         if (epoca === null) {
           rotuloAno.textContent = '';
           texto.innerHTML = '';
@@ -2609,6 +2778,15 @@ EH.globo = (function () {
     if (opciones.disputasTira !== false && disputas && disputas.length) {
       var abiertas = disputas.filter(function (x) { return x.d.estado === 'sin-resolver'; }).length;
       var faltan = (EH.DISPUTAS && EH.DISPUTAS.pendientes) || [];
+      var proximas = (EH.DISPUTAS && EH.DISPUTAS.proximas) || [];
+      var indicePorId = {};
+      disputas.forEach(function (x, i) { indicePorId[x.d.id] = i; });
+      var MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+      function fechaCorta(iso) {
+        if (!iso) return 'Sin fecha';
+        var p = iso.split('-');
+        return parseInt(p[2], 10) + ' ' + MESES[parseInt(p[1], 10) - 1] + ' ' + p[0];
+      }
       var td = document.createElement('div');
       td.className = 'eh-globo__ciudades eh-globo__disputas';
       td.innerHTML =
@@ -2624,6 +2802,18 @@ EH.globo = (function () {
         '<p class="eh-globo__disputas-nota eh-tenue">Revisado al ' +
         EH.escapar((EH.DISPUTAS && EH.DISPUTAS.fecha) || '') + '. El color dice en qué estado está ' +
         'cada disputa, no quién tiene razón.</p>' +
+        /* LO QUE VIENE: las fechas en que alguna ficha puede cambiar. Es lo
+           que dice cuando este mapa se quedara viejo, y que mirar al volver. */
+        (proximas.length
+          ? '<details class="eh-globo__disputas-faltan" open><summary>Próximas fechas (' + proximas.length +
+            ')</summary><ul class="eh-globo__proximas">' + proximas.map(function (x) {
+              var i = indicePorId[x.id];
+              return '<li><span class="eh-globo__proxima-fecha">' + EH.escapar(fechaCorta(x.fecha)) + '</span> ' +
+                (i !== undefined
+                  ? '<button type="button" data-d="' + i + '">' + EH.escapar(x.texto) + '</button>'
+                  : EH.escapar(x.texto)) + '</li>';
+            }).join('') + '</ul></details>'
+          : '') +
         (faltan.length
           ? '<details class="eh-globo__disputas-faltan"><summary>Lo que falta por investigar (' + faltan.length +
             ')</summary><ul>' + faltan.map(function (f) { return '<li>' + EH.escapar(f) + '</li>'; }).join('') +
@@ -2679,15 +2869,20 @@ EH.globo = (function () {
         '<span><i class="eh-mapa__punto eh-mapa__punto--linea-tratado"></i> Límite por tratado</span>' +
         '<span><i class="eh-mapa__punto eh-mapa__punto--linea-tribunal"></i> Límite por sentencia</span>' +
         '<span><i class="eh-mapa__punto eh-mapa__punto--linea-disputa"></i> Límite sin resolver</span>' +
+        /* La leyenda de las disputas sale de los MISMOS colores con que se
+           pintan, y solo de los estados que hay: antes estaba escrita a mano
+           y le faltaban el regimen comun y la Antartida congelada. */
         (disputas
-          ? '<span><i class="eh-mapa__punto eh-mapa__punto--rombo" style="background:#ef5d73"></i> Disputa abierta</span>' +
-            '<span><i class="eh-mapa__punto eh-mapa__punto--rombo" style="background:#f29a4a"></i> Ante un tribunal</span>' +
-            '<span><i class="eh-mapa__punto eh-mapa__punto--rombo" style="background:#f0c46b"></i>' +
-            '<i class="eh-mapa__punto eh-mapa__punto--rombo" style="background:#8fd0a8"></i> Resuelta</span>' +
+          ? Object.keys(ESTADO_DISPUTA).filter(function (k) {
+              return disputas.some(function (x) { return x.d.estado === k; });
+            }).map(function (k) {
+              return '<span><i class="eh-mapa__punto eh-mapa__punto--rombo" style="background:' +
+                ESTADO_DISPUTA[k].c + '"></i> ' + EH.escapar(ESTADO_DISPUTA[k].t) + '</span>';
+            }).join('') +
             '<span><i class="eh-mapa__punto eh-mapa__punto--rayado"></i> Mar calculado, no trazado</span>'
           : '') +
         '<span><i class="eh-mapa__punto" style="background:#f0c46b;box-shadow:0 0 0 1px #12080a"></i> Ciudad con historia</span>' +
-        '<span>Arrastra para girar · rueda o pellizco para acercar · doble clic para ir</span>';
+        '<span>Arrastra para girar · pellizca, o pulsa el globo y usa la rueda, para acercar · doble clic para ir</span>';
       contenedor.appendChild(ley);
     }
 

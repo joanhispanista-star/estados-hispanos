@@ -16,7 +16,7 @@ obligatorio: se abre con doble clic en `index.html`.
   Las 24 entidades de la Hispanidad —incluidas Guinea Ecuatorial, el Sáhara
   Occidental y Filipinas— con sus banderas dibujadas en SVG, sus zonas
   económicas y límites marítimos reales (Marine Regions), las ocho causas
-  territoriales, 54 disputas de tierra y mar con su estado y las dos
+  territoriales, 64 disputas de tierra y mar con su estado y las dos
   posiciones, los estados de Estados Unidos coloreados por su población
   hispana, 1.892 ciudades y una línea del tiempo de 1492 a hoy.
 - **Manifiesto** en ocho secciones y **Gran Plan** con seis fases y ocho causas

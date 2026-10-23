@@ -435,8 +435,14 @@ p:last-child{margin-bottom:0}
 .eh-mapa__ficha .met{display:flex;gap:.9rem;flex-wrap:wrap;font-size:.76rem;color:var(--tenue);margin-bottom:.55rem}
 .eh-mapa__ficha p{font-size:.84rem;color:var(--suave);margin:0 0 .7rem}
 .eh-mapa__cerrar{position:absolute;top:.4rem;right:.5rem;background:none;border:0;color:var(--tenue);font-size:1.2rem;cursor:pointer;line-height:1;padding:.2rem}
+/* Con el dedo, la x mide lo que mide un dedo. El left en linea que pone el
+   globo ya no gana a la media query del telefono (el !important de arriba):
+   la ficha salia cortada un 40 % por la izquierda. */
+@media (pointer:coarse){
+  .eh-mapa__cerrar{min-width:44px;min-height:44px;top:0;right:0;display:flex;align-items:center;justify-content:center}
+}
 @media (max-width:700px){
-  .eh-mapa__ficha{position:fixed;left:50%;bottom:1rem;top:auto!important;transform:translateX(-50%);width:min(400px,92vw)}
+  .eh-mapa__ficha{position:fixed;left:50%!important;bottom:1rem;top:auto!important;transform:translateX(-50%);width:min(400px,92vw)}
 }
 
 /* =========================================================================
@@ -825,6 +831,20 @@ select.eh-entrada{appearance:none;-webkit-appearance:none;cursor:pointer;
    borde de la pantalla. */
 .eh-globo__disputas .eh-globo__ciudades-lista button{flex:0 1 auto;max-width:100%;text-align:left}
 .eh-globo__disputas-nota{margin:.45rem 0 0;font-size:.7rem}
+.eh-globo__proximas{list-style:none;padding-left:0!important}
+.eh-globo__proximas li{display:flex;gap:.5rem;align-items:baseline;margin:.2rem 0}
+.eh-globo__proxima-fecha{flex:0 0 5.6rem;color:var(--oro2);font-variant-numeric:tabular-nums}
+.eh-globo__proximas button{background:none;border:0;padding:0;color:var(--suave);text-align:left;cursor:pointer;font:inherit}
+.eh-globo__proximas button:hover{color:var(--oro2);text-decoration:underline}
+/* La pista de la rueda: sale un momento cuando alguien gira la rueda sobre
+   el globo sin haberlo pulsado, y se va sola. */
+.eh-globo__pista{
+  position:absolute;left:50%;bottom:1rem;transform:translateX(-50%);
+  background:rgba(10,6,8,.86);color:var(--oro2);border:1px solid var(--linea2);
+  padding:.4rem .75rem;border-radius:999px;font-size:.78rem;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .25s;
+}
+.eh-globo__pista.on{opacity:1}
 .eh-globo__disputas-faltan{margin:.3rem 0 0;font-size:.7rem;color:var(--tenue)}
 .eh-globo__disputas-faltan summary{cursor:pointer;color:var(--suave)}
 .eh-globo__disputas-faltan ul{margin:.3rem 0 0;padding-left:1.1rem}
